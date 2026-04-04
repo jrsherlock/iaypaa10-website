@@ -95,8 +95,8 @@ export default function Hero() {
       {/* Scanlines overlay */}
       <Scanlines className="absolute inset-0 z-20" opacity={0.04} />
 
-      {/* Content */}
-      <div className="relative z-30 flex flex-col items-center text-center px-4 sm:px-6">
+      {/* Content — pushed to bottom on mobile so image subject is visible */}
+      <div className="relative z-30 flex flex-col items-center text-center px-4 sm:px-6 mt-auto mb-16 sm:mt-0 sm:mb-0">
         <GlowText
           as="h1"
           glow="strong"
