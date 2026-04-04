@@ -155,7 +155,7 @@ export default function RegistrationPage() {
         {/* Scholarship Note */}
         <section className="mb-8 text-center">
           <div className="max-w-2xl mx-auto rounded-xl border border-berry/30 bg-gradient-to-b from-toxic-green/15 to-void-black/40 p-8">
-            <h3 className="font-[family-name:var(--font-creepster)] text-2xl text-berry mb-4 glow-text-subtle">
+            <h3 className="font-[family-name:var(--font-creepster)] text-2xl text-ooze-green mb-4 glow-text-subtle">
               Scholarships Available
             </h3>
             <p className="text-bone-white/80 leading-relaxed mb-4">
