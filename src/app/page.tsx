@@ -1,65 +1,79 @@
-import Image from "next/image";
+import Link from "next/link";
+import Hero from "@/components/sections/Hero";
+import CountdownTimer from "@/components/ui/CountdownTimer";
+import SlimeDivider from "@/components/ui/SlimeDivider";
+import QuickInfoCards from "@/components/sections/QuickInfoCards";
+import ThemeTeaser from "@/components/sections/ThemeTeaser";
+import EmailSignup from "@/components/sections/EmailSignup";
+import GlowText from "@/components/ui/GlowText";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      {/* 1. Hero */}
+      <Hero />
+
+      {/* 2. Divider */}
+      <SlimeDivider />
+
+      {/* 3. Countdown */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 text-center">
+        <GlowText
+          as="h2"
+          glow="subtle"
+          className="font-[family-name:var(--font-creepster)] text-3xl sm:text-4xl md:text-5xl text-ooze-green mb-10"
+        >
+          Countdown to IAYPAA X
+        </GlowText>
+        <CountdownTimer />
+      </section>
+
+      {/* 4. Divider */}
+      <SlimeDivider />
+
+      {/* 5. Quick Info Cards */}
+      <QuickInfoCards />
+
+      {/* 6. Divider */}
+      <SlimeDivider />
+
+      {/* 7. Theme Teaser */}
+      <ThemeTeaser />
+
+      {/* 8. Divider */}
+      <SlimeDivider />
+
+      {/* 9. What is IAYPAA? */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-3xl mx-auto text-center">
+        <GlowText
+          as="h2"
+          glow="subtle"
+          className="font-[family-name:var(--font-creepster)] text-3xl sm:text-4xl md:text-5xl text-ooze-green mb-6"
+        >
+          What is IAYPAA?
+        </GlowText>
+        <p className="text-bone-white/85 text-base sm:text-lg leading-relaxed font-[family-name:var(--font-space)]">
+          IAYPAA stands for Iowa Young People in Alcoholics Anonymous. Since
+          2017, we have brought together young people in recovery from across
+          Iowa and beyond for a weekend of speaker meetings, workshops,
+          fellowship, and fun. Our annual conference is organized by young people
+          in AA, for anyone who wants to attend&mdash;no age requirement, just a
+          desire to connect.{" "}
+          <Link
+            href="/about"
+            className="text-gold underline underline-offset-4 decoration-gold/40 hover:decoration-gold transition-colors"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            Learn more about IAYPAA
+          </Link>
+          .
+        </p>
+      </section>
+
+      {/* 10. Divider */}
+      <SlimeDivider />
+
+      {/* 11. Email Signup */}
+      <EmailSignup />
+    </>
   );
 }

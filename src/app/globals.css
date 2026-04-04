@@ -1,26 +1,300 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Primary palette — from coolors.co/5fad56-f2c14e-f78154-4d9078-b4436c */
+  --color-ooze-green: #5FAD56;
+  --color-swamp-teal: #4D9078;
+  --color-gold: #F2C14E;
+  --color-ember: #F78154;
+  --color-berry: #B4436C;
+
+  /* Structural / background colors */
+  --color-dark-ooze: #0A1A12;
+  --color-void-black: #0D0D0D;
+  --color-toxic-green: #1B3B30;
+  --color-bone-white: #E8E6E1;
+  --color-film-grain: rgba(255, 255, 255, 0.03);
+
+  --font-creepster: "Creepster", cursive;
+  --font-space: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---- Base Styles ---- */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0D0D0D;
+  color: #E8E6E1;
+  font-family: var(--font-space);
+}
+
+::selection {
+  background-color: #F2C14E;
+  color: #0D0D0D;
+}
+
+/* ---- Custom Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D0D0D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1B3B30;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5FAD56;
+}
+
+/* ---- Glow Text Effect ---- */
+.glow-text {
+  text-shadow:
+    0 0 10px #5FAD56,
+    0 0 20px #5FAD56,
+    0 0 40px #4D9078,
+    0 0 80px #4D9078;
+}
+
+.glow-text-subtle {
+  text-shadow:
+    0 0 5px #5FAD56,
+    0 0 10px #5FAD56;
+}
+
+.glow-text-gold {
+  text-shadow:
+    0 0 10px #F2C14E,
+    0 0 20px #F2C14E,
+    0 0 40px #F78154;
+}
+
+.glow-text-berry {
+  text-shadow:
+    0 0 10px #B4436C,
+    0 0 20px #B4436C;
+}
+
+/* ---- Dripping Slime Keyframes ---- */
+@keyframes drip {
+  0% {
+    transform: translateY(-100%) scaleY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(0) scaleY(1);
+  }
+  80% {
+    transform: translateY(10px) scaleY(1.1);
+  }
+  100% {
+    transform: translateY(5px) scaleY(1);
+  }
+}
+
+@keyframes drip-continuous {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(60px);
+    opacity: 0;
+  }
+}
+
+/* ---- Bubbling Ooze ---- */
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-120px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes blob-morph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 40% 70% 60%;
+  }
+  75% {
+    border-radius: 60% 30% 60% 40% / 70% 50% 40% 60%;
+  }
+}
+
+/* ---- Film Grain ---- */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* ---- VHS Scanlines ---- */
+@keyframes scanline-move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+/* ---- Pulse Glow ---- */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px #5FAD56, 0 0 10px #4D9078;
+  }
+  50% {
+    box-shadow: 0 0 15px #5FAD56, 0 0 30px #4D9078, 0 0 45px #5FAD56;
+  }
+}
+
+@keyframes pulse-glow-gold {
+  0%, 100% {
+    box-shadow: 0 0 5px #F2C14E, 0 0 10px #F78154;
+  }
+  50% {
+    box-shadow: 0 0 15px #F2C14E, 0 0 30px #F2C14E, 0 0 45px #F78154;
+  }
+}
+
+/* ---- Float animation ---- */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ---- Ooze Button Drip ---- */
+@keyframes button-drip {
+  0% {
+    height: 0;
+    opacity: 1;
+  }
+  70% {
+    height: 20px;
+    opacity: 1;
+  }
+  100% {
+    height: 25px;
+    opacity: 0;
+  }
+}
+
+/* ---- Countdown digit flip ---- */
+@keyframes count-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* ---- Hero poster slow zoom ---- */
+@keyframes slow-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 30s ease-in-out infinite alternate;
+}
+
+/* ---- Utility Classes ---- */
+.animate-drip {
+  animation: drip 2s ease-out forwards;
+}
+
+.animate-drip-continuous {
+  animation: drip-continuous 3s ease-in-out infinite;
+}
+
+.animate-bubble-rise {
+  animation: bubble-rise 4s ease-out infinite;
+}
+
+.animate-blob-morph {
+  animation: blob-morph 8s ease-in-out infinite;
+}
+
+.animate-grain {
+  animation: grain 0.5s steps(10) infinite;
+}
+
+.animate-scanline {
+  animation: scanline-move 0.1s linear infinite alternate;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow-gold {
+  animation: pulse-glow-gold 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-count-pulse {
+  animation: count-pulse 1s ease-in-out infinite;
+}
+
+/* ---- Mobile Menu Slide In ---- */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
 }
