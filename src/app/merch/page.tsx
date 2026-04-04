@@ -13,22 +13,16 @@ export const metadata: Metadata = {
 
 const MERCH_FAQ = [
   {
-    icon: "📦",
-    title: "Shipping",
-    description:
-      "All online orders are fulfilled and shipped directly by Printful. Orders typically arrive within 5–10 business days.",
-  },
-  {
     icon: "🎪",
     title: "In-Person Pickup",
     description:
-      "Merch will also be available at the conference — no shipping cost, no wait. Grab yours at the merch table.",
+      "Merch will be available at the conference — no shipping cost, no wait. Grab yours at the merch table.",
   },
   {
-    icon: "🔄",
-    title: "Returns & Exchanges",
+    icon: "📦",
+    title: "Online Shipping",
     description:
-      "Returns and exchanges for online orders are handled through Printful's return policy. Contact their support for any issues.",
+      "Online orders are fulfilled and shipped via a third-party service. Shipping times and costs vary by provider.",
   },
 ];
 
@@ -85,7 +79,7 @@ export default function MerchPage() {
           <GlowText as="h2" glow="subtle" className="mb-10 text-center">
             How It Works
           </GlowText>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {MERCH_FAQ.map((item, index) => {
               const titleColors = [
                 "text-ooze-green",
