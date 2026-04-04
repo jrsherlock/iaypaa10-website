@@ -53,7 +53,7 @@ export default function Hero() {
           {/* Inner div: slow zoom CSS animation */}
           <div className="animate-slow-zoom absolute inset-0">
             <Image
-              src="/images/primordial-ooze-poster.jpg"
+              src="/images/ooze.jpeg"
               alt=""
               fill
               priority

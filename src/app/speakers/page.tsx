@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import GlowText from "@/components/ui/GlowText";
 import SlimeDivider from "@/components/ui/SlimeDivider";
 import DrippingSlime from "@/components/effects/DrippingSlime";
@@ -54,16 +55,15 @@ export default function SpeakersPage() {
                 key={speaker.id}
                 className="group rounded-xl border-2 border-ooze-green/30 bg-void-black/60 p-6 text-center transition-all duration-300 hover:border-ooze-green/60 hover:shadow-[0_0_20px_rgba(95,173,86,0.15)]"
               >
-                {/* Silhouette Avatar */}
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full border-2 border-ooze-green/40 bg-toxic-green/10 flex items-center justify-center transition-all duration-300 group-hover:border-ooze-green group-hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
-                  <svg
-                    viewBox="0 0 80 80"
-                    className="w-14 h-14 text-ooze-green/40 group-hover:text-ooze-green/70 transition-colors duration-300"
-                    fill="currentColor"
-                  >
-                    <circle cx="40" cy="28" r="14" />
-                    <ellipse cx="40" cy="62" rx="22" ry="16" />
-                  </svg>
+                {/* Speaker Image */}
+                <div className="w-24 h-24 mx-auto mb-4 rounded-full border-2 border-ooze-green/40 overflow-hidden transition-all duration-300 group-hover:border-ooze-green group-hover:shadow-[0_0_15px_rgba(57,255,20,0.2)]">
+                  <Image
+                    src="/images/speaker.webp"
+                    alt="Speaker to be announced"
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="font-[family-name:var(--font-creepster)] text-3xl text-swamp-teal mb-2 glow-text-subtle">
                   ?

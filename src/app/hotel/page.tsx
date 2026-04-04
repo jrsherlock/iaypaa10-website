@@ -58,8 +58,16 @@ export default function HotelPage() {
 
         {/* Venue Hero */}
         <section className="mb-16">
-          <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-2xl border border-ooze-green/30">
-            <div className="relative aspect-[21/9] w-full">
+          <div className="w-full max-w-4xl mx-auto">
+            <div className="text-center mb-6">
+              <h2 className="font-[family-name:var(--font-creepster)] text-3xl md:text-5xl text-ooze-green glow-text mb-2">
+                {venue.name}
+              </h2>
+              <p className="text-bone-white/80 text-sm md:text-base font-[family-name:var(--font-space)]">
+                {venue.address}
+              </p>
+            </div>
+            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl border border-ooze-green/30 mb-6">
               <Image
                 src={VENUE_IMAGES[0].src}
                 alt={VENUE_IMAGES[0].alt}
@@ -68,15 +76,8 @@ export default function HotelPage() {
                 sizes="(max-width: 768px) 100vw, 900px"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-void-black via-void-black/40 to-transparent" />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 text-center">
-              <h2 className="font-[family-name:var(--font-creepster)] text-3xl md:text-5xl text-ooze-green glow-text mb-2">
-                {venue.name}
-              </h2>
-              <p className="text-bone-white/80 text-sm md:text-base font-[family-name:var(--font-space)] mb-4">
-                {venue.address}
-              </p>
+            <div className="text-center">
               <a
                 href={venue.website}
                 target="_blank"
