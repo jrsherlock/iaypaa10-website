@@ -30,12 +30,12 @@ const VENUE_IMAGES = [
     alt: "The Highlander Hotel lobby and lounge",
   },
   {
-    src: "https://cdn.prod.website-files.com/662bf62cc1e1dce174d48bf8/6632589a7944a3e4d58f0b29_Rectangle%20115.jpg",
-    alt: "Patio bar area",
+    src: "https://cdn.prod.website-files.com/662bf62cc1e1dce174d48bf8/6650df58352c8cfc061d17ef_210824_Highlander_0018.jpg",
+    alt: "Hotel courtyard and patio",
   },
   {
-    src: "https://cdn.prod.website-files.com/662bf62cc1e1dce174d48bf8/663258a8645e8efed9225df6_Rectangle%20116.jpg",
-    alt: "Hotel atrium and lobby",
+    src: "/images/hotel-room.png",
+    alt: "Hotel guest room",
   },
 ];
 
