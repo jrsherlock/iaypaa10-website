@@ -5,8 +5,14 @@ export const CONFERENCE = {
   year: 2026,
   edition: "10th Annual",
   location: "Iowa City, Iowa",
-  date: "August 2026",
-  countdownTarget: new Date("2026-08-01T00:00:00"),
+  date: "August 14–16, 2026",
+  countdownTarget: new Date("2026-08-14T00:00:00"),
+  venue: {
+    name: "The Highlander Hotel",
+    address: "2525 Highlander Place, Iowa City, Iowa 52245",
+    phone: "319-354-2000",
+    website: "https://www.highlanderhotel.us",
+  },
   email: "iaypaa@gmail.com",
   social: {
     instagram: "https://www.instagram.com/iaypaa",
@@ -64,7 +70,7 @@ export const FAQ_ITEMS = [
   {
     question: "Where will IAYPAA X be held?",
     answer:
-      "IAYPAA X will be held in Iowa City, Iowa in August 2026. The specific hotel and venue details are coming soon — sign up for email updates to be the first to know!",
+      "IAYPAA X will be held August 14–16, 2026 at The Highlander Hotel, 2525 Highlander Place, Iowa City, Iowa 52245. Check the Hotel & Venue page for details and booking info!",
   },
   {
     question: "Is this an AA event?",
