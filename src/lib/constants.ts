@@ -33,6 +33,38 @@ export const NAV_LINKS = [
   { label: "FAQ", href: "/faq" },
 ] as const;
 
+// Grouped nav used by the desktop Navbar. The flat NAV_LINKS above is still
+// used by the Footer and MobileMenu.
+export type NavGroupItem =
+  | { label: string; href: string }
+  | {
+      label: string;
+      children: readonly { label: string; href: string }[];
+    };
+
+export const NAV_GROUPS: readonly NavGroupItem[] = [
+  { label: "Home", href: "/" },
+  { label: "Registration", href: "/registration" },
+  {
+    label: "Event",
+    children: [
+      { label: "Schedule", href: "/schedule" },
+      { label: "Speakers", href: "/speakers" },
+      { label: "Hotel & Venue", href: "/hotel" },
+    ],
+  },
+  {
+    label: "Info",
+    children: [
+      { label: "About", href: "/about" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Past Conferences", href: "/past-conferences" },
+      { label: "Outreach", href: "/outreach" },
+    ],
+  },
+  { label: "Merch", href: "/merch" },
+] as const;
+
 export const PAST_CONFERENCES = [
   { year: 2017, edition: "I", location: "Des Moines, IA", theme: "The Beginning" },
   { year: 2018, edition: "II", location: "Iowa City, IA", theme: "A New Hope" },
