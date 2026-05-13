@@ -298,3 +298,155 @@ body {
 .animate-slide-in-right {
   animation: slideInRight 0.3s ease-out forwards;
 }
+
+/* ============================================================
+   Poster / flyer utilities
+   The site reads like a hand-made show flyer, not a SaaS page.
+   These are the small "made by a person" tells.
+   ============================================================ */
+
+/* Halftone dot field — like a xerox of newsprint. Stack on top of
+   a colored background with mix-blend-mode: multiply to age it. */
+.bg-halftone {
+  background-image: radial-gradient(rgba(232, 230, 225, 0.55) 1px, transparent 1.2px);
+  background-size: 4px 4px;
+}
+
+.bg-halftone-lg {
+  background-image: radial-gradient(rgba(232, 230, 225, 0.4) 1.4px, transparent 1.6px);
+  background-size: 7px 7px;
+}
+
+/* Hairline horizontal lines — registration-mark grid behind big type. */
+.bg-rule-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(95, 173, 86, 0.08) 0,
+    rgba(95, 173, 86, 0.08) 1px,
+    transparent 1px,
+    transparent 14px
+  );
+}
+
+/* Misregistered ink — slight cyan/magenta offset behind text gives
+   the "cheap two-color print" feel. Apply with text-shadow. */
+.ink-misreg {
+  text-shadow:
+    -2px 0 0 rgba(178, 67, 108, 0.45),
+    2px 0 0 rgba(95, 173, 86, 0.45);
+}
+
+/* Tape strip — a translucent piece of masking tape over a corner.
+   Use on a pseudo-element or a span with a slight rotate. */
+.tape-strip {
+  background: linear-gradient(
+    180deg,
+    rgba(242, 193, 78, 0.35) 0%,
+    rgba(242, 193, 78, 0.25) 50%,
+    rgba(242, 193, 78, 0.35) 100%
+  );
+  border-left: 1px dashed rgba(13, 13, 13, 0.25);
+  border-right: 1px dashed rgba(13, 13, 13, 0.25);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.05) inset,
+    0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Stamped rubber-ink look — for "RATED YP", "ONE WEEKEND ONLY", etc. */
+.stamp {
+  font-family: var(--font-typewriter), monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 2px solid currentColor;
+  padding: 0.25rem 0.6rem;
+  display: inline-block;
+  /* Slight rotation + the broken-edge look of a real rubber stamp */
+  transform: rotate(-2.5deg);
+  opacity: 0.85;
+  position: relative;
+}
+
+.stamp::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.35) 0.8px, transparent 1.1px);
+  background-size: 3px 3px;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* Paper grit — a low-frequency noise overlay for the body of a
+   "printed" panel. Cheaper than a full SVG noise. */
+.paper-grit {
+  position: relative;
+}
+.paper-grit::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(232, 230, 225, 0.04) 1px, transparent 1px),
+    radial-gradient(rgba(232, 230, 225, 0.06) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1px 2px;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Marquee underline — the chunky theater-marquee horizontal bar. */
+.marquee-rule {
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-ooze-green) 0,
+    var(--color-ooze-green) 14px,
+    transparent 14px,
+    transparent 22px
+  );
+  opacity: 0.85;
+}
+
+/* Staggered hero entrance. Each layer with --i: <number> reveals on a stagger. */
+@keyframes poster-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.poster-rise {
+  opacity: 0;
+  animation: poster-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 110ms);
+}
+
+/* Slow drift used by oversized watermark glyphs in the hero. */
+@keyframes watermark-drift {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(-6deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-6deg) scale(1.03);
+  }
+}
+
+.animate-watermark {
+  animation: watermark-drift 14s ease-in-out infinite;
+}
+
+/* Font family helpers tied to the new variables. */
+.font-anton {
+  font-family: var(--font-anton), "Impact", sans-serif;
+}
+.font-typewriter {
+  font-family: var(--font-typewriter), "Courier New", monospace;
+}
+.font-news {
+  font-family: var(--font-news), "Iowan Old Style", "Georgia", serif;
+}
