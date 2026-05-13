@@ -1,90 +1,86 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 
 interface ComingSoonProps {
+  /** What's TBA — e.g. "Schedule", "Speaker Lineup", "Group Rate". */
   title: string;
+  /** A one-line description shown under the title in serif. */
   subtitle?: string;
+  /** When true, shows a CTA pointing at the homepage "Get the dispatches" signup. */
   showEmailSignup?: boolean;
 }
 
+/**
+ * The "TBA placard" — a stapled-on flyer panel announcing that
+ * something isn't ready yet. Replaces a generic "Coming Soon" card.
+ *
+ * Composition: tape strips → typewriter status stamp → Anton subject
+ * → big drippy "TBA" mark → Newsreader serif subtitle → optional CTA
+ * back to the homepage signup form.
+ */
 export default function ComingSoon({
   title,
   subtitle,
   showEmailSignup = false,
 }: ComingSoonProps) {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
-      setEmail("");
-    }
-  }
-
   return (
-    <div className="flex items-center justify-center px-4 py-16 md:py-24">
-      <div className="relative w-full max-w-lg rounded-xl border border-ooze-green/30 bg-toxic-green/20 p-8 md:p-12 text-center animate-pulse-glow">
-        {/* Title */}
-        <h2 className="font-[family-name:var(--font-creepster)] text-3xl md:text-5xl text-ooze-green glow-text mb-4">
-          {title}
-        </h2>
+    <div className="relative max-w-xl mx-auto">
+      {/* tape strips pinning the placard up */}
+      <span
+        aria-hidden="true"
+        className="absolute -top-3 left-8 w-16 h-5 tape-strip rotate-[-4deg]"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute -top-3 right-8 w-16 h-5 tape-strip rotate-[3deg]"
+      />
 
-        {/* Drip effect below title */}
-        <div className="flex justify-center gap-6 mb-6">
-          <span className="block w-1.5 h-3 bg-ooze-green rounded-b-full animate-drip-continuous" />
-          <span
-            className="block w-1 h-2 bg-ooze-green rounded-b-full animate-drip-continuous"
-            style={{ animationDelay: "0.5s" }}
-          />
-          <span
-            className="block w-1.5 h-3 bg-ooze-green rounded-b-full animate-drip-continuous"
-            style={{ animationDelay: "1s" }}
-          />
+      <div className="relative bg-toxic-green/30 border border-ooze-green/30 paper-grit p-8 sm:p-10">
+        {/* Status stamp */}
+        <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-bone-white/55 mb-3">
+          // status
+        </p>
+
+        <div className="flex items-baseline gap-4 mb-4 border-b border-ooze-green/25 pb-3">
+          <h2 className="font-anton text-2xl sm:text-3xl uppercase tracking-wide text-bone-white leading-none">
+            {title}
+          </h2>
+          <span className="stamp text-ember !text-[0.65rem] sm:!text-xs !tracking-[0.28em] shrink-0">
+            TBA
+          </span>
         </div>
 
-        {/* Subtitle */}
+        {/* The big drippy mark */}
+        <p
+          className="font-[family-name:var(--font-creepster)] text-gold leading-none mb-5"
+          style={{
+            fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
+            textShadow:
+              "0 0 14px rgba(242,193,78,0.55), 0 0 40px rgba(247,129,84,0.35)",
+            letterSpacing: "0.01em",
+          }}
+        >
+          Coming soon
+        </p>
+
         {subtitle && (
-          <p className="text-bone-white/80 text-base md:text-lg mb-8 max-w-md mx-auto">
+          <p className="font-news text-bone-white/85 text-base sm:text-lg leading-relaxed mb-6 max-w-prose">
             {subtitle}
           </p>
         )}
 
-        {/* Coming Soon badge */}
-        <div className="inline-block rounded-full bg-ember px-6 py-2 mb-6">
-          <span className="font-[family-name:var(--font-mono)] text-void-black text-sm tracking-widest uppercase font-bold">
-            Coming Soon
-          </span>
-        </div>
-
-        {/* Email signup */}
         {showEmailSignup && (
-          <div className="mt-6">
-            {submitted ? (
-              <p className="text-swamp-teal font-medium animate-drip">
-                You&apos;re on the list! We&apos;ll be in touch.
-              </p>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="flex-1 rounded-lg border border-swamp-teal bg-void-black/80 px-4 py-2.5 text-bone-white placeholder:text-bone-white/40 focus:outline-none focus:border-gold focus:shadow-[0_0_10px_rgba(242,193,78,0.3)] transition-all"
-                />
-                <button
-                  type="submit"
-                  className="rounded-lg bg-gold px-5 py-2.5 font-bold text-void-black hover:bg-ember hover:shadow-[0_0_20px_rgba(242,193,78,0.4)] transition-all cursor-pointer"
-                >
-                  Notify Me
-                </button>
-              </form>
-            )}
-          </div>
+          <Link
+            href="/#dispatches"
+            className="group inline-flex items-center gap-2 font-typewriter text-xs sm:text-sm uppercase tracking-[0.25em] text-gold border-b border-gold/40 pb-0.5 transition-colors hover:text-bone-white hover:border-bone-white"
+          >
+            Get the dispatches when it drops
+            <span
+              aria-hidden="true"
+              className="transition-transform group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </Link>
         )}
       </div>
     </div>

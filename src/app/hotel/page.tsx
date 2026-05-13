@@ -1,294 +1,457 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import GlowText from "@/components/ui/GlowText";
-import SlimeDivider from "@/components/ui/SlimeDivider";
 import DrippingSlime from "@/components/effects/DrippingSlime";
+import SlimeDivider from "@/components/ui/SlimeDivider";
 import { CONFERENCE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Hotel & Venue",
-  description:
-    "IAYPAA X is at The Highlander Hotel in Iowa City, Iowa — August 14–16, 2026. Psychedelic luxury, pool, arcade, patio bar, and more.",
+  description: `IAYPAA X is at ${CONFERENCE.venue.name} in ${CONFERENCE.location}. ${CONFERENCE.date}. Psychedelic-luxury urban resort with pool, arcade, patio bar, and a courtyard.`,
 };
 
-const VENUE_HIGHLIGHTS = [
-  { icon: "\u{1F3CA}", label: "Pool" },
-  { icon: "\u{1F579}\u{FE0F}", label: "Arcade" },
-  { icon: "\u{1F378}", label: "Patio Bar" },
-  { icon: "\u{1F3B5}", label: "Live Music" },
-  { icon: "\u{1F3BE}", label: "Pickleball" },
-  { icon: "\u{1F333}", label: "Courtyard" },
+const VENUE_HIGHLIGHTS: readonly string[] = [
+  "Pool",
+  "Arcade",
+  "Patio bar",
+  "Live music",
+  "Pickleball",
+  "Courtyard",
 ];
 
 const VENUE_IMAGES = [
   {
     src: "https://cdn.prod.website-files.com/662bf62cc1e1dce174d48bf8/6745eae51d8bf7157ebd6d39_210824_Highlander_0322%20(2)-2.jpg",
     alt: "The Highlander Hotel exterior",
+    caption: "Out front",
   },
   {
     src: "https://cdn.prod.website-files.com/662bf62cc1e1dce174d48bf8/6650df58352c8cfc061d17ef_210824_Highlander_0018.jpg",
     alt: "The Highlander Hotel lobby and lounge",
+    caption: "Lobby",
   },
   {
     src: "https://cdn.prod.website-files.com/662bf62cc1e1dce174d48bf8/6650df58352c8cfc061d17ef_210824_Highlander_0018.jpg",
     alt: "Hotel courtyard and patio",
+    caption: "Courtyard",
   },
   {
     src: "/images/hotel-room.png",
     alt: "Hotel guest room",
+    caption: "The rooms",
   },
+] as const;
+
+const ICITY_NOTES: readonly string[] = [
+  "UNESCO City of Literature",
+  "Walkable downtown & Ped Mall",
+  "University of Iowa campus",
+  "Strong local food scene",
+  "Active recovery community",
+  "AA meetings within walking distance",
+];
+
+const DRIVES: readonly { from: string; time: string; road: string }[] = [
+  { from: "Des Moines", time: "~2 hrs", road: "east on I-80" },
+  { from: "Chicago", time: "~3.5 hrs", road: "west on I-80" },
+  { from: "Minneapolis", time: "~4.5 hrs", road: "south on I-35 / I-80" },
+  { from: "Omaha", time: "~4 hrs", road: "east on I-80" },
+  { from: "Kansas City", time: "~4.5 hrs", road: "north on I-35" },
 ];
 
 export default function HotelPage() {
   const { venue } = CONFERENCE;
 
   return (
-    <div className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Page Header */}
-        <div className="text-center mb-4">
-          <GlowText as="h1" className="mb-4">
-            Hotel &amp; Venue
-          </GlowText>
-          <p className="text-bone-white/70 text-lg md:text-xl max-w-2xl mx-auto font-[family-name:var(--font-space)]">
-            {CONFERENCE.date} &mdash; {CONFERENCE.location}
+    <div className="relative">
+      {/* ---------- Page header ---------- */}
+      <section className="relative pt-20 pb-12 sm:pt-24 sm:pb-16 px-4 sm:px-6 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-rule-lines opacity-50 pointer-events-none"
+          aria-hidden="true"
+        />
+        <DrippingSlime
+          count={5}
+          color="#5FAD56"
+          className="absolute top-0 left-0 right-0 z-10"
+        />
+
+        <div className="relative z-20 max-w-3xl mx-auto">
+          <div className="flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4 mb-8">
+            <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
+              Reel 05
+            </span>
+            <h1 className="font-anton text-4xl sm:text-6xl uppercase tracking-wide text-bone-white leading-none">
+              The <span className="text-ooze-green">Theater</span>
+            </h1>
+          </div>
+
+          <p className="font-typewriter text-sm sm:text-base tracking-[0.15em] uppercase text-bone-white/70 leading-relaxed">
+            {CONFERENCE.date} &nbsp;//&nbsp; where it goes down
           </p>
         </div>
-        <DrippingSlime count={10} />
+      </section>
 
-        {/* Venue Hero */}
-        <section className="mb-16">
-          <div className="w-full max-w-4xl mx-auto">
-            <div className="text-center mb-6">
-              <h2 className="font-[family-name:var(--font-creepster)] text-3xl md:text-5xl text-ooze-green glow-text mb-2">
-                {venue.name}
-              </h2>
-              <p className="text-bone-white/80 text-sm md:text-base font-[family-name:var(--font-space)]">
-                {venue.address}
-              </p>
-            </div>
-            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl border border-ooze-green/30 mb-6">
-              <Image
-                src={VENUE_IMAGES[0].src}
-                alt={VENUE_IMAGES[0].alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 900px"
-                priority
-              />
-            </div>
-            <div className="text-center">
-              <a
-                href={venue.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block rounded-lg bg-gold px-8 py-3 font-bold text-void-black text-base hover:bg-ember hover:shadow-[0_0_25px_rgba(242,193,78,0.5)] transition-all"
-              >
-                Visit Hotel Website
-              </a>
-            </div>
+      {/* ---------- Venue marquee — hero image + name + address ---------- */}
+      <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
+        <div className="max-w-4xl mx-auto">
+          {/* Marquee header */}
+          <div className="mb-6 sm:mb-7">
+            <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-gold mb-3">
+              // now playing
+            </p>
+            <h2
+              className="font-[family-name:var(--font-creepster)] text-gold leading-[0.9]"
+              style={{
+                fontSize: "clamp(2.6rem, 9vw, 6rem)",
+                textShadow:
+                  "0 0 14px rgba(242,193,78,0.55), 0 0 40px rgba(247,129,84,0.35)",
+                letterSpacing: "0.01em",
+              }}
+            >
+              {venue.name}
+            </h2>
+            <div
+              className="marquee-rule w-44 sm:w-56 mt-5 mb-5"
+              aria-hidden="true"
+            />
+            <p className="font-typewriter text-sm sm:text-base tracking-[0.12em] uppercase text-bone-white/75">
+              {venue.address}
+            </p>
           </div>
-        </section>
 
-        <SlimeDivider className="mb-16" />
+          {/* Hero photo — kept rectangular and bordered like a contact-sheet frame */}
+          <div className="relative aspect-[21/9] w-full overflow-hidden border border-ooze-green/30 paper-grit">
+            <Image
+              src={VENUE_IMAGES[0].src}
+              alt={VENUE_IMAGES[0].alt}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 900px"
+              priority
+            />
+            <span
+              aria-hidden="true"
+              className="absolute top-3 left-3 stamp text-gold/90 !text-[0.6rem] !tracking-[0.3em] !py-0.5 !px-1.5 bg-void-black/60"
+            >
+              Exhibit A
+            </span>
+          </div>
 
-        {/* Venue Vibe */}
-        <section className="mb-16 text-center">
-          <GlowText as="h2" glow="subtle" className="mb-3">
-            The Vibe
-          </GlowText>
-          <p className="text-gold italic text-lg mb-8 font-[family-name:var(--font-space)]">
-            &ldquo;Independent. Counterculture. You&apos;ll fit right in.&rdquo;
-          </p>
-          <p className="text-bone-white/80 max-w-2xl mx-auto leading-relaxed mb-10">
-            The Highlander Hotel is Iowa City&apos;s psychedelic-luxury urban
-            resort &mdash; the perfect home for Primordial Ooze. With a pool,
-            arcade, patio bar, live music, and courtyard hangouts, there&apos;s
-            no shortage of fellowship space between sessions.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 max-w-2xl mx-auto">
-            {VENUE_HIGHLIGHTS.map((item) => (
-              <div
-                key={item.label}
-                className="flex items-center gap-2 rounded-full border border-ooze-green/30 bg-toxic-green/15 px-5 py-2.5 transition-all hover:border-ooze-green/60 hover:shadow-[0_0_12px_rgba(57,255,20,0.15)]"
+          {/* CTA row */}
+          <div className="mt-7 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <a
+              href={venue.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-3 bg-gold text-void-black font-anton uppercase tracking-[0.15em] text-base sm:text-lg px-7 py-3.5 border-2 border-gold transition-all hover:bg-ember hover:border-ember hover:shadow-[0_0_24px_rgba(247,129,84,0.45)]"
+            >
+              Visit hotel site
+              <span
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-x-1"
               >
-                <span className="text-xl">{item.icon}</span>
-                <span className="text-bone-white/90 text-sm font-medium">
-                  {item.label}
+                →
+              </span>
+            </a>
+            <span className="font-typewriter text-xs tracking-[0.2em] uppercase text-bone-white/55">
+              highlanderhotel.us · new tab
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <SlimeDivider />
+
+      {/* ---------- The Vibe ---------- */}
+      <section className="relative px-4 sm:px-6 py-20 sm:py-24">
+        <div className="max-w-2xl mx-auto">
+          <div className="mb-8 flex items-center gap-4">
+            <span className="h-px flex-1 bg-bone-white/15" aria-hidden="true" />
+            <span className="font-typewriter text-xs tracking-[0.3em] uppercase text-bone-white/55">
+              the joint
+            </span>
+            <span className="h-px flex-1 bg-bone-white/15" aria-hidden="true" />
+          </div>
+
+          <blockquote
+            className="font-[family-name:var(--font-creepster)] text-ooze-green text-center leading-[0.95] mb-8"
+            style={{
+              fontSize: "clamp(2.4rem, 8vw, 4.5rem)",
+              textShadow:
+                "0 0 16px rgba(95,173,86,0.55), 0 0 50px rgba(77,144,120,0.35)",
+            }}
+          >
+            &ldquo;Independent. Counterculture.
+            <br />
+            You&rsquo;ll fit right in.&rdquo;
+          </blockquote>
+
+          <p className="font-news text-bone-white/85 text-lg sm:text-xl leading-[1.75] text-center mb-10 max-w-xl mx-auto">
+            The Highlander is Iowa City&rsquo;s psychedelic-luxury urban resort
+            &mdash; the kind of place where a B-movie horror conference makes
+            perfect sense. Pool, arcade, patio bar, courtyard, live music. No
+            shortage of fellowship space between sessions.
+          </p>
+
+          {/* Amenities checklist — typewriter, like the back of a ticket */}
+          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 max-w-md mx-auto">
+            {VENUE_HIGHLIGHTS.map((label) => (
+              <li
+                key={label}
+                className="flex items-baseline gap-2.5 font-typewriter text-sm tracking-[0.08em] text-bone-white/80 border-b border-bone-white/10 pb-1"
+              >
+                <span aria-hidden="true" className="text-ooze-green shrink-0">
+                  ⊕
                 </span>
-              </div>
+                {label}
+              </li>
             ))}
+          </ul>
+        </div>
+      </section>
+
+      <SlimeDivider />
+
+      {/* ---------- Photo contact sheet ---------- */}
+      <section className="relative px-4 sm:px-6 py-20 sm:py-24 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-rule-lines opacity-50 pointer-events-none"
+          aria-hidden="true"
+        />
+        <div className="relative max-w-4xl mx-auto">
+          <div className="mb-10 sm:mb-12 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4">
+            <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
+              Contact sheet
+            </span>
+            <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none">
+              Take a <span className="text-ooze-green">look</span>
+            </h2>
           </div>
-        </section>
 
-        <SlimeDivider className="mb-16" />
-
-        {/* Photo Grid */}
-        <section className="mb-16">
-          <GlowText as="h2" glow="subtle" className="mb-10 text-center">
-            Take a Look
-          </GlowText>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {VENUE_IMAGES.map((img) => (
-              <div
-                key={img.alt}
-                className="relative aspect-[4/3] overflow-hidden rounded-xl border border-ooze-green/20 group"
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            {VENUE_IMAGES.map((img, i) => (
+              <figure
+                key={`${img.alt}-${i}`}
+                className={`relative aspect-[4/3] overflow-hidden border border-ooze-green/25 paper-grit ${
+                  i % 2 === 0 ? "rotate-[-0.6deg]" : "rotate-[0.5deg]"
+                }`}
               >
                 <Image
                   src={img.src}
                   alt={img.alt}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover"
                   sizes="(max-width: 640px) 100vw, 450px"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-void-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <p className="absolute bottom-3 left-3 text-bone-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {img.alt}
-                </p>
-              </div>
+                {/* contact-sheet number stamp */}
+                <figcaption className="absolute bottom-2 left-2 font-typewriter text-[0.65rem] tracking-[0.25em] uppercase text-bone-white bg-void-black/70 border border-bone-white/20 px-1.5 py-0.5">
+                  {String(i + 1).padStart(2, "0")} · {img.caption}
+                </figcaption>
+              </figure>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <SlimeDivider className="mb-16" />
+      <SlimeDivider />
 
-        {/* Conference Room Block */}
-        <section className="mb-16 text-center">
-          <GlowText as="h2" glow="subtle" className="mb-8">
-            Conference Room Block
-          </GlowText>
-          <div className="max-w-md mx-auto rounded-xl border border-gold/30 bg-toxic-green/10 p-8 animate-pulse-glow">
-            <h3 className="font-[family-name:var(--font-creepster)] text-2xl text-ooze-green mb-2 glow-text-subtle">
-              {venue.name}
-            </h3>
-            <div className="font-[family-name:var(--font-mono)] text-3xl text-gold font-bold mb-2">
-              Group Rate TBA
-            </div>
-            <p className="text-bone-white/60 text-sm mb-6">
-              A discounted group rate for IAYPAA X attendees is being finalized.
-              Booking link coming soon!
-            </p>
-            <p className="text-bone-white/50 text-xs">
-              Call{" "}
-              <a
-                href={`tel:${venue.phone}`}
-                className="text-gold hover:underline"
-              >
-                {venue.phone}
-              </a>{" "}
-              and mention IAYPAA for more info.
-            </p>
-          </div>
-        </section>
+      {/* ---------- Room block — ticket-stub style notice ---------- */}
+      <section className="relative px-4 sm:px-6 py-20 sm:py-24">
+        <div className="relative max-w-xl mx-auto">
+          <span
+            aria-hidden="true"
+            className="absolute -top-3 left-8 w-16 h-5 tape-strip rotate-[-4deg]"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute -top-3 right-8 w-16 h-5 tape-strip rotate-[3deg]"
+          />
 
-        <SlimeDivider className="mb-16" />
+          <div className="relative bg-void-black border border-gold/40 paper-grit p-8 sm:p-10">
+            {/* perforation line down the left */}
+            <span
+              aria-hidden="true"
+              className="absolute top-0 bottom-0 left-6 w-px border-l border-dashed border-bone-white/20"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-void-black border border-bone-white/15"
+            />
 
-        {/* Iowa City Info */}
-        <section className="mb-16">
-          <GlowText as="h2" glow="subtle" className="mb-6 text-center">
-            Welcome to Iowa City
-          </GlowText>
-          <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-4 text-bone-white/80 leading-relaxed">
-              <p>
-                Iowa City is a vibrant college town in eastern Iowa, home to the
-                University of Iowa and a thriving arts and culture scene. Named a
-                UNESCO City of Literature, it&apos;s known for its walkable
-                downtown, eclectic restaurants, and welcoming community.
+            <div className="pl-3 sm:pl-4">
+              <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 mb-2">
+                Room block · No. 026
               </p>
-              <p>
-                Whether you&apos;re exploring the Pedestrian Mall, grabbing
-                coffee at a local shop, or checking out the Iowa City Book
-                Festival, there&apos;s plenty to do beyond the conference.
-                It&apos;s the perfect host city for IAYPAA X.
-              </p>
-            </div>
-            <div className="rounded-xl border border-ooze-green/20 bg-void-black/60 p-6">
-              <h3 className="font-[family-name:var(--font-creepster)] text-xl text-ooze-green mb-4 glow-text-subtle">
-                Iowa City Highlights
+              <h3 className="font-anton text-2xl sm:text-3xl uppercase tracking-wide text-bone-white leading-none mb-3">
+                {venue.name}
               </h3>
-              <ul className="space-y-3">
-                {[
-                  "UNESCO City of Literature",
-                  "Walkable downtown & Ped Mall",
-                  "University of Iowa campus",
-                  "Vibrant local food scene",
-                  "Strong recovery community",
-                  "Plenty of AA meetings nearby",
-                ].map((item) => (
+
+              <div className="flex items-baseline gap-3 mb-5">
+                <span
+                  className="font-[family-name:var(--font-mono)] text-4xl sm:text-5xl font-bold leading-none text-gold"
+                  style={{
+                    textShadow:
+                      "0 0 12px rgba(242,193,78,0.35), 0 2px 0 rgba(0,0,0,0.4)",
+                  }}
+                >
+                  TBA
+                </span>
+                <span className="font-typewriter text-xs tracking-[0.25em] uppercase text-bone-white/45">
+                  group rate · nightly
+                </span>
+              </div>
+
+              <p className="font-news text-bone-white/80 text-base sm:text-lg leading-relaxed mb-5">
+                A discounted IAYPAA X group rate is being finalized. The
+                booking link will go live here once the block is open.
+              </p>
+
+              <p className="font-typewriter text-sm tracking-[0.08em] text-bone-white/75">
+                Until then, call{" "}
+                <a
+                  href={`tel:${venue.phone}`}
+                  className="text-gold underline underline-offset-4 decoration-gold/40 hover:decoration-gold transition-colors"
+                >
+                  {venue.phone}
+                </a>{" "}
+                and mention IAYPAA.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <SlimeDivider />
+
+      {/* ---------- Iowa City — the costume comes off ---------- */}
+      <section className="relative px-4 sm:px-6 py-20 sm:py-24">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-8 flex items-center gap-4">
+            <span className="h-px flex-1 bg-bone-white/15" aria-hidden="true" />
+            <span className="font-typewriter text-xs tracking-[0.3em] uppercase text-bone-white/55">
+              the host city
+            </span>
+            <span className="h-px flex-1 bg-bone-white/15" aria-hidden="true" />
+          </div>
+
+          <h2 className="font-news text-3xl sm:text-4xl text-bone-white leading-tight mb-6 text-center">
+            Iowa City is a college town with a long memory and a soft spot for
+            recovery.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-8 sm:gap-10 items-start">
+            <div className="font-news text-bone-white/85 text-base sm:text-lg leading-[1.75] space-y-4">
+              <p>
+                It&rsquo;s a vibrant downtown, the home of the University of
+                Iowa, a UNESCO City of Literature with bookstores and coffee
+                shops walkable from the venue. Beyond the conference there&rsquo;s
+                the Pedestrian Mall, the Iowa City Book Festival, and a small,
+                steady local AA fellowship that keeps the lights on year-round.
+              </p>
+              <p>
+                If you&rsquo;ve never been, plan to wander. If you&rsquo;ve
+                been before, you already know.
+              </p>
+            </div>
+
+            <ul className="border border-ooze-green/25 paper-grit p-5 sm:p-6">
+              <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 mb-3 border-b border-ooze-green/20 pb-2">
+                Within a short walk
+              </p>
+              {ICITY_NOTES.map((note) => (
+                <li
+                  key={note}
+                  className="flex items-baseline gap-2.5 font-typewriter text-sm text-bone-white/80 py-1.5 border-b border-bone-white/10 last:border-b-0"
+                >
+                  <span aria-hidden="true" className="text-ooze-green shrink-0">
+                    ⊕
+                  </span>
+                  <span>{note}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <SlimeDivider />
+
+      {/* ---------- Getting here ---------- */}
+      <section className="relative px-4 sm:px-6 py-20 sm:py-24 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-rule-lines opacity-50 pointer-events-none"
+          aria-hidden="true"
+        />
+
+        <div className="relative max-w-3xl mx-auto">
+          <div className="mb-10 sm:mb-12 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4">
+            <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
+              Getting here
+            </span>
+            <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none">
+              How to <span className="text-ooze-green">arrive</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            {/* By air */}
+            <div className="border border-ooze-green/25 paper-grit p-6 sm:p-7">
+              <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 mb-2">
+                By air
+              </p>
+              <h3 className="font-anton text-2xl uppercase tracking-wide text-bone-white leading-none mb-4">
+                The <span className="text-ooze-green">runway</span>
+              </h3>
+              <div className="space-y-3 font-news text-bone-white/85 text-base leading-relaxed">
+                <p>
+                  Closest:{" "}
+                  <span className="font-typewriter text-sm tracking-[0.08em] text-gold">
+                    CID
+                  </span>{" "}
+                  &mdash; The Eastern Iowa Airport in Cedar Rapids, about 25
+                  minutes from the venue.
+                </p>
+                <p>
+                  Further:{" "}
+                  <span className="font-typewriter text-sm tracking-[0.08em] text-gold">
+                    MLI
+                  </span>{" "}
+                  (Quad Cities, ~1 hr) and{" "}
+                  <span className="font-typewriter text-sm tracking-[0.08em] text-gold">
+                    DSM
+                  </span>{" "}
+                  (Des Moines, ~2 hrs).
+                </p>
+              </div>
+            </div>
+
+            {/* By car */}
+            <div className="border border-ooze-green/25 paper-grit p-6 sm:p-7">
+              <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 mb-2">
+                By car
+              </p>
+              <h3 className="font-anton text-2xl uppercase tracking-wide text-bone-white leading-none mb-4">
+                <span className="text-ooze-green">I-80</span> runs right past
+              </h3>
+              <ul className="font-typewriter text-sm sm:text-[0.95rem] text-bone-white/80 space-y-1.5">
+                {DRIVES.map((d) => (
                   <li
-                    key={item}
-                    className="flex items-center gap-2 text-bone-white/70 text-sm"
+                    key={d.from}
+                    className="grid grid-cols-[1fr_auto] gap-3 border-b border-bone-white/10 pb-1.5"
                   >
-                    <span className="text-ooze-green">&#x25C6;</span>
-                    {item}
+                    <span className="truncate">
+                      from <span className="text-bone-white">{d.from}</span>
+                    </span>
+                    <span className="text-bone-white/55">
+                      {d.time} · {d.road}
+                    </span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-        </section>
-
-        <SlimeDivider className="mb-16" />
-
-        {/* Getting Here */}
-        <section className="mb-8">
-          <GlowText as="h2" glow="subtle" className="mb-8 text-center">
-            Getting Here
-          </GlowText>
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* By Air */}
-            <div className="rounded-xl border border-swamp-teal/30 bg-void-black/60 p-6">
-              <div className="text-3xl mb-3">{"\u2708\uFE0F"}</div>
-              <h3 className="font-[family-name:var(--font-creepster)] text-xl text-ooze-green mb-3 glow-text-subtle">
-                By Air
-              </h3>
-              <div className="space-y-3 text-bone-white/70 text-sm leading-relaxed">
-                <p>
-                  <strong className="text-bone-white">
-                    The Eastern Iowa Airport (
-                    <span className="text-gold font-bold">CID</span>)
-                  </strong>{" "}
-                  is the nearest airport, located in Cedar Rapids &mdash; about
-                  25 minutes from Iowa City.
-                </p>
-                <p>
-                  <strong className="text-bone-white">
-                    Quad City International Airport (MLI)
-                  </strong>{" "}
-                  is about 1 hour east, and the{" "}
-                  <strong className="text-bone-white">
-                    Des Moines International Airport (DSM)
-                  </strong>{" "}
-                  is about 2 hours west.
-                </p>
-              </div>
-            </div>
-
-            {/* By Car */}
-            <div className="rounded-xl border border-swamp-teal/30 bg-void-black/60 p-6">
-              <div className="text-3xl mb-3">{"\uD83D\uDE97"}</div>
-              <h3 className="font-[family-name:var(--font-creepster)] text-xl text-ooze-green mb-3 glow-text-subtle">
-                By Car
-              </h3>
-              <div className="space-y-3 text-bone-white/70 text-sm leading-relaxed">
-                <p>
-                  Iowa City is conveniently located along{" "}
-                  <strong className="text-bone-white">Interstate 80</strong>,
-                  making it easy to reach from anywhere in the Midwest.
-                </p>
-                <ul className="space-y-1">
-                  <li>From Des Moines: ~2 hours east on I-80</li>
-                  <li>From Chicago: ~3.5 hours west on I-80</li>
-                  <li>From Minneapolis: ~4.5 hours south on I-35/I-80</li>
-                  <li>From Omaha: ~4 hours east on I-80</li>
-                  <li>From Kansas City: ~4.5 hours north on I-35</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }
