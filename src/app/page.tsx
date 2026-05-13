@@ -5,74 +5,79 @@ import SlimeDivider from "@/components/ui/SlimeDivider";
 import QuickInfoCards from "@/components/sections/QuickInfoCards";
 import ThemeTeaser from "@/components/sections/ThemeTeaser";
 import EmailSignup from "@/components/sections/EmailSignup";
-import GlowText from "@/components/ui/GlowText";
 
 export default function Home() {
   return (
     <>
-      {/* 1. Hero */}
+      {/* 1. Hero — the one-sheet */}
       <Hero />
 
-      {/* 2. Divider */}
-      <SlimeDivider />
-
-      {/* 3. Countdown */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 text-center">
-        <GlowText
-          as="h2"
-          glow="subtle"
-          className="font-[family-name:var(--font-creepster)] text-3xl sm:text-4xl md:text-5xl text-ooze-green mb-10"
-        >
-          Countdown to IAYPAA X
-        </GlowText>
-        <CountdownTimer />
+      {/* 2. Countdown — projector-card moment, no big horror title.
+              Frame it as "next show in" rather than another Creepster header. */}
+      <section className="relative py-20 sm:py-24 px-4 sm:px-6">
+        <div className="max-w-3xl mx-auto">
+          <div className="mb-10 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/20 pb-4">
+            <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
+              Reel 00
+            </span>
+            <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none">
+              Next <span className="text-ooze-green">show</span> in
+            </h2>
+          </div>
+          <CountdownTimer />
+        </div>
       </section>
 
-      {/* 4. Divider */}
       <SlimeDivider />
 
-      {/* 5. Quick Info Cards */}
+      {/* 3. Feature Program (formerly Quick Info Cards) */}
       <QuickInfoCards />
 
-      {/* 6. Divider */}
       <SlimeDivider />
 
-      {/* 7. Theme Teaser */}
+      {/* 4. Theme Teaser — atmospheric pull-quote */}
       <ThemeTeaser />
 
-      {/* 8. Divider */}
       <SlimeDivider />
 
-      {/* 9. What is IAYPAA? */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-3xl mx-auto text-center">
-        <GlowText
-          as="h2"
-          glow="subtle"
-          className="font-[family-name:var(--font-creepster)] text-3xl sm:text-4xl md:text-5xl text-ooze-green mb-6"
-        >
-          What is IAYPAA?
-        </GlowText>
-        <p className="text-bone-white/85 text-base sm:text-lg leading-relaxed font-[family-name:var(--font-space)]">
-          IAYPAA stands for Iowa Young People in Alcoholics Anonymous. Since
-          2017, we have brought together young people in recovery from across
-          Iowa and beyond for a weekend of speaker meetings, workshops,
-          fellowship, and fun. Our annual conference is organized by young people
-          in AA, for anyone who wants to attend&mdash;no age requirement, just a
-          desire to connect.{" "}
-          <Link
-            href="/about"
-            className="text-gold underline underline-offset-4 decoration-gold/40 hover:decoration-gold transition-colors"
-          >
-            Learn more about IAYPAA
-          </Link>
-          .
-        </p>
+      {/* 5. What is IAYPAA — the costume comes off. Plain, sincere, serif.
+              This is the passage someone scanning the QR at a meeting actually
+              needs to read. Quiet on purpose. */}
+      <section className="relative py-20 sm:py-24 px-4 sm:px-6">
+        <div className="max-w-2xl mx-auto">
+          <div className="mb-8 flex items-center gap-4">
+            <span className="h-px flex-1 bg-bone-white/15" aria-hidden="true" />
+            <span className="font-typewriter text-xs tracking-[0.3em] uppercase text-bone-white/55">
+              the plain truth
+            </span>
+            <span className="h-px flex-1 bg-bone-white/15" aria-hidden="true" />
+          </div>
+
+          <h2 className="font-news text-3xl sm:text-4xl text-bone-white leading-tight mb-6 text-center">
+            For young people who want to stay sober &mdash; and anyone willing
+            to stand beside them.
+          </h2>
+
+          <p className="font-news text-lg sm:text-xl text-bone-white/85 leading-[1.75] text-center">
+            IAYPAA is Iowa Young People in Alcoholics Anonymous. Since 2017
+            we&rsquo;ve gathered once a year for a weekend of speaker meetings,
+            workshops, and fellowship &mdash; organized by young people in AA,
+            open to anyone with a desire to stop drinking. No age requirement,
+            no cover charge for being new, no judgment if it&rsquo;s your first
+            time in the room.{" "}
+            <Link
+              href="/about"
+              className="text-gold underline underline-offset-4 decoration-gold/40 hover:decoration-gold transition-colors"
+            >
+              More about IAYPAA &rarr;
+            </Link>
+          </p>
+        </div>
       </section>
 
-      {/* 10. Divider */}
       <SlimeDivider />
 
-      {/* 11. Email Signup */}
+      {/* 6. Email Signup */}
       <EmailSignup />
     </>
   );

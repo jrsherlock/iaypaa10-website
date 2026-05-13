@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import GlowText from "@/components/ui/GlowText";
 import OozeButton from "@/components/ui/OozeButton";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -56,30 +55,44 @@ export default function EmailSignup() {
     "w-full px-4 py-3 rounded-lg bg-void-black border border-swamp-teal text-bone-white placeholder:text-bone-white/40 font-[family-name:var(--font-space)] text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-colors";
 
   return (
-    <section className="py-16 sm:py-20 px-4 sm:px-6">
-      <div className="max-w-xl mx-auto bg-toxic-green/30 border border-ooze-green/20 rounded-2xl p-8 sm:p-10 text-center">
-        <GlowText
-          as="h2"
-          glow="subtle"
-          className="font-[family-name:var(--font-creepster)] text-3xl sm:text-4xl text-ooze-green mb-3"
-        >
-          Stay in the Loop
-        </GlowText>
+    <section className="py-20 sm:py-24 px-4 sm:px-6">
+      <div className="relative max-w-xl mx-auto">
+        {/* tape strips that pin the "flyer" up at the top corners */}
+        <span
+          aria-hidden="true"
+          className="absolute -top-3 left-6 w-16 h-5 tape-strip rotate-[-4deg]"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute -top-3 right-6 w-16 h-5 tape-strip rotate-[3deg]"
+        />
 
-        <p className="text-bone-white/80 text-sm sm:text-base mb-8">
-          Sign up for updates on registration, hotel, and more. First name and
-          last initial is all we need &mdash; we respect your anonymity.
-        </p>
+        <div className="relative bg-toxic-green/40 border border-ooze-green/25 p-8 sm:p-10 paper-grit">
+          {/* stamped header — not centered Creepster */}
+          <div className="mb-6 flex items-baseline gap-3 border-b border-ooze-green/25 pb-3">
+            <span className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
+              No. 026
+            </span>
+            <h2 className="font-anton text-2xl sm:text-3xl uppercase tracking-wide text-bone-white leading-none">
+              Get the <span className="text-ooze-green">dispatches</span>
+            </h2>
+          </div>
+
+          <p className="font-news text-bone-white/80 text-base sm:text-lg leading-relaxed mb-7">
+            Updates when registration opens, when the hotel block goes live,
+            when speakers are announced. First name and last initial is all we
+            ask &mdash; we keep it anonymous, and we don&rsquo;t share the
+            list.
+          </p>
 
         {status === "success" ? (
-          <div className="py-6">
+          <div className="py-6 text-center">
             <p className="text-gold text-2xl font-[family-name:var(--font-creepster)]">
-              You&rsquo;re in the ooze!
+              You&rsquo;re on the list.
             </p>
-            <p className="text-bone-white/70 text-sm mt-2">
-              Check{" "}
-              <span className="text-swamp-teal">{email}</span> for a welcome
-              message.
+            <p className="font-typewriter text-bone-white/70 text-sm mt-3 tracking-wide">
+              Welcome dispatch on its way to{" "}
+              <span className="text-swamp-teal">{email}</span>.
             </p>
           </div>
         ) : (
@@ -209,11 +222,12 @@ export default function EmailSignup() {
                 type="submit"
                 disabled={status === "submitting"}
               >
-                {status === "submitting" ? "Joining\u2026" : "Subscribe"}
+                {status === "submitting" ? "Sending\u2026" : "Subscribe"}
               </OozeButton>
             </div>
           </form>
         )}
+        </div>
       </div>
     </section>
   );

@@ -1,76 +1,130 @@
-import GlowText from "@/components/ui/GlowText";
-import OozeButton from "@/components/ui/OozeButton";
+import Link from "next/link";
 
-const cards = [
+/**
+ * The "Feature Program" — replaces a generic three-card grid.
+ *
+ * Reads like the back of a VHS box or a film-festival lineup card: a
+ * numbered list of three acts, each with a punchy condensed-display
+ * label, a typewriter line of detail, and a discrete pointer link.
+ */
+
+type Act = {
+  num: string;
+  label: string;
+  body: string;
+  href: string;
+  cta: string;
+  status?: string;
+};
+
+const ACTS: readonly Act[] = [
   {
-    emoji: "\u{1F9EA}",
-    title: "Register",
-    description:
-      "Secure your spot at the 10th annual IAYPAA conference. Early bird pricing available soon.",
+    num: "I",
+    label: "Reserve your seat",
+    body:
+      "Registration opens early 2026. Early-bird pricing first, scholarships available, no one turned away.",
     href: "/registration",
-    buttonText: "Register Now",
+    cta: "Registration",
   },
   {
-    emoji: "\u{1F3E8}",
-    title: "Hotel Info",
-    description:
-      "Stay close to the action. Hotel block information and booking details coming soon.",
+    num: "II",
+    label: "Where you'll stay",
+    body:
+      "The Highlander Hotel, Iowa City. Conference rate when the block opens — bring a roommate, split the cost.",
     href: "/hotel",
-    buttonText: "View Hotel Info",
-    badge: "TBD",
+    cta: "Hotel & venue",
+    status: "block tbd",
   },
   {
-    emoji: "\u{1F91D}",
-    title: "Get Involved",
-    description:
-      "Join a committee, volunteer, or help carry the message. There are many ways to serve.",
+    num: "III",
+    label: "Give back, get in",
+    body:
+      "Join a committee, chair a meeting, work the merch table. Service keeps it ours and keeps it free.",
     href: "/outreach",
-    buttonText: "Get Involved",
+    cta: "Get involved",
   },
 ];
 
 export default function QuickInfoCards() {
   return (
-    <section className="py-16 sm:py-20 px-4 sm:px-6 max-w-6xl mx-auto">
-      <div className="text-center mb-12">
-        <GlowText
-          as="h2"
-          glow="subtle"
-          className="font-[family-name:var(--font-creepster)] text-4xl sm:text-5xl text-ooze-green"
-        >
-          Quick Info
-        </GlowText>
-      </div>
+    <section className="relative py-20 sm:py-24 px-4 sm:px-6 overflow-hidden">
+      {/* faint rule-line backdrop — like notebook paper showing through */}
+      <div
+        className="absolute inset-0 bg-rule-lines opacity-60 pointer-events-none"
+        aria-hidden="true"
+      />
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-        {cards.map((card) => (
-          <div
-            key={card.title}
-            className="group relative bg-toxic-green/50 border border-ooze-green/20 rounded-xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:border-gold/50 hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(242,193,78,0.1)]"
-          >
-            {card.badge && (
-              <span className="absolute top-3 right-3 bg-ember text-void-black text-xs font-bold px-2 py-1 rounded-full uppercase tracking-wider">
-                {card.badge}
-              </span>
-            )}
+      <div className="relative max-w-3xl mx-auto">
+        {/* Section header — stamped, not centered ornament */}
+        <div className="mb-12 sm:mb-16 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4">
+          <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
+            Reel 01
+          </span>
+          <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none">
+            The <span className="text-ooze-green">Feature</span> Program
+          </h2>
+        </div>
 
-            <span className="text-4xl mb-4" role="img" aria-hidden="true">
-              {card.emoji}
-            </span>
+        <ol className="space-y-10 sm:space-y-12">
+          {ACTS.map((act) => (
+            <li
+              key={act.num}
+              className="group relative grid grid-cols-[auto_1fr] gap-5 sm:gap-7 items-start"
+            >
+              {/* Roman numeral — the projector slide-card */}
+              <div className="flex flex-col items-center gap-1 select-none">
+                <span
+                  className="font-anton text-5xl sm:text-6xl text-ooze-green leading-none"
+                  style={{
+                    textShadow: "0 0 12px rgba(95,173,86,0.35)",
+                  }}
+                >
+                  {act.num}
+                </span>
+                <span
+                  className="h-6 w-px bg-ooze-green/30 mt-1"
+                  aria-hidden="true"
+                />
+              </div>
 
-            <h3 className="font-[family-name:var(--font-creepster)] text-2xl text-ooze-green mb-3">
-              {card.title}
-            </h3>
+              {/* Act content */}
+              <div className="min-w-0 pt-1">
+                <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
+                  <h3 className="font-anton text-2xl sm:text-3xl uppercase tracking-wide text-bone-white leading-tight">
+                    {act.label}
+                  </h3>
+                  {act.status && (
+                    <span className="font-typewriter text-[0.65rem] sm:text-xs tracking-[0.2em] uppercase text-ember/90 border border-ember/40 px-1.5 py-0.5">
+                      {act.status}
+                    </span>
+                  )}
+                </div>
 
-            <p className="text-bone-white/80 text-sm leading-relaxed mb-6 flex-1">
-              {card.description}
-            </p>
+                <p className="font-[family-name:var(--font-space)] text-bone-white/80 text-[0.95rem] sm:text-base leading-relaxed mb-3 max-w-prose">
+                  {act.body}
+                </p>
 
-            <OozeButton href={card.href} variant="secondary" className="mt-auto">
-              {card.buttonText}
-            </OozeButton>
-          </div>
-        ))}
+                <Link
+                  href={act.href}
+                  className="inline-flex items-center gap-2 font-typewriter text-xs sm:text-sm uppercase tracking-[0.25em] text-gold border-b border-gold/40 pb-0.5 transition-colors hover:text-bone-white hover:border-bone-white"
+                >
+                  {act.cta}
+                  <span
+                    aria-hidden="true"
+                    className="transition-transform group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </Link>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        {/* Bottom credits line — the small print at the foot of a poster */}
+        <p className="mt-14 sm:mt-16 font-typewriter text-[0.7rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/40 text-center">
+          presented by the IAYPAA X host committee · iowa city, ia
+        </p>
       </div>
     </section>
   );

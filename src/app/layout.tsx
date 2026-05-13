@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
-import { Creepster, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import {
+  Creepster,
+  Space_Grotesk,
+  JetBrains_Mono,
+  Anton,
+  Special_Elite,
+  Newsreader,
+} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -21,6 +28,30 @@ const spaceGrotesk = Space_Grotesk({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+  display: "swap",
+});
+
+// Woodtype-style condensed display — tabloid-headline punch, "FEATURE PRESENTATION".
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-anton",
+  display: "swap",
+});
+
+// Stamped typewriter — for ticket stubs, dispatches, AA-flyer captions.
+const specialElite = Special_Elite({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-typewriter",
+  display: "swap",
+});
+
+// Editorial serif — reserved for the moments the costume comes off and
+// the site speaks plainly about recovery.
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-news",
   display: "swap",
 });
 
@@ -58,7 +89,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${creepster.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+      className={`${creepster.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${anton.variable} ${specialElite.variable} ${newsreader.variable}`}
     >
       <body className="min-h-screen bg-void-black text-bone-white font-[family-name:var(--font-space)] antialiased">
         <FilmGrain />
