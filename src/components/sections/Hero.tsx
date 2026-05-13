@@ -128,9 +128,10 @@ export default function Hero() {
 
         {/* Headline: PRIMORDIAL OOZE — drippy Creepster, the "movie title".
             Sized to fit the smallest QR-scan viewport without clipping the
-            final 'l' in Primordial. */}
+            final 'l' in Primordial. Gold (was green) so it pops against
+            the green-cast poster image behind it. */}
         <h1
-          className="poster-rise font-[family-name:var(--font-creepster)] text-ooze-green leading-[0.85] w-full"
+          className="poster-rise font-[family-name:var(--font-creepster)] text-gold leading-[0.85] w-full"
           style={{
             ["--i" as string]: 2,
             // Sized so "Primordial" fits without clipping at any viewport.
@@ -138,7 +139,7 @@ export default function Hero() {
             // At 6rem max font, that's ~672px — fits inside the 52rem column.
             fontSize: "clamp(2.5rem, 10vw, 6rem)",
             textShadow:
-              "0 0 14px rgba(95,173,86,0.65), 0 0 40px rgba(77,144,120,0.45), 0 4px 0 rgba(0,0,0,0.4)",
+              "0 0 14px rgba(242,193,78,0.65), 0 0 40px rgba(247,129,84,0.45), 0 4px 0 rgba(0,0,0,0.45)",
             letterSpacing: "0.01em",
           }}
         >
