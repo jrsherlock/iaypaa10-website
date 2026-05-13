@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 
 interface NavDropdownProps {
@@ -8,11 +8,36 @@ interface NavDropdownProps {
   items: readonly { label: string; href: string }[];
 }
 
+// Small grace period before closing so diagonal mouse movement between the
+// trigger and the panel doesn't immediately dismiss the menu.
+const CLOSE_DELAY_MS = 150;
+
 export default function NavDropdown({ label, items }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const menuId = useId();
+
+  const clearCloseTimer = useCallback(() => {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+  }, []);
+
+  const scheduleClose = useCallback(() => {
+    clearCloseTimer();
+    closeTimer.current = setTimeout(() => setOpen(false), CLOSE_DELAY_MS);
+  }, [clearCloseTimer]);
+
+  const openNow = useCallback(() => {
+    clearCloseTimer();
+    setOpen(true);
+  }, [clearCloseTimer]);
+
+  // Clean up any pending timer on unmount
+  useEffect(() => clearCloseTimer, [clearCloseTimer]);
 
   // Close on outside click
   useEffect(() => {
@@ -43,8 +68,8 @@ export default function NavDropdown({ label, items }: NavDropdownProps) {
     <div
       ref={containerRef}
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={openNow}
+      onMouseLeave={scheduleClose}
     >
       <button
         ref={buttonRef}
@@ -53,6 +78,7 @@ export default function NavDropdown({ label, items }: NavDropdownProps) {
         aria-expanded={open}
         aria-controls={menuId}
         onClick={() => setOpen((v) => !v)}
+        onFocus={openNow}
         className="group relative flex items-center gap-1 px-3 py-2 text-sm text-bone-white/80 transition-colors duration-200 hover:text-gold focus:outline-none focus-visible:text-gold"
       >
         {label}
@@ -79,37 +105,43 @@ export default function NavDropdown({ label, items }: NavDropdownProps) {
         />
       </button>
 
-      {/* Dropdown panel */}
+      {/* Positioning wrapper. pt-1 is the invisible hover bridge between the
+          button and the visible panel so the mouse doesn't cross a dead zone. */}
       <div
-        id={menuId}
-        role="menu"
-        aria-label={label}
-        className={`absolute left-1/2 top-full z-50 mt-1 min-w-[200px] -translate-x-1/2 origin-top rounded-lg border border-ooze-green/25 bg-void-black/98 backdrop-blur-md shadow-[0_0_20px_rgba(95,173,86,0.15)] transition-all duration-200 ${
-          open
-            ? "pointer-events-auto opacity-100 scale-100"
-            : "pointer-events-none opacity-0 scale-95"
+        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-1 ${
+          open ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
-        {/* Slime accent on top edge */}
-        <span
-          aria-hidden="true"
-          className="absolute -top-px left-4 right-4 h-px bg-gradient-to-r from-transparent via-ooze-green/60 to-transparent"
-        />
-        <ul className="py-2">
-          {items.map((item) => (
-            <li key={item.href} role="none">
-              <Link
-                href={item.href}
-                role="menuitem"
-                onClick={() => setOpen(false)}
-                className="group/item flex items-center gap-2 px-4 py-2 text-sm text-bone-white/80 transition-colors duration-150 hover:bg-toxic-green/30 hover:text-gold focus:outline-none focus-visible:bg-toxic-green/30 focus-visible:text-gold"
-              >
-                <span className="h-1 w-1 rounded-full bg-ooze-green/40 transition-all duration-150 group-hover/item:bg-gold group-hover/item:shadow-[0_0_4px_#F2C14E]" />
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {/* Visible dropdown panel */}
+        <div
+          id={menuId}
+          role="menu"
+          aria-label={label}
+          className={`min-w-[200px] origin-top rounded-lg border border-ooze-green/25 bg-void-black/98 backdrop-blur-md shadow-[0_0_20px_rgba(95,173,86,0.15)] transition-all duration-200 ${
+            open ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+        >
+          {/* Slime accent on top edge */}
+          <span
+            aria-hidden="true"
+            className="absolute -top-px left-4 right-4 h-px bg-gradient-to-r from-transparent via-ooze-green/60 to-transparent"
+          />
+          <ul className="py-2">
+            {items.map((item) => (
+              <li key={item.href} role="none">
+                <Link
+                  href={item.href}
+                  role="menuitem"
+                  onClick={() => setOpen(false)}
+                  className="group/item flex items-center gap-2 px-4 py-2 text-sm text-bone-white/80 transition-colors duration-150 hover:bg-toxic-green/30 hover:text-gold focus:outline-none focus-visible:bg-toxic-green/30 focus-visible:text-gold"
+                >
+                  <span className="h-1 w-1 rounded-full bg-ooze-green/40 transition-all duration-150 group-hover/item:bg-gold group-hover/item:shadow-[0_0_4px_#F2C14E]" />
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
