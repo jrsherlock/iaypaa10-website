@@ -55,7 +55,7 @@ export default function EmailSignup() {
     "w-full px-4 py-3 rounded-lg bg-void-black border border-swamp-teal text-bone-white placeholder:text-bone-white/40 font-[family-name:var(--font-space)] text-sm focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 transition-colors";
 
   return (
-    <section className="py-20 sm:py-24 px-4 sm:px-6">
+    <section id="dispatches" className="py-20 sm:py-24 px-4 sm:px-6 scroll-mt-20">
       <div className="relative max-w-xl mx-auto">
         {/* tape strips that pin the "flyer" up at the top corners */}
         <span
