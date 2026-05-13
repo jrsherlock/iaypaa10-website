@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { NAV_LINKS, CONFERENCE } from "@/lib/constants";
+import { NAV_GROUPS, CONFERENCE } from "@/lib/constants";
 import MobileMenu from "./MobileMenu";
+import NavDropdown from "./NavDropdown";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -26,18 +27,24 @@ export default function Navbar() {
 
             {/* Desktop nav links */}
             <ul className="hidden lg:flex items-center gap-1">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="relative px-3 py-2 text-sm text-bone-white/80 transition-colors duration-200 hover:text-gold group"
-                  >
-                    {link.label}
-                    {/* Underline on hover */}
-                    <span className="absolute bottom-0 left-1/2 h-px w-0 -translate-x-1/2 bg-gold transition-all duration-300 group-hover:w-4/5" />
-                  </Link>
-                </li>
-              ))}
+              {NAV_GROUPS.map((item) =>
+                "children" in item ? (
+                  <li key={item.label}>
+                    <NavDropdown label={item.label} items={item.children} />
+                  </li>
+                ) : (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="relative px-3 py-2 text-sm text-bone-white/80 transition-colors duration-200 hover:text-gold group"
+                    >
+                      {item.label}
+                      {/* Underline on hover */}
+                      <span className="absolute bottom-0 left-1/2 h-px w-0 -translate-x-1/2 bg-gold transition-all duration-300 group-hover:w-4/5" />
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
 
             {/* Mobile hamburger */}

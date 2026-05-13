@@ -33,6 +33,7 @@ excalidraw.log
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
 
 # vercel
 .vercel
@@ -40,3 +41,4 @@ excalidraw.log
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+scripts/wp/snapshots/
