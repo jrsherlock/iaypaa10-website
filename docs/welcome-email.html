@@ -1,0 +1,102 @@
+<!--
+  IAYPAA X — Welcome email (on-brand, dark theme).
+
+  Paste into Loops' email Code/HTML editor. Notes:
+  - Display fonts (Creepster/Anton) do NOT load in email clients, so the
+    wordmark uses a bold web-safe stack with letter-spacing for character.
+  - Table-based + inline styles for client compatibility (incl. Outlook).
+  - Dark background; a light-mode fallback color is set on the body.
+  - Loops appends the legally-required unsubscribe footer automatically —
+    don't duplicate it here.
+  - {{firstName}} should be inserted via Loops' variable picker.
+-->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0D0D0D;margin:0;padding:0;">
+  <tr>
+    <td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#0D0D0D;">
+
+        <!-- Top stamp -->
+        <tr>
+          <td style="padding:8px 32px 0 32px;font-family:'Courier New',Courier,monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#9a978f;">
+            One weekend only &middot; Aug 2026
+          </td>
+        </tr>
+
+        <!-- Wordmark -->
+        <tr>
+          <td style="padding:12px 32px 4px 32px;font-family:Georgia,'Times New Roman',serif;font-size:44px;line-height:1;font-weight:bold;letter-spacing:1px;color:#F2C14E;">
+            Primordial<br/>Ooze
+          </td>
+        </tr>
+
+        <!-- Green marquee rule -->
+        <tr>
+          <td style="padding:18px 32px 0 32px;">
+            <div style="height:4px;width:180px;background-color:#5FAD56;font-size:0;line-height:0;">&nbsp;</div>
+          </td>
+        </tr>
+
+        <!-- Date stub -->
+        <tr>
+          <td style="padding:14px 32px 0 32px;font-family:'Courier New',Courier,monospace;font-size:14px;letter-spacing:1px;color:#E8E6E1;">
+            Aug <span style="color:#F2C14E;">14</span>&ndash;<span style="color:#F2C14E;">16</span>, 2026 &nbsp;&middot;&nbsp; The Highlander Hotel &nbsp;&middot;&nbsp; Iowa City, Iowa
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="padding:32px 32px 0 32px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.65;color:#E8E6E1;">
+            <p style="margin:0 0 18px 0;">Hi {{firstName}},</p>
+
+            <p style="margin:0 0 18px 0;">
+              You&rsquo;re on the IAYPAA&nbsp;X mailing list. That&rsquo;s the
+              whole ask &mdash; nothing else you need to do right now.
+            </p>
+
+            <p style="margin:0 0 10px 0;">Here&rsquo;s what you signed up for:</p>
+
+            <p style="margin:0 0 18px 0;">
+              IAYPAA&nbsp;X &mdash; <strong style="color:#F2C14E;">&ldquo;Primordial Ooze&rdquo;</strong>
+              &mdash; the 10th Annual Iowa Young People in Alcoholics Anonymous
+              conference. A weekend of speaker meetings, workshops, fellowship,
+              and the kind of fun that reminds you why this works.
+            </p>
+
+            <p style="margin:0 0 8px 0;">We&rsquo;ll only email when there&rsquo;s something real to say:</p>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 18px 0;">
+              <tr><td style="padding:2px 0;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#E8E6E1;"><span style="color:#5FAD56;">&#8853;</span>&nbsp;&nbsp;When registration opens (early-bird pricing goes first)</td></tr>
+              <tr><td style="padding:2px 0;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#E8E6E1;"><span style="color:#5FAD56;">&#8853;</span>&nbsp;&nbsp;When the hotel room block goes live</td></tr>
+              <tr><td style="padding:2px 0;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#E8E6E1;"><span style="color:#5FAD56;">&#8853;</span>&nbsp;&nbsp;When speakers are announced</td></tr>
+              <tr><td style="padding:2px 0;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#E8E6E1;"><span style="color:#5FAD56;">&#8853;</span>&nbsp;&nbsp;The occasional update as the weekend takes shape</td></tr>
+            </table>
+
+            <p style="margin:0 0 18px 0;">
+              No spam, we don&rsquo;t share the list, and you can leave anytime
+              &mdash; there&rsquo;s an unsubscribe link at the bottom of every email.
+            </p>
+
+            <p style="margin:0 0 18px 0;">
+              First time at an IAYPAA conference? You don&rsquo;t have to be
+              &ldquo;young&rdquo; and you don&rsquo;t have to know a soul. Just
+              show up. We&rsquo;ll take it from there.
+            </p>
+
+            <p style="margin:0 0 6px 0;color:#F2C14E;font-weight:bold;">See you in the ooze.</p>
+          </td>
+        </tr>
+
+        <!-- Signature -->
+        <tr>
+          <td style="padding:24px 32px 40px 32px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#9a978f;border-top:1px solid #1B3B30;">
+            <div style="padding-top:20px;">
+              <strong style="color:#E8E6E1;">The IAYPAA&nbsp;X Committee</strong><br/>
+              Iowa Young People in Alcoholics Anonymous<br/>
+              <a href="mailto:iaypaa@gmail.com" style="color:#5FAD56;text-decoration:none;">iaypaa@gmail.com</a>
+            </div>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
