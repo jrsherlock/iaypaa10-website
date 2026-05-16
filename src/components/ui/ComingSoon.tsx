@@ -5,7 +5,7 @@ interface ComingSoonProps {
   title: string;
   /** A one-line description shown under the title in serif. */
   subtitle?: string;
-  /** When true, shows a CTA pointing at the homepage "Get the dispatches" signup. */
+  /** When true, shows a CTA pointing at the homepage mailing-list signup. */
   showEmailSignup?: boolean;
 }
 
@@ -70,10 +70,10 @@ export default function ComingSoon({
 
         {showEmailSignup && (
           <Link
-            href="/#dispatches"
+            href="/#mailing-list"
             className="group inline-flex items-center gap-2 font-typewriter text-xs sm:text-sm uppercase tracking-[0.25em] text-gold border-b border-gold/40 pb-0.5 transition-colors hover:text-bone-white hover:border-bone-white"
           >
-            Get the dispatches when it drops
+            Get on the IAYPAA X mailing list
             <span
               aria-hidden="true"
               className="transition-transform group-hover:translate-x-1"
