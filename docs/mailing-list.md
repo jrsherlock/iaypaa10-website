@@ -48,8 +48,10 @@ confirm these exist on a contact in Loops:
 - In Loops → Loops → New loop.
 - Trigger: **event** → `signedUp`.
 - Action: send an email. Use variables like `{{firstName}}` in the body.
-- Keep the welcome short: confirm they're subscribed, say when the next
-  update is coming, link to the website.
+- **The email is already written** — copy, subject, preview text, and an
+  on-brand HTML version are in [`welcome-email.md`](./welcome-email.md)
+  / [`welcome-email.html`](./welcome-email.html). That doc also has the
+  exact step-by-step for wiring this loop and a test command.
 - Publish the loop.
 
 ## Sending a broadcast (monthly update, merch drop, etc.)
