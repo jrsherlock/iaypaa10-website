@@ -117,6 +117,6 @@ export const FAQ_ITEMS = [
   {
     question: "What is the Primordial Ooze theme?",
     answer:
-      "Primordial Ooze is our B-movie horror theme for the 10th annual conference! Think classic monster movies, dripping slime, and retro horror vibes — a unique and memorable celebration of a decade of IAYPAA.",
+      "Primordial Ooze is the theme of our 10th annual conference. It's where life begins — the formless place every one of us started from, and the new life that comes up out of it when you stop trying to do it alone. Ten years of IAYPAA, and a story about coming up out of the dark.",
   },
 ] as const;

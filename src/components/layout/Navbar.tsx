@@ -20,7 +20,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="font-[family-name:var(--font-creepster)] text-2xl tracking-wider text-ooze-green glow-text-subtle transition-all duration-300 hover:glow-text"
+              className="font-anton text-2xl tracking-wider text-ooze-green glow-text-subtle transition-all duration-300 hover:glow-text"
             >
               {CONFERENCE.name}
             </Link>
@@ -85,17 +85,11 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Animated ooze drip border */}
-        <div className="absolute bottom-0 left-0 w-full h-[2px] overflow-visible" aria-hidden="true">
-          {/* Base gradient line */}
-          <div className="h-full w-full bg-gradient-to-r from-transparent via-ooze-green to-transparent opacity-70" />
-          {/* Drip drops — small green blobs hanging off the bottom border */}
-          <div className="absolute top-0 left-[10%] w-1 h-3 rounded-b-full bg-ooze-green/60 animate-drip-continuous" style={{ animationDelay: "0s" }} />
-          <div className="absolute top-0 left-[25%] w-1.5 h-4 rounded-b-full bg-swamp-teal/50 animate-drip-continuous" style={{ animationDelay: "0.8s" }} />
-          <div className="absolute top-0 left-[45%] w-1 h-2.5 rounded-b-full bg-gold/50 animate-drip-continuous" style={{ animationDelay: "1.6s" }} />
-          <div className="absolute top-0 left-[65%] w-1.5 h-3.5 rounded-b-full bg-ooze-green/60 animate-drip-continuous" style={{ animationDelay: "2.4s" }} />
-          <div className="absolute top-0 left-[80%] w-1 h-3 rounded-b-full bg-swamp-teal/40 animate-drip-continuous" style={{ animationDelay: "1.2s" }} />
-          <div className="absolute top-0 left-[92%] w-1 h-2 rounded-b-full bg-gold/50 animate-drip-continuous" style={{ animationDelay: "2s" }} />
+        {/* Bottom edge — a thin band of first light, not a dripping border.
+            See design-philosophy.md §3 (Motion / Light). */}
+        <div className="absolute bottom-0 left-0 w-full h-px overflow-visible" aria-hidden="true">
+          <div className="h-full w-full bg-gradient-to-r from-transparent via-ooze-green/70 to-transparent" />
+          <div className="absolute inset-x-0 -bottom-1 h-2 bg-gradient-to-b from-ooze-green/20 to-transparent blur-[2px]" />
         </div>
       </nav>
 

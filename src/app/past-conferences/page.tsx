@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import GlowText from "@/components/ui/GlowText";
-import DrippingSlime from "@/components/effects/DrippingSlime";
+import RisingMotes from "@/components/effects/RisingMotes";
 import { PAST_CONFERENCES } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function PastConferencesPage() {
             Ten years of recovery, fellowship, and unforgettable weekends
           </p>
         </div>
-        <DrippingSlime count={10} />
+        <RisingMotes count={10} />
 
         {/* Timeline */}
         <section className="relative max-w-4xl mx-auto">
@@ -66,7 +66,7 @@ export default function PastConferencesPage() {
                       {/* Edition badge */}
                       <div className="flex items-center justify-between mb-3">
                         <span
-                          className={`font-[family-name:var(--font-creepster)] text-2xl md:text-3xl ${
+                          className={`font-anton text-2xl md:text-3xl ${
                             isCurrentYear
                               ? "text-gold glow-text-gold"
                               : "text-ooze-green/80 glow-text-subtle"

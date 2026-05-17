@@ -1,9 +1,10 @@
 /**
- * BubblingOoze - Animated SVG / CSS background with morphing ooze blobs
+ * BubblingOoze — slow formation in the deep.
  *
- * Renders large slowly-morphing blobs (.animate-blob-morph) and small
- * rising bubbles (.animate-bubble-rise) in ooze-green / swamp-teal.
- * Intended as a background decoration inside a relatively-positioned parent.
+ * Large, very slowly morphing masses (.animate-blob-morph) and a few small
+ * points rising and dissipating (.animate-bubble-rise). Tuned for
+ * abiogenesis, not swamp gas: slower, deeper, fewer — cold teal weighted
+ * over green, no warm "toxic" notes. See docs/design-philosophy.md §3.
  *
  * Server component — all animation is CSS-only.
  */
@@ -11,50 +12,47 @@ interface BubblingOozeProps {
   className?: string;
 }
 
-// Large morphing blobs
+// Large, very slowly morphing masses — deep, dim, unhurried.
 const BLOBS = [
   {
-    width: 180,
-    height: 160,
+    width: 240,
+    height: 210,
     top: "55%",
-    left: "10%",
-    opacity: 0.12,
-    color: "var(--color-ooze-green)",
-    animationDuration: "8s",
+    left: "8%",
+    opacity: 0.1,
+    color: "var(--color-swamp-teal)",
+    animationDuration: "26s",
     animationDelay: "0s",
   },
   {
-    width: 220,
-    height: 200,
-    top: "40%",
-    left: "60%",
-    opacity: 0.1,
+    width: 300,
+    height: 270,
+    top: "38%",
+    left: "58%",
+    opacity: 0.08,
     color: "var(--color-swamp-teal)",
-    animationDuration: "10s",
-    animationDelay: "2s",
+    animationDuration: "32s",
+    animationDelay: "5s",
   },
   {
-    width: 140,
-    height: 130,
-    top: "70%",
-    left: "38%",
-    opacity: 0.14,
+    width: 190,
+    height: 175,
+    top: "72%",
+    left: "36%",
+    opacity: 0.11,
     color: "var(--color-ooze-green)",
-    animationDuration: "12s",
-    animationDelay: "4s",
+    animationDuration: "38s",
+    animationDelay: "9s",
   },
 ];
 
-// Small rising bubbles
+// A few points rising and dissipating — sparse, slow, cold-weighted.
 const BUBBLES = [
-  { size: 8, left: "15%", bottom: "5%", delay: "0s", duration: "4s", opacity: 0.25, color: "var(--color-ooze-green)" },
-  { size: 6, left: "28%", bottom: "10%", delay: "0.8s", duration: "3.5s", opacity: 0.2, color: "var(--color-swamp-teal)" },
-  { size: 10, left: "45%", bottom: "2%", delay: "1.5s", duration: "5s", opacity: 0.3, color: "var(--color-ooze-green)" },
-  { size: 5, left: "55%", bottom: "8%", delay: "2.2s", duration: "3.8s", opacity: 0.18, color: "var(--color-swamp-teal)" },
-  { size: 7, left: "68%", bottom: "4%", delay: "0.4s", duration: "4.5s", opacity: 0.22, color: "var(--color-gold)" },
-  { size: 9, left: "80%", bottom: "12%", delay: "1.8s", duration: "4.2s", opacity: 0.28, color: "var(--color-ooze-green)" },
-  { size: 6, left: "35%", bottom: "6%", delay: "2.8s", duration: "3.6s", opacity: 0.2, color: "var(--color-swamp-teal)" },
-  { size: 8, left: "90%", bottom: "3%", delay: "3.5s", duration: "4.8s", opacity: 0.24, color: "var(--color-ooze-green)" },
+  { size: 6, left: "18%", bottom: "6%", delay: "0s", duration: "11s", opacity: 0.16, color: "var(--color-swamp-teal)" },
+  { size: 8, left: "44%", bottom: "3%", delay: "2.5s", duration: "13s", opacity: 0.2, color: "var(--color-ooze-green)" },
+  { size: 5, left: "60%", bottom: "9%", delay: "5s", duration: "10s", opacity: 0.14, color: "var(--color-swamp-teal)" },
+  { size: 7, left: "78%", bottom: "5%", delay: "1.5s", duration: "12s", opacity: 0.18, color: "var(--color-swamp-teal)" },
+  { size: 6, left: "33%", bottom: "11%", delay: "7s", duration: "12.5s", opacity: 0.15, color: "var(--color-ooze-green)" },
 ];
 
 export default function BubblingOoze({ className = "" }: BubblingOozeProps) {

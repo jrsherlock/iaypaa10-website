@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  Creepster,
   Space_Grotesk,
   JetBrains_Mono,
   Anton,
@@ -10,14 +9,6 @@ import {
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import FilmGrain from "@/components/effects/FilmGrain";
-
-const creepster = Creepster({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-creepster",
-  display: "swap",
-});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -31,7 +22,8 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-// Woodtype-style condensed display — tabloid-headline punch, "FEATURE PRESENTATION".
+// Heavy condensed display — structure formed out of the soft stuff; the
+// primary headline face (see docs/design-philosophy.md §3).
 const anton = Anton({
   weight: "400",
   subsets: ["latin"],
@@ -89,10 +81,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${creepster.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} ${anton.variable} ${specialElite.variable} ${newsreader.variable}`}
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${anton.variable} ${specialElite.variable} ${newsreader.variable}`}
     >
       <body className="min-h-screen bg-void-black text-bone-white font-[family-name:var(--font-space)] antialiased">
-        <FilmGrain />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

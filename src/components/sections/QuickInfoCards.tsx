@@ -58,10 +58,10 @@ export default function QuickInfoCards() {
         {/* Section header — stamped, not centered ornament */}
         <div className="mb-12 sm:mb-16 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4">
           <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
-            Reel 01
+            Start here
           </span>
           <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none">
-            The <span className="text-ooze-green">Feature</span> Program
+            What you <span className="text-ooze-green">need</span> to know
           </h2>
         </div>
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import GlowText from "@/components/ui/GlowText";
 import SlimeDivider from "@/components/ui/SlimeDivider";
-import DrippingSlime from "@/components/effects/DrippingSlime";
+import RisingMotes from "@/components/effects/RisingMotes";
 import FAQAccordion from "@/components/ui/FAQAccordion";
 import { FAQ_ITEMS, CONFERENCE } from "@/lib/constants";
 
@@ -44,7 +44,7 @@ export default function FAQPage() {
             Frequently asked questions about IAYPAA X
           </p>
         </div>
-        <DrippingSlime count={10} />
+        <RisingMotes count={10} />
 
         {/* FAQ Accordion */}
         <section className="mb-16">
@@ -67,7 +67,7 @@ export default function FAQPage() {
             {formSubmitted ? (
               <div className="rounded-xl border border-swamp-teal/40 bg-toxic-green/20 p-8 text-center">
                 <div className="text-4xl mb-4">{"\u2705"}</div>
-                <h3 className="font-[family-name:var(--font-creepster)] text-2xl text-swamp-teal mb-3 glow-text-subtle">
+                <h3 className="font-anton text-2xl text-swamp-teal mb-3 glow-text-subtle">
                   Message Sent!
                 </h3>
                 <p className="text-bone-white/70">
@@ -169,7 +169,7 @@ export default function FAQPage() {
 
       {/* Toast Notification */}
       {showToast && (
-        <div className="fixed bottom-6 right-6 z-50 rounded-lg border border-swamp-teal/50 bg-toxic-green/90 px-6 py-4 shadow-[0_0_20px_rgba(77,144,120,0.3)] animate-drip">
+        <div className="fixed bottom-6 right-6 z-50 rounded-lg border border-swamp-teal/50 bg-toxic-green/90 px-6 py-4 shadow-[0_0_20px_rgba(77,144,120,0.3)] animate-slide-in-right">
           <div className="flex items-center gap-3">
             <span className="text-xl">{"\u2705"}</span>
             <div>

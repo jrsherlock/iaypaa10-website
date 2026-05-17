@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import GlowText from "@/components/ui/GlowText";
 import SlimeDivider from "@/components/ui/SlimeDivider";
-import DrippingSlime from "@/components/effects/DrippingSlime";
+import RisingMotes from "@/components/effects/RisingMotes";
 import { CONFERENCE } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -50,7 +50,7 @@ export default function AboutPage() {
             A decade of young people carrying the message of recovery across Iowa
           </p>
         </div>
-        <DrippingSlime count={10} />
+        <RisingMotes count={10} />
 
         {/* What is IAYPAA */}
         <section className="mb-16">
@@ -100,20 +100,20 @@ export default function AboutPage() {
                   <strong className="text-ooze-green">IAYPAA X</strong> marks a
                   milestone — our{" "}
                   <strong className="text-swamp-teal">10th annual conference</strong>.
-                  To celebrate a decade of recovery, fellowship, and growth, we&apos;re
-                  going all-in with a B-movie horror theme:{" "}
+                  To mark a decade of recovery, fellowship, and growth, the
+                  theme is{" "}
                   <span className="text-ooze-green font-bold glow-text-subtle">
                     Primordial Ooze
                   </span>
                   .
                 </p>
                 <p>
-                  Think classic creature features, dripping slime, retro horror
-                  movie vibes, and all the campy fun of a late-night monster
-                  marathon. This August, Iowa City transforms into a neon-green
-                  playground of recovery and revelry. Whether you&apos;ve been to
-                  every IAYPAA or this is your first, IAYPAA X promises to be the
-                  most memorable conference yet.
+                  Primordial ooze is where life begins — the formless place
+                  every one of us started from, and the new life that comes up
+                  out of it given a little energy, a little time, and people
+                  around you. This August, Iowa City fills with young people
+                  who came up out of the dark. Whether you&apos;ve been to
+                  every IAYPAA or this is your first, you belong here.
                 </p>
                 <p>
                   Just like the primordial ooze from which all life emerged, our
@@ -144,7 +144,7 @@ export default function AboutPage() {
                 <div className="text-5xl mb-4 transition-transform duration-300 group-hover:scale-110">
                   {item.icon}
                 </div>
-                <h3 className={`font-[family-name:var(--font-creepster)] text-xl ${titleColor} mb-3 glow-text-subtle`}>
+                <h3 className={`font-anton text-xl ${titleColor} mb-3 glow-text-subtle`}>
                   {item.title}
                 </h3>
                 <p className="text-bone-white/70 text-sm leading-relaxed">

@@ -70,7 +70,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         <div className="flex h-full flex-col bg-void-black/98 backdrop-blur-lg border-l border-ooze-green/20">
           {/* Header with close button */}
           <div className="flex items-center justify-between px-6 py-5">
-            <span className="font-[family-name:var(--font-creepster)] text-xl text-ooze-green glow-text-subtle">
+            <span className="font-anton text-xl text-ooze-green glow-text-subtle">
               {CONFERENCE.name}
             </span>
             <button

@@ -10,12 +10,10 @@ interface ComingSoonProps {
 }
 
 /**
- * The "TBA placard" — a stapled-on flyer panel announcing that
- * something isn't ready yet. Replaces a generic "Coming Soon" card.
- *
- * Composition: tape strips → typewriter status stamp → Anton subject
- * → big drippy "TBA" mark → Newsreader serif subtitle → optional CTA
- * back to the homepage signup form.
+ * "Still forming" panel — for sections of the site that are coming
+ * together. Emergence, not a stamped "TBA" placard: a quiet label, the
+ * subject in Anton, a "Still forming" mark, a plain serif line, and an
+ * optional CTA to the mailing list. See docs/design-philosophy.md.
  */
 export default function ComingSoon({
   title,
@@ -24,34 +22,21 @@ export default function ComingSoon({
 }: ComingSoonProps) {
   return (
     <div className="relative max-w-xl mx-auto">
-      {/* tape strips pinning the placard up */}
-      <span
-        aria-hidden="true"
-        className="absolute -top-3 left-8 w-16 h-5 tape-strip rotate-[-4deg]"
-      />
-      <span
-        aria-hidden="true"
-        className="absolute -top-3 right-8 w-16 h-5 tape-strip rotate-[3deg]"
-      />
-
       <div className="relative bg-toxic-green/30 border border-ooze-green/30 paper-grit p-8 sm:p-10">
-        {/* Status stamp */}
+        {/* Quiet label */}
         <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-bone-white/55 mb-3">
-          // status
+          In progress
         </p>
 
         <div className="flex items-baseline gap-4 mb-4 border-b border-ooze-green/25 pb-3">
           <h2 className="font-anton text-2xl sm:text-3xl uppercase tracking-wide text-bone-white leading-none">
             {title}
           </h2>
-          <span className="stamp text-ember !text-[0.65rem] sm:!text-xs !tracking-[0.28em] shrink-0">
-            TBA
-          </span>
         </div>
 
-        {/* The big drippy mark */}
+        {/* The big mark */}
         <p
-          className="font-[family-name:var(--font-creepster)] text-gold leading-none mb-5"
+          className="font-anton text-gold leading-none mb-5"
           style={{
             fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
             textShadow:
@@ -59,7 +44,7 @@ export default function ComingSoon({
             letterSpacing: "0.01em",
           }}
         >
-          Coming soon
+          Still forming
         </p>
 
         {subtitle && (

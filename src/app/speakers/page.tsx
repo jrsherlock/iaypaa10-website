@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import DrippingSlime from "@/components/effects/DrippingSlime";
+import RisingMotes from "@/components/effects/RisingMotes";
 import ComingSoon from "@/components/ui/ComingSoon";
 import SlimeDivider from "@/components/ui/SlimeDivider";
 import { CONFERENCE } from "@/lib/constants";
@@ -25,7 +25,7 @@ export default function SpeakersPage() {
           className="absolute inset-0 bg-rule-lines opacity-50 pointer-events-none"
           aria-hidden="true"
         />
-        <DrippingSlime
+        <RisingMotes
           count={5}
           color="#5FAD56"
           className="absolute top-0 left-0 right-0 z-10"
@@ -34,15 +34,15 @@ export default function SpeakersPage() {
         <div className="relative z-20 max-w-3xl mx-auto">
           <div className="flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4 mb-8">
             <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
-              Reel 04
+              Voices
             </span>
             <h1 className="font-anton text-4xl sm:text-6xl uppercase tracking-wide text-bone-white leading-none">
-              The <span className="text-ooze-green">Cast</span>
+              The <span className="text-ooze-green">Speakers</span>
             </h1>
           </div>
 
           <p className="font-typewriter text-sm sm:text-base tracking-[0.15em] uppercase text-bone-white/70 leading-relaxed">
-            Speakers · panelists · workshop leaders &nbsp;//&nbsp; in alphabetical order of confirmation
+            Speakers · panelists · workshop leaders &nbsp;—&nbsp; in alphabetical order of confirmation
           </p>
         </div>
       </section>
@@ -79,7 +79,7 @@ export default function SpeakersPage() {
                 key={n}
                 className="group relative border border-ooze-green/25 bg-void-black/50 paper-grit p-5 sm:p-6"
               >
-                {/* number marker — like the back of a wrestling card or playbill */}
+                {/* number marker */}
                 <div className="flex items-baseline justify-between mb-4 border-b border-ooze-green/20 pb-2">
                   <span className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55">
                     Voice {String(n).padStart(2, "0")}
@@ -113,33 +113,23 @@ export default function SpeakersPage() {
           </ul>
 
           <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/40 text-center mt-10">
-            // names withheld in keeping with the eleventh tradition
+            Names withheld in keeping with the Eleventh Tradition
           </p>
         </div>
       </section>
 
       <SlimeDivider />
 
-      {/* ---------- Call for nominations — the casting call ---------- */}
+      {/* ---------- Call for nominations ---------- */}
       <section className="relative px-4 sm:px-6 py-20 sm:py-24">
         <div className="relative max-w-2xl mx-auto">
-          {/* tape pinning the casting call up */}
-          <span
-            aria-hidden="true"
-            className="absolute -top-3 left-10 w-20 h-5 tape-strip rotate-[-3deg]"
-          />
-          <span
-            aria-hidden="true"
-            className="absolute -top-3 right-10 w-20 h-5 tape-strip rotate-[4deg]"
-          />
-
           <div className="relative bg-toxic-green/35 border border-gold/35 paper-grit p-8 sm:p-10">
             <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-gold mb-4">
-              // casting call · nominations open
+              Nominations open
             </p>
 
             <h2
-              className="font-[family-name:var(--font-creepster)] text-gold leading-[0.95] mb-4"
+              className="font-anton text-gold leading-[0.95] mb-4"
               style={{
                 fontSize: "clamp(2.2rem, 7vw, 4rem)",
                 textShadow:

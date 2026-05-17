@@ -57,18 +57,8 @@ export default function EmailSignup() {
   return (
     <section id="mailing-list" className="py-20 sm:py-24 px-4 sm:px-6 scroll-mt-20">
       <div className="relative max-w-xl mx-auto">
-        {/* tape strips that pin the "flyer" up at the top corners */}
-        <span
-          aria-hidden="true"
-          className="absolute -top-3 left-6 w-16 h-5 tape-strip rotate-[-4deg]"
-        />
-        <span
-          aria-hidden="true"
-          className="absolute -top-3 right-6 w-16 h-5 tape-strip rotate-[3deg]"
-        />
-
         <div className="relative bg-toxic-green/40 border border-ooze-green/25 p-8 sm:p-10 paper-grit">
-          {/* stamped header — not centered Creepster */}
+          {/* section header */}
           <div className="mb-6 flex items-baseline gap-3 border-b border-ooze-green/25 pb-3">
             <span className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
               No. 026
@@ -87,7 +77,7 @@ export default function EmailSignup() {
 
         {status === "success" ? (
           <div className="py-6 text-center">
-            <p className="text-gold text-2xl font-[family-name:var(--font-creepster)]">
+            <p className="text-gold text-2xl font-anton">
               You&rsquo;re on the list.
             </p>
             <p className="font-typewriter text-bone-white/70 text-sm mt-3 tracking-wide">
