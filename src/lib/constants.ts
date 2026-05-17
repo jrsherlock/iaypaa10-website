@@ -49,6 +49,7 @@ export const NAV_GROUPS: readonly NavGroupItem[] = [
   {
     label: "IAYPAA X Conference Info",
     children: [
+      { label: "Registration", href: "/registration" },
       { label: "Schedule", href: "/schedule" },
       { label: "Speakers", href: "/speakers" },
       { label: "Hotel & Venue", href: "/hotel" },
@@ -58,7 +59,6 @@ export const NAV_GROUPS: readonly NavGroupItem[] = [
       { label: "Outreach", href: "/outreach" },
     ],
   },
-  { label: "Registration", href: "/registration" },
   { label: "Pre-Conference Events", href: "/pre-conference" },
   { label: "Merch", href: "/merch" },
   { label: "Stay In the Loop", href: "/#mailing-list" },
@@ -90,7 +90,7 @@ export type PreConferenceEvent = {
   description: string;
   /**
    * Optional flyer to download. Drop the file in `public/flyers/` and set
-   * this to its public path, e.g. "/flyers/speakers-sweats-bake-off.pdf".
+   * this to its public path, e.g. "/flyers/speakers-sweets-bake-off.pdf".
    * The modal shows a Download button only when this is set.
    */
   flyer?: string;
@@ -108,13 +108,13 @@ export type PreConferenceEvent = {
 // `flyer: "/flyers/<filename>"` on the event below.
 export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
   {
-    id: "speakers-sweats-bake-off",
-    title: "Speakers & Sweats Bake-Off",
+    id: "speakers-sweets-bake-off",
+    title: "Speakers & Sweets Bake-Off",
     date: "2026-06-14",
     location: "Last Chance AA Group",
     city: "4711 44th St, Suite 5, Rock Island, IL",
     description:
-      "A speaker meeting and a bake-off — bring sweats, bring a dessert, bring a friend. Fellowship and a little friendly competition for IAYPAA X.",
+      "A speaker meeting and a dessert bake-off — bring something sweet, bring a friend. Fellowship and a little friendly competition for IAYPAA X.",
   },
   {
     id: "aa-pride-event",
