@@ -25,6 +25,7 @@ export const NAV_LINKS = [
   { label: "About", href: "/about" },
   { label: "Registration", href: "/registration" },
   { label: "Schedule", href: "/schedule" },
+  { label: "Pre-Conference Events", href: "/pre-conference" },
   { label: "Hotel & Venue", href: "/hotel" },
   { label: "Speakers", href: "/speakers" },
   { label: "Merch", href: "/merch" },
@@ -49,6 +50,7 @@ export const NAV_GROUPS: readonly NavGroupItem[] = [
     label: "Event",
     children: [
       { label: "Schedule", href: "/schedule" },
+      { label: "Pre-Conference Events", href: "/pre-conference" },
       { label: "Speakers", href: "/speakers" },
       { label: "Hotel & Venue", href: "/hotel" },
     ],
@@ -77,6 +79,89 @@ export const PAST_CONFERENCES = [
   { year: 2025, edition: "IX", location: "Iowa City, IA", theme: "Disco Fever" },
   { year: 2026, edition: "X", location: "Iowa City, IA", theme: "Primordial Ooze" },
 ] as const;
+
+export type PreConferenceEvent = {
+  id: string;
+  title: string;
+  /** Local date as YYYY-MM-DD. Drives sort + the past/upcoming split. */
+  date: string;
+  /** Optional end date for multi-day events (YYYY-MM-DD). */
+  endDate?: string;
+  time?: string;
+  location: string;
+  city?: string;
+  description: string;
+  /** Optional link — details/RSVP for upcoming, recap/photos for past. */
+  link?: string;
+  linkLabel?: string;
+};
+
+// Lead-up events in the months before the Aug 14–16, 2026 conference.
+// Past events stay here as an archive (rendered greyed out, still
+// accessible); upcoming events show in full colour. Sample data — edit
+// freely; the page sorts and splits automatically by date.
+export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
+  {
+    id: "winter-bowling-fundraiser",
+    title: "Winter Bowling Fundraiser",
+    date: "2026-02-21",
+    time: "7:00 PM",
+    location: "Colonial Lanes",
+    city: "Iowa City, IA",
+    description:
+      "A night of bowling, raffle prizes, and fellowship to open the IAYPAA X fundraising season.",
+    link: "#",
+    linkLabel: "See recap",
+  },
+  {
+    id: "spring-speaker-jam",
+    title: "Spring Speaker Jam",
+    date: "2026-04-18",
+    time: "6:30 PM",
+    location: "First Presbyterian Church",
+    city: "Cedar Rapids, IA",
+    description:
+      "An evening speaker meeting with food, fellowship, and an update from the host committee.",
+    link: "#",
+    linkLabel: "See recap",
+  },
+  {
+    id: "outreach-car-wash",
+    title: "Outreach Car Wash & Cookout",
+    date: "2026-05-30",
+    time: "11:00 AM",
+    location: "Mercer Park",
+    city: "Iowa City, IA",
+    description:
+      "Bring the car, stay for the cookout. All proceeds go toward scholarships for IAYPAA X.",
+    link: "#",
+    linkLabel: "Details",
+  },
+  {
+    id: "summer-kickoff-bbq",
+    title: "Summer Kickoff BBQ & Speaker",
+    date: "2026-06-27",
+    time: "5:00 PM",
+    location: "Greenwood Pavilion",
+    city: "Des Moines, IA",
+    description:
+      "The last big push before August — a cookout, a powerhouse speaker, and a lot of hugs.",
+    link: "#",
+    linkLabel: "Details",
+  },
+  {
+    id: "final-fellowship-night",
+    title: "Final Fellowship Night",
+    date: "2026-07-25",
+    time: "7:00 PM",
+    location: "The Highlander Hotel",
+    city: "Iowa City, IA",
+    description:
+      "One more meeting at the venue itself before the doors open for IAYPAA X.",
+    link: "/registration",
+    linkLabel: "Register for IAYPAA X",
+  },
+];
 
 export const FAQ_ITEMS = [
   {
