@@ -9,19 +9,18 @@ import EmailSignup from "@/components/sections/EmailSignup";
 export default function Home() {
   return (
     <>
-      {/* 1. Hero — the one-sheet */}
+      {/* 1. Hero */}
       <Hero />
 
-      {/* 2. Countdown — projector-card moment, no big horror title.
-              Frame it as "next show in" rather than another Creepster header. */}
+      {/* 2. Countdown — a quiet moment, plain heading. */}
       <section className="relative py-20 sm:py-24 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <div className="mb-10 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/20 pb-4">
             <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
-              Reel 00
+              August 14–16, 2026
             </span>
             <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none">
-              Next <span className="text-ooze-green">show</span> in
+              Until we <span className="text-ooze-green">gather</span>
             </h2>
           </div>
           <CountdownTimer />

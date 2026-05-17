@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import GlowText from "@/components/ui/GlowText";
 import SlimeDivider from "@/components/ui/SlimeDivider";
-import DrippingSlime from "@/components/effects/DrippingSlime";
+import RisingMotes from "@/components/effects/RisingMotes";
 import ProductGrid from "@/components/merch/ProductGrid";
 import { PRODUCTS, PRINTFUL_STORE_URL } from "@/lib/products";
 
@@ -40,7 +40,7 @@ export default function MerchPage() {
             directly to funding the conference.
           </p>
         </div>
-        <DrippingSlime count={10} />
+        <RisingMotes count={10} />
 
         {/* Shop CTA */}
         <div className="text-center mb-16">
@@ -94,7 +94,7 @@ export default function MerchPage() {
                 >
                   <div className="text-4xl mb-4">{item.icon}</div>
                   <h3
-                    className={`font-[family-name:var(--font-creepster)] text-xl ${titleColor} mb-3 glow-text-subtle`}
+                    className={`font-anton text-xl ${titleColor} mb-3 glow-text-subtle`}
                   >
                     {item.title}
                   </h3>

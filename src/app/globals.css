@@ -13,9 +13,7 @@
   --color-void-black: #0D0D0D;
   --color-toxic-green: #1B3B30;
   --color-bone-white: #E8E6E1;
-  --color-film-grain: rgba(255, 255, 255, 0.03);
 
-  --font-creepster: "Creepster", cursive;
   --font-space: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
@@ -54,67 +52,42 @@ body {
   background: #5FAD56;
 }
 
-/* ---- Glow Text Effect ---- */
+/* ---- Emergent glow ----
+   A single soft halo, like something faintly luminous seen through dark
+   water — first light, not a radioactive neon sign. See design-philosophy.md
+   §3 "Light". */
 .glow-text {
-  text-shadow:
-    0 0 10px #5FAD56,
-    0 0 20px #5FAD56,
-    0 0 40px #4D9078,
-    0 0 80px #4D9078;
+  text-shadow: 0 0 18px rgba(95, 173, 86, 0.45);
 }
 
 .glow-text-subtle {
-  text-shadow:
-    0 0 5px #5FAD56,
-    0 0 10px #5FAD56;
+  text-shadow: 0 0 10px rgba(95, 173, 86, 0.28);
 }
 
 .glow-text-gold {
-  text-shadow:
-    0 0 10px #F2C14E,
-    0 0 20px #F2C14E,
-    0 0 40px #F78154;
+  text-shadow: 0 0 18px rgba(242, 193, 78, 0.45);
 }
 
 .glow-text-berry {
-  text-shadow:
-    0 0 10px #B4436C,
-    0 0 20px #B4436C;
+  text-shadow: 0 0 12px rgba(180, 67, 108, 0.32);
 }
 
-/* ---- Dripping Slime Keyframes ---- */
-@keyframes drip {
+/* ---- Rising Motes ----
+   Sediment lifting, first life rising out of the dark. Slow, calm, fades
+   in then out — the drip reversed (see design-philosophy.md §3 "Motion"). */
+@keyframes mote-rise {
   0% {
-    transform: translateY(-100%) scaleY(0);
+    transform: translateY(64px) scale(0.55);
     opacity: 0;
   }
-  20% {
-    opacity: 1;
+  18% {
+    opacity: 0.85;
   }
-  60% {
-    transform: translateY(0) scaleY(1);
-  }
-  80% {
-    transform: translateY(10px) scaleY(1.1);
+  82% {
+    opacity: 0.85;
   }
   100% {
-    transform: translateY(5px) scaleY(1);
-  }
-}
-
-@keyframes drip-continuous {
-  0% {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(60px);
+    transform: translateY(-8px) scale(1);
     opacity: 0;
   }
 }
@@ -146,30 +119,6 @@ body {
   }
   75% {
     border-radius: 60% 30% 60% 40% / 70% 50% 40% 60%;
-  }
-}
-
-/* ---- Film Grain ---- */
-@keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
-}
-
-/* ---- VHS Scanlines ---- */
-@keyframes scanline-move {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(4px);
   }
 }
 
@@ -243,28 +192,16 @@ body {
 }
 
 /* ---- Utility Classes ---- */
-.animate-drip {
-  animation: drip 2s ease-out forwards;
-}
-
-.animate-drip-continuous {
-  animation: drip-continuous 3s ease-in-out infinite;
+.animate-mote-rise {
+  animation: mote-rise 7s ease-in-out infinite;
 }
 
 .animate-bubble-rise {
-  animation: bubble-rise 4s ease-out infinite;
+  animation: bubble-rise 9s ease-out infinite;
 }
 
 .animate-blob-morph {
-  animation: blob-morph 8s ease-in-out infinite;
-}
-
-.animate-grain {
-  animation: grain 0.5s steps(10) infinite;
-}
-
-.animate-scanline {
-  animation: scanline-move 0.1s linear infinite alternate;
+  animation: blob-morph 16s ease-in-out infinite;
 }
 
 .animate-pulse-glow {
@@ -300,85 +237,64 @@ body {
 }
 
 /* ============================================================
-   Poster / flyer utilities
-   The site reads like a hand-made show flyer, not a SaaS page.
-   These are the small "made by a person" tells.
+   Formation / depth utilities
+   The ooze itself: sediment, strata, first light. Not a flyer.
+   See docs/design-philosophy.md §3 (Texture / Light).
+   Class names are kept where components already reference them so
+   the whole site shifts at once; the .tape-strip spans were removed
+   from the components and the class deleted.
    ============================================================ */
 
-/* Halftone dot field — like a xerox of newsprint. Stack on top of
-   a colored background with mix-blend-mode: multiply to age it. */
+/* Fine sediment grain — the texture of matter, near-invisible, static
+   (no animation). Replaces the xerox halftone; same class names so
+   existing overlays become grain instead of dots. */
 .bg-halftone {
-  background-image: radial-gradient(rgba(232, 230, 225, 0.55) 1px, transparent 1.2px);
-  background-size: 4px 4px;
+  background-image: radial-gradient(rgba(232, 230, 225, 0.05) 0.5px, transparent 0.6px);
+  background-size: 3px 3px;
 }
 
 .bg-halftone-lg {
-  background-image: radial-gradient(rgba(232, 230, 225, 0.4) 1.4px, transparent 1.6px);
-  background-size: 7px 7px;
+  background-image: radial-gradient(rgba(232, 230, 225, 0.045) 0.6px, transparent 0.8px);
+  background-size: 5px 5px;
 }
 
-/* Hairline horizontal lines — registration-mark grid behind big type. */
+/* Strata hairlines — faint horizontal sediment layers behind big type. */
 .bg-rule-lines {
   background-image: repeating-linear-gradient(
     to bottom,
-    rgba(95, 173, 86, 0.08) 0,
-    rgba(95, 173, 86, 0.08) 1px,
+    rgba(95, 173, 86, 0.07) 0,
+    rgba(95, 173, 86, 0.07) 1px,
     transparent 1px,
-    transparent 14px
+    transparent 16px
   );
 }
 
-/* Misregistered ink — slight cyan/magenta offset behind text gives
-   the "cheap two-color print" feel. Apply with text-shadow. */
-.ink-misreg {
-  text-shadow:
-    -2px 0 0 rgba(178, 67, 108, 0.45),
-    2px 0 0 rgba(95, 173, 86, 0.45);
-}
-
-/* Tape strip — a translucent piece of masking tape over a corner.
-   Use on a pseudo-element or a span with a slight rotate. */
-.tape-strip {
-  background: linear-gradient(
+/* Deep strata — a stratified depth gradient for richer panel/section
+   backgrounds: cold dark resolving through faint living layers. */
+.bg-strata {
+  background-image: linear-gradient(
     180deg,
-    rgba(242, 193, 78, 0.35) 0%,
-    rgba(242, 193, 78, 0.25) 50%,
-    rgba(242, 193, 78, 0.35) 100%
+    rgba(13, 13, 13, 0) 0%,
+    rgba(77, 144, 120, 0.05) 38%,
+    rgba(95, 173, 86, 0.06) 62%,
+    rgba(13, 13, 13, 0) 100%
   );
-  border-left: 1px dashed rgba(13, 13, 13, 0.25);
-  border-right: 1px dashed rgba(13, 13, 13, 0.25);
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.05) inset,
-    0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-/* Stamped rubber-ink look — for "RATED YP", "ONE WEEKEND ONLY", etc. */
+/* Edge label — a clean, quiet caption frame. Replaces the rotated
+   rubber "stamp"; no tilt, no ink-noise, just a hairline and tracking. */
 .stamp {
   font-family: var(--font-typewriter), monospace;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  border: 2px solid currentColor;
-  padding: 0.25rem 0.6rem;
+  border: 1px solid currentColor;
+  padding: 0.2rem 0.6rem;
   display: inline-block;
-  /* Slight rotation + the broken-edge look of a real rubber stamp */
-  transform: rotate(-2.5deg);
-  opacity: 0.85;
-  position: relative;
+  opacity: 0.75;
 }
 
-.stamp::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.35) 0.8px, transparent 1.1px);
-  background-size: 3px 3px;
-  mix-blend-mode: screen;
-  pointer-events: none;
-  opacity: 0.4;
-}
-
-/* Paper grit — a low-frequency noise overlay for the body of a
-   "printed" panel. Cheaper than a full SVG noise. */
+/* Sediment grit — a single, very faint static grain on a panel body.
+   The texture of matter, not aged newsprint. */
 .paper-grit {
   position: relative;
 }
@@ -386,26 +302,22 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(rgba(232, 230, 225, 0.04) 1px, transparent 1px),
-    radial-gradient(rgba(232, 230, 225, 0.06) 1px, transparent 1px);
-  background-size: 3px 3px, 7px 7px;
-  background-position: 0 0, 1px 2px;
+  background-image: radial-gradient(rgba(232, 230, 225, 0.035) 0.5px, transparent 0.7px);
+  background-size: 4px 4px;
   pointer-events: none;
   mix-blend-mode: overlay;
 }
 
-/* Marquee underline — the chunky theater-marquee horizontal bar. */
+/* First-light rule — a thin emergent line, warmth surfacing out of the
+   dark. Replaces the chunky theater-marquee bar (same class name). */
 .marquee-rule {
-  height: 6px;
-  background: repeating-linear-gradient(
+  height: 1px;
+  background: linear-gradient(
     90deg,
-    var(--color-ooze-green) 0,
-    var(--color-ooze-green) 14px,
-    transparent 14px,
-    transparent 22px
+    transparent 0%,
+    rgba(95, 173, 86, 0.7) 50%,
+    transparent 100%
   );
-  opacity: 0.85;
 }
 
 /* Staggered hero entrance. Each layer with --i: <number> reveals on a stagger. */

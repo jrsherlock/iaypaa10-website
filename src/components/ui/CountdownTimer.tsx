@@ -31,26 +31,22 @@ function padNumber(num: number): string {
 }
 
 export default function CountdownTimer() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-  const [mounted, setMounted] = useState(false);
+  // Lazily initialise from the real remaining time so the server renders
+  // the correct countdown — it must not depend on client JS to be visible.
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft);
 
   useEffect(() => {
+    // Re-sync to the client clock just after paint (rAF avoids a
+    // synchronous setState cascade), then tick every second.
+    const raf = requestAnimationFrame(() => setTimeLeft(calculateTimeLeft()));
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    // Use requestAnimationFrame to avoid synchronous setState in effect body
-    requestAnimationFrame(() => {
-      setMounted(true);
-      setTimeLeft(calculateTimeLeft());
-    });
-
-    return () => clearInterval(timer);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearInterval(timer);
+    };
   }, []);
 
   const blocks: { label: string; value: number; isSeconds?: boolean }[] = [
@@ -74,12 +70,11 @@ export default function CountdownTimer() {
             `}
           >
             <span
-              className={`
+              suppressHydrationWarning
+              className="
                 font-[family-name:var(--font-mono)] text-4xl md:text-6xl
                 font-bold text-gold glow-text-gold tabular-nums
-                transition-all duration-300
-                ${!mounted ? "opacity-0" : "opacity-100"}
-              `}
+              "
             >
               {padNumber(value)}
             </span>

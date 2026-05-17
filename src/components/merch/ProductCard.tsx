@@ -43,7 +43,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Sold Out Overlay */}
         {product.soldOut && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-void-black/60">
-            <span className="font-[family-name:var(--font-creepster)] text-2xl text-bone-white/80 glow-text-subtle">
+            <span className="font-anton text-2xl text-bone-white/80 glow-text-subtle">
               Sold Out
             </span>
           </div>
@@ -52,7 +52,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       {/* Details */}
       <div className="p-5">
-        <h3 className="font-[family-name:var(--font-creepster)] text-lg text-ooze-green mb-1 glow-text-subtle">
+        <h3 className="font-anton text-lg text-ooze-green mb-1 glow-text-subtle">
           {product.name}
         </h3>
         <p className="text-bone-white/60 text-sm leading-relaxed mb-3">

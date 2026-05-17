@@ -21,7 +21,7 @@ export default function GlowText({
 
   return (
     <Tag
-      className={`font-[family-name:var(--font-creepster)] text-ooze-green ${glowClass} ${sizeDefaults[Tag]} ${className}`}
+      className={`font-anton text-ooze-green ${glowClass} ${sizeDefaults[Tag]} ${className}`}
     >
       {children}
     </Tag>

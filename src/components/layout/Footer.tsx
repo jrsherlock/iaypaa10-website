@@ -44,7 +44,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: About IAYPAA */}
           <div className="lg:col-span-1">
-            <h3 className="font-[family-name:var(--font-creepster)] text-2xl text-ooze-green glow-text-subtle mb-4">
+            <h3 className="font-anton text-2xl text-ooze-green glow-text-subtle mb-4">
               {CONFERENCE.name}
             </h3>
             <p className="text-sm text-bone-white/60 leading-relaxed mb-3">

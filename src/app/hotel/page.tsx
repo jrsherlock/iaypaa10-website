@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import DrippingSlime from "@/components/effects/DrippingSlime";
+import RisingMotes from "@/components/effects/RisingMotes";
 import SlimeDivider from "@/components/ui/SlimeDivider";
 import { CONFERENCE } from "@/lib/constants";
 
@@ -69,7 +69,7 @@ export default function HotelPage() {
           className="absolute inset-0 bg-rule-lines opacity-50 pointer-events-none"
           aria-hidden="true"
         />
-        <DrippingSlime
+        <RisingMotes
           count={5}
           color="#5FAD56"
           className="absolute top-0 left-0 right-0 z-10"
@@ -78,29 +78,29 @@ export default function HotelPage() {
         <div className="relative z-20 max-w-3xl mx-auto">
           <div className="flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4 mb-8">
             <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
-              Reel 05
+              Where we meet
             </span>
             <h1 className="font-anton text-4xl sm:text-6xl uppercase tracking-wide text-bone-white leading-none">
-              The <span className="text-ooze-green">Theater</span>
+              The <span className="text-ooze-green">Venue</span>
             </h1>
           </div>
 
           <p className="font-typewriter text-sm sm:text-base tracking-[0.15em] uppercase text-bone-white/70 leading-relaxed">
-            {CONFERENCE.date} &nbsp;//&nbsp; where it goes down
+            {CONFERENCE.date} &nbsp;—&nbsp; where we&apos;ll be
           </p>
         </div>
       </section>
 
-      {/* ---------- Venue marquee — hero image + name + address ---------- */}
+      {/* ---------- Venue — hero image + name + address ---------- */}
       <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
         <div className="max-w-4xl mx-auto">
-          {/* Marquee header */}
+          {/* Venue header */}
           <div className="mb-6 sm:mb-7">
             <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-gold mb-3">
-              // now playing
+              The venue
             </p>
             <h2
-              className="font-[family-name:var(--font-creepster)] text-gold leading-[0.9]"
+              className="font-anton text-gold leading-[0.9]"
               style={{
                 fontSize: "clamp(2.6rem, 9vw, 6rem)",
                 textShadow:
@@ -174,7 +174,7 @@ export default function HotelPage() {
           </div>
 
           <blockquote
-            className="font-[family-name:var(--font-creepster)] text-ooze-green text-center leading-[0.95] mb-8"
+            className="font-anton text-ooze-green text-center leading-[0.95] mb-8"
             style={{
               fontSize: "clamp(2.4rem, 8vw, 4.5rem)",
               textShadow:
@@ -187,13 +187,13 @@ export default function HotelPage() {
           </blockquote>
 
           <p className="font-news text-bone-white/85 text-lg sm:text-xl leading-[1.75] text-center mb-10 max-w-xl mx-auto">
-            The Highlander is Iowa City&rsquo;s psychedelic-luxury urban resort
-            &mdash; the kind of place where a B-movie horror conference makes
-            perfect sense. Pool, arcade, patio bar, courtyard, live music. No
+            The Highlander is Iowa City&rsquo;s independent urban resort
+            &mdash; warm, a little off the beaten path, and easy to feel at
+            home in. Pool, arcade, patio bar, courtyard, live music. No
             shortage of fellowship space between sessions.
           </p>
 
-          {/* Amenities checklist — typewriter, like the back of a ticket */}
+          {/* Amenities checklist */}
           <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 max-w-md mx-auto">
             {VENUE_HIGHLIGHTS.map((label) => (
               <li
@@ -258,15 +258,6 @@ export default function HotelPage() {
       {/* ---------- Room block — ticket-stub style notice ---------- */}
       <section className="relative px-4 sm:px-6 py-20 sm:py-24">
         <div className="relative max-w-xl mx-auto">
-          <span
-            aria-hidden="true"
-            className="absolute -top-3 left-8 w-16 h-5 tape-strip rotate-[-4deg]"
-          />
-          <span
-            aria-hidden="true"
-            className="absolute -top-3 right-8 w-16 h-5 tape-strip rotate-[3deg]"
-          />
-
           <div className="relative bg-void-black border border-gold/40 paper-grit p-8 sm:p-10">
             {/* perforation line down the left */}
             <span

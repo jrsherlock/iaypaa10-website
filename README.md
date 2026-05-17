@@ -34,7 +34,7 @@ That shaped these design decisions:
 | Decision | Why |
 |---|---|
 | **Mobile-first layout** | The QR-from-poster flow is the primary entry. Desktop is treated as a happy bonus. |
-| **B-movie horror aesthetic ("Primordial Ooze")** | YPAA conference sites trend clean and corporate. We deliberately go the other way so the 10th annual feels singular, memorable, and unmistakably the work of young people. |
+| **"Emergence, not horror" aesthetic ("Primordial Ooze")** | The theme is read for its real meaning — life cohering out of formless muck, mapped onto the Big Book's arc from the "jumping-off place" to a new life. Dark and singular, but hopeful, never a creature-feature. The full rationale and component rules are in [`docs/design-philosophy.md`](./docs/design-philosophy.md). |
 | **Dark theme by default** | Matches the theme; easier on the eyes in low-light meeting rooms; uses less battery on OLED phones. |
 | **Conference info above the fold** | Date, location, edition number are visible immediately — no scroll required to answer "is this real and is it for me." |
 | **Email capture on the homepage** | Most first-time visitors aren't ready to register. Capturing email is the realistic conversion. Powered by Loops (see [`docs/mailing-list.md`](./docs/mailing-list.md)). |
@@ -49,40 +49,39 @@ That shaped these design decisions:
 - **Framework:** Next.js 16 (App Router) + React 19
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4 (`@theme` design tokens in `src/app/globals.css`)
-- **Animation:** Framer Motion + hand-rolled CSS keyframes for the ooze effects
-- **Fonts:** A deliberate 5-face system — see below
+- **Animation:** Hand-rolled CSS keyframes for the ambient effects (rising motes, slow formation); Framer Motion on the merch grid
+- **Fonts:** A deliberate multi-face system — see below
 - **Lead capture:** [Loops](https://loops.so) via `/api/subscribe`
 - **Hosting:** Vercel
 
 ### Typography system
 
-The site reads like a hand-made show flyer, so type is layered on purpose — each face has one job:
+Type is layered on purpose — each face has one job. (Creepster, the old drippy horror headline face, was retired in the redesign; see [`docs/design-philosophy.md`](./docs/design-philosophy.md).)
 
 | Face | Variable | When |
 |---|---|---|
-| **Creepster** | `--font-creepster` | The drippy horror headline. The "movie title." Used sparingly. |
-| **Anton** | `--font-anton` (`.font-anton`) | Chunky condensed woodtype for tabloid-style subheads and section labels — the "feature presentation" voice. |
-| **Special Elite** | `--font-typewriter` (`.font-typewriter`) | Stamps, ticket stubs, captions, "rated YP" badges. The dispatch voice. |
-| **Newsreader** | `--font-news` (`.font-news`) | The serif used the moment the costume comes off — for sincere passages about recovery, what IAYPAA actually is. |
+| **Anton** | `--font-anton` (`.font-anton`) | The primary headline face. Heavy, condensed — structure formed out of the soft stuff. All page/section headings. |
+| **Newsreader** | `--font-news` (`.font-news`) | The serif voice — sincere passages about recovery and what IAYPAA actually is. The Big Book register. |
+| **Special Elite** | `--font-typewriter` (`.font-typewriter`) | Humble captions, dates, small labels only — the quiet meeting-list voice. (No longer used for rubber "stamps".) |
 | **Space Grotesk** | `--font-space` | General body copy where readability matters most. |
 | **JetBrains Mono** | `--font-mono` | Countdown digits, dates, technical numerals. |
 
-Mixing these is intentional: a real show flyer has 4–5 fonts on it. The rule is that each face has a single, repeatable role.
+Each face has a single, repeatable role.
 
 ### Design tokens
 
-The palette is derived from a [coolors.co](https://coolors.co/5fad56-f2c14e-f78154-4d9078-b4436c) scheme and exposed as Tailwind theme variables:
+The palette is derived from a [coolors.co](https://coolors.co/5fad56-f2c14e-f78154-4d9078-b4436c) scheme and exposed as Tailwind theme variables. Hex values are unchanged from the original scheme, but the redesign reframed their *intent* (green reads as "first light," not "toxic"; warm amber is life emerging from cold) — see [`docs/design-philosophy.md`](./docs/design-philosophy.md) §3.
 
 | Token | Hex | Role |
 |---|---|---|
-| `ooze-green` | `#5FAD56` | Primary accent, glows, CTAs |
-| `swamp-teal` | `#4D9078` | Secondary accent |
-| `gold` | `#F2C14E` | Highlights, links |
-| `ember` | `#F78154` | Warm accents |
-| `berry` | `#B4436C` | Cool accents |
-| `void-black` | `#0D0D0D` | Page background |
-| `dark-ooze` | `#0A1A12` | Section backgrounds |
-| `toxic-green` | `#1B3B30` | Card backgrounds |
+| `ooze-green` | `#5FAD56` | Primary accent / first light — glows, CTAs |
+| `swamp-teal` | `#4D9078` | The cold deep before life — secondary accent |
+| `gold` | `#F2C14E` | Warmth emerging from cold — highlights, links |
+| `ember` | `#F78154` | Heat of formation — warm accents (sparing) |
+| `berry` | `#B4436C` | Cool accent |
+| `void-black` | `#0D0D0D` | The lightless origin — page background |
+| `dark-ooze` | `#0A1A12` | Depth — section backgrounds |
+| `toxic-green` | `#1B3B30` | Deep strata — card backgrounds (name kept; intent is "strata," not "poison") |
 | `bone-white` | `#E8E6E1` | Body text |
 
 ---
@@ -94,8 +93,9 @@ src/
   app/                  # Next.js App Router routes
     page.tsx            # Homepage (hero, countdown, info, theme, signup)
     about/              # What IAYPAA is and what to expect
-    registration/       # Coming-soon + early lead capture
-    schedule/           # Day-by-day program (TBD shell)
+    registration/       # Lead capture + ticket info
+    schedule/           # Day-by-day program (built from the working timeline)
+    pre-conference/     # Lead-up events; past = greyed archive, upcoming = full colour
     speakers/           # Speaker lineup (TBD shell)
     hotel/              # Venue details and booking link
     merch/              # Conference merch
@@ -103,21 +103,25 @@ src/
     outreach/           # How to get involved / committee
     faq/                # Common questions
     api/subscribe/      # POST -> Loops (email signup)
-    layout.tsx          # Root layout: fonts, nav, footer, film grain
-    globals.css         # Tailwind v4 theme + ooze keyframes
+    layout.tsx          # Root layout: fonts, nav, footer
+    globals.css         # Tailwind v4 theme + formation/depth keyframes
   components/
     sections/           # Full homepage sections (Hero, QuickInfoCards, ...)
-    ui/                 # Reusable bits (CountdownTimer, GlowText, OozeButton, ...)
-    effects/            # Atmosphere (FilmGrain, DrippingSlime, Scanlines, BubblingOoze)
+    ui/                 # Reusable bits (CountdownTimer, GlowText, OozeButton, ComingSoon, ...)
+    effects/            # Atmosphere (RisingMotes, BubblingOoze)
     layout/             # Navbar (incl. NavDropdown), MobileMenu, Footer
     merch/              # Merch grid + cards
   lib/
-    constants.ts        # CONFERENCE data, NAV_GROUPS, PAST_CONFERENCES, FAQ_ITEMS
+    constants.ts        # CONFERENCE, NAV_GROUPS/NAV_LINKS, PAST_CONFERENCES,
+                        #   PRE_CONFERENCE_EVENTS, FAQ_ITEMS
 public/
   images/               # Poster art, hotel photos, ooze textures
 docs/
+  design-philosophy.md  # "Emergence, not horror" — design north star + component audit
   mailing-list.md       # Loops setup + broadcast runbook
+  welcome-email.md      # Welcome-email copy (+ .html) for the Loops automation
 scripts/
+  loops/                # Loops maintenance tooling (official SDK)
   wp/                   # Helper scripts for the legacy iaypaa.org WP site
 ```
 
@@ -161,6 +165,7 @@ Most copy lives in **`src/lib/constants.ts`**. Update there once and it propagat
 - `NAV_GROUPS` — desktop nav structure (grouped under "Event" and "Info" dropdowns)
 - `NAV_LINKS` — flat list used by the footer and mobile menu
 - `PAST_CONFERENCES` — historical edition list
+- `PRE_CONFERENCE_EVENTS` — lead-up events; the `/pre-conference` page sorts and splits past/upcoming automatically by `date`
 - `FAQ_ITEMS` — the FAQ page
 
 Page-specific prose (About, Hotel, Outreach, etc.) lives directly in each route's `page.tsx`.
@@ -175,6 +180,7 @@ The site deploys to Vercel on every push to `main`. Preview deployments are crea
 
 ## Related
 
+- **Design philosophy:** [`docs/design-philosophy.md`](./docs/design-philosophy.md) — the "emergence, not horror" north star and the component audit the redesign followed
 - **Mailing list runbook:** [`docs/mailing-list.md`](./docs/mailing-list.md)
 - **Original implementation plan:** [`IAYPAA-X-IMPLEMENTATION-PLAN.md`](./IAYPAA-X-IMPLEMENTATION-PLAN.md) — kept as a design-intent reference; the live site has evolved from it
 - **Legacy WP site tooling:** [`scripts/wp/README.md`](./scripts/wp/README.md)

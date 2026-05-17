@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CONFERENCE } from "@/lib/constants";
-import DrippingSlime from "@/components/effects/DrippingSlime";
+import RisingMotes from "@/components/effects/RisingMotes";
 import SlimeDivider from "@/components/ui/SlimeDivider";
 
 export const metadata: Metadata = {
@@ -55,7 +55,7 @@ const TIERS: readonly Tier[] = [
 export default function RegistrationPage() {
   return (
     <div className="relative">
-      {/* ---------- Page header — stamped, asymmetric, not centered Creepster ---------- */}
+      {/* ---------- Page header ---------- */}
       <section className="relative pt-20 pb-12 sm:pt-24 sm:pb-16 px-4 sm:px-6 overflow-hidden">
         {/* faint rule-line backdrop */}
         <div
@@ -63,7 +63,7 @@ export default function RegistrationPage() {
           aria-hidden="true"
         />
         {/* a few drips at the top edge to tie it to the homepage hero */}
-        <DrippingSlime
+        <RisingMotes
           count={5}
           color="#5FAD56"
           className="absolute top-0 left-0 right-0 z-10"
@@ -72,10 +72,10 @@ export default function RegistrationPage() {
         <div className="relative z-20 max-w-3xl mx-auto">
           <div className="flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4 mb-8">
             <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
-              Reel 02
+              Registration
             </span>
             <h1 className="font-anton text-4xl sm:text-6xl uppercase tracking-wide text-bone-white leading-none">
-              The <span className="text-ooze-green">Box</span> Office
+              Reserve your <span className="text-ooze-green">seat</span>
             </h1>
           </div>
 
@@ -88,26 +88,16 @@ export default function RegistrationPage() {
         </div>
       </section>
 
-      {/* ---------- Primary CTA — marquee panel ---------- */}
+      {/* ---------- Primary CTA ---------- */}
       <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
         <div className="relative max-w-2xl mx-auto">
-          {/* tape strips */}
-          <span
-            aria-hidden="true"
-            className="absolute -top-3 left-8 w-20 h-5 tape-strip rotate-[-5deg]"
-          />
-          <span
-            aria-hidden="true"
-            className="absolute -top-3 right-8 w-20 h-5 tape-strip rotate-[4deg]"
-          />
-
           <div className="relative bg-toxic-green/35 border border-ooze-green/30 paper-grit p-8 sm:p-12">
             <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-gold mb-4">
-              // tickets on sale
+              Registration open
             </p>
 
             <h2
-              className="font-[family-name:var(--font-creepster)] text-ooze-green leading-[0.9] mb-4"
+              className="font-anton text-ooze-green leading-[0.9] mb-4"
               style={{
                 fontSize: "clamp(2.5rem, 9vw, 5.5rem)",
                 textShadow:
@@ -179,7 +169,7 @@ export default function RegistrationPage() {
           </div>
 
           <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/40 text-center mt-12 sm:mt-14">
-            // prices reviewed quarterly by the host committee
+            Prices reviewed quarterly by the host committee
           </p>
         </div>
       </section>
