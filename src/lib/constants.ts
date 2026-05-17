@@ -22,16 +22,17 @@ export const CONFERENCE = {
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Registration", href: "/registration" },
   { label: "Schedule", href: "/schedule" },
-  { label: "Pre-Conference Events", href: "/pre-conference" },
-  { label: "Hotel & Venue", href: "/hotel" },
   { label: "Speakers", href: "/speakers" },
-  { label: "Merch", href: "/merch" },
+  { label: "Hotel & Venue", href: "/hotel" },
+  { label: "About", href: "/about" },
+  { label: "FAQ", href: "/faq" },
   { label: "Past Conferences", href: "/past-conferences" },
   { label: "Outreach", href: "/outreach" },
-  { label: "FAQ", href: "/faq" },
+  { label: "Registration", href: "/registration" },
+  { label: "Pre-Conference Events", href: "/pre-conference" },
+  { label: "Merch", href: "/merch" },
+  { label: "Stay In the Loop", href: "/#mailing-list" },
 ] as const;
 
 // Grouped nav used by the desktop Navbar. The flat NAV_LINKS above is still
@@ -45,26 +46,22 @@ export type NavGroupItem =
 
 export const NAV_GROUPS: readonly NavGroupItem[] = [
   { label: "Home", href: "/" },
-  { label: "Registration", href: "/registration" },
   {
-    label: "Event",
+    label: "IAYPAA X Conference Info",
     children: [
       { label: "Schedule", href: "/schedule" },
-      { label: "Pre-Conference Events", href: "/pre-conference" },
       { label: "Speakers", href: "/speakers" },
       { label: "Hotel & Venue", href: "/hotel" },
-    ],
-  },
-  {
-    label: "Info",
-    children: [
       { label: "About", href: "/about" },
       { label: "FAQ", href: "/faq" },
       { label: "Past Conferences", href: "/past-conferences" },
       { label: "Outreach", href: "/outreach" },
     ],
   },
+  { label: "Registration", href: "/registration" },
+  { label: "Pre-Conference Events", href: "/pre-conference" },
   { label: "Merch", href: "/merch" },
+  { label: "Stay In the Loop", href: "/#mailing-list" },
 ] as const;
 
 export const PAST_CONFERENCES = [
@@ -91,75 +88,80 @@ export type PreConferenceEvent = {
   location: string;
   city?: string;
   description: string;
-  /** Optional link — details/RSVP for upcoming, recap/photos for past. */
+  /**
+   * Optional flyer to download. Drop the file in `public/flyers/` and set
+   * this to its public path, e.g. "/flyers/speakers-sweats-bake-off.pdf".
+   * The modal shows a Download button only when this is set.
+   */
+  flyer?: string;
+  /** Optional extra link — RSVP/details for upcoming, recap for past. */
   link?: string;
   linkLabel?: string;
 };
 
-// Lead-up events in the months before the Aug 14–16, 2026 conference.
-// Past events stay here as an archive (rendered greyed out, still
-// accessible); upcoming events show in full colour. Sample data — edit
-// freely; the page sorts and splits automatically by date.
+// Lead-up events before the Aug 14–16, 2026 conference, taken from the
+// Summer 2026 events poster. Past events stay here as an archive (greyed
+// out, still openable); upcoming events show in full colour. The page
+// sorts and splits automatically by date.
+//
+// To add a downloadable flyer: put the file in `public/flyers/` and set
+// `flyer: "/flyers/<filename>"` on the event below.
 export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
   {
-    id: "winter-bowling-fundraiser",
-    title: "Winter Bowling Fundraiser",
-    date: "2026-02-21",
-    time: "7:00 PM",
-    location: "Colonial Lanes",
-    city: "Iowa City, IA",
+    id: "speakers-sweats-bake-off",
+    title: "Speakers & Sweats Bake-Off",
+    date: "2026-06-14",
+    location: "Last Chance AA Group",
+    city: "4711 44th St, Suite 5, Rock Island, IL",
     description:
-      "A night of bowling, raffle prizes, and fellowship to open the IAYPAA X fundraising season.",
-    link: "#",
-    linkLabel: "See recap",
+      "A speaker meeting and a bake-off — bring sweats, bring a dessert, bring a friend. Fellowship and a little friendly competition for IAYPAA X.",
   },
   {
-    id: "spring-speaker-jam",
-    title: "Spring Speaker Jam",
-    date: "2026-04-18",
-    time: "6:30 PM",
-    location: "First Presbyterian Church",
-    city: "Cedar Rapids, IA",
-    description:
-      "An evening speaker meeting with food, fellowship, and an update from the host committee.",
-    link: "#",
-    linkLabel: "See recap",
-  },
-  {
-    id: "outreach-car-wash",
-    title: "Outreach Car Wash & Cookout",
-    date: "2026-05-30",
-    time: "11:00 AM",
-    location: "Mercer Park",
-    city: "Iowa City, IA",
-    description:
-      "Bring the car, stay for the cookout. All proceeds go toward scholarships for IAYPAA X.",
-    link: "#",
-    linkLabel: "Details",
-  },
-  {
-    id: "summer-kickoff-bbq",
-    title: "Summer Kickoff BBQ & Speaker",
+    id: "aa-pride-event",
+    title: "AA Pride Event",
     date: "2026-06-27",
-    time: "5:00 PM",
-    location: "Greenwood Pavilion",
-    city: "Des Moines, IA",
+    location: "Iowa City, IA",
     description:
-      "The last big push before August — a cookout, a powerhouse speaker, and a lot of hugs.",
-    link: "#",
-    linkLabel: "Details",
+      "An AA Pride gathering. Proceeds go to the Iowa City IAYPAA Conference. All are welcome.",
   },
   {
-    id: "final-fellowship-night",
-    title: "Final Fellowship Night",
-    date: "2026-07-25",
-    time: "7:00 PM",
-    location: "The Highlander Hotel",
-    city: "Iowa City, IA",
+    id: "picnic-in-the-park",
+    title: "Picnic in the Park",
+    date: "2026-07-04",
+    time: "1:00–4:00 PM",
+    location: "Lower City Park",
+    city: "200 Park Rd, Iowa City, IA",
     description:
-      "One more meeting at the venue itself before the doors open for IAYPAA X.",
-    link: "/registration",
-    linkLabel: "Register for IAYPAA X",
+      "A Fourth of July picnic in the park — food, fellowship, and sober fun in the afternoon sun.",
+  },
+  {
+    id: "yoga-meditation-in-the-park",
+    title: "Yoga & Meditation in the Park",
+    date: "2026-07-11",
+    time: "10:00 AM–12:00 PM",
+    location: "City Park",
+    city: "200 Park Rd, Iowa City, IA",
+    description:
+      "A morning of yoga and meditation in the park. All experience levels welcome — come as you are.",
+  },
+  {
+    id: "virtual-aa-panel",
+    title: "Virtual AA Panel",
+    date: "2026-07-17",
+    time: "7:00–8:30 PM",
+    location: "On Zoom",
+    description:
+      "A virtual AA panel for anyone who can't make it in person. Join from anywhere.",
+  },
+  {
+    id: "kick-off-spaghetti-dinner",
+    title: "Kick-Off Event (Spaghetti Dinner)",
+    date: "2026-08-01",
+    time: "5:00–8:00 PM",
+    location: "Zion Lutheran Church",
+    city: "310 N Johnson St, Iowa City, IA",
+    description:
+      "The kick-off spaghetti dinner — the last big gathering before the doors open for IAYPAA X. Eat well, then we go.",
   },
 ];
 
