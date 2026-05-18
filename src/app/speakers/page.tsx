@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import RisingMotes from "@/components/effects/RisingMotes";
 import ComingSoon from "@/components/ui/ComingSoon";
 import SlimeDivider from "@/components/ui/SlimeDivider";
@@ -6,15 +7,8 @@ import { CONFERENCE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Speakers",
-  description: `The speaker lineup for ${CONFERENCE.name} — Primordial Ooze. Nominations open, full cast TBA.`,
+  description: `Speakers, panelists, and workshop leaders for ${CONFERENCE.name} — Primordial Ooze. Confirmed voices are listed on the program; the full keynote lineup is still being announced.`,
 };
-
-/**
- * Six anonymous slots in the lineup — placeholder until the host
- * committee confirms speakers. Kept as a small constant so the layout
- * doesn't pretend there's more here than there is.
- */
-const SLOTS = Array.from({ length: 6 }, (_, i) => i + 1);
 
 export default function SpeakersPage() {
   return (
@@ -56,64 +50,47 @@ export default function SpeakersPage() {
         />
       </section>
 
-      {/* ---------- Placeholder lineup grid ---------- */}
+      {/* ---------- Confirmed so far — point to the live program ---------- */}
       <section className="relative px-4 sm:px-6 py-16 sm:py-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-rule-lines opacity-50 pointer-events-none"
           aria-hidden="true"
         />
 
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-2xl mx-auto">
           <div className="mb-10 sm:mb-12 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4">
             <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
-              Slots
+              Confirmed so far
             </span>
             <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none">
-              Six <span className="text-ooze-green">voices</span> · tba
+              It&rsquo;s on the <span className="text-ooze-green">program</span>
             </h2>
           </div>
 
-          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6">
-            {SLOTS.map((n) => (
-              <li
-                key={n}
-                className="group relative border border-ooze-green/25 bg-void-black/50 paper-grit p-5 sm:p-6"
-              >
-                {/* number marker */}
-                <div className="flex items-baseline justify-between mb-4 border-b border-ooze-green/20 pb-2">
-                  <span className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55">
-                    Voice {String(n).padStart(2, "0")}
-                  </span>
-                  <span className="font-typewriter text-[0.65rem] tracking-[0.25em] uppercase text-ember/85 border border-ember/40 px-1.5 py-0.5">
-                    TBA
-                  </span>
-                </div>
+          <p className="font-news text-bone-white/85 text-lg sm:text-xl leading-[1.75] mb-8">
+            The main speakers and step-panel leaders that are locked in appear
+            on the weekend program as their slots are confirmed &mdash; first
+            name and last initial only, in keeping with the Eleventh Tradition.
+            The full keynote lineup is still being finalized; get on the list
+            above and you&rsquo;ll hear it the day it drops.
+          </p>
 
-                {/* the "name plate" — silhouette / unknown */}
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center bg-toxic-green/30 border border-ooze-green/30">
-                    <span
-                      aria-hidden="true"
-                      className="font-anton text-2xl sm:text-3xl text-ooze-green/70"
-                    >
-                      ?
-                    </span>
-                  </div>
-                  <div className="min-w-0">
-                    <p className="font-anton text-lg sm:text-xl uppercase tracking-wide text-bone-white leading-tight">
-                      Name redacted
-                    </p>
-                    <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.2em] uppercase text-bone-white/45 mt-1">
-                      To be announced
-                    </p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <Link
+            href="/schedule"
+            className="group inline-flex items-center gap-3 bg-gold text-void-black font-anton uppercase tracking-[0.15em] text-base sm:text-lg px-7 py-3.5 border-2 border-gold transition-all hover:bg-ember hover:border-ember hover:shadow-[0_0_24px_rgba(247,129,84,0.45)]"
+          >
+            See the program
+            <span
+              aria-hidden="true"
+              className="transition-transform group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </Link>
 
-          <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/40 text-center mt-10">
-            Names withheld in keeping with the Eleventh Tradition
+          <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/40 mt-8">
+            Names withheld outside the fellowship in keeping with the Eleventh
+            Tradition
           </p>
         </div>
       </section>

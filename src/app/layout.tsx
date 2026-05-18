@@ -9,6 +9,7 @@ import {
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { CONFERENCE } from "@/lib/constants";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ const newsreader = Newsreader({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(CONFERENCE.siteUrl),
   title: {
     default: "IAYPAA X — Primordial Ooze | Iowa City, August 2026",
     template: "%s | IAYPAA X",
@@ -64,12 +66,23 @@ export const metadata: Metadata = {
     "Iowa City",
     "Primordial Ooze",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "IAYPAA X — Primordial Ooze",
     description:
       "The 10th Annual Iowa Young People in AA Conference. August 2026, Iowa City, Iowa.",
+    url: CONFERENCE.siteUrl,
+    siteName: "IAYPAA X",
     type: "website",
     locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "IAYPAA X — Primordial Ooze",
+    description:
+      "The 10th Annual Iowa Young People in AA Conference. August 2026, Iowa City, Iowa.",
   },
 };
 
