@@ -6,13 +6,12 @@ import { CONFERENCE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Hotel & Venue",
-  description: `IAYPAA X is at ${CONFERENCE.venue.name} in ${CONFERENCE.location}. ${CONFERENCE.date}. Psychedelic-luxury urban resort with pool, arcade, patio bar, and a courtyard.`,
+  description: `IAYPAA X is at ${CONFERENCE.venue.name} in ${CONFERENCE.location}. ${CONFERENCE.date}. Independent urban resort with a pool, arcade, courtyard, and live music.`,
 };
 
 const VENUE_HIGHLIGHTS: readonly string[] = [
   "Pool",
   "Arcade",
-  "Patio bar",
   "Live music",
   "Pickleball",
   "Courtyard",
@@ -189,8 +188,8 @@ export default function HotelPage() {
           <p className="font-news text-bone-white/85 text-lg sm:text-xl leading-[1.75] text-center mb-10 max-w-xl mx-auto">
             The Highlander is Iowa City&rsquo;s independent urban resort
             &mdash; warm, a little off the beaten path, and easy to feel at
-            home in. Pool, arcade, patio bar, courtyard, live music. No
-            shortage of fellowship space between sessions.
+            home in. Pool, arcade, courtyard, live music. No shortage of
+            fellowship space between sessions.
           </p>
 
           {/* Amenities checklist */}
