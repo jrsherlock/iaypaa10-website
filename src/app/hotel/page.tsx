@@ -354,13 +354,28 @@ export default function HotelPage() {
                 </span>
               </div>
 
-              <p className="font-news text-bone-white/80 text-base sm:text-lg leading-relaxed mb-5">
-                A discounted IAYPAA X group rate is being finalized. The
-                booking link will go live here once the block is open.
+              <p className="font-news text-bone-white/80 text-base sm:text-lg leading-relaxed mb-6">
+                The IAYPAA X room block is open. Book your stay at the group
+                rate using the link below.
               </p>
 
+              <a
+                href="https://www.choicehotels.com/reservations/groups/cv26l2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 bg-gold text-void-black font-anton uppercase tracking-[0.15em] text-base sm:text-lg px-7 py-3.5 border-2 border-gold transition-all hover:bg-ember hover:border-ember hover:shadow-[0_0_24px_rgba(247,129,84,0.45)] mb-6"
+              >
+                Book the room block
+                <span
+                  aria-hidden="true"
+                  className="transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </a>
+
               <p className="font-typewriter text-sm tracking-[0.08em] text-bone-white/75">
-                Until then, call{" "}
+                Prefer to call? Dial{" "}
                 <a
                   href={`tel:${venue.phone}`}
                   className="text-gold underline underline-offset-4 decoration-gold/40 hover:decoration-gold transition-colors"

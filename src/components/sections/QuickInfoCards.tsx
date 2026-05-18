@@ -30,10 +30,10 @@ const ACTS: readonly Act[] = [
     num: "II",
     label: "Where you'll stay",
     body:
-      "The Highlander Hotel, Iowa City. Conference rate when the block opens — bring a roommate, split the cost.",
+      "The Highlander Hotel, Iowa City. Group rate room block is open — bring a roommate, split the cost.",
     href: "/hotel",
     cta: "Hotel & venue",
-    status: "block tbd",
+    status: "block open",
   },
   {
     num: "III",
