@@ -360,7 +360,7 @@ export default function HotelPage() {
               </p>
 
               <a
-                href="https://www.choicehotels.com/reservations/groups/cv26l2?checkInDate=2026-08-14&checkOutDate=2026-08-16&ratePlanCode=BMYSMB"
+                href="https://www.choicehotels.com/reservations/groups/cv26l2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 bg-gold text-void-black font-anton uppercase tracking-[0.15em] text-base sm:text-lg px-7 py-3.5 border-2 border-gold transition-all hover:bg-ember hover:border-ember hover:shadow-[0_0_24px_rgba(247,129,84,0.45)] mb-6"
