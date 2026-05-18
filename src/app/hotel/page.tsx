@@ -347,7 +347,7 @@ export default function HotelPage() {
                       "0 0 12px rgba(242,193,78,0.35), 0 2px 0 rgba(0,0,0,0.4)",
                   }}
                 >
-                  TBA
+                  $119
                 </span>
                 <span className="font-typewriter text-xs tracking-[0.25em] uppercase text-bone-white/45">
                   group rate · nightly
