@@ -501,16 +501,16 @@ export default function HotelPage() {
               <h3 className="font-anton text-2xl uppercase tracking-wide text-bone-white leading-none mb-4">
                 <span className="text-ooze-green">I-80</span> runs right past
               </h3>
-              <ul className="font-typewriter text-sm sm:text-[0.95rem] text-bone-white/80 space-y-1.5">
+              <ul className="font-typewriter text-sm sm:text-[0.95rem] text-bone-white/80 space-y-2.5">
                 {DRIVES.map((d) => (
                   <li
                     key={d.from}
-                    className="grid grid-cols-[1fr_auto] gap-3 border-b border-bone-white/10 pb-1.5"
+                    className="border-b border-bone-white/10 pb-2"
                   >
-                    <span className="truncate">
+                    <span className="block">
                       from <span className="text-bone-white">{d.from}</span>
                     </span>
-                    <span className="text-bone-white/55">
+                    <span className="block text-xs sm:text-sm text-bone-white/55 mt-0.5">
                       {d.time} · {d.road}
                     </span>
                   </li>
