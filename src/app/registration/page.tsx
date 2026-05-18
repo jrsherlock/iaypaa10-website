@@ -29,7 +29,6 @@ const TIERS: readonly Tier[] = [
     note: "Limited-time price. Going up — get in before it does.",
     includes: [
       "Full weekend access",
-      "Conference swag bag",
       "All speaker sessions",
       "Workshops & panels",
       "Fellowship events",
