@@ -17,6 +17,11 @@ export const CONFERENCE = {
   social: {
     instagram: "https://www.instagram.com/iaypaa",
   },
+  // Canonical production URL for this site (used for SEO: metadataBase,
+  // sitemap, robots, OG). Keep this in sync with the deployed domain.
+  siteUrl: "https://dotenagain.com",
+  // Legacy AA Advisory WordPress site — surfaced as the "iaypaa.org" link
+  // in the footer. Not the canonical site; do not use for SEO.
   website: "https://iaypaa.org",
 } as const;
 
@@ -184,7 +189,7 @@ export const FAQ_ITEMS = [
   {
     question: "How much does it cost to attend?",
     answer:
-      "Registration pricing will be announced soon. We typically offer Early Bird, Standard, and At-the-Door pricing tiers. Scholarships are available — no one is turned away for lack of funds.",
+      "Registration is open. Early Bird is $20 for a full weekend pass — that price goes up, so get in before it does. At-the-door pricing will be announced closer to the conference. Scholarships are available and no one is turned away for lack of funds — see the Registration page to reserve your seat or to ask about a scholarship, quietly.",
   },
   {
     question: "Where will IAYPAA X be held?",
