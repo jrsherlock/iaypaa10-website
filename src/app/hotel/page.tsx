@@ -1,8 +1,27 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import RisingMotes from "@/components/effects/RisingMotes";
 import SlimeDivider from "@/components/ui/SlimeDivider";
+import HotelGallery from "@/components/sections/HotelGallery";
 import { CONFERENCE } from "@/lib/constants";
+
+// Read the hotel photo set on the server so the gallery grid renders with
+// zero client JS and stays correct no matter how many files are present
+// (gaps, or swapped for the hotel's official set later).
+function hotelPhotos(): string[] {
+  try {
+    const dir = path.join(process.cwd(), "public", "images", "hotel");
+    return fs
+      .readdirSync(dir)
+      .filter((f) => /\.(jpe?g|png|webp)$/i.test(f))
+      .sort()
+      .map((f) => `/images/hotel/${f}`);
+  } catch {
+    return [];
+  }
+}
 
 export const metadata: Metadata = {
   title: "Hotel & Venue",
@@ -19,19 +38,19 @@ const VENUE_HIGHLIGHTS: readonly string[] = [
 
 const VENUE_IMAGES = [
   {
-    src: "https://cdn.prod.website-files.com/662bf62cc1e1dce174d48bf8/6745eae51d8bf7157ebd6d39_210824_Highlander_0322%20(2)-2.jpg",
-    alt: "The Highlander Hotel exterior",
-    caption: "Out front",
+    src: "/images/highlander-pool.jpeg",
+    alt: "The Highlander Hotel indoor pool",
+    caption: "Pool",
   },
   {
-    src: "https://cdn.prod.website-files.com/662bf62cc1e1dce174d48bf8/6650df58352c8cfc061d17ef_210824_Highlander_0018.jpg",
+    src: "/images/highlander-lobby-1.jpeg",
     alt: "The Highlander Hotel lobby and lounge",
     caption: "Lobby",
   },
   {
-    src: "https://cdn.prod.website-files.com/662bf62cc1e1dce174d48bf8/6650df58352c8cfc061d17ef_210824_Highlander_0018.jpg",
-    alt: "Hotel courtyard and patio",
-    caption: "Courtyard",
+    src: "/images/highlander-lobby-2.jpeg",
+    alt: "The Highlander Hotel lounge seating",
+    caption: "Lounge",
   },
   {
     src: "/images/hotel-room.png",
@@ -59,6 +78,7 @@ const DRIVES: readonly { from: string; time: string; road: string }[] = [
 
 export default function HotelPage() {
   const { venue } = CONFERENCE;
+  const photos = hotelPhotos();
 
   return (
     <div className="relative">
@@ -206,10 +226,53 @@ export default function HotelPage() {
               </li>
             ))}
           </ul>
+
+          <p className="mt-8 text-center">
+            <a
+              href={venue.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 font-typewriter text-xs uppercase tracking-[0.25em] text-gold border-b border-gold/40 pb-0.5 transition-colors hover:text-bone-white hover:border-bone-white"
+            >
+              See the hotel&rsquo;s full photo gallery
+              <span
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </a>
+          </p>
         </div>
       </section>
 
       <SlimeDivider />
+
+      {/* ---------- Photo gallery ---------- */}
+      {photos.length > 0 ? (
+        <>
+          <section className="relative px-4 sm:px-6 py-16 sm:py-20">
+            <div className="relative max-w-5xl mx-auto">
+              <div className="mb-8 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4">
+                <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
+                  Take a look
+                </span>
+                <h2 className="font-anton text-2xl sm:text-4xl uppercase tracking-wide text-bone-white leading-none">
+                  Photo <span className="text-ooze-green">gallery</span>
+                </h2>
+              </div>
+
+              <HotelGallery images={photos} />
+
+              <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.2em] uppercase text-bone-white/40 mt-6 text-center">
+                Photos courtesy of {venue.name}
+              </p>
+            </div>
+          </section>
+
+          <SlimeDivider />
+        </>
+      ) : null}
 
       {/* ---------- Photo contact sheet ---------- */}
       <section className="relative px-4 sm:px-6 py-20 sm:py-24 overflow-hidden">
