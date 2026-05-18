@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import GlowText from "@/components/ui/GlowText";
 import SlimeDivider from "@/components/ui/SlimeDivider";
 import RisingMotes from "@/components/effects/RisingMotes";
 import OozeButton from "@/components/ui/OozeButton";
 import { CONFERENCE } from "@/lib/constants";
+
+const FLYER_SRC = "/flyers/iaypaax-flyer.jpg";
 
 export const metadata: Metadata = {
   title: "Outreach",
@@ -47,17 +50,43 @@ export default function OutreachPage() {
             Download the Flyer
           </GlowText>
           <div className="max-w-md mx-auto rounded-xl border border-gold/30 bg-toxic-green/10 p-8">
-            <div className="text-5xl mb-4">{"\uD83D\uDCC4"}</div>
+            {/* Thumbnail of the actual flyer \u2014 click to open/download */}
+            <a
+              href={FLYER_SRC}
+              download="IAYPAA-X-Flyer.jpg"
+              aria-label="Download the IAYPAA X flyer"
+              className="group block w-44 mx-auto mb-6"
+            >
+              <span className="relative block aspect-[1179/1771] overflow-hidden border border-ooze-green/35 paper-grit rotate-[-1deg] shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:rotate-0 group-hover:scale-[1.03]">
+                <Image
+                  src={FLYER_SRC}
+                  alt="IAYPAA X \u2014 Primordial Ooze conference flyer"
+                  fill
+                  className="object-cover"
+                  sizes="176px"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute top-2 left-2 stamp text-gold/90 !text-[0.55rem] !tracking-[0.25em] !py-0.5 !px-1.5 bg-void-black/60"
+                >
+                  The Flyer
+                </span>
+              </span>
+            </a>
             <p className="text-bone-white/70 mb-6 leading-relaxed">
               Print it out, share it at meetings, post it on bulletin boards,
               and pass it around. Every flyer helps carry the message to someone
               who might need it.
             </p>
-            <OozeButton href="#" className="mb-3">
-              Download Flyer (PDF)
-            </OozeButton>
+            <a
+              href={FLYER_SRC}
+              download="IAYPAA-X-Flyer.jpg"
+              className="relative inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold transition-all duration-300 bg-gold text-void-black hover:bg-ember hover:shadow-[0_0_20px_rgba(242,193,78,0.4),0_0_40px_rgba(247,129,84,0.2)]"
+            >
+              Download Flyer (JPG)
+            </a>
             <p className="text-bone-white/40 text-xs mt-4">
-              Flyer will be available for download soon
+              High-resolution JPG \u00B7 ready to print or share
             </p>
           </div>
         </section>
