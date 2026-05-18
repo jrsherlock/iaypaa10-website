@@ -6,7 +6,10 @@ import RisingMotes from "@/components/effects/RisingMotes";
 import OozeButton from "@/components/ui/OozeButton";
 import { CONFERENCE } from "@/lib/constants";
 
-const FLYER_SRC = "/flyers/iaypaax-flyer.jpg";
+// Thumbnail is the JPG (renders as an image preview); the downloaded
+// artifact is the print-ready PDF.
+const FLYER_THUMB = "/flyers/iaypaax-flyer.jpg";
+const FLYER_DOWNLOAD = "/flyers/iaypaax-flyer.pdf";
 
 export const metadata: Metadata = {
   title: "Outreach",
@@ -52,14 +55,14 @@ export default function OutreachPage() {
           <div className="max-w-md mx-auto rounded-xl border border-gold/30 bg-toxic-green/10 p-8">
             {/* Thumbnail of the actual flyer \u2014 click to open/download */}
             <a
-              href={FLYER_SRC}
-              download="IAYPAA-X-Flyer.jpg"
-              aria-label="Download the IAYPAA X flyer"
+              href={FLYER_DOWNLOAD}
+              download="IAYPAA-X-Flyer.pdf"
+              aria-label="Download the IAYPAA X flyer (PDF)"
               className="group block w-44 mx-auto mb-6"
             >
               <span className="relative block aspect-[1179/1771] overflow-hidden border border-ooze-green/35 paper-grit rotate-[-1deg] shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:rotate-0 group-hover:scale-[1.03]">
                 <Image
-                  src={FLYER_SRC}
+                  src={FLYER_THUMB}
                   alt="IAYPAA X \u2014 Primordial Ooze conference flyer"
                   fill
                   className="object-cover"
@@ -79,14 +82,14 @@ export default function OutreachPage() {
               who might need it.
             </p>
             <a
-              href={FLYER_SRC}
-              download="IAYPAA-X-Flyer.jpg"
+              href={FLYER_DOWNLOAD}
+              download="IAYPAA-X-Flyer.pdf"
               className="relative inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold transition-all duration-300 bg-gold text-void-black hover:bg-ember hover:shadow-[0_0_20px_rgba(242,193,78,0.4),0_0_40px_rgba(247,129,84,0.2)]"
             >
-              Download Flyer (JPG)
+              Download Flyer (PDF)
             </a>
             <p className="text-bone-white/40 text-xs mt-4">
-              High-resolution JPG \u00B7 ready to print or share
+              Print-ready PDF \u00B7 share it anywhere
             </p>
           </div>
         </section>
