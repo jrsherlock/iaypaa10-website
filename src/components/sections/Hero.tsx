@@ -44,7 +44,7 @@ export default function Hero() {
   const parallaxOffset = scrollY * 0.25;
 
   return (
-    <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[100svh] flex items-start sm:items-center justify-center overflow-hidden">
       {/* ---------- L1: Poster image (parallax + slow zoom) ---------- */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
         <div
@@ -101,10 +101,10 @@ export default function Hero() {
       />
 
       {/* ---------- L4: typography stack ---------- */}
-      <div className="relative z-30 flex flex-col items-center text-center px-5 sm:px-6 max-w-[52rem] w-full">
+      <div className="relative z-30 flex flex-col items-center text-center px-5 sm:px-6 max-w-[52rem] w-full pt-24 sm:pt-0">
         {/* Top ribbon — the welcome */}
         <div
-          className="poster-rise inline-flex items-center gap-3 mb-6 sm:mb-8"
+          className="poster-rise inline-flex items-center gap-3 mb-4 sm:mb-8"
           style={{ "--i": 0 } as React.CSSProperties}
         >
           <span className="h-px w-6 sm:w-10 bg-bone-white/50" />
@@ -145,7 +145,7 @@ export default function Hero() {
 
         {/* First-light rule */}
         <div
-          className="poster-rise w-44 sm:w-56 marquee-rule mt-6 sm:mt-8 mb-6 sm:mb-7"
+          className="poster-rise w-44 sm:w-56 marquee-rule mt-4 sm:mt-8 mb-4 sm:mb-7"
           style={{ ["--i" as string]: 3 }}
           aria-hidden="true"
         />
@@ -165,7 +165,7 @@ export default function Hero() {
 
         {/* Single CTA — no choice paralysis */}
         <div
-          className="poster-rise mt-9 sm:mt-11"
+          className="poster-rise mt-6 sm:mt-11"
           style={{ ["--i" as string]: 5 }}
         >
           <OozeButton href="/registration" variant="primary">
