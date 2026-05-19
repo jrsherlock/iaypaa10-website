@@ -1,13 +1,15 @@
 # Welcome email — IAYPAA X Committee
 
-This is the email a new subscriber should receive immediately after
-signing up on the website. The signup form → `/api/subscribe` already
-upserts the contact and fires a `signedUp` event in Loops. This document
-is the **content** for the Loop that listens for that event.
+This is the email a new subscriber receives immediately after signing up
+on the website. The signup form → `/api/subscribe` upserts the contact,
+fires a `signedUp` event, and **sends this email transactionally** (see
+"Wiring" below). This document is the version-controlled **content** for
+the Loops Transactional template.
 
-> **Why this lives here and not in code:** Loops has no API to create
-> automations or email templates — that's a dashboard-only action. This
-> file is the version-controlled source of truth; paste it into Loops.
+> **Why a one-time dashboard step remains:** Loops has no API to create
+> email templates — that's dashboard-only. Everything else (the trigger,
+> the recipient, the merge data) lives in our code. Paste the HTML here
+> into the Loops template once and set the env var.
 
 Available merge variables (set on the contact by `/api/subscribe`):
 `{{firstName}}`, `{{lastInitial}}`, `{{homeGroup}}`, `{{email}}`.
@@ -69,49 +71,45 @@ iaypaa@gmail.com
 
 ---
 
-## Wiring it in Loops (the part only you can do)
+## Wiring (now done in code — transactional)
 
-1. **Loops → Loops → New loop.**
-2. **Trigger:** Event → choose `signedUp` (case-sensitive — it must
-   match exactly what `/api/subscribe` sends).
-3. **Add a delay?** No — send immediately.
-4. **Action:** Send email.
-5. In the email editor, set the **subject** and **preview text** above.
-6. Body: either
-   - paste the plain version above into the rich-text editor, or
-   - switch the editor to **Code / HTML** and paste
-     [`welcome-email.html`](./welcome-email.html) (on-brand dark theme).
-7. Use the **insert-variable** control for `{{firstName}}` so the token
-   is whatever Loops expects internally.
-8. Confirm the **From** name is `IAYPAA X Committee` and the From
-   address is on your verified sending domain (see
-   [`mailing-list.md`](./mailing-list.md) §2 — domain verification is
-   what keeps this out of spam).
-9. **Publish** the loop (not Draft — a Draft loop will not send).
+The send is **already wired in `src/app/api/subscribe/route.ts`**: after a
+successful signup it calls Loops' transactional endpoint with
+`transactionalId = LOOPS_TRANSACTIONAL_WELCOME_ID` and
+`dataVariables: { firstName, lastInitial, homeGroup }`. It is non-fatal —
+if the env var is unset or Loops errors, the signup still succeeds and the
+miss is logged. So the *trigger and content wiring live in the repo*; the
+only step Loops forces into the dashboard is creating the template itself
+(Loops has no API to create email templates).
+
+**One-time setup (the only part only you can do):**
+
+1. **Loops → Transactional → Create.** (Transactional, *not* a Loop.)
+2. Set the **subject** and **preview text** from the sections above.
+3. Body: switch the editor to **Code / HTML** and paste
+   [`welcome-email.html`](./welcome-email.html) (on-brand; placeholder —
+   restyle anytime, the wiring doesn't change).
+4. Add the data variable **`firstName`** via Loops' variable picker (also
+   `lastInitial`, `homeGroup` if you use them) so the token syntax matches
+   what Loops expects. The route sends exactly these names.
+5. Confirm **From** name `IAYPAA X Committee` on your verified sending
+   domain (see [`mailing-list.md`](./mailing-list.md) §2 — domain
+   verification is what keeps this out of spam).
+6. **Publish** the transactional email, then copy its **`transactionalId`**.
+7. Put that id in **`.env.local`** and in **Vercel** (Production +
+   Preview) as `LOOPS_TRANSACTIONAL_WELCOME_ID`, then redeploy.
+
+> Do **not** also build a `signedUp` Loop that sends a welcome email —
+> that would double-send. The `signedUp` event still fires and is fine to
+> use for *other* automations/analytics, just not a second welcome.
 
 ## Test it without using the website
 
 ```
-node scripts/loops/send-test-event.mjs you+welcometest@yourdomain.com --apply
+node scripts/loops/send-welcome-test.mjs you+welcometest@yourdomain.com --apply
 ```
 
-Then check that inbox (and spam), and the contact's **Activity** tab in
-Loops to confirm the loop fired and the email was delivered. Clean up
-with `node scripts/loops/delete-contact.mjs you+welcometest@yourdomain.com --apply`.
-
-## Alternative: send it transactionally from code
-
-If you'd rather the welcome email be sent by *our* code instead of a
-dashboard Loop (more control, lives in the repo, easier to test), the
-path is:
-
-1. In Loops, create a **Transactional** email template → you get a
-   `transactionalId`.
-2. Add `LOOPS_TRANSACTIONAL_WELCOME_ID` to env (local + Vercel).
-3. In `src/app/api/subscribe/route.ts`, after the contact upsert,
-   call `loops.sendTransactionalEmail({ transactionalId, email,
-   dataVariables: { firstName, ... } })` instead of (or alongside)
-   the `signedUp` event.
-
-This still needs the template built once in the dashboard, but the
-*trigger* moves into code. Say the word and I'll wire it up.
+Sends the exact transactional call `/api/subscribe` makes. Check that
+inbox (and spam) and the contact's **Activity** tab in Loops. (Run it
+without `--apply` first for a dry run.) Clean up any test contact with
+`node scripts/loops/delete-contact.mjs you+welcometest@yourdomain.com --apply`.

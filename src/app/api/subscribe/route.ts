@@ -120,6 +120,50 @@ export async function POST(req: Request) {
       console.error("Loops events/send failed:", eventRes.status, text);
     }
 
+    // Welcome email — sent transactionally from our code so the trigger
+    // lives in the repo (not a dashboard Loop). One-time setup: create a
+    // Transactional email in Loops with the body from
+    // docs/welcome-email.html, then set LOOPS_TRANSACTIONAL_WELCOME_ID.
+    // Non-fatal: a missing id or a Loops hiccup must never fail the signup.
+    const welcomeId = process.env.LOOPS_TRANSACTIONAL_WELCOME_ID;
+    if (welcomeId) {
+      try {
+        const welcomeRes = await fetch(
+          "https://app.loops.so/api/v1/transactional",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${apiKey}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              transactionalId: welcomeId,
+              email,
+              dataVariables: {
+                firstName,
+                lastInitial,
+                homeGroup: homeGroup || "",
+              },
+            }),
+          },
+        );
+        if (!welcomeRes.ok) {
+          const text = await welcomeRes.text();
+          console.error(
+            "Loops transactional welcome failed:",
+            welcomeRes.status,
+            text,
+          );
+        }
+      } catch (welcomeErr) {
+        console.error("Loops transactional welcome error:", welcomeErr);
+      }
+    } else {
+      console.warn(
+        "/api/subscribe: LOOPS_TRANSACTIONAL_WELCOME_ID not set — welcome email skipped",
+      );
+    }
+
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("/api/subscribe error:", err);

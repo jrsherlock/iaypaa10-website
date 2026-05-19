@@ -44,15 +44,19 @@ confirm these exist on a contact in Loops:
 - `userGroup` (custom, text — all IAYPAA X signups get `iaypaa-2026`)
 - `source` (custom, text — currently always `website`)
 
-### 6. Build the welcome Loop
-- In Loops → Loops → New loop.
-- Trigger: **event** → `signedUp`.
-- Action: send an email. Use variables like `{{firstName}}` in the body.
-- **The email is already written** — copy, subject, preview text, and an
-  on-brand HTML version are in [`welcome-email.md`](./welcome-email.md)
-  / [`welcome-email.html`](./welcome-email.html). That doc also has the
-  exact step-by-step for wiring this loop and a test command.
-- Publish the loop.
+### 6. Set up the welcome email (transactional)
+The welcome email is **sent by our code** (`/api/subscribe`), not a
+dashboard Loop. The only one-time dashboard step is creating the
+Transactional template to get its id.
+- In Loops → **Transactional → Create**; paste the body from
+  [`welcome-email.html`](./welcome-email.html); set subject/preview from
+  [`welcome-email.md`](./welcome-email.md).
+- Publish it, copy the **`transactionalId`**, and set
+  `LOOPS_TRANSACTIONAL_WELCOME_ID` in `.env.local` and Vercel.
+- Full step-by-step + test command are in
+  [`welcome-email.md`](./welcome-email.md).
+- Do **not** also build a `signedUp` Loop that sends a welcome — it would
+  double-send.
 
 ## Sending a broadcast (monthly update, merch drop, etc.)
 

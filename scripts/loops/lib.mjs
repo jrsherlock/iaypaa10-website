@@ -31,6 +31,10 @@ export const loops = new LoopsClient(env.LOOPS_API_KEY);
 /** The segment every website signup is tagged with (see /api/subscribe). */
 export const USER_GROUP = "iaypaa-2026";
 
+/** Transactional id of the welcome email (see docs/welcome-email.md). */
+export const WELCOME_TRANSACTIONAL_ID =
+  env.LOOPS_TRANSACTIONAL_WELCOME_ID || null;
+
 /** Normalize an email the same way the API route does before hitting Loops. */
 export function normalizeEmail(raw) {
   return String(raw || "").trim().toLowerCase();
