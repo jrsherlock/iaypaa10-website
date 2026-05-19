@@ -125,7 +125,9 @@ export async function POST(req: Request) {
     // Transactional email in Loops with the body from
     // docs/welcome-email.html, then set LOOPS_TRANSACTIONAL_WELCOME_ID.
     // Non-fatal: a missing id or a Loops hiccup must never fail the signup.
-    const welcomeId = process.env.LOOPS_TRANSACTIONAL_WELCOME_ID;
+    // .trim() so an empty / whitespace placeholder env value (Vercel may
+    // not store a truly empty string) counts as "not configured".
+    const welcomeId = process.env.LOOPS_TRANSACTIONAL_WELCOME_ID?.trim();
     if (welcomeId) {
       try {
         const welcomeRes = await fetch(
