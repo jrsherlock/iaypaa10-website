@@ -2,110 +2,124 @@ import type { Metadata } from "next";
 import GlowText from "@/components/ui/GlowText";
 import SlimeDivider from "@/components/ui/SlimeDivider";
 import RisingMotes from "@/components/effects/RisingMotes";
+import FeaturedSpecimen from "@/components/merch/FeaturedSpecimen";
 import ProductGrid from "@/components/merch/ProductGrid";
 import { PRODUCTS, PRINTFUL_STORE_URL } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Merch",
   description:
-    "Official conference merchandise — hoodies, tees, stickers, and more. Shop online or pick up at the event.",
+    "The IAYPAA X catalogue — hoodies, tees, stickers, and more. Every order is self-supporting: it keeps the conference running. Pick up at the event or order online.",
 };
 
-const MERCH_FAQ = [
+const featured = PRODUCTS.find((p) => p.featured) ?? PRODUCTS[0];
+const rest = PRODUCTS.filter((p) => p.id !== featured.id);
+
+const NOTES = [
   {
-    icon: "🎪",
-    title: "In-Person Pickup",
-    description:
-      "Merch will be available at the conference — no shipping cost, no wait. Grab yours at the merch table.",
+    label: "At the conference",
+    body: "It will be on the merch table all weekend — no shipping, no waiting. Bring cash or a card.",
   },
   {
-    icon: "📦",
-    title: "Online Shipping",
-    description:
-      "Online orders are fulfilled and shipped via a third-party service. Shipping times and costs vary by provider.",
+    label: "Ordered online",
+    body: "Online orders are printed and shipped by a third-party fulfiller. Times and shipping cost vary by where you are.",
   },
 ];
 
 export default function MerchPage() {
   return (
-    <div className="py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Page Header */}
-        <div className="text-center mb-4">
-          <GlowText as="h1" className="mb-4">
+    <div className="px-4 py-20">
+      <div className="mx-auto max-w-6xl">
+        {/* Masthead */}
+        <header className="text-center">
+          <p className="font-typewriter text-[0.7rem] uppercase tracking-[0.4em] text-ooze-green/80">
+            The IAYPAA X Catalogue
+          </p>
+          <GlowText as="h1" className="mt-4">
             Merch
           </GlowText>
-          <p className="text-bone-white/70 text-lg md:text-xl max-w-2xl mx-auto font-[family-name:var(--font-space)]">
-            Rep the ooze. Wear the slime. Support IAYPAA. All proceeds go
-            directly to funding the conference.
+          {/* Plain serif — the honest line, no wink. */}
+          <p className="mx-auto mt-5 max-w-2xl font-news text-lg leading-relaxed text-bone-white/70 md:text-xl">
+            Wear the weekend home. None of it is sold for profit — every order
+            goes straight back into the conference, so it stays free for the
+            next person who needs it.
           </p>
-        </div>
-        <RisingMotes count={10} />
+        </header>
 
-        {/* Shop CTA */}
-        <div className="text-center mb-16">
-          <a
-            href={PRINTFUL_STORE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-gold px-8 py-4 font-bold text-void-black text-lg transition-all duration-300 hover:bg-ember hover:shadow-[0_0_20px_rgba(242,193,78,0.4),0_0_40px_rgba(247,129,84,0.2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-void-black"
-          >
-            Shop All Merch
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="w-5 h-5"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </a>
-        </div>
+        <RisingMotes count={10} className="my-4" />
 
-        {/* Product Grid */}
-        <section className="mb-16">
-          <ProductGrid products={PRODUCTS} />
+        {/* Lead specimen */}
+        <section className="mb-px mt-6">
+          <FeaturedSpecimen product={featured} />
+        </section>
+
+        {/* The catalogue */}
+        <section className="mb-20 mt-16">
+          <div className="mb-10 flex items-end justify-between gap-4 border-b border-ooze-green/15 pb-3">
+            <h2 className="font-anton text-xl uppercase tracking-wide text-bone-white/80">
+              The rest of the plate
+            </h2>
+            <span className="font-typewriter text-[0.62rem] uppercase tracking-[0.24em] text-bone-white/40">
+              {rest.length} more
+            </span>
+          </div>
+          <ProductGrid products={rest} startIndex={2} />
         </section>
 
         <SlimeDivider className="mb-16" />
 
-        {/* FAQ / Info Section */}
-        <section className="mb-8">
-          <GlowText as="h2" glow="subtle" className="mb-10 text-center">
-            How It Works
-          </GlowText>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            {MERCH_FAQ.map((item, index) => {
-              const titleColors = [
-                "text-ooze-green",
-                "text-gold",
-                "text-swamp-teal",
-              ];
-              const titleColor = titleColors[index % titleColors.length];
-              return (
-                <div
-                  key={item.title}
-                  className="group rounded-xl border border-ooze-green/20 bg-void-black/60 p-6 text-center transition-all duration-300 hover:border-gold/50 hover:bg-toxic-green/10 hover:shadow-[0_0_20px_rgba(57,255,20,0.1)]"
-                >
-                  <div className="text-4xl mb-4">{item.icon}</div>
-                  <h3
-                    className={`font-anton text-xl ${titleColor} mb-3 glow-text-subtle`}
-                  >
-                    {item.title}
-                  </h3>
-                  <p className="text-bone-white/70 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              );
-            })}
+        {/* Self-supporting — the center of the page, said straight */}
+        <section className="mb-16">
+          <div className="mx-auto max-w-3xl border border-gold/25 bg-gradient-to-b from-toxic-green/15 to-void-black/40 p-8 text-center md:p-12">
+            <p className="font-typewriter text-[0.66rem] uppercase tracking-[0.32em] text-gold/80">
+              Tradition Seven
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl font-news text-lg leading-relaxed text-bone-white/80 md:text-xl">
+              IAYPAA is fully self-supporting through its own contributions.
+              There are no outside sponsors and no profit taken — what you
+              spend here pays for the room, the coffee, and the scholarships.
+              No one is ever turned away for lack of funds.
+            </p>
           </div>
         </section>
+
+        {/* How to get it — two plain notes, no emoji */}
+        <section className="mb-16">
+          <div className="mb-10 text-center">
+            <p className="font-typewriter text-[0.66rem] uppercase tracking-[0.32em] text-ooze-green/80">
+              Getting yours
+            </p>
+          </div>
+          <div className="mx-auto grid max-w-3xl grid-cols-1 gap-px overflow-hidden border border-ooze-green/15 bg-ooze-green/15 sm:grid-cols-2">
+            {NOTES.map((note) => (
+              <div
+                key={note.label}
+                className="bg-void-black/80 p-7 paper-grit"
+              >
+                <h3 className="font-typewriter text-xs uppercase tracking-[0.26em] text-ooze-green">
+                  {note.label}
+                </h3>
+                <div className="marquee-rule my-4 w-16" aria-hidden="true" />
+                <p className="font-news text-[0.95rem] leading-relaxed text-bone-white/65">
+                  {note.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Quiet shop-all anchor */}
+        <div className="text-center">
+          <a
+            href={PRINTFUL_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-typewriter text-xs uppercase tracking-[0.28em] text-bone-white/55 transition-colors duration-300 hover:text-ooze-green focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green focus-visible:ring-offset-4 focus-visible:ring-offset-void-black"
+          >
+            See the full shop
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
       </div>
     </div>
   );

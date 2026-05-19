@@ -1,82 +1,127 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import type { Product } from "@/lib/products";
 
 interface ProductCardProps {
   product: Product;
+  /** 1-based catalogue index — printed as the specimen number. */
+  index: number;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
-  const card = (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.25 }}
-      whileHover={product.soldOut ? undefined : { scale: 1.02 }}
-      className={`group relative rounded-2xl border border-ooze-green/20 bg-void-black/60 overflow-hidden transition-shadow duration-300 ${
+const plate = (n: number) => `NO. ${String(n).padStart(2, "0")}`;
+
+/**
+ * A single specimen on the catalogue plate. Sharp-edged, hairline-bordered,
+ * lit by a single soft halo on hover — matter surfacing, not a card popping.
+ * See docs/design-philosophy.md §3 (Texture / Motion / Light).
+ */
+export default function ProductCard({ product, index }: ProductCardProps) {
+  const inner = (
+    <div
+      className={`group relative flex h-full flex-col border bg-void-black/40 paper-grit transition-all duration-500 ${
         product.soldOut
-          ? "opacity-50 cursor-not-allowed"
-          : "hover:border-ooze-green/40 hover:shadow-[0_0_25px_rgba(95,173,86,0.15)]"
+          ? "border-bone-white/10 opacity-55"
+          : "border-ooze-green/15 hover:border-ooze-green/40 hover:bg-toxic-green/10 hover:shadow-[0_0_28px_-6px_rgba(95,173,86,0.28)]"
       }`}
     >
-      {/* Image */}
-      <div className="relative aspect-square bg-gradient-to-b from-toxic-green/20 to-void-black/80 overflow-hidden">
+      {/* Specimen image, lit through dark water */}
+      <div className="relative aspect-[4/5] overflow-hidden bg-dark-ooze">
         <Image
           src={product.image}
           alt={product.name}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-cover grayscale-[0.35] transition-all duration-[1100ms] ease-out group-hover:scale-[1.04] group-hover:grayscale-0"
+        />
+        {/* Cold green wash + sediment grain — the Hero depth stack, in miniature */}
+        <div
+          className="absolute inset-0 mix-blend-multiply"
+          style={{ backgroundColor: "rgba(77,144,120,0.22)" }}
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0 bg-halftone-lg opacity-40 mix-blend-soft-light"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0) 32%, rgba(13,13,13,0) 60%, rgba(13,13,13,0.85) 100%)",
+          }}
+          aria-hidden="true"
         />
 
-        {/* Badge */}
-        {product.badge && (
-          <span className="absolute top-3 right-3 z-10 rounded-full bg-ember px-3 py-1 text-xs font-bold text-void-black uppercase tracking-wider">
+        {/* Plate index + filed category — handwritten-ledger voice */}
+        <div className="absolute inset-x-0 top-0 flex items-start justify-between p-3">
+          <span className="font-typewriter text-[0.62rem] tracking-[0.28em] text-bone-white/70">
+            {plate(index)}
+          </span>
+          <span className="font-typewriter text-[0.6rem] uppercase tracking-[0.22em] text-bone-white/45">
+            {product.category}
+          </span>
+        </div>
+
+        {product.badge && !product.soldOut && (
+          <span className="absolute bottom-3 left-3 inline-block border border-gold/55 px-2 py-0.5 font-typewriter text-[0.6rem] uppercase tracking-[0.2em] text-gold">
             {product.badge}
           </span>
         )}
 
-        {/* Sold Out Overlay */}
         {product.soldOut && (
-          <div className="absolute inset-0 z-10 flex items-center justify-center bg-void-black/60">
-            <span className="font-anton text-2xl text-bone-white/80 glow-text-subtle">
-              Sold Out
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="font-anton text-2xl uppercase tracking-wide text-bone-white/75 glow-text-subtle">
+              Sold out
             </span>
           </div>
         )}
       </div>
 
-      {/* Details */}
-      <div className="p-5">
-        <h3 className="font-anton text-lg text-ooze-green mb-1 glow-text-subtle">
+      {/* First-light rule between the specimen and its label */}
+      <div className="marquee-rule" aria-hidden="true" />
+
+      {/* The label */}
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="font-anton text-lg leading-tight text-ooze-green glow-text-subtle">
           {product.name}
         </h3>
-        <p className="text-bone-white/60 text-sm leading-relaxed mb-3">
+        <p className="mt-1.5 font-news text-sm leading-relaxed text-bone-white/60">
           {product.description}
         </p>
-        <span className="font-[family-name:var(--font-mono)] text-lg text-gold font-bold">
-          ${product.price.toFixed(2)}
-        </span>
+
+        <div className="mt-auto flex items-end justify-between pt-5">
+          <span className="font-typewriter text-[0.62rem] uppercase tracking-[0.16em] text-bone-white/40">
+            {product.spec}
+          </span>
+          <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-gold">
+            ${product.price.toFixed(2)}
+          </span>
+        </div>
+
+        {!product.soldOut && (
+          <span className="mt-3 inline-flex items-center gap-1.5 font-typewriter text-[0.62rem] uppercase tracking-[0.22em] text-bone-white/35 transition-colors duration-300 group-hover:text-ooze-green">
+            View in shop
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-300 group-hover:translate-x-0.5"
+            >
+              &rarr;
+            </span>
+          </span>
+        )}
       </div>
-    </motion.div>
+    </div>
   );
 
-  if (product.soldOut) {
-    return card;
-  }
+  if (product.soldOut) return inner;
 
   return (
     <a
       href={product.printfulUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green focus-visible:ring-offset-2 focus-visible:ring-offset-void-black rounded-2xl"
+      className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green focus-visible:ring-offset-2 focus-visible:ring-offset-void-black"
     >
-      {card}
+      {inner}
     </a>
   );
 }

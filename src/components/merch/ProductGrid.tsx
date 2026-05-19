@@ -1,25 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import ProductCard from "@/components/merch/ProductCard";
 import type { Product, ProductCategory } from "@/lib/products";
 import { PRODUCT_CATEGORIES } from "@/lib/products";
 
 interface ProductGridProps {
   products: Product[];
+  /** Catalogue numbering continues from the featured specimen (No. 01). */
+  startIndex?: number;
 }
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.06,
-    },
-  },
-};
-
-export default function ProductGrid({ products }: ProductGridProps) {
+export default function ProductGrid({
+  products,
+  startIndex = 2,
+}: ProductGridProps) {
   const [activeCategory, setActiveCategory] = useState<
     ProductCategory | "all"
   >("all");
@@ -31,40 +26,57 @@ export default function ProductGrid({ products }: ProductGridProps) {
 
   return (
     <div>
-      {/* Filter Tabs */}
+      {/* Index selector — a quiet ledger tab strip, not a row of buttons */}
       <nav
-        aria-label="Filter products by category"
-        className="flex flex-wrap justify-center gap-2 mb-10"
+        aria-label="Filter the catalogue by category"
+        className="mb-12 flex flex-wrap items-center justify-center gap-x-7 gap-y-3"
       >
-        {PRODUCT_CATEGORIES.map((cat) => (
-          <button
-            key={cat.value}
-            onClick={() => setActiveCategory(cat.value)}
-            className={`rounded-lg px-5 py-2 text-sm font-semibold transition-all duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green focus-visible:ring-offset-2 focus-visible:ring-offset-void-black ${
-              activeCategory === cat.value
-                ? "bg-ooze-green text-void-black shadow-[0_0_15px_rgba(95,173,86,0.3)]"
-                : "border border-ooze-green/30 text-bone-white/70 hover:border-ooze-green/60 hover:text-bone-white"
-            }`}
-          >
-            {cat.label}
-          </button>
-        ))}
+        {PRODUCT_CATEGORIES.map((cat) => {
+          const isActive = activeCategory === cat.value;
+          return (
+            <button
+              key={cat.value}
+              onClick={() => setActiveCategory(cat.value)}
+              aria-pressed={isActive}
+              className={`group relative cursor-pointer pb-1 font-typewriter text-xs uppercase tracking-[0.28em] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green focus-visible:ring-offset-4 focus-visible:ring-offset-void-black ${
+                isActive
+                  ? "text-ooze-green"
+                  : "text-bone-white/40 hover:text-bone-white/75"
+              }`}
+            >
+              {cat.label}
+              <span
+                className={`absolute -bottom-px left-0 h-px bg-ooze-green transition-all duration-300 ${
+                  isActive ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+                aria-hidden="true"
+              />
+            </button>
+          );
+        })}
       </nav>
 
-      {/* Product Grid */}
-      <AnimatePresence mode="popLayout">
-        <motion.div
-          key={activeCategory}
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
-        >
-          {filtered.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </motion.div>
-      </AnimatePresence>
+      {/* Catalogue plate. Re-keyed on filter so the stagger replays. */}
+      <div
+        key={activeCategory}
+        className="grid grid-cols-1 gap-px overflow-hidden border border-ooze-green/10 bg-ooze-green/10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        {filtered.map((product, i) => (
+          <div
+            key={product.id}
+            className="poster-rise bg-void-black"
+            style={{ ["--i" as string]: i }}
+          >
+            <ProductCard product={product} index={startIndex + i} />
+          </div>
+        ))}
+      </div>
+
+      {filtered.length === 0 && (
+        <p className="py-16 text-center font-news text-bone-white/50">
+          Nothing in this drawer yet — check back as it forms.
+        </p>
+      )}
     </div>
   );
 }
