@@ -77,7 +77,20 @@ export default function NavDropdown({ label, items }: NavDropdownProps) {
         aria-haspopup="menu"
         aria-expanded={open}
         aria-controls={menuId}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          // On hover-capable devices (desktop with mouse), the panel is
+          // already open from mouseenter — a click that toggles would
+          // instantly close it ("nothing happens" UX bug). Only toggle on
+          // touch/no-hover devices where mouseenter doesn't fire on tap.
+          const noHover =
+            typeof window !== "undefined" &&
+            window.matchMedia?.("(hover: none)").matches;
+          if (noHover) {
+            setOpen((v) => !v);
+          } else {
+            setOpen(true);
+          }
+        }}
         onFocus={openNow}
         className="group relative flex items-center gap-1 px-3 py-2 text-sm text-bone-white/80 transition-colors duration-200 hover:text-gold focus:outline-none focus-visible:text-gold"
       >

@@ -19,11 +19,17 @@ export const CONFERENCE = {
   },
   // Canonical production URL for this site (used for SEO: metadataBase,
   // sitemap, robots, OG). Keep this in sync with the deployed domain.
-  siteUrl: "https://dotenagain.com",
+  siteUrl: "https://2026.iaypaa.org",
   // Legacy AA Advisory WordPress site — surfaced as the "iaypaa.org" link
   // in the footer. Not the canonical site; do not use for SEO.
   website: "https://iaypaa.org",
 } as const;
+
+// Gate the published weekend program (day-by-day times, panel leads, featured
+// speakers, workshop list). Flip to `true` once the AA Advisory committee has
+// approved the program — surfaces the schedule on /schedule and the
+// "See the program" pointer on /speakers.
+export const PROGRAM_PUBLIC: boolean = false;
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },

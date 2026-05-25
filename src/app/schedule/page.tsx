@@ -3,6 +3,7 @@
 import { useState } from "react";
 import RisingMotes from "@/components/effects/RisingMotes";
 import ComingSoon from "@/components/ui/ComingSoon";
+import { PROGRAM_PUBLIC } from "@/lib/constants";
 
 /**
  * The Program page. Each day is a row with a day code, an Anton heading,
@@ -251,30 +252,40 @@ export default function SchedulePage() {
             Three nights · Aug 14—16, 2026 · The Highlander, Iowa City
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-ooze-green/15 pt-4">
-            <span className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/50">
-              Featured speakers
-            </span>
-            {SPEAKERS.map((s) => (
-              <span
-                key={s.name}
-                className="font-typewriter text-sm text-bone-white/85"
-              >
-                <span className="text-ooze-green">{s.name}</span>
-                <span className="text-bone-white/45"> · {s.from}</span>
+          {PROGRAM_PUBLIC && (
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-ooze-green/15 pt-4">
+              <span className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/50">
+                Featured speakers
               </span>
-            ))}
-          </div>
+              {SPEAKERS.map((s) => (
+                <span
+                  key={s.name}
+                  className="font-typewriter text-sm text-bone-white/85"
+                >
+                  <span className="text-ooze-green">{s.name}</span>
+                  <span className="text-bone-white/45"> · {s.from}</span>
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* ---------- Working-program notice ---------- */}
+      {/* ---------- Program notice ---------- */}
       <section className="relative px-4 sm:px-6 pb-12 sm:pb-16">
-        <ComingSoon
-          title="Working Program"
-          subtitle="This is the working timeline for the weekend. The shape, the speakers, and the panel leads are set — a few exact start times for Saturday's workshops are still being locked in. Get on the list and we'll send the final program."
-          showEmailSignup
-        />
+        {PROGRAM_PUBLIC ? (
+          <ComingSoon
+            title="Working Program"
+            subtitle="This is the working timeline for the weekend. The shape, the speakers, and the panel leads are set — a few exact start times for Saturday's workshops are still being locked in. Get on the list and we'll send the final program."
+            showEmailSignup
+          />
+        ) : (
+          <ComingSoon
+            title="Weekend Program"
+            subtitle="The full program — speakers, panel leads, and the day-by-day timeline — is with the AA Advisory committee for review. We'll post it here the moment it's approved. Get on the list and we'll send it the day it drops."
+            showEmailSignup
+          />
+        )}
       </section>
 
       {/* ---------- Running all weekend ---------- */}
@@ -308,6 +319,7 @@ export default function SchedulePage() {
       </section>
 
       {/* ---------- Day-by-day program ---------- */}
+      {PROGRAM_PUBLIC && (
       <section className="relative px-4 sm:px-6 py-16 sm:py-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-rule-lines opacity-50 pointer-events-none"
@@ -480,6 +492,7 @@ export default function SchedulePage() {
           </p>
         </div>
       </section>
+      )}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Link from "next/link";
 import RisingMotes from "@/components/effects/RisingMotes";
 import ComingSoon from "@/components/ui/ComingSoon";
 import SlimeDivider from "@/components/ui/SlimeDivider";
-import { CONFERENCE } from "@/lib/constants";
+import { CONFERENCE, PROGRAM_PUBLIC } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Speakers",
@@ -51,6 +51,7 @@ export default function SpeakersPage() {
       </section>
 
       {/* ---------- Confirmed so far — point to the live program ---------- */}
+      {PROGRAM_PUBLIC && (
       <section className="relative px-4 sm:px-6 py-16 sm:py-20 overflow-hidden">
         <div
           className="absolute inset-0 bg-rule-lines opacity-50 pointer-events-none"
@@ -94,6 +95,7 @@ export default function SpeakersPage() {
           </p>
         </div>
       </section>
+      )}
 
       <SlimeDivider />
 
