@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import type { PreConferenceEvent } from "@/lib/constants";
 
@@ -49,8 +50,26 @@ function EventCard({
         past
           ? "border-bone-white/10 bg-void-black/30 opacity-60 hover:opacity-80"
           : "border-ooze-green/30 bg-void-black/45 hover:border-ooze-green/55"
-      }`}
+      } ${event.flyerThumb ? "pr-[6.5rem] sm:pr-[7rem]" : ""}`}
     >
+      {/* Pinned flyer thumbnail — top-right corner, slight tilt like a
+          poster pinned to a contact-sheet. Decorative; clicking the card
+          still opens the modal where the full flyer + download live. */}
+      {event.flyerThumb ? (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute top-4 right-4 block w-16 sm:w-20 aspect-[3/4] overflow-hidden border border-ooze-green/35 paper-grit rotate-[-3deg] shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:rotate-0 group-hover:scale-105"
+        >
+          <Image
+            src={event.flyerThumb}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="80px"
+          />
+        </span>
+      ) : null}
+
       <div className="flex items-start justify-between gap-4 mb-3">
         <p
           className={`font-[family-name:var(--font-mono)] text-xs tracking-wider ${
@@ -189,6 +208,47 @@ function EventModal({
             </span>
           </button>
         </div>
+
+        {/* Flyer preview — a clickable poster that downloads the PDF.
+            Falls back gracefully when the event has no thumbnail. */}
+        {event.flyerThumb ? (
+          event.flyer ? (
+            <a
+              href={event.flyer}
+              download
+              aria-label={`Download the ${event.title} flyer (PDF)`}
+              className="group/flyer block w-40 sm:w-44 mx-auto mb-6"
+            >
+              <span className="relative block aspect-[3/4] overflow-hidden border border-ooze-green/40 paper-grit rotate-[-1.5deg] shadow-[0_8px_24px_rgba(0,0,0,0.55)] transition-transform duration-300 group-hover/flyer:rotate-0 group-hover/flyer:scale-[1.03]">
+                <Image
+                  src={event.flyerThumb}
+                  alt={`${event.title} flyer`}
+                  fill
+                  className="object-cover"
+                  sizes="180px"
+                />
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-2 right-2 stamp text-gold/95 !text-[0.55rem] !tracking-[0.25em] !py-0.5 !px-1.5 bg-void-black/70"
+                >
+                  Tap to print
+                </span>
+              </span>
+            </a>
+          ) : (
+            <span className="block w-40 sm:w-44 mx-auto mb-6">
+              <span className="relative block aspect-[3/4] overflow-hidden border border-ooze-green/40 paper-grit rotate-[-1.5deg] shadow-[0_8px_24px_rgba(0,0,0,0.55)]">
+                <Image
+                  src={event.flyerThumb}
+                  alt={`${event.title} flyer`}
+                  fill
+                  className="object-cover"
+                  sizes="180px"
+                />
+              </span>
+            </span>
+          )
+        ) : null}
 
         <h2
           id={titleId}

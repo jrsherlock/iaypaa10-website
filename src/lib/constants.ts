@@ -105,6 +105,14 @@ export type PreConferenceEvent = {
    * The modal shows a Download button only when this is set.
    */
   flyer?: string;
+  /**
+   * Optional web-friendly thumbnail (JPG/PNG) of the flyer. When set, a
+   * small pinned-poster preview shows on the event card and a larger
+   * clickable preview appears at the top of the modal (downloads the
+   * `flyer` PDF on click). Drop a ~1200px-wide JPG next to the PDF in
+   * `public/flyers/`.
+   */
+  flyerThumb?: string;
   /** Optional extra link — RSVP/details for upcoming, recap for past. */
   link?: string;
   linkLabel?: string;
@@ -115,8 +123,10 @@ export type PreConferenceEvent = {
 // out, still openable); upcoming events show in full colour. The page
 // sorts and splits automatically by date.
 //
-// To add a downloadable flyer: put the file in `public/flyers/` and set
-// `flyer: "/flyers/<filename>"` on the event below.
+// To add a downloadable flyer: put the PDF in `public/flyers/` and set
+// `flyer: "/flyers/<name>.pdf"` on the event below. For a web thumbnail
+// (shown on the card + at the top of the modal), also drop a JPG/PNG
+// alongside it and set `flyerThumb: "/flyers/<name>.jpg"`.
 export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
   {
     id: "speakers-sweets-bake-off",
@@ -128,6 +138,7 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
     description:
       "Bring your favorite sweet to share and win a chance at becoming the IAYPAA X Tasty Sweet Baker Winner. $5 donation to vote for your favorite. 50/50 and basket raffle. Walking tacos and drinks for sale. Speaker panel at 2 PM: Erik T. (Big Book Study), Bethany K. (Bettendorf), Tyler V. (Last Chance), Jennifer R. (Camden Serenity).",
     flyer: "/flyers/sweet-speakers-bake-off.pdf",
+    flyerThumb: "/flyers/sweet-speakers-bake-off.jpg",
   },
   {
     id: "aa-pride-event",
