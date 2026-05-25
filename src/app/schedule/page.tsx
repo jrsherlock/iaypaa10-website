@@ -282,7 +282,7 @@ export default function SchedulePage() {
         ) : (
           <ComingSoon
             title="Weekend Program"
-            subtitle="The full program — speakers, panel leads, and the day-by-day timeline — is with the AA Advisory committee for review. We'll post it here the moment it's approved. Get on the list and we'll send it the day it drops."
+            subtitle="The full program — speakers, panel leads, and the day-by-day timeline — is with the AA Advisory committee for review."
             showEmailSignup
           />
         )}
