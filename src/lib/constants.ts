@@ -122,10 +122,12 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
     id: "speakers-sweets-bake-off",
     title: "Speakers & Sweets Bake-Off",
     date: "2026-06-14",
+    time: "1:00–4:00 PM",
     location: "Last Chance AA Group",
     city: "4711 44th St, Suite 5, Rock Island, IL",
     description:
       "A speaker meeting and a dessert bake-off — bring something sweet, bring a friend. Fellowship and a little friendly competition for IAYPAA X.",
+    flyer: "/flyers/sweet-speakers-bake-off.pdf",
   },
   {
     id: "aa-pride-event",
