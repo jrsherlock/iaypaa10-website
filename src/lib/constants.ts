@@ -120,13 +120,13 @@ export type PreConferenceEvent = {
 export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
   {
     id: "speakers-sweets-bake-off",
-    title: "Speakers & Sweets Bake-Off",
+    title: "Sweet Speakers and Sweet Bake Off",
     date: "2026-06-14",
     time: "1:00–4:00 PM",
-    location: "Last Chance AA Group",
-    city: "4711 44th St, Suite 5, Rock Island, IL",
+    location: "The Last Chance",
+    city: "4711 44th St, Unit 5, Rock Island, IL",
     description:
-      "A speaker meeting and a dessert bake-off — bring something sweet, bring a friend. Fellowship and a little friendly competition for IAYPAA X.",
+      "Bring your favorite sweet to share and win a chance at becoming the IAYPAA X Tasty Sweet Baker Winner. $5 donation to vote for your favorite. 50/50 and basket raffle. Walking tacos and drinks for sale. Speaker panel at 2 PM: Erik T. (Big Book Study), Bethany K. (Bettendorf), Tyler V. (Last Chance), Jennifer R. (Camden Serenity).",
     flyer: "/flyers/sweet-speakers-bake-off.pdf",
   },
   {
