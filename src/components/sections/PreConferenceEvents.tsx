@@ -187,10 +187,13 @@ function EventModal({
         aria-hidden="true"
       />
 
-      {/* Panel — full-width sheet on phones, centred card on desktop */}
+      {/* Panel — full-width sheet on phones, centred card on desktop.
+          Wider when the event has a flyer so the artwork is legible. */}
       <div
         ref={panelRef}
-        className="relative w-full sm:max-w-lg max-h-[88vh] overflow-y-auto border border-ooze-green/30 bg-dark-ooze paper-grit p-6 sm:p-8 rounded-t-2xl sm:rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.6)]"
+        className={`relative w-full max-h-[88vh] overflow-y-auto border border-ooze-green/30 bg-dark-ooze paper-grit p-6 sm:p-8 rounded-t-2xl sm:rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.6)] ${
+          event.flyerThumb ? "sm:max-w-2xl" : "sm:max-w-lg"
+        }`}
       >
         <div className="flex items-start justify-between gap-4 mb-4 border-b border-ooze-green/20 pb-4">
           <span
@@ -213,41 +216,44 @@ function EventModal({
           </button>
         </div>
 
-        {/* Flyer preview — a clickable poster that downloads the PDF.
-            Falls back gracefully when the event has no thumbnail. */}
+        {/* Flyer preview — large enough to read on a laptop. Clicking
+            opens the PDF in a new tab so the user can pinch-zoom, print,
+            or save from there. The "Download flyer" button below stays
+            as the explicit download path. */}
         {event.flyerThumb ? (
           event.flyer ? (
             <a
               href={event.flyer}
-              download
-              aria-label={`Download the ${event.title} flyer (PDF)`}
-              className="group/flyer block w-40 sm:w-44 mx-auto mb-6"
+              target="_blank"
+              rel="noopener"
+              aria-label={`Open the ${event.title} flyer (PDF)`}
+              className="group/flyer block w-full max-w-md mx-auto mb-6"
             >
-              <span className="relative block aspect-[3/4] overflow-hidden border border-ooze-green/40 paper-grit rotate-[-1.5deg] shadow-[0_8px_24px_rgba(0,0,0,0.55)] transition-transform duration-300 group-hover/flyer:rotate-0 group-hover/flyer:scale-[1.03]">
+              <span className="relative block aspect-[3/4] overflow-hidden border border-ooze-green/40 rotate-[-1deg] shadow-[0_10px_30px_rgba(0,0,0,0.55)] transition-transform duration-300 group-hover/flyer:rotate-0 group-hover/flyer:scale-[1.015]">
                 <Image
                   src={event.flyerThumb}
                   alt={`${event.title} flyer`}
                   fill
                   className="object-cover"
-                  sizes="180px"
+                  sizes="(min-width: 768px) 28rem, 90vw"
                 />
                 <span
                   aria-hidden="true"
-                  className="absolute bottom-2 right-2 stamp text-gold/95 !text-[0.55rem] !tracking-[0.25em] !py-0.5 !px-1.5 bg-void-black/70"
+                  className="absolute bottom-2 right-2 stamp text-gold/95 !text-[0.6rem] !tracking-[0.25em] !py-1 !px-2 bg-void-black/75"
                 >
-                  Tap to print
+                  Tap to enlarge
                 </span>
               </span>
             </a>
           ) : (
-            <span className="block w-40 sm:w-44 mx-auto mb-6">
-              <span className="relative block aspect-[3/4] overflow-hidden border border-ooze-green/40 paper-grit rotate-[-1.5deg] shadow-[0_8px_24px_rgba(0,0,0,0.55)]">
+            <span className="block w-full max-w-md mx-auto mb-6">
+              <span className="relative block aspect-[3/4] overflow-hidden border border-ooze-green/40 rotate-[-1deg] shadow-[0_10px_30px_rgba(0,0,0,0.55)]">
                 <Image
                   src={event.flyerThumb}
                   alt={`${event.title} flyer`}
                   fill
                   className="object-cover"
-                  sizes="180px"
+                  sizes="(min-width: 768px) 28rem, 90vw"
                 />
               </span>
             </span>
