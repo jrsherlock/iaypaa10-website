@@ -142,11 +142,15 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
   },
   {
     id: "aa-pride-event",
-    title: "AA Pride Event",
+    title: "AA Pride Party",
     date: "2026-06-27",
-    location: "Iowa City, IA",
+    time: "4:00–7:00 PM",
+    location: "Happy Hollow Park",
+    city: "800 Brown St, Iowa City, IA",
     description:
-      "An AA Pride gathering. Proceeds go to the Iowa City IAYPAA Conference. All are welcome.",
+      "Iowa City's LGBTQ+ AA invites you to an AA Pride Party. Speaker at 5:30. Bingo, raffle, snacks and beverages provided. All are welcome.",
+    flyer: "/flyers/aa-pride-party.pdf",
+    flyerThumb: "/flyers/aa-pride-party.jpg",
   },
   {
     id: "picnic-in-the-park",
