@@ -61,7 +61,7 @@ This is an AA-affiliated event. Follow the spirit of the Twelve Traditions:
 
 ## Domains
 
-- **dotenagain.com** — canonical production site (this repo). `CONFERENCE.siteUrl`.
+- **2026.iaypaa.org** — canonical production site (this repo). `CONFERENCE.siteUrl`.
 - **iaypaa.org** — legacy AA-Advisory WordPress site (separate). It is the
   footer "iaypaa.org" link (`CONFERENCE.website`) and is *not* this repo. Do
   not point SEO/canonical at it.

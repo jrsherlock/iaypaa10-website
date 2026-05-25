@@ -2,7 +2,7 @@
 
 The official website for **IAYPAA X**, the 10th Annual Iowa Young People in Alcoholics Anonymous conference, held **August 14–16, 2026** at The Highlander Hotel in Iowa City, Iowa. Theme: **Primordial Ooze**.
 
-Production URL: [dotenagain.com](https://dotenagain.com)
+Production URL: [2026.iaypaa.org](https://2026.iaypaa.org)
 
 ---
 

@@ -8,7 +8,7 @@ const POSTER_ID = 2414;
 const POSTER_URL = "https://iaypaa.org/wp-content/uploads/2026/05/primordial-ooze-poster.jpg";
 const ARCHIVE_PAGE_ID = 2413;
 const ARCHIVE_URL = `${WP_BASE_URL}/?page_id=${ARCHIVE_PAGE_ID}`;
-const DOTENAGAIN_URL = "https://dotenagain.com";
+const SITE_URL = "https://2026.iaypaa.org";
 
 const NEW_HERO = `<!-- wp:cover {"overlayColor":"black","isUserOverlayColor":true,"dimRatio":100,"minHeight":85,"minHeightUnit":"vh","align":"full","style":{"spacing":{"padding":{"top":"3rem","bottom":"3rem","left":"1.5rem","right":"1.5rem"}}}} -->
 <div class="wp-block-cover alignfull" style="padding-top:3rem;padding-right:1.5rem;padding-bottom:3rem;padding-left:1.5rem;min-height:85vh"><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container">
@@ -21,13 +21,13 @@ const NEW_HERO = `<!-- wp:cover {"overlayColor":"black","isUserOverlayColor":tru
 <!-- /wp:paragraph -->
 
 <!-- wp:image {"id":${POSTER_ID},"width":"min(420px, 80vw)","sizeSlug":"large","linkDestination":"custom","align":"center","style":{"border":{"radius":"8px"}}} -->
-<figure class="wp-block-image aligncenter size-large is-resized has-custom-border"><a href="${DOTENAGAIN_URL}"><img src="${POSTER_URL}" alt="IAYPAA X 2026 Primordial Ooze Poster" class="wp-image-${POSTER_ID}" style="border-radius:8px;width:min(420px, 80vw)"/></a></figure>
+<figure class="wp-block-image aligncenter size-large is-resized has-custom-border"><a href="${SITE_URL}"><img src="${POSTER_URL}" alt="IAYPAA X 2026 Primordial Ooze Poster" class="wp-image-${POSTER_ID}" style="border-radius:8px;width:min(420px, 80vw)"/></a></figure>
 <!-- /wp:image -->
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"},"style":{"spacing":{"blockGap":"1rem","margin":{"top":"2rem"}}}} -->
 <div class="wp-block-buttons" style="margin-top:2rem">
 <!-- wp:button {"style":{"color":{"background":"#7CFF3F","text":"#0a0a0a"},"typography":{"fontWeight":"700","fontSize":"1.05rem","textTransform":"uppercase","letterSpacing":"0.05em"},"spacing":{"padding":{"top":"0.85rem","bottom":"0.85rem","left":"1.75rem","right":"1.75rem"}},"border":{"radius":"4px"}}} -->
-<div class="wp-block-button has-custom-font-size" style="font-size:1.05rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase"><a class="wp-block-button__link has-text-color has-background wp-element-button" href="${DOTENAGAIN_URL}" style="border-radius:4px;color:#0a0a0a;background-color:#7CFF3F;padding-top:0.85rem;padding-right:1.75rem;padding-bottom:0.85rem;padding-left:1.75rem">Visit dotenagain.com →</a></div>
+<div class="wp-block-button has-custom-font-size" style="font-size:1.05rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase"><a class="wp-block-button__link has-text-color has-background wp-element-button" href="${SITE_URL}" style="border-radius:4px;color:#0a0a0a;background-color:#7CFF3F;padding-top:0.85rem;padding-right:1.75rem;padding-bottom:0.85rem;padding-left:1.75rem">Visit 2026.iaypaa.org →</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-outline","style":{"color":{"text":"#ffffff"},"border":{"width":"1px","color":"#ffffff","radius":"4px"},"typography":{"fontWeight":"600","fontSize":"1.05rem","textTransform":"uppercase","letterSpacing":"0.05em"},"spacing":{"padding":{"top":"0.85rem","bottom":"0.85rem","left":"1.75rem","right":"1.75rem"}}}} -->
@@ -70,7 +70,7 @@ console.log(`  New length: ${NEW_HERO.length} chars (Gutenberg cover: solid blac
 console.log(`\nFront-header total: ${html.length} → ${newHtml.length} chars`);
 
 console.log(`\nNew hero will link to:`);
-console.log(`  Primary CTA:   ${DOTENAGAIN_URL}`);
+console.log(`  Primary CTA:   ${SITE_URL}`);
 console.log(`  Secondary CTA: ${ARCHIVE_URL}  (page 2413 — must be published or this 404s)`);
 
 if (!apply) {

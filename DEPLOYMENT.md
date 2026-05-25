@@ -5,7 +5,7 @@ Short version for anyone (human or AI agent) shipping this site.
 ## How it deploys
 
 - **Host:** Vercel — project `iaypaa10-website`, scope `jrsherlocks-projects`.
-- **Production domain:** https://dotenagain.com (Vercel alias `iaypaa10-website.vercel.app`).
+- **Production domain:** https://2026.iaypaa.org (Vercel alias `iaypaa10-website.vercel.app`).
 - **Auto-deploy:** the GitHub repo `jrsherlock/iaypaa10-website` is connected with
   **production branch = `main`**. Every push to `main` builds and deploys to
   **production** automatically. There is no PR/review step — `main` is live.
@@ -26,7 +26,7 @@ for `main`. One branch, one SHA, no race.
 
 ```bash
 vercel inspect iaypaa10-website.vercel.app        # check url + created time
-curl -s "https://dotenagain.com/?cb=$RANDOM" | grep <a-marker-from-your-change>
+curl -s "https://2026.iaypaa.org/?cb=$RANDOM" | grep <a-marker-from-your-change>
 ```
 
 Browsers (and the `.vercel.app` edge) cache hard — always cache-bust when
