@@ -222,7 +222,8 @@ export const FAQ_ITEMS = [
   {
     question: "Is this an AA event?",
     answer:
-      "Yes. IAYPAA conferences are organized in the spirit of AA's Twelve Traditions. We are self-supporting through our own contributions and do not accept outside funding.",
+      "Yes. IAYPAA conferences are organized in the spirit of AA's Twelve Traditions. We are self-supporting through our own contributions and do not accept outside funding. A few documents from the broader fellowship — Bill W.'s letters and the AA General Service Office bulletins — explain where young-people's conferences sit inside A.A.",
+    link: { label: "See the references on About", href: "/about#where-this-comes-from" },
   },
   {
     question: "How can I get involved?",

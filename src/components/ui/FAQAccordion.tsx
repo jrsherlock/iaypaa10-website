@@ -1,10 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 interface FAQItem {
   question: string;
   answer: string;
+  /** Optional CTA shown below the answer, e.g. "See the references". */
+  link?: { label: string; href: string };
 }
 
 interface FAQAccordionProps {
@@ -77,6 +80,15 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
                 <p className="text-bone-white/75 leading-relaxed">
                   {item.answer}
                 </p>
+                {item.link ? (
+                  <Link
+                    href={item.link.href}
+                    className="mt-3 inline-flex items-center gap-2 font-typewriter text-xs uppercase tracking-[0.25em] text-gold border-b border-gold/40 pb-0.5 hover:text-bone-white hover:border-bone-white transition-colors"
+                  >
+                    {item.link.label}
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                ) : null}
               </div>
             </div>
 

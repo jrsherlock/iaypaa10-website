@@ -236,8 +236,9 @@ export default function AboutPage() {
 
         {/* Where this comes from — reference documents from the broader
             fellowship that situate YPAA conferences inside A.A. itself.
-            Linked, not mirrored: ICYPAA hosts the originals. */}
-        <section className="mb-8">
+            Linked, not mirrored: ICYPAA hosts the originals. The FAQ
+            "Is this an AA event?" answer points to this anchor. */}
+        <section id="where-this-comes-from" className="mb-8 scroll-mt-24">
           <GlowText as="h2" glow="subtle" className="mb-4 text-center">
             Where this comes from
           </GlowText>

@@ -131,6 +131,57 @@ export default function OutreachPage() {
 
         <SlimeDivider className="mb-16" />
 
+        {/* The wider fellowship — ICYPAA, the international young people's
+            umbrella. Outbound link to their site + directory for folks
+            looking to plug in beyond Iowa. */}
+        <section className="mb-16 text-center">
+          <GlowText as="h2" glow="subtle" className="mb-6">
+            The Wider Fellowship
+          </GlowText>
+          <p className="text-bone-white/70 mb-8 max-w-2xl mx-auto">
+            IAYPAA is one of dozens of young-people&rsquo;s conferences across
+            the country. The international umbrella is ICYPAA &mdash; the
+            International Conference of Young People in A.A. &mdash; running
+            since 1958. If IAYPAA X is your first YPAA event, theirs is the
+            next door to walk through.
+          </p>
+          <div className="max-w-2xl mx-auto rounded-xl border border-ooze-green/30 bg-void-black/60 p-6 sm:p-8">
+            <p className="font-typewriter text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/45 mb-3">
+              International umbrella &middot; since 1958
+            </p>
+            <h3 className="font-anton uppercase tracking-wide text-2xl sm:text-3xl text-bone-white leading-tight mb-3">
+              <span className="text-ooze-green">ICYPAA</span> &mdash; the wider room
+            </h3>
+            <p className="text-bone-white/75 leading-relaxed mb-6">
+              Background on YPAA, archives of past conferences, a worldwide
+              directory of young-people&rsquo;s groups, and the bid process
+              for hosting future ICYPAA conferences.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href="https://www.icypaa.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 font-typewriter text-xs uppercase tracking-[0.25em] text-void-black bg-gold px-5 py-3 rounded-md hover:bg-bone-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green"
+              >
+                Visit icypaa.org
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+              <a
+                href="https://www.icypaa.org/ypaa-directory"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 font-typewriter text-xs uppercase tracking-[0.25em] text-gold border border-gold/40 px-5 py-3 rounded-md hover:text-bone-white hover:border-bone-white transition-colors"
+              >
+                YPAA directory
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <SlimeDivider className="mb-16" />
+
         {/* Share the Word */}
         <section className="mb-16">
           <GlowText as="h2" glow="subtle" className="mb-4 text-center">
