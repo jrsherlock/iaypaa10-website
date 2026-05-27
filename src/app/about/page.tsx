@@ -10,6 +10,46 @@ export const metadata: Metadata = {
     "Learn about IAYPAA — Iowa Young People in Alcoholics Anonymous — and our 10th annual conference, Primordial Ooze, in Iowa City, August 2026.",
 };
 
+// Reference documents that help establish how YPAA conferences sit within
+// AA — Bill W.'s correspondence and the AA G.S.O.'s "Box 459" bulletins.
+// Curated and hosted by ICYPAA at icypaa.org/about-icypaa; we link rather
+// than mirror so any upstream updates propagate.
+const AA_REFERENCES: readonly {
+  title: string;
+  source: string;
+  blurb: string;
+  href: string;
+}[] = [
+  {
+    title: "Bill W.'s letter to ICYPAA",
+    source: "PDF · icypaa.org",
+    blurb:
+      "A.A.'s co-founder, writing to the first ICYPAA gathering, on young people in the fellowship.",
+    href: "https://www.icypaa.org/_files/ugd/6b0b63_3d1b5ff23fe44efe8a480ae286908aa5.pdf",
+  },
+  {
+    title: "Box 459 — Discussing ICYPAA (1986)",
+    source: "PDF · icypaa.org",
+    blurb:
+      "The A.A. General Service Office bulletin on the place of young-people's conferences within A.A.",
+    href: "https://www.icypaa.org/_files/ugd/cb4846_3ebbbf2606f24aa8834f446bbf8a42cb.pdf",
+  },
+  {
+    title: "Box 459 — Discussing ICYPAA (2005)",
+    source: "PDF · icypaa.org",
+    blurb:
+      "G.S.O. revisits the question nineteen years later. Same answer, fuller context.",
+    href: "https://www.icypaa.org/_files/ugd/6b0b63_adccddb8680b4b20a022fde182ce3702.pdf",
+  },
+  {
+    title: "Bill W. on hippies & young people",
+    source: "Article · AA Grapevine, June 2004",
+    blurb:
+      "A letter from Bill, reprinted in the Grapevine — on welcoming newer generations into the rooms.",
+    href: "https://www.aagrapevine.org/magazine/2004/jun/bill-ws-letter-about-hippies-aa",
+  },
+];
+
 const WHAT_TO_EXPECT = [
   {
     icon: "\uD83C\uDFA4",
@@ -190,6 +230,66 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+        </section>
+
+        <SlimeDivider className="mb-16" />
+
+        {/* Where this comes from — reference documents from the broader
+            fellowship that situate YPAA conferences inside A.A. itself.
+            Linked, not mirrored: ICYPAA hosts the originals. */}
+        <section className="mb-8">
+          <GlowText as="h2" glow="subtle" className="mb-4 text-center">
+            Where this comes from
+          </GlowText>
+          <p className="max-w-2xl mx-auto text-center text-bone-white/70 leading-relaxed mb-10">
+            A few documents from the broader fellowship that help explain how
+            young-people&rsquo;s conferences sit inside A.A. — not separate
+            from it. Curated by ICYPAA; hosted on their site.
+          </p>
+
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
+            {AA_REFERENCES.map((doc) => (
+              <li key={doc.href}>
+                <a
+                  href={doc.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block h-full rounded-lg border border-ooze-green/25 bg-void-black/55 paper-grit p-5 sm:p-6 transition-colors hover:border-gold/55 hover:bg-toxic-green/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green"
+                >
+                  <p className="font-typewriter text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/45 mb-2">
+                    {doc.source}
+                  </p>
+                  <h3 className="font-anton uppercase tracking-wide text-lg sm:text-xl text-bone-white leading-tight group-hover:text-gold transition-colors">
+                    {doc.title}
+                  </h3>
+                  <p className="font-news text-bone-white/75 text-sm sm:text-base leading-relaxed mt-2">
+                    {doc.blurb}
+                  </p>
+                  <span className="mt-4 inline-flex items-center gap-2 font-typewriter text-xs uppercase tracking-[0.25em] text-gold">
+                    Read
+                    <span
+                      aria-hidden="true"
+                      className="transition-transform group-hover:translate-x-1"
+                    >
+                      &rarr;
+                    </span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/40 text-center mt-8">
+            Curated at{" "}
+            <a
+              href="https://www.icypaa.org/about-icypaa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-bone-white/60 border-b border-bone-white/20 hover:text-gold hover:border-gold transition-colors"
+            >
+              icypaa.org/about-icypaa
+            </a>
+          </p>
         </section>
       </div>
     </div>
