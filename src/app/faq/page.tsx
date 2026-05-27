@@ -13,8 +13,11 @@ export default function FAQPage() {
     email: "",
     message: "",
   });
+  const [website, setWebsite] = useState(""); // honeypot
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -22,13 +25,39 @@ export default function FAQPage() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (formData.name.trim() && formData.email.trim() && formData.message.trim()) {
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.message.trim()
+    ) {
+      return;
+    }
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, website }),
+      });
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        setError(
+          data.error ?? "Could not send your message. Please try again.",
+        );
+        return;
+      }
       setFormSubmitted(true);
       setShowToast(true);
       setFormData({ name: "", email: "", message: "" });
+      setWebsite("");
       setTimeout(() => setShowToast(false), 4000);
+    } catch {
+      setError("Network error. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -82,7 +111,33 @@ export default function FAQPage() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+                {/* Honeypot — hidden from humans, irresistible to bots.
+                    Submissions with this filled in are dropped silently
+                    on the server. */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    width: "1px",
+                    height: "1px",
+                    overflow: "hidden",
+                  }}
+                >
+                  <label htmlFor="contact-website-url">
+                    Website (leave blank)
+                    <input
+                      id="contact-website-url"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                    />
+                  </label>
+                </div>
+
                 <div>
                   <label
                     htmlFor="name"
@@ -137,11 +192,21 @@ export default function FAQPage() {
                     placeholder="What's on your mind?"
                   />
                 </div>
+                {error && (
+                  <div
+                    role="alert"
+                    className="rounded-lg border border-ember/50 bg-ember/15 px-4 py-3 text-sm text-bone-white/90"
+                  >
+                    {error}
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full rounded-lg bg-gold px-6 py-3 font-bold text-void-black hover:shadow-[0_0_20px_rgba(242,193,78,0.5)] transition-all cursor-pointer"
+                  disabled={submitting}
+                  className="w-full rounded-lg bg-gold px-6 py-3 font-bold text-void-black hover:shadow-[0_0_20px_rgba(242,193,78,0.5)] transition-all cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:shadow-none"
                 >
-                  Send Message
+                  {submitting ? "Sending…" : "Send Message"}
                 </button>
               </form>
             )}
