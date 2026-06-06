@@ -1,0 +1,128 @@
+<!--
+  IAYPAA X — Welcome email (MJML source for Loops' Code editor).
+
+  Upload this file into Loops: Transactional → Code → "Select or drop a file
+  here". No images are used, so a single .mjml file is all you need (no zip).
+  Mirrors the 2026.iaypaa.org homepage: void-black canvas, typewriter stamps,
+  gold "Primordial Ooze" wordmark, ooze-green marquee rule, framed date/venue
+  stamp, and the gold "Reserve your seat" button.
+
+  - Display fonts (Anton/Creepster) don't load in email; the wordmark uses a
+    bold web-safe serif and the stamps use Courier to keep the site's voice.
+  - {{firstName}} is a Loops data variable, sent by /api/subscribe.
+  - Loops appends the unsubscribe footer automatically — not included here.
+  Brand: void-black #0D0D0D · bone-white #E8E6E1 · gold #F2C14E
+  · ooze-green #5FAD56 · swamp-teal #4D9078 · toxic-green #1B3B30 · muted #9a978f
+-->
+<mjml>
+  <mj-head>
+    <mj-preview>The 10th Annual Iowa Young People in A.A. — Aug 14–16, 2026, Iowa City.</mj-preview>
+    <mj-attributes>
+      <mj-all font-family="Arial, Helvetica, sans-serif" />
+      <mj-text color="#E8E6E1" font-size="16px" line-height="1.65" padding="0" />
+      <mj-section background-color="#0D0D0D" padding="0" />
+    </mj-attributes>
+    <mj-style>
+      a { color: #5FAD56; }
+    </mj-style>
+  </mj-head>
+
+  <mj-body background-color="#0D0D0D" width="600px">
+
+    <!-- Top stamp -->
+    <mj-section padding="32px 32px 0">
+      <mj-column>
+        <mj-text font-family="'Courier New', Courier, monospace" font-size="12px" letter-spacing="3px" text-transform="uppercase" color="#9a978f">
+          IAYPAA&nbsp;X &middot; Tenth Annual &middot; One weekend only
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Wordmark -->
+    <mj-section padding="14px 32px 0">
+      <mj-column>
+        <mj-text font-family="Georgia, 'Times New Roman', serif" font-size="46px" font-weight="bold" line-height="1" letter-spacing="1px" color="#F2C14E">
+          Primordial<br/>Ooze
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Green marquee rule -->
+    <mj-section padding="18px 32px 0">
+      <mj-column>
+        <mj-divider border-width="4px" border-color="#5FAD56" width="180px" align="left" padding="0" />
+      </mj-column>
+    </mj-section>
+
+    <!-- Framed date / venue stamp -->
+    <mj-section padding="20px 32px 0">
+      <mj-column>
+        <mj-text>
+          <div style="display:inline-block;border:1px solid #4D9078;padding:12px 18px;font-family:'Courier New',Courier,monospace;font-size:15px;letter-spacing:1px;color:#E8E6E1;">
+            Aug&nbsp;<span style="color:#F2C14E;">14</span>&ndash;<span style="color:#F2C14E;">16</span>,&nbsp;2026<br/>
+            <span style="color:#9a978f;font-size:13px;">The Highlander Hotel &middot; Iowa City, Iowa</span>
+          </div>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Body -->
+    <mj-section padding="30px 32px 0">
+      <mj-column>
+        <mj-text padding="0 0 18px">Hi {{firstName}},</mj-text>
+        <mj-text padding="0 0 18px">
+          You&rsquo;re on the IAYPAA&nbsp;X mailing list &mdash; that&rsquo;s the whole ask. We&rsquo;re glad you&rsquo;re here.
+        </mj-text>
+        <mj-text padding="0 0 18px">
+          IAYPAA&nbsp;X &mdash; <strong style="color:#F2C14E;">&ldquo;Primordial Ooze&rdquo;</strong> &mdash; is the 10th Annual Iowa Young People in Alcoholics Anonymous conference: a weekend of speaker meetings, workshops, fellowship, and the kind of fun that reminds you why this works.
+        </mj-text>
+        <mj-text padding="0 0 14px">
+          <strong style="color:#E8E6E1;">Registration is open.</strong> Early Bird is just <strong style="color:#F2C14E;">$20</strong> for a full weekend pass &mdash; that price goes up, so it&rsquo;s worth grabbing now. Scholarships are available, and no one is turned away for lack of funds.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Gold CTA button -->
+    <mj-section padding="8px 32px 4px">
+      <mj-column>
+        <mj-button href="https://2026.iaypaa.org/registration" background-color="#F2C14E" color="#0D0D0D" font-weight="bold" font-size="16px" inner-padding="14px 30px" border-radius="6px" align="left" padding="0">
+          Reserve your seat &rarr;
+        </mj-button>
+      </mj-column>
+    </mj-section>
+
+    <!-- Body continued -->
+    <mj-section padding="26px 32px 0">
+      <mj-column>
+        <mj-text padding="0 0 8px">Beyond that, we&rsquo;ll only email when there&rsquo;s something real to say:</mj-text>
+        <mj-text padding="0 0 18px" line-height="1.7">
+          <span style="color:#5FAD56;">&#8853;</span>&nbsp;&nbsp;When the hotel room block goes live<br/>
+          <span style="color:#5FAD56;">&#8853;</span>&nbsp;&nbsp;When speakers are announced<br/>
+          <span style="color:#5FAD56;">&#8853;</span>&nbsp;&nbsp;When the program and pre-conference events take shape
+        </mj-text>
+        <mj-text padding="0 0 18px">
+          No spam, we don&rsquo;t share the list, and you can leave anytime &mdash; there&rsquo;s an unsubscribe link at the bottom of every email.
+        </mj-text>
+        <mj-text padding="0 0 18px">
+          First time at an IAYPAA conference? You don&rsquo;t have to be &ldquo;young&rdquo; and you don&rsquo;t have to know a soul. Just show up. We&rsquo;ll take it from there.
+        </mj-text>
+        <mj-text padding="0 0 6px" color="#F2C14E" font-weight="bold">See you in the ooze.</mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Signature -->
+    <mj-section padding="24px 32px 40px">
+      <mj-column>
+        <mj-divider border-width="1px" border-color="#1B3B30" padding="0 0 20px" />
+        <mj-text font-size="14px" line-height="1.6" color="#9a978f">
+          <strong style="color:#E8E6E1;">The IAYPAA&nbsp;X Committee</strong><br/>
+          Iowa Young People in Alcoholics Anonymous<br/>
+          <a href="https://2026.iaypaa.org" style="color:#5FAD56;text-decoration:none;">2026.iaypaa.org</a>
+          &nbsp;&middot;&nbsp;
+          <a href="mailto:iaypaa@gmail.com" style="color:#5FAD56;text-decoration:none;">iaypaa@gmail.com</a>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+  </mj-body>
+</mjml>
