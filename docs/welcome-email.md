@@ -39,22 +39,25 @@ The 10th Annual Iowa Young People in A.A. — Aug 14–16, 2026, Iowa City.
 ```
 Hi {{firstName}},
 
-You're on the IAYPAA X mailing list. That's the whole ask — nothing
-else you need to do right now.
+You're on the IAYPAA X mailing list — that's the whole ask. We're glad
+you're here.
 
-Here's what you signed up for:
-
-IAYPAA X — "Primordial Ooze" — the 10th Annual Iowa Young People in
+IAYPAA X — "Primordial Ooze" — is the 10th Annual Iowa Young People in
 Alcoholics Anonymous conference. August 14–16, 2026, at The Highlander
 Hotel in Iowa City, Iowa. A weekend of speaker meetings, workshops,
 fellowship, and the kind of fun that reminds you why this works.
 
-We'll only email when there's something real to say:
+Registration is open. Early Bird is just $20 for a full weekend pass —
+that price goes up, so it's worth grabbing now. Scholarships are
+available, and no one is turned away for lack of funds.
 
-  • When registration opens (early-bird pricing goes first)
+  Reserve your seat → https://2026.iaypaa.org/registration
+
+Beyond that, we'll only email when there's something real to say:
+
   • When the hotel room block goes live
   • When speakers are announced
-  • The occasional update as the weekend takes shape
+  • When the program and pre-conference events take shape
 
 No spam, we don't share the list, and you can leave anytime — there's
 an unsubscribe link at the bottom of every email.
