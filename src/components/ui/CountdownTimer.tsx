@@ -26,35 +26,38 @@ function calculateTimeLeft(): TimeLeft {
   };
 }
 
-function padNumber(num: number): string {
+function padNumber(num: number | null): string {
+  // null = not yet computed on the client; show a neutral placeholder so the
+  // static HTML never ships a stale number.
+  if (num === null) return "--";
   return num.toString().padStart(2, "0");
 }
 
 export default function CountdownTimer() {
-  // Lazily initialise from the real remaining time so the server renders
-  // the correct countdown — it must not depend on client JS to be visible.
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft);
+  // Start empty and compute only on the client. The homepage is statically
+  // prerendered, so seeding from calculateTimeLeft() here would bake the
+  // build-time day count into the cached HTML and it would drift a day every
+  // day until the next deploy. null → render a placeholder on the server, then
+  // fill in the live value once JS runs, so the number is never stale.
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
-    // Re-sync to the client clock just after paint (rAF avoids a
-    // synchronous setState cascade), then tick every second.
-    const raf = requestAnimationFrame(() => setTimeLeft(calculateTimeLeft()));
+    // Compute immediately on mount, then tick every second.
+    setTimeLeft(calculateTimeLeft());
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => {
-      cancelAnimationFrame(raf);
-      clearInterval(timer);
-    };
+    return () => clearInterval(timer);
   }, []);
 
-  const blocks: { label: string; value: number; isSeconds?: boolean }[] = [
-    { label: "Days", value: timeLeft.days },
-    { label: "Hours", value: timeLeft.hours },
-    { label: "Minutes", value: timeLeft.minutes },
-    { label: "Seconds", value: timeLeft.seconds, isSeconds: true },
-  ];
+  const blocks: { label: string; value: number | null; isSeconds?: boolean }[] =
+    [
+      { label: "Days", value: timeLeft?.days ?? null },
+      { label: "Hours", value: timeLeft?.hours ?? null },
+      { label: "Minutes", value: timeLeft?.minutes ?? null },
+      { label: "Seconds", value: timeLeft?.seconds ?? null, isSeconds: true },
+    ];
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
