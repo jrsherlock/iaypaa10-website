@@ -69,7 +69,7 @@ See you in the ooze.
 
 — The IAYPAA X Committee
 Iowa Young People in Alcoholics Anonymous
-iaypaa@gmail.com
+iaypaa10@gmail.com
 ```
 
 ---

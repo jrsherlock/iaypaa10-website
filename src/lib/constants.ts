@@ -13,7 +13,7 @@ export const CONFERENCE = {
     phone: "319-354-2000",
     website: "https://www.highlanderhotel.us",
   },
-  email: "iaypaa@gmail.com",
+  email: "iaypaa10@gmail.com",
   social: {
     instagram: "https://www.instagram.com/iaypaa",
   },
