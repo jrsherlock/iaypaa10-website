@@ -9,7 +9,9 @@
 
   - Display fonts (Anton/Creepster) don't load in email; the wordmark uses a
     bold web-safe serif and the stamps use Courier to keep the site's voice.
-  - {{firstName}} is a Loops data variable, sent by /api/subscribe.
+  - The first-name token uses Loops' transactional DATA VARIABLE syntax
+    (uppercase DATA_VARIABLE:firstName) rather than the double-curly contact-
+    property syntax, which transactional emails reject. Sent by /api/subscribe.
   - Loops appends the unsubscribe footer automatically — not included here.
   Brand: void-black #0D0D0D · bone-white #E8E6E1 · gold #F2C14E
   · ooze-green #5FAD56 · swamp-teal #4D9078 · toxic-green #1B3B30 · muted #9a978f
@@ -69,7 +71,7 @@
     <!-- Body -->
     <mj-section padding="30px 32px 0">
       <mj-column>
-        <mj-text padding="0 0 18px">Hi {{firstName}},</mj-text>
+        <mj-text padding="0 0 18px">Hi {DATA_VARIABLE:firstName},</mj-text>
         <mj-text padding="0 0 18px">
           You&rsquo;re on the IAYPAA&nbsp;X mailing list &mdash; that&rsquo;s the whole ask. We&rsquo;re glad you&rsquo;re here.
         </mj-text>
