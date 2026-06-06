@@ -55,7 +55,6 @@ available, and no one is turned away for lack of funds.
 
 Beyond that, we'll only email when there's something real to say:
 
-  • When the hotel room block goes live
   • When speakers are announced
   • When the program and pre-conference events take shape
 

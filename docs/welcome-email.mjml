@@ -98,7 +98,6 @@
       <mj-column>
         <mj-text padding="0 0 8px">Beyond that, we&rsquo;ll only email when there&rsquo;s something real to say:</mj-text>
         <mj-text padding="0 0 18px" line-height="1.7">
-          <span style="color:#5FAD56;">&#8853;</span>&nbsp;&nbsp;When the hotel room block goes live<br/>
           <span style="color:#5FAD56;">&#8853;</span>&nbsp;&nbsp;When speakers are announced<br/>
           <span style="color:#5FAD56;">&#8853;</span>&nbsp;&nbsp;When the program and pre-conference events take shape
         </mj-text>
