@@ -56,7 +56,7 @@ const ALL_WEEKEND: readonly {
     title: "Hospitality suite",
     detail:
       "The social hub. Free coffee, snacks, energy drinks, and the kind of fellowship that runs late. Home groups host the meal and snack slots all weekend.",
-    link: { href: "/outreach#hospitality-suite", label: "Host a slot" },
+    link: { href: "/hospitality", label: "Host a slot" },
   },
   {
     title: "Prayer & meditation room",

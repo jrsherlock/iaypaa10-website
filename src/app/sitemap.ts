@@ -8,6 +8,7 @@ const ROUTES = [
   "/schedule",
   "/speakers",
   "/hotel",
+  "/hospitality",
   "/about",
   "/faq",
   "/past-conferences",
