@@ -42,7 +42,11 @@ type Day = {
 };
 
 /** Threads that run continuously, all weekend long. */
-const ALL_WEEKEND: readonly { title: string; detail: string }[] = [
+const ALL_WEEKEND: readonly {
+  title: string;
+  detail: string;
+  link?: { href: string; label: string };
+}[] = [
   {
     title: "Marathon meeting room",
     detail:
@@ -51,7 +55,8 @@ const ALL_WEEKEND: readonly { title: string; detail: string }[] = [
   {
     title: "Hospitality suite",
     detail:
-      "The social hub. Free coffee, snacks, energy drinks, and the kind of fellowship that runs late.",
+      "The social hub. Free coffee, snacks, energy drinks, and the kind of fellowship that runs late. Home groups host the meal and snack slots all weekend.",
+    link: { href: "/outreach#hospitality-suite", label: "Host a slot" },
   },
   {
     title: "Prayer & meditation room",
@@ -312,6 +317,15 @@ export default function SchedulePage() {
                 <p className="font-news text-bone-white/80 text-sm sm:text-base leading-relaxed mt-1.5">
                   {item.detail}
                 </p>
+                {item.link ? (
+                  <a
+                    href={item.link.href}
+                    className="inline-flex items-center gap-1.5 font-typewriter text-xs tracking-[0.2em] uppercase text-gold hover:text-bone-white transition-colors mt-3"
+                  >
+                    {item.link.label}
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                ) : null}
               </div>
             ))}
           </div>

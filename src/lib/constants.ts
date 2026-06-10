@@ -193,6 +193,67 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
   },
 ];
 
+// Hospitality suite host sign-up. Home groups claim a meal/snack slot in the
+// suite at the Highlander via SignUpGenius. Live availability lives on
+// SignUpGenius — the list below is the slot lineup, not booking state, so it
+// never goes stale as groups claim slots.
+export const HOSPITALITY_SIGNUP_URL =
+  "https://www.signupgenius.com/go/10C0F45A8AB2AA5FACE9-64184651-iaypaa#/";
+
+export type HospitalitySlot = {
+  time: string;
+  title: string;
+  note: string;
+};
+
+export const HOSPITALITY_SLOTS: readonly {
+  day: string;
+  date: string;
+  slots: readonly HospitalitySlot[];
+}[] = [
+  {
+    day: "FRI",
+    date: "Aug 14",
+    slots: [
+      { time: "3–5 PM", title: "Slime Time Social Hour", note: "Kickoff snacks" },
+      { time: "5–7 PM", title: "The Primordial Feast", note: "Dinner" },
+      { time: "7–9 PM", title: "Goo-Tox and Fellowship", note: "Snacks" },
+      { time: "10 PM–12 AM", title: "Swampcore Social Club", note: "Snacks" },
+    ],
+  },
+  {
+    day: "SAT",
+    date: "Aug 15",
+    slots: [
+      { time: "12–4 AM", title: "Primordial Pajama Party", note: "Late-night snacks" },
+      {
+        time: "7–10 AM",
+        title: "Muckfast Club",
+        note: "Supplemental breakfast — the Highlander serves a complimentary breakfast",
+      },
+      { time: "10 AM–12 PM", title: "The Snackasaurus Rex Cafe", note: "Snacks" },
+      { time: "12–2 PM", title: "Lunch from the Lagoon", note: "Lunch" },
+      { time: "2–5 PM", title: "The Oozy Snackateria", note: "Snacks" },
+      { time: "5–7 PM", title: "The Big Bang Banquet", note: "Dinner" },
+      { time: "7–10 PM", title: "Swamp Stomp Social", note: "Snacks" },
+      { time: "10 PM–12 AM", title: "Snackasaurus Night Shift", note: "Late-night snacks" },
+    ],
+  },
+  {
+    day: "SUN",
+    date: "Aug 16",
+    slots: [
+      { time: "12–4 AM", title: "Midnight in the Mire Munchies", note: "Snacks for the night owls" },
+      {
+        time: "7–10 AM",
+        title: "Bogside Breakfast",
+        note: "Supplemental breakfast — the Highlander serves a complimentary breakfast",
+      },
+      { time: "10–11 AM", title: "The Muck Stops Here (For Now)", note: "Treats for the road" },
+    ],
+  },
+] as const;
+
 export const FAQ_ITEMS = [
   {
     question: "What is IAYPAA?",
