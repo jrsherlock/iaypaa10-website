@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import GlowText from "@/components/ui/GlowText";
 import RisingMotes from "@/components/effects/RisingMotes";
 import { HOSPITALITY_SIGNUP_URL, HOSPITALITY_SLOTS } from "@/lib/constants";
+import { fetchSlotAvailability } from "@/lib/signupgenius";
 
 export const metadata: Metadata = {
   title: "Hospitality Suite",
@@ -9,9 +10,16 @@ export const metadata: Metadata = {
     "Host a slot in the IAYPAA X hospitality suite — home groups sign up to bring meals and snacks throughout the weekend at the Highlander Hotel.",
 };
 
-// Home groups claim a meal/snack slot via SignUpGenius. The lineup below is
-// static; live availability (who has claimed what) stays on SignUpGenius.
-export default function HospitalityPage() {
+// Regenerate at most every 10 minutes so the claimed/open badges track the
+// SignUpGenius sheet without visitors ever hitting it directly.
+export const revalidate = 600;
+
+// Home groups claim a meal/snack slot via SignUpGenius. The slot lineup is
+// static; claimed/open status is fetched live and degrades to no badges if
+// the fetch fails (see src/lib/signupgenius.ts).
+export default async function HospitalityPage() {
+  const availability = await fetchSlotAvailability();
+
   return (
     <div className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -47,19 +55,36 @@ export default function HospitalityPage() {
                     </span>
                   </div>
                   <ul className="space-y-3">
-                    {day.slots.map((slot) => (
-                      <li key={slot.title}>
-                        <span className="block font-[family-name:var(--font-mono)] text-xs text-bone-white/55 tracking-wider">
-                          {slot.time}
-                        </span>
-                        <span className="block font-typewriter text-sm text-bone-white/85">
-                          {slot.title}
-                        </span>
-                        <span className="block font-news text-xs text-bone-white/50 leading-relaxed">
-                          {slot.note}
-                        </span>
-                      </li>
-                    ))}
+                    {day.slots.map((slot) => {
+                      const claimed = availability?.get(slot.slotItemId);
+                      return (
+                        <li
+                          key={slot.title}
+                          className={claimed ? "opacity-50" : undefined}
+                        >
+                          <span className="flex items-baseline justify-between gap-3">
+                            <span className="font-[family-name:var(--font-mono)] text-xs text-bone-white/55 tracking-wider">
+                              {slot.time}
+                            </span>
+                            {claimed === undefined ? null : claimed ? (
+                              <span className="font-typewriter text-[0.6rem] tracking-[0.2em] uppercase text-bone-white/45 border border-bone-white/20 px-1.5 py-0.5 shrink-0">
+                                Claimed
+                              </span>
+                            ) : (
+                              <span className="font-typewriter text-[0.6rem] tracking-[0.2em] uppercase text-ooze-green border border-ooze-green/40 px-1.5 py-0.5 shrink-0">
+                                Open
+                              </span>
+                            )}
+                          </span>
+                          <span className="block font-typewriter text-sm text-bone-white/85">
+                            {slot.title}
+                          </span>
+                          <span className="block font-news text-xs text-bone-white/50 leading-relaxed">
+                            {slot.note}
+                          </span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               ))}
@@ -75,8 +100,11 @@ export default function HospitalityPage() {
                 <span aria-hidden="true">&rarr;</span>
               </a>
               <p className="text-bone-white/40 text-xs mt-4">
-                Live availability is on SignUpGenius &middot; one group per
-                slot &middot; sign your whole group up together
+                {availability
+                  ? "Availability synced from SignUpGenius every few minutes"
+                  : "Live availability is on SignUpGenius"}{" "}
+                &middot; one group per slot &middot; sign your whole group up
+                together
               </p>
             </div>
           </div>
