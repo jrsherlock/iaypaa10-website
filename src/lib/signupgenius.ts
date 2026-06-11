@@ -9,7 +9,8 @@
 // The response includes signers' full names. Per Tradition 11 nothing but the
 // claimed/open boolean may leave this module.
 
-const SIGNUP_URL_ID = "10C0F45A8AB2AA5FACE9-64184651-iaypaa";
+import { HOSPITALITY_SIGNUP_URL_ID } from "@/lib/constants";
+
 const ENDPOINT = "https://www.signupgenius.com/SUGboxAPI.cfm?go=s.getSignupInfo";
 
 /** slotItemId -> claimed (qty taken >= qty wanted) */
@@ -27,7 +28,7 @@ export async function fetchSlotAvailability(): Promise<SlotAvailability | null> 
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify({ forSignUpView: true, urlid: SIGNUP_URL_ID }),
+      body: JSON.stringify({ forSignUpView: true, urlid: HOSPITALITY_SIGNUP_URL_ID }),
       signal: AbortSignal.timeout(8000),
     });
     if (!res.ok) return null;

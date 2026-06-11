@@ -199,8 +199,17 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
 // suite at the Highlander via SignUpGenius. Live availability lives on
 // SignUpGenius — the list below is the slot lineup, not booking state, so it
 // never goes stale as groups claim slots.
-export const HOSPITALITY_SIGNUP_URL =
-  "https://www.signupgenius.com/go/10C0F45A8AB2AA5FACE9-64184651-iaypaa#/";
+export const HOSPITALITY_SIGNUP_URL_ID = "10C0F45A8AB2AA5FACE9-64184651-iaypaa";
+
+export const HOSPITALITY_SIGNUP_URL = `https://www.signupgenius.com/go/${HOSPITALITY_SIGNUP_URL_ID}#/`;
+
+/**
+ * Deep link straight to the SignUpGenius sign-up form with one slot
+ * preselected (skips the slot-picking step on the sheet).
+ */
+export function hospitalitySlotSignupUrl(slotItemId: number): string {
+  return `https://www.signupgenius.com/index.cfm?go=s.PreProcessSignup&URLID=${HOSPITALITY_SIGNUP_URL_ID}&siid=${slotItemId}`;
+}
 
 export type HospitalitySlot = {
   /**

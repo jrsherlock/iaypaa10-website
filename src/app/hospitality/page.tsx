@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import GlowText from "@/components/ui/GlowText";
 import RisingMotes from "@/components/effects/RisingMotes";
-import { HOSPITALITY_SIGNUP_URL, HOSPITALITY_SLOTS } from "@/lib/constants";
+import {
+  HOSPITALITY_SIGNUP_URL,
+  HOSPITALITY_SLOTS,
+  hospitalitySlotSignupUrl,
+} from "@/lib/constants";
 import { fetchSlotAvailability } from "@/lib/signupgenius";
 
 export const metadata: Metadata = {
@@ -57,11 +61,8 @@ export default async function HospitalityPage() {
                   <ul className="space-y-3">
                     {day.slots.map((slot) => {
                       const claimed = availability?.get(slot.slotItemId);
-                      return (
-                        <li
-                          key={slot.title}
-                          className={claimed ? "opacity-50" : undefined}
-                        >
+                      const body = (
+                        <>
                           <span className="flex items-baseline justify-between gap-3">
                             <span className="font-[family-name:var(--font-mono)] text-xs text-bone-white/55 tracking-wider">
                               {slot.time}
@@ -71,8 +72,8 @@ export default async function HospitalityPage() {
                                 Claimed
                               </span>
                             ) : (
-                              <span className="font-typewriter text-[0.6rem] tracking-[0.2em] uppercase text-ooze-green border border-ooze-green/40 px-1.5 py-0.5 shrink-0">
-                                Open
+                              <span className="font-typewriter text-[0.6rem] tracking-[0.2em] uppercase text-ooze-green border border-ooze-green/40 px-1.5 py-0.5 shrink-0 transition-colors group-hover:bg-ooze-green group-hover:text-void-black">
+                                Open &rarr;
                               </span>
                             )}
                           </span>
@@ -82,6 +83,28 @@ export default async function HospitalityPage() {
                           <span className="block font-news text-xs text-bone-white/50 leading-relaxed">
                             {slot.note}
                           </span>
+                        </>
+                      );
+                      // Open slots deep-link to the sign-up form with this
+                      // slot preselected; claimed/unknown slots don't link.
+                      return (
+                        <li
+                          key={slot.title}
+                          className={claimed ? "opacity-50" : undefined}
+                        >
+                          {claimed === false ? (
+                            <a
+                              href={hospitalitySlotSignupUrl(slot.slotItemId)}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Sign up to host ${slot.title}, ${day.date}, ${slot.time}`}
+                              className="group block -m-2 p-2 rounded-md transition-colors hover:bg-ooze-green/10"
+                            >
+                              {body}
+                            </a>
+                          ) : (
+                            body
+                          )}
                         </li>
                       );
                     })}
@@ -101,7 +124,7 @@ export default async function HospitalityPage() {
               </a>
               <p className="text-bone-white/40 text-xs mt-4">
                 {availability
-                  ? "Availability synced from SignUpGenius every few minutes"
+                  ? "Availability synced from SignUpGenius every few minutes — click an open slot to claim it"
                   : "Live availability is on SignUpGenius"}{" "}
                 &middot; one group per slot &middot; sign your whole group up
                 together
