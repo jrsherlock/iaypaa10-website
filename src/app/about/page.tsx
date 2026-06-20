@@ -106,7 +106,7 @@ export default function AboutPage() {
               and beyond.
             </p>
             <p>
-              Since 2017, IAYPAA has brought together hundreds of young people
+              Since 2016, IAYPAA has brought together hundreds of young people
               each year for a weekend of speaker meetings, workshops, fellowship,
               and fun — all rooted in the principles of Alcoholics Anonymous and
               its Twelve Traditions. Our conferences are self-supporting through

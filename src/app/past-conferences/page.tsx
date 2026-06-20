@@ -6,7 +6,7 @@ import { PAST_CONFERENCES } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Past Conferences",
   description:
-    "A visual timeline of all IAYPAA conferences, from the very first in 2017 to the 10th annual Primordial Ooze in 2026.",
+    "A visual timeline of all IAYPAA conferences, from the very first in 2016 to the 10th annual Primordial Ooze in 2026.",
 };
 
 export default function PastConferencesPage() {
@@ -86,14 +86,16 @@ export default function PastConferencesPage() {
                         {conf.year}
                       </div>
 
-                      {/* Theme */}
-                      <h3
-                        className={`font-[family-name:var(--font-space)] text-lg font-semibold mb-1 ${
-                          isCurrentYear ? "text-gold" : "text-bone-white"
-                        }`}
-                      >
-                        {conf.theme}
-                      </h3>
+                      {/* Theme (only documented for the current year) */}
+                      {"theme" in conf && conf.theme && (
+                        <h3
+                          className={`font-[family-name:var(--font-space)] text-lg font-semibold mb-1 ${
+                            isCurrentYear ? "text-gold" : "text-bone-white"
+                          }`}
+                        >
+                          {conf.theme}
+                        </h3>
+                      )}
 
                       {/* Location */}
                       <p className="text-bone-white/50 text-sm">

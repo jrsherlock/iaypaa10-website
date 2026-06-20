@@ -77,16 +77,20 @@ export const NAV_GROUPS: readonly NavGroupItem[] = [
   { label: "Stay In the Loop", href: "/#mailing-list" },
 ] as const;
 
+// Source of truth: IAYPAA bid brochure "Where IAYPAA Has Been". IAYPAA was
+// established in 2016 (first held in Des Moines). 2020 had no conference
+// (COVID), which makes 2026 the 10th annual. Past conferences carry no theme
+// here — only the locations/years are documented; 2026's theme is canon.
 export const PAST_CONFERENCES = [
-  { year: 2017, edition: "I", location: "Des Moines, IA", theme: "The Beginning" },
-  { year: 2018, edition: "II", location: "Iowa City, IA", theme: "A New Hope" },
-  { year: 2019, edition: "III", location: "Cedar Rapids, IA", theme: "Under the Big Top" },
-  { year: 2020, edition: "IV", location: "Virtual", theme: "Together Apart" },
-  { year: 2021, edition: "V", location: "Des Moines, IA", theme: "The Roaring Recovery" },
-  { year: 2022, edition: "VI", location: "Iowa City, IA", theme: "Camp IAYPAA" },
-  { year: 2023, edition: "VII", location: "Cedar Rapids, IA", theme: "IAYPAA in Wonderland" },
-  { year: 2024, edition: "VIII", location: "Des Moines, IA", theme: "IAYPAA in Space" },
-  { year: 2025, edition: "IX", location: "Iowa City, IA", theme: "Disco Fever" },
+  { year: 2016, edition: "I", location: "Des Moines, IA" },
+  { year: 2017, edition: "II", location: "Iowa City, IA" },
+  { year: 2018, edition: "III", location: "Des Moines, IA" },
+  { year: 2019, edition: "IV", location: "Cedar Rapids, IA" },
+  { year: 2021, edition: "V", location: "Iowa City, IA" },
+  { year: 2022, edition: "VI", location: "Des Moines, IA" },
+  { year: 2023, edition: "VII", location: "Quad Cities, IA" },
+  { year: 2024, edition: "VIII", location: "Des Moines, IA" },
+  { year: 2025, edition: "IX", location: "Cedar Rapids, IA" },
   { year: 2026, edition: "X", location: "Iowa City, IA", theme: "Primordial Ooze" },
 ] as const;
 

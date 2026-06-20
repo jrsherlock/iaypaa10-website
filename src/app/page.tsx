@@ -58,7 +58,7 @@ export default function Home() {
           </h2>
 
           <p className="font-news text-lg sm:text-xl text-bone-white/85 leading-[1.75] text-center">
-            IAYPAA is Iowa Young People in Alcoholics Anonymous. Since 2017
+            IAYPAA is Iowa Young People in Alcoholics Anonymous. Since 2016
             we&rsquo;ve gathered once a year for a weekend of speaker meetings,
             workshops, and fellowship &mdash; organized by young people in AA,
             open to anyone with a desire to stop drinking. No age requirement,
