@@ -161,13 +161,14 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
   },
   {
     id: "picnic-in-the-park",
-    title: "Picnic in the Park",
+    title: "4th of July Picnic in the Park",
     date: "2026-07-04",
     time: "1:00–4:00 PM",
-    location: "Lower City Park",
-    city: "200 Park Rd, Iowa City, IA",
+    location: "Hickory Hill North Shelter",
+    city: "800 Conklin Ln, Iowa City, IA",
     description:
-      "A Fourth of July picnic in the park — food, fellowship, and sober fun in the afternoon sun.",
+      "An IAYPAA X Fourth of July picnic — speaker at 2:30. Walking tacos, hot dogs, and drinks for sale; sides and desserts provided. $5 suggested donation. Basket and 50/50 raffle. Family friendly — bring your own chair.",
+    flyerThumb: "/flyers/july-4th-picnic.jpg",
   },
   {
     id: "yoga-meditation-in-the-park",
