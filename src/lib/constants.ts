@@ -168,6 +168,7 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
     city: "800 Conklin Ln, Iowa City, IA",
     description:
       "An IAYPAA X Fourth of July picnic — speaker at 2:30. Walking tacos, hot dogs, and drinks for sale; sides and desserts provided. $5 suggested donation. Basket and 50/50 raffle. Family friendly — bring your own chair.",
+    flyer: "/flyers/july-4th-picnic.pdf",
     flyerThumb: "/flyers/july-4th-picnic.jpg",
   },
   {
