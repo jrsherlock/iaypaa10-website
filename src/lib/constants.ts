@@ -77,20 +77,21 @@ export const NAV_GROUPS: readonly NavGroupItem[] = [
   { label: "Stay In the Loop", href: "/#mailing-list" },
 ] as const;
 
-// Source of truth: IAYPAA bid brochure "Where IAYPAA Has Been". IAYPAA was
-// established in 2016 (first held in Des Moines). 2020 had no conference
-// (COVID), which makes 2026 the 10th annual. Past conferences carry no theme
-// here — only the locations/years are documented; 2026's theme is canon.
+// Sources of truth: locations/years from the IAYPAA bid brochure ("Where
+// IAYPAA Has Been"); themes from the iaypaa.org recordings archive
+// (page_id=2282). IAYPAA was established in 2016 (first held in Des Moines);
+// 2020 had no conference (COVID), which makes 2026 the 10th annual. Themes for
+// 2016, 2018, and 2019 are not documented on either source — left absent.
 export const PAST_CONFERENCES = [
   { year: 2016, edition: "I", location: "Des Moines, IA" },
-  { year: 2017, edition: "II", location: "Iowa City, IA" },
+  { year: 2017, edition: "II", location: "Iowa City, IA", theme: "Willing to Grow" },
   { year: 2018, edition: "III", location: "Des Moines, IA" },
   { year: 2019, edition: "IV", location: "Cedar Rapids, IA" },
-  { year: 2021, edition: "V", location: "Iowa City, IA" },
-  { year: 2022, edition: "VI", location: "Des Moines, IA" },
-  { year: 2023, edition: "VII", location: "Quad Cities, IA" },
-  { year: 2024, edition: "VIII", location: "Des Moines, IA" },
-  { year: 2025, edition: "IX", location: "Cedar Rapids, IA" },
+  { year: 2021, edition: "V", location: "Iowa City, IA", theme: "A Vision for You" },
+  { year: 2022, edition: "VI", location: "Des Moines, IA", theme: "Freedom From the Bondage of Self" },
+  { year: 2023, edition: "VII", location: "Quad Cities, IA", theme: "Age of Miracles" },
+  { year: 2024, edition: "VIII", location: "Des Moines, IA", theme: "If You Build It, They Will Come to Believe" },
+  { year: 2025, edition: "IX", location: "Cedar Rapids, IA", theme: "Match Calamity With Serenity" },
   { year: 2026, edition: "X", location: "Iowa City, IA", theme: "Primordial Ooze" },
 ] as const;
 
