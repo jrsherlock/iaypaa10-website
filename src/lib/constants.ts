@@ -173,13 +173,15 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
   },
   {
     id: "yoga-meditation-in-the-park",
-    title: "Yoga & Meditation in the Park",
+    title: "Meditation & Yoga in the Park",
     date: "2026-07-11",
     time: "10:00 AM–12:00 PM",
-    location: "City Park",
+    location: "City Park — near the festival stage",
     city: "200 Park Rd, Iowa City, IA",
     description:
-      "A morning of yoga and meditation in the park. All experience levels welcome — come as you are.",
+      "A morning of meditation and yoga in the park with Noelle Nyren. All experience levels welcome — come as you are. Bring your own mat or blanket; water bottles for sale. $10 suggested donation.",
+    flyer: "/flyers/yoga-meditation-in-the-park.pdf",
+    flyerThumb: "/flyers/yoga-meditation-in-the-park.jpg",
   },
   {
     id: "virtual-aa-panel",
