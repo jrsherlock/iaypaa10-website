@@ -76,7 +76,6 @@ const ICITY_NOTES: readonly string[] = [
   "University of Iowa campus",
   "Strong local food scene",
   "Active recovery community",
-  "AA meetings within walking distance",
 ];
 
 const DRIVES: readonly { from: string; time: string; road: string }[] = [
@@ -426,9 +425,7 @@ export default function HotelPage() {
                 It&rsquo;s a vibrant downtown, the home of the University of
                 Iowa, a UNESCO City of Literature with bookstores and coffee
                 shops right outside the front door. The Pedestrian Mall is at
-                the hotel&rsquo;s doorstep, and the Iowa City Book Festival and
-                a small, steady local AA fellowship keep the lights on
-                year-round.
+                the hotel&rsquo;s doorstep.
               </p>
               <p>
                 If you&rsquo;ve never been, plan to wander. If you&rsquo;ve
