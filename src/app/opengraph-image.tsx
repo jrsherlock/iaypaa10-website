@@ -5,7 +5,7 @@ import { CONFERENCE } from "@/lib/constants";
 // brand colours rather than cropping the portrait poster art (which would
 // lose the composition at 1200×630). See docs/design-philosophy.md.
 export const alt =
-  "IAYPAA X — Primordial Ooze. The 10th Annual Iowa Young People in AA Conference. August 14–16, 2026, Iowa City, Iowa.";
+  "IAYPAA X: Primordial Ooze. The 10th Annual Iowa Young People in AA Conference. August 14–16, 2026, Iowa City, Iowa.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

@@ -40,7 +40,7 @@ const VENUE_HIGHLIGHTS: readonly string[] = [
 const VENUE_IMAGES = [
   {
     src: "/images/graduate-exterior.jpg",
-    alt: "Graduate by Hilton Iowa City — the black-and-gold check entrance on the downtown Pedestrian Mall",
+    alt: "Graduate by Hilton Iowa City, with its black-and-gold check entrance on the downtown Pedestrian Mall",
     caption: "The front door",
   },
   {
@@ -115,7 +115,7 @@ export default function HotelPage() {
           </div>
 
           <p className="font-typewriter text-sm sm:text-base tracking-[0.15em] uppercase text-bone-white/70 leading-relaxed">
-            {CONFERENCE.date} &nbsp;—&nbsp; where we&apos;ll be
+            {CONFERENCE.date} &nbsp;·&nbsp; where we&apos;ll be
           </p>
         </div>
       </section>
@@ -216,7 +216,7 @@ export default function HotelPage() {
           </blockquote>
 
           <p className="font-news text-bone-white/85 text-lg sm:text-xl leading-[1.75] text-center mb-10 max-w-xl mx-auto">
-            The Graduate sits right downtown on the Pedestrian Mall &mdash; a
+            The Graduate sits right downtown on the Pedestrian Mall, a
             University of Iowa town&rsquo;s love letter to itself, with
             bookshelves for walls, poems in the paint, and Poindexter Coffee
             off the lobby. Step outside and campus, the Ped Mall, and meetings
@@ -487,7 +487,7 @@ export default function HotelPage() {
                   <span className="font-typewriter text-sm tracking-[0.08em] text-gold">
                     CID
                   </span>{" "}
-                  &mdash; The Eastern Iowa Airport in Cedar Rapids, about 30
+                  is the Eastern Iowa Airport in Cedar Rapids, about 30
                   minutes from the hotel.
                 </p>
                 <p>

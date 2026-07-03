@@ -52,11 +52,11 @@ const newsreader = Newsreader({
 export const metadata: Metadata = {
   metadataBase: new URL(CONFERENCE.siteUrl),
   title: {
-    default: "IAYPAA X — Primordial Ooze | Iowa City, August 2026",
+    default: "IAYPAA X: Primordial Ooze | Iowa City, August 2026",
     template: "%s | IAYPAA X",
   },
   description:
-    "IAYPAA X — the 10th Annual Iowa Young People in AA Conference. August 2026 in Iowa City, Iowa. Theme: Primordial Ooze.",
+    "IAYPAA X is the 10th Annual Iowa Young People in AA Conference. August 2026 in Iowa City, Iowa. Theme: Primordial Ooze.",
   keywords: [
     "IAYPAA",
     "Young People in AA",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "IAYPAA X — Primordial Ooze",
+    title: "IAYPAA X: Primordial Ooze",
     description:
       "The 10th Annual Iowa Young People in AA Conference. August 2026, Iowa City, Iowa.",
     url: CONFERENCE.siteUrl,
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IAYPAA X — Primordial Ooze",
+    title: "IAYPAA X: Primordial Ooze",
     description:
       "The 10th Annual Iowa Young People in AA Conference. August 2026, Iowa City, Iowa.",
   },

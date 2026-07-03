@@ -51,7 +51,7 @@ export default function Footer() {
               {CONFERENCE.fullName}
             </p>
             <p className="text-sm text-bone-white/60 leading-relaxed">
-              {CONFERENCE.edition} &mdash;{" "}
+              {CONFERENCE.edition} &bull;{" "}
               <span className="text-swamp-teal/80">{CONFERENCE.tagline}</span>
             </p>
             <p className="mt-2 text-sm text-bone-white/50 font-[family-name:var(--font-mono)]">

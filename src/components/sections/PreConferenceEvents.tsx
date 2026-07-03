@@ -406,7 +406,7 @@ export default function PreConferenceEvents({
             </div>
 
             <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/35 text-center mt-10">
-              Kept on purpose — every step of the road counts
+              Kept on purpose. Every step of the road counts
             </p>
           </div>
         </section>

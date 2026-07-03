@@ -11,7 +11,7 @@ import { fetchSlotAvailability } from "@/lib/signupgenius";
 export const metadata: Metadata = {
   title: "Hospitality Suite",
   description:
-    "Host a slot in the IAYPAA X hospitality suite — home groups sign up to bring meals and snacks throughout the weekend at Graduate by Hilton Iowa City.",
+    "Host a slot in the IAYPAA X hospitality suite, where home groups sign up to bring meals and snacks throughout the weekend at Graduate by Hilton Iowa City.",
 };
 
 // Regenerate at most every 10 minutes so the claimed/open badges track the
@@ -33,7 +33,7 @@ export default async function HospitalityPage() {
             Host the Hospitality Suite
           </GlowText>
           <p className="text-bone-white/70 text-lg md:text-xl max-w-2xl mx-auto font-[family-name:var(--font-space)]">
-            The social hub of the weekend — and it runs on home groups
+            The social hub of the weekend, and it runs on home groups
           </p>
         </div>
         <RisingMotes count={10} />
@@ -41,7 +41,7 @@ export default async function HospitalityPage() {
         <section className="mb-8">
           <p className="text-bone-white/70 text-center mb-10 max-w-2xl mx-auto">
             The hospitality suite at the Graduate is where the fellowship
-            gathers between sessions — coffee, snacks, and conversation that
+            gathers between sessions for coffee, snacks, and conversation that
             runs late. Each slot below is a meal or snack shift one group hosts
             together: bring the food, serve the fellowship, and keep the room
             warm. Claim your group&apos;s slot on SignUpGenius.
@@ -124,7 +124,7 @@ export default async function HospitalityPage() {
               </a>
               <p className="text-bone-white/40 text-xs mt-4">
                 {availability
-                  ? "Availability synced from SignUpGenius every few minutes — click an open slot to claim it"
+                  ? "Availability synced from SignUpGenius every few minutes; click an open slot to claim it"
                   : "Live availability is on SignUpGenius"}{" "}
                 &middot; one group per slot &middot; sign your whole group up
                 together

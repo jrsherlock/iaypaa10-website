@@ -50,7 +50,7 @@ export default function ThemeTeaser() {
 
         {/* the sincere caption — serif, not horror */}
         <p className="font-news text-bone-white/85 text-lg sm:text-xl leading-[1.7] text-center mt-12 max-w-xl mx-auto">
-          Ten years of IAYPAA. Primordial ooze is where life begins &mdash;
+          Ten years of IAYPAA. Primordial ooze is where life begins:
           the formless place every one of us started from, and the new life
           that comes up out of it when you don&apos;t have to do it alone. A
           weekend by and for young people in recovery, with anyone who wants

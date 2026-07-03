@@ -135,7 +135,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           {/* Bottom tagline */}
           <div className="px-6 py-4 border-t border-ooze-green/10">
             <p className="text-xs text-bone-white/40 font-[family-name:var(--font-mono)]">
-              {CONFERENCE.edition} &mdash; {CONFERENCE.tagline}
+              {CONFERENCE.edition} &bull; {CONFERENCE.tagline}
             </p>
           </div>
         </div>

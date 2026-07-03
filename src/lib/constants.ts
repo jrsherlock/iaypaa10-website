@@ -167,7 +167,7 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
     location: "Hickory Hill North Shelter",
     city: "800 Conklin Ln, Iowa City, IA",
     description:
-      "An IAYPAA X Fourth of July picnic — speaker at 2:30. Walking tacos, hot dogs, and drinks for sale; sides and desserts provided. $5 suggested donation. Basket and 50/50 raffle. Family friendly — bring your own chair.",
+      "An IAYPAA X Fourth of July picnic with a speaker at 2:30. Walking tacos, hot dogs, and drinks for sale; sides and desserts provided. $5 suggested donation. Basket and 50/50 raffle. Family friendly, so bring your own chair.",
     flyer: "/flyers/july-4th-picnic.pdf",
     flyerThumb: "/flyers/july-4th-picnic.jpg",
   },
@@ -176,10 +176,10 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
     title: "Meditation & Yoga in the Park",
     date: "2026-07-11",
     time: "10:00 AM–12:00 PM",
-    location: "City Park — near the festival stage",
+    location: "City Park, near the festival stage",
     city: "200 Park Rd, Iowa City, IA",
     description:
-      "A morning of meditation and yoga in the park with Noelle Nyren. All experience levels welcome — come as you are. Bring your own mat or blanket; water bottles for sale. $10 suggested donation.",
+      "A morning of meditation and yoga in the park with Noelle Nyren. All experience levels welcome; come as you are. Bring your own mat or blanket; water bottles for sale. $10 suggested donation.",
     flyer: "/flyers/yoga-meditation-in-the-park.pdf",
     flyerThumb: "/flyers/yoga-meditation-in-the-park.jpg",
   },
@@ -200,7 +200,7 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
     location: "Zion Lutheran Church",
     city: "310 N Johnson St, Iowa City, IA",
     description:
-      "The kick-off spaghetti dinner — the last big gathering before the doors open for IAYPAA X. Eat well, then we go.",
+      "The kick-off spaghetti dinner, the last big gathering before the doors open for IAYPAA X. Eat well, then we go.",
   },
 ];
 
@@ -294,12 +294,12 @@ export const FAQ_ITEMS = [
   {
     question: "What happens at an IAYPAA conference?",
     answer:
-      "Our conferences feature speaker meetings, panel discussions, workshops, fellowship events, and social activities — all centered around recovery. Expect a weekend of connection, growth, and fun in sobriety.",
+      "Our conferences feature speaker meetings, panel discussions, workshops, fellowship events, and social activities, all centered around recovery. Expect a weekend of connection, growth, and fun in sobriety.",
   },
   {
     question: "How much does it cost to attend?",
     answer:
-      "Registration is open. Early Bird is $20 for a full weekend pass — that price goes up, so get in before it does. At-the-door pricing will be announced closer to the conference. Scholarships are available and no one is turned away for lack of funds — see the Registration page to reserve your seat or to ask about a scholarship, quietly.",
+      "Registration is open. Early Bird is $20 for a full weekend pass, and that price goes up, so get in before it does. At-the-door pricing will be announced closer to the conference. Scholarships are available and no one is turned away for lack of funds. See the Registration page to reserve your seat or to ask about a scholarship, quietly.",
   },
   {
     question: "Where will IAYPAA X be held?",
@@ -309,7 +309,7 @@ export const FAQ_ITEMS = [
   {
     question: "Is this an AA event?",
     answer:
-      "Yes. IAYPAA conferences are organized in the spirit of AA's Twelve Traditions. We are self-supporting through our own contributions and do not accept outside funding. A few documents from the broader fellowship — Bill W.'s letters and the AA General Service Office bulletins — explain where young-people's conferences sit inside A.A.",
+      "Yes. IAYPAA conferences are organized in the spirit of AA's Twelve Traditions. We are self-supporting through our own contributions and do not accept outside funding. A few documents from the broader fellowship, like Bill W.'s letters and the AA General Service Office bulletins, explain where young-people's conferences sit inside A.A.",
     link: { label: "See the references on About", href: "/about#where-this-comes-from" },
   },
   {
@@ -320,6 +320,6 @@ export const FAQ_ITEMS = [
   {
     question: "What is the Primordial Ooze theme?",
     answer:
-      "Primordial Ooze is the theme of our 10th annual conference. It's where life begins — the formless place every one of us started from, and the new life that comes up out of it when you stop trying to do it alone. Ten years of IAYPAA, and a story about coming up out of the dark.",
+      "Primordial Ooze is the theme of our 10th annual conference. It's where life begins: the formless place every one of us started from, and the new life that comes up out of it when you stop trying to do it alone. Ten years of IAYPAA, and a story about coming up out of the dark.",
   },
 ] as const;

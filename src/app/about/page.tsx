@@ -7,7 +7,7 @@ import { CONFERENCE } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about IAYPAA — Iowa Young People in Alcoholics Anonymous — and our 10th annual conference, Primordial Ooze, in Iowa City, August 2026.",
+    "Learn about IAYPAA, Iowa Young People in Alcoholics Anonymous, and our 10th annual conference, Primordial Ooze, in Iowa City, August 2026.",
 };
 
 // Reference documents that help establish how YPAA conferences sit within
@@ -28,14 +28,14 @@ const AA_REFERENCES: readonly {
     href: "https://www.icypaa.org/_files/ugd/6b0b63_3d1b5ff23fe44efe8a480ae286908aa5.pdf",
   },
   {
-    title: "Box 459 — Discussing ICYPAA (1986)",
+    title: "Box 459: Discussing ICYPAA (1986)",
     source: "PDF · icypaa.org",
     blurb:
       "The A.A. General Service Office bulletin on the place of young-people's conferences within A.A.",
     href: "https://www.icypaa.org/_files/ugd/cb4846_3ebbbf2606f24aa8834f446bbf8a42cb.pdf",
   },
   {
-    title: "Box 459 — Discussing ICYPAA (2005)",
+    title: "Box 459: Discussing ICYPAA (2005)",
     source: "PDF · icypaa.org",
     blurb:
       "G.S.O. revisits the question nineteen years later. Same answer, fuller context.",
@@ -45,7 +45,7 @@ const AA_REFERENCES: readonly {
     title: "Bill W. on hippies & young people",
     source: "Article · AA Grapevine, June 2004",
     blurb:
-      "A letter from Bill, reprinted in the Grapevine — on welcoming newer generations into the rooms.",
+      "A letter from Bill, reprinted in the Grapevine, on welcoming newer generations into the rooms.",
     href: "https://www.aagrapevine.org/magazine/2004/jun/bill-ws-letter-about-hippies-aa",
   },
 ];
@@ -73,7 +73,7 @@ const WHAT_TO_EXPECT = [
     icon: "\uD83C\uDF89",
     title: "Fun",
     description:
-      "Dance parties, games, themed events, and plenty of laughs. We prove that sobriety is anything but boring — especially with a Primordial Ooze theme.",
+      "Dance parties, games, themed events, and plenty of laughs. We prove that sobriety is anything but boring, especially with a Primordial Ooze theme.",
   },
 ];
 
@@ -108,7 +108,7 @@ export default function AboutPage() {
             <p>
               Since 2016, IAYPAA has brought together hundreds of young people
               each year for a weekend of speaker meetings, workshops, fellowship,
-              and fun — all rooted in the principles of Alcoholics Anonymous and
+              and fun, all rooted in the principles of Alcoholics Anonymous and
               its Twelve Traditions. Our conferences are self-supporting through
               our own contributions and are open to anyone with a desire to stop
               drinking, regardless of age.
@@ -138,7 +138,7 @@ export default function AboutPage() {
               <div className="space-y-4 text-bone-white/80 leading-relaxed text-base md:text-lg">
                 <p>
                   <strong className="text-ooze-green">IAYPAA X</strong> marks a
-                  milestone — our{" "}
+                  milestone: our{" "}
                   <strong className="text-swamp-teal">10th annual conference</strong>.
                   To mark a decade of recovery, fellowship, and growth, the
                   theme is{" "}
@@ -148,7 +148,7 @@ export default function AboutPage() {
                   .
                 </p>
                 <p>
-                  Primordial ooze is where life begins — the formless place
+                  Primordial ooze is where life begins: the formless place
                   every one of us started from, and the new life that comes up
                   out of it given a little energy, a little time, and people
                   around you. This August, Iowa City fills with young people
@@ -157,7 +157,7 @@ export default function AboutPage() {
                 </p>
                 <p>
                   Just like the primordial ooze from which all life emerged, our
-                  recovery journeys start from the most unlikely beginnings — and
+                  recovery journeys start from the most unlikely beginnings, and
                   from that ooze, something incredible grows.
                 </p>
               </div>
@@ -211,7 +211,7 @@ export default function AboutPage() {
               <p>
                 <strong className="text-gold">Never been to a YPAA conference before?</strong>{" "}
                 You&apos;re in the right place. IAYPAA conferences are designed to
-                be welcoming, inclusive, and accessible to everyone — whether
+                be welcoming, inclusive, and accessible to everyone, whether
                 you&apos;ve been sober for ten years or ten days.
               </p>
               <p>
@@ -244,7 +244,7 @@ export default function AboutPage() {
           </GlowText>
           <p className="max-w-2xl mx-auto text-center text-bone-white/70 leading-relaxed mb-10">
             A few documents from the broader fellowship that help explain how
-            young-people&rsquo;s conferences sit inside A.A. — not separate
+            young-people&rsquo;s conferences sit inside A.A., not separate
             from it. Curated by ICYPAA; hosted on their site.
           </p>
 

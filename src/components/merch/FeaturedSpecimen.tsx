@@ -67,7 +67,7 @@ export default function FeaturedSpecimen({ product }: { product: Product }) {
           <p className="font-news text-base leading-relaxed text-bone-white/75 sm:text-lg">
             You came up out of the dark and you stayed. This is something to
             wear that knows that. Every order keeps the doors open and the
-            coffee on — nothing here is sold for profit.
+            coffee on. Nothing here is sold for profit.
           </p>
 
           <div className="marquee-rule w-40" aria-hidden="true" />

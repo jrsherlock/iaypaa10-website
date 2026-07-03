@@ -53,14 +53,14 @@ export default function Home() {
           </div>
 
           <h2 className="font-news text-3xl sm:text-4xl text-bone-white leading-tight mb-6 text-center">
-            For young people who want to stay sober &mdash; and anyone willing
+            For young people who want to stay sober, and anyone willing
             to stand beside them.
           </h2>
 
           <p className="font-news text-lg sm:text-xl text-bone-white/85 leading-[1.75] text-center">
             IAYPAA is Iowa Young People in Alcoholics Anonymous. Since 2016
             we&rsquo;ve gathered once a year for a weekend of speaker meetings,
-            workshops, and fellowship &mdash; organized by young people in AA,
+            workshops, and fellowship, organized by young people in AA,
             open to anyone with a desire to stop drinking. No age requirement,
             no cover charge for being new, no judgment if it&rsquo;s your first
             time in the room.{" "}

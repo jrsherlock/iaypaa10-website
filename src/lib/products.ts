@@ -77,7 +77,7 @@ export const PRODUCTS: Product[] = [
     id: "slime-tote",
     name: "Conference Tote",
     description:
-      "Heavy canvas tote — roomy enough for a Big Book and a coffee.",
+      "Heavy canvas tote, roomy enough for a Big Book and a coffee.",
     spec: "12 oz canvas · 15\" × 16\"",
     price: 18.0,
     image: ph("photo-1597481499750-3e6b22637e12"),

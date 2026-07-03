@@ -50,7 +50,7 @@ const ALL_WEEKEND: readonly {
   {
     title: "Marathon meeting room",
     detail:
-      "An AA meeting running nearly around the clock — Friday afternoon through Sunday morning. Overwhelmed, restless, or up at 3 AM? The door is open.",
+      "An AA meeting running nearly around the clock, Friday afternoon through Sunday morning. Overwhelmed, restless, or up at 3 AM? The door is open.",
   },
   {
     title: "Hospitality suite",
@@ -66,7 +66,7 @@ const ALL_WEEKEND: readonly {
   {
     title: "Outreach tables",
     detail:
-      "MNYPAA · ISCYPAA · WICYPAA · MOSCYPAA · ICYPAA · Midwest CampYPAA — come meet the bids.",
+      "MNYPAA · ISCYPAA · WICYPAA · MOSCYPAA · ICYPAA · Midwest CampYPAA. Come meet the bids.",
   },
 ];
 
@@ -81,7 +81,7 @@ const DAYS: readonly Day[] = [
     date: "Aug 14",
     name: "Opening night",
     blurb:
-      "Doors open, hugs out front, registration in the lobby. The marathon room opens and the weekend warms up — hype, the state roll call, and the Friday night speaker.",
+      "Doors open, hugs out front, registration in the lobby. The marathon room opens and the weekend warms up with hype, the state roll call, and the Friday night speaker.",
     slots: [
       { time: "12:00 PM", title: "Doors & registration open", room: "Lobby" },
       { time: "6:30 PM", title: "Hype", room: "Main Ballroom" },
@@ -103,7 +103,7 @@ const DAYS: readonly Day[] = [
       },
       {
         time: "10:00 PM",
-        title: "“When we retire at night” — late meeting",
+        title: "“When we retire at night” · late meeting",
         room: "Breakout",
       },
       {
@@ -119,7 +119,7 @@ const DAYS: readonly Day[] = [
     date: "Aug 15",
     name: "The core day",
     blurb:
-      "The fullest day — bid skits in the morning, a full slate of step panels and workshops, then the Saturday night main meeting with the sobriety countdown and the advisory host announcement.",
+      "The fullest day: bid skits in the morning, a full slate of step panels and workshops, then the Saturday night main meeting with the sobriety countdown and the advisory host announcement.",
     slots: [
       { time: "7:00 AM", title: "Doors open & coffee", room: "Lobby" },
       { time: "9:30 AM", title: "Bid skits", room: "Main Ballroom" },
@@ -133,7 +133,7 @@ const DAYS: readonly Day[] = [
         time: "8:00 PM",
         title: "Saturday night main speaker",
         room: "Main Ballroom",
-        desc: "The sobriety countdown — longest sober down to 24 hours — then the keynote. The emotional peak of the weekend.",
+        desc: "The sobriety countdown, longest sober down to 24 hours, then the keynote. The emotional peak of the weekend.",
       },
       {
         time: "9:00 PM",
@@ -143,7 +143,7 @@ const DAYS: readonly Day[] = [
       },
       {
         time: "10:00 PM",
-        title: "“When we retire at night” — late meeting",
+        title: "“When we retire at night” · late meeting",
         room: "Breakout",
       },
       {
@@ -155,26 +155,26 @@ const DAYS: readonly Day[] = [
     ],
     sessions: {
       heading: "Workshops, step panels & breakouts",
-      note: "Running through the day across the breakout rooms — exact start times are being locked in.",
+      note: "Running through the day across the breakout rooms; exact start times are being locked in.",
       items: [
         { topic: "What is YPAA?", lead: "Grant N. · Waukesha, WI" },
         { topic: "Step 1 (the doctor's opinion)", lead: "Tyler V. · Quad Cities" },
         { topic: "Step 2", lead: "Chris B. · Milwaukee, WI" },
         { topic: "Step 3", lead: "Tom H. · Minneapolis" },
-        { topic: "Steps 4 & 5 — Resentments", lead: "Emily L. · Kansas City, MO" },
-        { topic: "Steps 4 & 5 — Fear" },
-        { topic: "Steps 4 & 5 — Sex inventory" },
+        { topic: "Steps 4 & 5: Resentments", lead: "Emily L. · Kansas City, MO" },
+        { topic: "Steps 4 & 5: Fear" },
+        { topic: "Steps 4 & 5: Sex inventory" },
         { topic: "Steps 6 & 7" },
         { topic: "Steps 8 & 9", lead: "Mario O. · Oshkosh, WI" },
         { topic: "Step 10", lead: "Kate G. · Chicago" },
         { topic: "Step 11" },
         { topic: "Step 12", lead: "Ricky S. · Quad Cities" },
         {
-          topic: "Hybrids — navigating multiple fellowships & mental health",
+          topic: "Hybrids: navigating multiple fellowships & mental health",
           lead: "Josh B. · Minneapolis",
         },
         {
-          topic: "Service industry — bars &/or rehab",
+          topic: "Service industry: bars &/or rehab",
           lead: "Justin W. · Quad Cities",
         },
         { topic: "LGBTQIA+ panel", lead: "Mario O. · Oshkosh, WI" },
@@ -199,11 +199,11 @@ const DAYS: readonly Day[] = [
     date: "Aug 16",
     name: "Closing morning",
     blurb:
-      "A softer landing — the morning meditation, the Sunday closing speaker, then farewell and the goodbyes you keep in your pocket for the year. Safe travels home.",
+      "A softer landing: the morning meditation, the Sunday closing speaker, then farewell and the goodbyes you keep in your pocket for the year. Safe travels home.",
     slots: [
       {
         time: "8:30 AM",
-        title: "“Upon awakening” — meditation",
+        title: "“Upon awakening” · meditation",
         room: "Main Ballroom",
         lead: "Kyle T. · Cedar Rapids, IA",
       },
@@ -281,13 +281,13 @@ export default function SchedulePage() {
         {PROGRAM_PUBLIC ? (
           <ComingSoon
             title="Working Program"
-            subtitle="This is the working timeline for the weekend. The shape, the speakers, and the panel leads are set — a few exact start times for Saturday's workshops are still being locked in. Get on the list and we'll send the final program."
+            subtitle="This is the working timeline for the weekend. The shape, the speakers, and the panel leads are set, though a few exact start times for Saturday's workshops are still being locked in. Get on the list and we'll send the final program."
             showEmailSignup
           />
         ) : (
           <ComingSoon
             title="Weekend Program"
-            subtitle="The full program — speakers, panel leads, and the day-by-day timeline — is with the AA Advisory committee for review."
+            subtitle="The full program, including speakers, panel leads, and the day-by-day timeline, is with the AA Advisory committee for review."
             showEmailSignup
           />
         )}

@@ -7,7 +7,7 @@ import { CONFERENCE, PROGRAM_PUBLIC } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Speakers",
-  description: `Speakers, panelists, and workshop leaders for ${CONFERENCE.name} — Primordial Ooze. Confirmed voices are listed on the program; the full keynote lineup is still being announced.`,
+  description: `Speakers, panelists, and workshop leaders for ${CONFERENCE.name}, Primordial Ooze. Confirmed voices are listed on the program; the full keynote lineup is still being announced.`,
 };
 
 export default function SpeakersPage() {
@@ -36,7 +36,7 @@ export default function SpeakersPage() {
           </div>
 
           <p className="font-typewriter text-sm sm:text-base tracking-[0.15em] uppercase text-bone-white/70 leading-relaxed">
-            Speakers · panelists · workshop leaders &nbsp;—&nbsp; in alphabetical order of confirmation
+            Speakers · panelists · workshop leaders &nbsp;·&nbsp; in alphabetical order of confirmation
           </p>
         </div>
       </section>
@@ -45,7 +45,7 @@ export default function SpeakersPage() {
       <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
         <ComingSoon
           title="Speaker Lineup"
-          subtitle="The host committee is finalizing the lineup — keynote speakers, panelists, and workshop leaders. Get on the list to hear it the day it drops."
+          subtitle="The host committee is finalizing the lineup: keynote speakers, panelists, and workshop leaders. Get on the list to hear it the day it drops."
           showEmailSignup
         />
       </section>
@@ -70,7 +70,7 @@ export default function SpeakersPage() {
 
           <p className="font-news text-bone-white/85 text-lg sm:text-xl leading-[1.75] mb-8">
             The main speakers and step-panel leaders that are locked in appear
-            on the weekend program as their slots are confirmed &mdash; first
+            on the weekend program as their slots are confirmed, first
             name and last initial only, in keeping with the Eleventh Tradition.
             The full keynote lineup is still being finalized; get on the list
             above and you&rsquo;ll hear it the day it drops.
@@ -125,7 +125,7 @@ export default function SpeakersPage() {
             <div className="font-news text-bone-white/85 text-base sm:text-lg leading-[1.7] space-y-4 mb-7 max-w-prose">
               <p>
                 We&rsquo;re looking for speakers, panelists, and workshop leaders
-                whose story carries the message — strong sobriety, a
+                whose story carries the message: strong sobriety, a
                 compelling voice, and the willingness to pass it on to the
                 young people in the room.
               </p>

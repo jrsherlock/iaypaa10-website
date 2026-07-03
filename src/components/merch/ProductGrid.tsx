@@ -74,7 +74,7 @@ export default function ProductGrid({
 
       {filtered.length === 0 && (
         <p className="py-16 text-center font-news text-bone-white/50">
-          Nothing in this drawer yet — check back as it forms.
+          Nothing in this drawer yet. Check back as it forms.
         </p>
       )}
     </div>

@@ -26,7 +26,7 @@ const TIERS: readonly Tier[] = [
     num: "01",
     name: "Early Bird",
     price: "$20",
-    note: "Limited-time price. Going up — get in before it does.",
+    note: "Limited-time price. Going up, so get in before it does.",
     includes: [
       "Full weekend access",
       "All speaker sessions",
@@ -40,7 +40,7 @@ const TIERS: readonly Tier[] = [
     num: "02",
     name: "At the Door",
     price: "TBA",
-    note: "Walk-in registration — subject to availability.",
+    note: "Walk-in registration, subject to availability.",
     includes: [
       "Full weekend access",
       "All speaker sessions",
@@ -114,7 +114,7 @@ export default function RegistrationPage() {
             />
 
             <p className="font-news text-bone-white/85 text-base sm:text-lg leading-relaxed mb-8 max-w-prose">
-              Tickets are processed off-site through Cheddar Up — the same
+              Tickets are processed off-site through Cheddar Up, the same
               7th-tradition friendly payment service the host committee has
               used for years. You&rsquo;ll pick your tier on the next screen.
             </p>
@@ -194,7 +194,7 @@ export default function RegistrationPage() {
             IAYPAA is self-supporting through our own contributions, in the
             spirit of the Seventh Tradition. If the ticket price is the only
             thing standing between you and a weekend that might matter, write
-            to us &mdash; we&rsquo;ll work it out, quietly, and with no
+            to us, and we&rsquo;ll work it out, quietly, and with no
             questions you don&rsquo;t want to answer.
           </p>
 

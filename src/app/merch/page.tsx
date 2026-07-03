@@ -6,7 +6,7 @@ import ComingSoon from "@/components/ui/ComingSoon";
 export const metadata: Metadata = {
   title: "Merch",
   description:
-    "IAYPAA X merch is still forming. Hoodies, tees, and stickers are on the way — get on the mailing list to hear when the catalogue opens.",
+    "IAYPAA X merch is still forming. Hoodies, tees, and stickers are on the way, so get on the mailing list to hear when the catalogue opens.",
 };
 
 // Merch is hidden for now — the product catalogue (FeaturedSpecimen +
@@ -27,8 +27,8 @@ export default function MerchPage() {
           </GlowText>
           {/* Plain serif — the honest line, no wink. */}
           <p className="mx-auto mt-5 max-w-2xl font-news text-lg leading-relaxed text-bone-white/70 md:text-xl">
-            The gear is still coming together. None of it is sold for profit —
-            every order goes straight back into the conference, so it stays free
+            The gear is still coming together. None of it is sold for profit.
+            Every order goes straight back into the conference, so it stays free
             for the next person who needs it.
           </p>
         </header>

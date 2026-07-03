@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const SHARE_TEXTS = [
   {
     platform: "General",
-    text: `IAYPAA X is coming to Iowa City in August 2026! The theme is Primordial Ooze — ten years of IAYPAA and a weekend about coming up out of the dark together. Hope to see you there.`,
+    text: `IAYPAA X is coming to Iowa City in August 2026! The theme is Primordial Ooze: ten years of IAYPAA and a weekend about coming up out of the dark together. Hope to see you there.`,
   },
   {
     platform: "Meeting Announcement",
@@ -28,7 +28,7 @@ const SHARE_TEXTS = [
   },
   {
     platform: "Text to a Friend",
-    text: `Have you heard about IAYPAA X? It's a young people in AA conference in Iowa City this August. Speakers, workshops, fellowship, and the Primordial Ooze theme — about coming up out of the dark. You should come!`,
+    text: `Have you heard about IAYPAA X? It's a young people in AA conference in Iowa City this August. Speakers, workshops, fellowship, and the Primordial Ooze theme, all about coming up out of the dark. You should come!`,
   },
 ];
 
@@ -105,8 +105,8 @@ export default function OutreachPage() {
           </GlowText>
           <p className="text-bone-white/70 mb-8 max-w-2xl mx-auto">
             IAYPAA is one of dozens of young-people&rsquo;s conferences across
-            the country. The international umbrella is ICYPAA &mdash; the
-            International Conference of Young People in A.A. &mdash; running
+            the country. The international umbrella is ICYPAA, the
+            International Conference of Young People in A.A., running
             since 1958. If IAYPAA X is your first YPAA event, theirs is the
             next door to walk through.
           </p>
@@ -115,7 +115,7 @@ export default function OutreachPage() {
               International umbrella &middot; since 1958
             </p>
             <h3 className="font-anton uppercase tracking-wide text-2xl sm:text-3xl text-bone-white leading-tight mb-3">
-              <span className="text-ooze-green">ICYPAA</span> &mdash; the wider room
+              <span className="text-ooze-green">ICYPAA</span>: the wider room
             </h3>
             <p className="text-bone-white/75 leading-relaxed mb-6">
               Background on YPAA, archives of past conferences, a worldwide
@@ -189,7 +189,7 @@ export default function OutreachPage() {
                 IAYPAA is entirely volunteer-run, and we&apos;re always looking
                 for enthusiastic people to join the committee. Whether you have
                 experience in event planning, design, outreach, or just a
-                willingness to help — there&apos;s a place for you.
+                willingness to help, there&apos;s a place for you.
               </p>
               <p>
                 Service positions are a fantastic way to give back, build

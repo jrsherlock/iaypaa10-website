@@ -71,7 +71,7 @@ export default function EmailSignup() {
           <p className="font-news text-bone-white/80 text-base sm:text-lg leading-relaxed mb-7">
             Updates when registration opens, when the hotel block goes live,
             when speakers are announced. First name and last initial is all we
-            ask &mdash; we keep it anonymous, and we don&rsquo;t share the
+            ask. We keep it anonymous, and we don&rsquo;t share the
             list.
           </p>
 
