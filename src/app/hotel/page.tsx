@@ -25,43 +25,54 @@ function hotelPhotos(): string[] {
 
 export const metadata: Metadata = {
   title: "Hotel & Venue",
-  description: `IAYPAA X is at ${CONFERENCE.venue.name} in ${CONFERENCE.location}. ${CONFERENCE.date}. Independent urban resort with a pool, arcade, courtyard, and live music.`,
+  description: `IAYPAA X is at ${CONFERENCE.venue.name}, right on the downtown Pedestrian Mall in ${CONFERENCE.location}. ${CONFERENCE.date}. Walkable to campus, coffee, and meetings.`,
 };
 
 const VENUE_HIGHLIGHTS: readonly string[] = [
-  "Pool",
-  "Arcade",
-  "Live music",
-  "Pickleball",
-  "Courtyard",
+  "On the Ped Mall",
+  "Poindexter Coffee",
+  "Library lounges",
+  "24-hr fitness center",
+  "Terrace",
+  "Walk to campus",
 ];
 
 const VENUE_IMAGES = [
   {
-    src: "/images/highlander-pool.jpeg",
-    alt: "The Highlander Hotel indoor pool",
-    caption: "Pool",
+    src: "/images/graduate-exterior.jpg",
+    alt: "Graduate by Hilton Iowa City — the black-and-gold check entrance on the downtown Pedestrian Mall",
+    caption: "The front door",
   },
   {
-    src: "/images/highlander-lobby-1.jpeg",
-    alt: "The Highlander Hotel lobby and lounge",
-    caption: "Lobby",
+    src: "/images/graduate-lobby-1.jpg",
+    alt: "The library-inspired lobby at Graduate by Hilton Iowa City",
+    caption: "The lobby",
   },
   {
-    src: "/images/highlander-lobby-2.jpeg",
-    alt: "The Highlander Hotel lounge seating",
-    caption: "Lounge",
+    src: "/images/graduate-library.jpg",
+    alt: "Lounge seating tucked among the lobby's floor-to-ceiling bookshelves",
+    caption: "The library",
   },
   {
-    src: "/images/hotel-room.png",
-    alt: "Hotel guest room",
+    src: "/images/graduate-lounge.jpg",
+    alt: "A lobby lounge with poem-covered walls and tall downtown windows",
+    caption: "The lounge",
+  },
+  {
+    src: "/images/graduate-room-1.jpg",
+    alt: "A guest suite living area with vintage-Iowa furnishings",
     caption: "The rooms",
+  },
+  {
+    src: "/images/graduate-room-2.jpg",
+    alt: "A guest suite with a king bed and a dining table",
+    caption: "The suites",
   },
 ] as const;
 
 const ICITY_NOTES: readonly string[] = [
   "UNESCO City of Literature",
-  "Walkable downtown & Ped Mall",
+  "On the Pedestrian Mall",
   "University of Iowa campus",
   "Strong local food scene",
   "Active recovery community",
@@ -173,7 +184,7 @@ export default function HotelPage() {
               </span>
             </a>
             <span className="font-typewriter text-xs tracking-[0.2em] uppercase text-bone-white/55">
-              highlanderhotel.us · new tab
+              hilton.com · new tab
             </span>
           </div>
         </div>
@@ -200,16 +211,18 @@ export default function HotelPage() {
                 "0 0 16px rgba(95,173,86,0.55), 0 0 50px rgba(77,144,120,0.35)",
             }}
           >
-            &ldquo;Independent. Counterculture.
+            &ldquo;Right downtown. Books on the walls.
             <br />
             You&rsquo;ll fit right in.&rdquo;
           </blockquote>
 
           <p className="font-news text-bone-white/85 text-lg sm:text-xl leading-[1.75] text-center mb-10 max-w-xl mx-auto">
-            The Highlander is Iowa City&rsquo;s independent urban resort
-            &mdash; warm, a little off the beaten path, and easy to feel at
-            home in. Pool, arcade, courtyard, live music. No shortage of
-            fellowship space between sessions.
+            The Graduate sits right downtown on the Pedestrian Mall &mdash; a
+            University of Iowa town&rsquo;s love letter to itself, with
+            bookshelves for walls, poems in the paint, and Poindexter Coffee
+            off the lobby. Step outside and campus, the Ped Mall, and meetings
+            are all within a few blocks. No shortage of fellowship space
+            between sessions.
           </p>
 
           {/* Amenities checklist */}
@@ -347,7 +360,7 @@ export default function HotelPage() {
                       "0 0 12px rgba(242,193,78,0.35), 0 2px 0 rgba(0,0,0,0.4)",
                   }}
                 >
-                  $119
+                  $129
                 </span>
                 <span className="font-typewriter text-xs tracking-[0.25em] uppercase text-bone-white/45">
                   group rate · nightly
@@ -360,7 +373,7 @@ export default function HotelPage() {
               </p>
 
               <a
-                href="https://www.choicehotels.com/reservations/groups/cv26l2"
+                href="https://book.passkey.com/event/51292510/owner/50921196/landing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 bg-gold text-void-black font-anton uppercase tracking-[0.15em] text-base sm:text-lg px-7 py-3.5 border-2 border-gold transition-all hover:bg-ember hover:border-ember hover:shadow-[0_0_24px_rgba(247,129,84,0.45)] mb-6"
@@ -412,9 +425,10 @@ export default function HotelPage() {
               <p>
                 It&rsquo;s a vibrant downtown, the home of the University of
                 Iowa, a UNESCO City of Literature with bookstores and coffee
-                shops walkable from the venue. Beyond the conference there&rsquo;s
-                the Pedestrian Mall, the Iowa City Book Festival, and a small,
-                steady local AA fellowship that keeps the lights on year-round.
+                shops right outside the front door. The Pedestrian Mall is at
+                the hotel&rsquo;s doorstep, and the Iowa City Book Festival and
+                a small, steady local AA fellowship keep the lights on
+                year-round.
               </p>
               <p>
                 If you&rsquo;ve never been, plan to wander. If you&rsquo;ve
@@ -476,8 +490,8 @@ export default function HotelPage() {
                   <span className="font-typewriter text-sm tracking-[0.08em] text-gold">
                     CID
                   </span>{" "}
-                  &mdash; The Eastern Iowa Airport in Cedar Rapids, about 25
-                  minutes from the venue.
+                  &mdash; The Eastern Iowa Airport in Cedar Rapids, about 30
+                  minutes from the hotel.
                 </p>
                 <p>
                   Further:{" "}

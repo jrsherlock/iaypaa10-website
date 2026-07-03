@@ -254,7 +254,7 @@ export default function SchedulePage() {
           </div>
 
           <p className="font-typewriter text-sm sm:text-base tracking-[0.15em] uppercase text-bone-white/70 leading-relaxed">
-            Three nights · Aug 14—16, 2026 · The Highlander, Iowa City
+            Three nights · Aug 14—16, 2026 · Graduate by Hilton, Iowa City
           </p>
 
           {PROGRAM_PUBLIC && (

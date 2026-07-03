@@ -11,7 +11,7 @@ import { fetchSlotAvailability } from "@/lib/signupgenius";
 export const metadata: Metadata = {
   title: "Hospitality Suite",
   description:
-    "Host a slot in the IAYPAA X hospitality suite — home groups sign up to bring meals and snacks throughout the weekend at the Highlander Hotel.",
+    "Host a slot in the IAYPAA X hospitality suite — home groups sign up to bring meals and snacks throughout the weekend at Graduate by Hilton Iowa City.",
 };
 
 // Regenerate at most every 10 minutes so the claimed/open badges track the
@@ -40,7 +40,7 @@ export default async function HospitalityPage() {
 
         <section className="mb-8">
           <p className="text-bone-white/70 text-center mb-10 max-w-2xl mx-auto">
-            The hospitality suite at the Highlander is where the fellowship
+            The hospitality suite at the Graduate is where the fellowship
             gathers between sessions — coffee, snacks, and conversation that
             runs late. Each slot below is a meal or snack shift one group hosts
             together: bring the food, serve the fellowship, and keep the room

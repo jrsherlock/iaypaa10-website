@@ -8,10 +8,10 @@ export const CONFERENCE = {
   date: "August 14–16, 2026",
   countdownTarget: new Date("2026-08-14T00:00:00"),
   venue: {
-    name: "The Highlander Hotel",
-    address: "2525 Highlander Place, Iowa City, Iowa 52245",
-    phone: "319-354-2000",
-    website: "https://www.highlanderhotel.us",
+    name: "Graduate by Hilton Iowa City",
+    address: "210 S Dubuque St, Iowa City, Iowa 52240",
+    phone: "1-833-472-3468",
+    website: "https://www.hilton.com/en/hotels/cidgigu-graduate-iowa-city/",
   },
   email: "iaypaa10@gmail.com",
   social: {
@@ -205,7 +205,7 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
 ];
 
 // Hospitality suite host sign-up. Home groups claim a meal/snack slot in the
-// suite at the Highlander via SignUpGenius. Live availability lives on
+// suite at the Graduate via SignUpGenius. Live availability lives on
 // SignUpGenius — the list below is the slot lineup, not booking state, so it
 // never goes stale as groups claim slots.
 export const HOSPITALITY_SIGNUP_URL_ID = "10C0F45A8AB2AA5FACE9-64184651-iaypaa";
@@ -255,7 +255,7 @@ export const HOSPITALITY_SLOTS: readonly {
       {
         time: "7–10 AM",
         slotItemId: 1803586634, title: "Muckfast Club",
-        note: "Supplemental breakfast — the Highlander serves a complimentary breakfast",
+        note: "Breakfast",
       },
       { time: "10 AM–12 PM", slotItemId: 1803587728, title: "The Snackasaurus Rex Cafe", note: "Snacks" },
       { time: "12–2 PM", slotItemId: 1803601029, title: "Lunch from the Lagoon", note: "Lunch" },
@@ -273,7 +273,7 @@ export const HOSPITALITY_SLOTS: readonly {
       {
         time: "7–10 AM",
         slotItemId: 1803613557, title: "Bogside Breakfast",
-        note: "Supplemental breakfast — the Highlander serves a complimentary breakfast",
+        note: "Breakfast",
       },
       { time: "10–11 AM", slotItemId: 1803617235, title: "The Muck Stops Here (For Now)", note: "Treats for the road" },
     ],
@@ -304,7 +304,7 @@ export const FAQ_ITEMS = [
   {
     question: "Where will IAYPAA X be held?",
     answer:
-      "IAYPAA X will be held August 14–16, 2026 at The Highlander Hotel, 2525 Highlander Place, Iowa City, Iowa 52245. Check the Hotel & Venue page for details and booking info!",
+      "IAYPAA X will be held August 14–16, 2026 at Graduate by Hilton Iowa City, 210 S Dubuque St, in downtown Iowa City on the Ped Mall. Check the Hotel & Venue page for details and booking info!",
   },
   {
     question: "Is this an AA event?",

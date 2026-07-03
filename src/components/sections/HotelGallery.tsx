@@ -78,7 +78,7 @@ export default function HotelGallery({ images }: { images: string[] }) {
           >
             <Image
               src={src}
-              alt={`The Highlander Hotel — photo ${i + 1}`}
+              alt={`Graduate by Hilton Iowa City — photo ${i + 1}`}
               fill
               sizes="(min-width:1024px) 22vw, (min-width:640px) 31vw, 47vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -138,7 +138,7 @@ export default function HotelGallery({ images }: { images: string[] }) {
               <div className="relative w-full h-[70vh] sm:h-auto sm:aspect-[3/2] sm:max-h-[78vh]">
                 <Image
                   src={images[index]}
-                  alt={`The Highlander Hotel — photo ${index + 1}`}
+                  alt={`Graduate by Hilton Iowa City — photo ${index + 1}`}
                   fill
                   sizes="(min-width:640px) 64rem, 100vw"
                   className="object-contain sm:rounded-lg"
