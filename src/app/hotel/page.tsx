@@ -166,25 +166,74 @@ export default function HotelPage() {
             </span>
           </div>
 
-          {/* CTA row */}
-          <div className="mt-7 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            <a
-              href={venue.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-gold text-void-black font-anton uppercase tracking-[0.15em] text-base sm:text-lg px-7 py-3.5 border-2 border-gold transition-all hover:bg-ember hover:border-ember hover:shadow-[0_0_24px_rgba(247,129,84,0.45)]"
-            >
-              Visit hotel site
-              <span
-                aria-hidden="true"
-                className="transition-transform group-hover:translate-x-1"
+          {/* Primary action — reserve a room in the conference block.
+              This is the first, loudest CTA on the page: it goes straight
+              to our Passkey booking page, not the general hotel site. */}
+          <div className="mt-8 relative max-w-xl bg-void-black border border-gold/40 paper-grit p-6 sm:p-8">
+            {/* perforation line down the left — ticket-stub styling */}
+            <span
+              aria-hidden="true"
+              className="absolute top-0 bottom-0 left-6 w-px border-l border-dashed border-bone-white/20"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-void-black border border-bone-white/15"
+            />
+
+            <div className="pl-3 sm:pl-4">
+              <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 mb-3">
+                Reserve your room · block No. 026
+              </p>
+
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
+                <span
+                  className="font-[family-name:var(--font-mono)] text-4xl sm:text-5xl font-bold leading-none text-gold"
+                  style={{
+                    textShadow:
+                      "0 0 12px rgba(242,193,78,0.35), 0 2px 0 rgba(0,0,0,0.4)",
+                  }}
+                >
+                  $129
+                </span>
+                <span className="font-typewriter text-xs tracking-[0.25em] uppercase text-bone-white/45">
+                  group rate · nightly
+                </span>
+              </div>
+
+              <p className="font-news text-bone-white/80 text-base sm:text-lg leading-relaxed mb-5">
+                Book your stay at the IAYPAA X group rate. This button goes
+                straight to our conference booking page.
+              </p>
+
+              <a
+                href="https://book.passkey.com/event/51292510/owner/50921196/landing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 bg-gold text-void-black font-anton uppercase tracking-[0.15em] text-base sm:text-lg px-7 py-3.5 border-2 border-gold transition-all hover:bg-ember hover:border-ember hover:shadow-[0_0_24px_rgba(247,129,84,0.45)]"
               >
-                →
-              </span>
-            </a>
-            <span className="font-typewriter text-xs tracking-[0.2em] uppercase text-bone-white/55">
-              hilton.com · new tab
-            </span>
+                Book the room block
+                <span
+                  aria-hidden="true"
+                  className="transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </a>
+              <p className="mt-3 font-typewriter text-xs tracking-[0.2em] uppercase text-bone-white/45">
+                opens our booking page · new tab
+              </p>
+
+              <p className="mt-5 font-typewriter text-sm tracking-[0.08em] text-bone-white/75">
+                Prefer to call? Dial{" "}
+                <a
+                  href={`tel:${venue.phone}`}
+                  className="text-gold underline underline-offset-4 decoration-gold/40 hover:decoration-gold transition-colors"
+                >
+                  {venue.phone}
+                </a>{" "}
+                and mention IAYPAA.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -239,14 +288,19 @@ export default function HotelPage() {
             ))}
           </ul>
 
-          <p className="mt-8 text-center">
+          {/* Secondary link — the general hotel site (rooms, amenities,
+              photos). Deliberately quieter than the booking CTA up top. */}
+          <div className="mt-10 text-center">
+            <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/45 mb-3">
+              General hotel info
+            </p>
             <a
               href={venue.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 font-typewriter text-xs uppercase tracking-[0.25em] text-gold border-b border-gold/40 pb-0.5 transition-colors hover:text-bone-white hover:border-bone-white"
+              className="group inline-flex items-center gap-3 border-2 border-ooze-green/50 text-bone-white font-anton uppercase tracking-[0.15em] text-sm sm:text-base px-6 py-3 transition-all hover:border-ooze-green hover:bg-ooze-green/10"
             >
-              See the hotel&rsquo;s full photo gallery
+              Visit the hotel&rsquo;s website
               <span
                 aria-hidden="true"
                 className="transition-transform group-hover:translate-x-1"
@@ -254,7 +308,10 @@ export default function HotelPage() {
                 →
               </span>
             </a>
-          </p>
+            <p className="mt-3 font-typewriter text-xs tracking-[0.2em] uppercase text-bone-white/45">
+              hilton.com · rooms, amenities &amp; photos · new tab
+            </p>
+          </div>
         </div>
       </section>
 
@@ -323,80 +380,6 @@ export default function HotelPage() {
                 </figcaption>
               </figure>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <SlimeDivider />
-
-      {/* ---------- Room block — ticket-stub style notice ---------- */}
-      <section className="relative px-4 sm:px-6 py-20 sm:py-24">
-        <div className="relative max-w-xl mx-auto">
-          <div className="relative bg-void-black border border-gold/40 paper-grit p-8 sm:p-10">
-            {/* perforation line down the left */}
-            <span
-              aria-hidden="true"
-              className="absolute top-0 bottom-0 left-6 w-px border-l border-dashed border-bone-white/20"
-            />
-            <span
-              aria-hidden="true"
-              className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-void-black border border-bone-white/15"
-            />
-
-            <div className="pl-3 sm:pl-4">
-              <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 mb-2">
-                Room block · No. 026
-              </p>
-              <h3 className="font-anton text-2xl sm:text-3xl uppercase tracking-wide text-bone-white leading-none mb-3">
-                {venue.name}
-              </h3>
-
-              <div className="flex items-baseline gap-3 mb-5">
-                <span
-                  className="font-[family-name:var(--font-mono)] text-4xl sm:text-5xl font-bold leading-none text-gold"
-                  style={{
-                    textShadow:
-                      "0 0 12px rgba(242,193,78,0.35), 0 2px 0 rgba(0,0,0,0.4)",
-                  }}
-                >
-                  $129
-                </span>
-                <span className="font-typewriter text-xs tracking-[0.25em] uppercase text-bone-white/45">
-                  group rate · nightly
-                </span>
-              </div>
-
-              <p className="font-news text-bone-white/80 text-base sm:text-lg leading-relaxed mb-6">
-                The IAYPAA X room block is open. Book your stay at the group
-                rate using the link below.
-              </p>
-
-              <a
-                href="https://book.passkey.com/event/51292510/owner/50921196/landing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 bg-gold text-void-black font-anton uppercase tracking-[0.15em] text-base sm:text-lg px-7 py-3.5 border-2 border-gold transition-all hover:bg-ember hover:border-ember hover:shadow-[0_0_24px_rgba(247,129,84,0.45)] mb-6"
-              >
-                Book the room block
-                <span
-                  aria-hidden="true"
-                  className="transition-transform group-hover:translate-x-1"
-                >
-                  →
-                </span>
-              </a>
-
-              <p className="font-typewriter text-sm tracking-[0.08em] text-bone-white/75">
-                Prefer to call? Dial{" "}
-                <a
-                  href={`tel:${venue.phone}`}
-                  className="text-gold underline underline-offset-4 decoration-gold/40 hover:decoration-gold transition-colors"
-                >
-                  {venue.phone}
-                </a>{" "}
-                and mention IAYPAA.
-              </p>
-            </div>
           </div>
         </div>
       </section>
