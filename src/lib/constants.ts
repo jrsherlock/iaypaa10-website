@@ -299,7 +299,7 @@ export const FAQ_ITEMS = [
   {
     question: "How much does it cost to attend?",
     answer:
-      "Registration is open. Early Bird is $20 for a full weekend pass, and that price goes up, so get in before it does. At-the-door pricing will be announced closer to the conference. Scholarships are available and no one is turned away for lack of funds. See the Registration page to reserve your seat or to ask about a scholarship, quietly.",
+      "Registration is open. Early Bird is $25 for a full weekend pass, and that price goes up, so get in before it does. At-the-door pricing will be announced closer to the conference. Scholarships are available and no one is turned away for lack of funds. See the Registration page to reserve your seat or to ask about a scholarship, quietly.",
   },
   {
     question: "Where will IAYPAA X be held?",

@@ -5,7 +5,7 @@ import SlimeDivider from "@/components/ui/SlimeDivider";
 
 export const metadata: Metadata = {
   title: "Registration",
-  description: `Reserve your seat at ${CONFERENCE.name}. Early-bird $20, at-the-door TBA, scholarships available. ${CONFERENCE.date} in ${CONFERENCE.location}.`,
+  description: `Reserve your seat at ${CONFERENCE.name}. Early-bird $25, at-the-door TBA, scholarships available. ${CONFERENCE.date} in ${CONFERENCE.location}.`,
 };
 
 const REGISTRATION_URL =
@@ -25,7 +25,7 @@ const TIERS: readonly Tier[] = [
   {
     num: "01",
     name: "Early Bird",
-    price: "$20",
+    price: "$25",
     note: "Limited-time price. Going up, so get in before it does.",
     includes: [
       "Full weekend access",
