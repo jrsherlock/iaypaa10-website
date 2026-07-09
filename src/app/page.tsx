@@ -5,10 +5,15 @@ import SlimeDivider from "@/components/ui/SlimeDivider";
 import QuickInfoCards from "@/components/sections/QuickInfoCards";
 import ThemeTeaser from "@/components/sections/ThemeTeaser";
 import EmailSignup from "@/components/sections/EmailSignup";
+import JsonLd from "@/components/seo/JsonLd";
+import { eventJsonLd } from "@/lib/seo";
 
 export default function Home() {
   return (
     <>
+      {/* Event structured data — eligibility for Google event rich results. */}
+      <JsonLd data={eventJsonLd()} />
+
       {/* 1. Hero */}
       <Hero />
 
