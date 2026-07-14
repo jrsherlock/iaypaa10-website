@@ -324,6 +324,12 @@ export const FAQ_ITEMS = [
       "We'd love your help! Visit our Outreach page to learn about committee positions, or reach out to us directly. Service opportunities are a great way to get involved and give back.",
   },
   {
+    question: "How can I support the conference?",
+    answer:
+      "IAYPAA X is self-supporting through our own contributions, in the spirit of the Seventh Tradition. If you'd like to chip in, you can send a donation through Cash App to $IAYPAAX. Every dollar goes back into the weekend, keeps registration low, and helps fund the scholarships that make sure no one is turned away for lack of funds.",
+    link: { label: "Support the conference", href: "/#donate" },
+  },
+  {
     question: "What is the Primordial Ooze theme?",
     answer:
       "Primordial Ooze is the theme of our 10th annual conference. It's where life begins: the formless place every one of us started from, and the new life that comes up out of it when you stop trying to do it alone. Ten years of IAYPAA, and a story about coming up out of the dark.",
