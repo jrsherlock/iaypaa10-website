@@ -24,7 +24,7 @@ export default function SeventhTradition() {
 
         <div className="relative bg-void-black border border-gold/40 paper-grit p-8 sm:p-10 text-center">
           <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none mb-5">
-            Help keep it <span className="text-gold">free</span>
+            Support the <span className="text-gold">conference</span>
           </h2>
 
           <p className="font-news text-bone-white/85 text-base sm:text-lg leading-[1.75] max-w-xl mx-auto mb-8">
@@ -48,10 +48,6 @@ export default function SeventhTradition() {
               &rarr;
             </span>
           </a>
-
-          <p className="mt-4 font-typewriter text-sm tracking-[0.25em] uppercase text-bone-white/60">
-            {cashApp.handle} &middot; cash.app &middot; new tab
-          </p>
         </div>
       </div>
     </section>
