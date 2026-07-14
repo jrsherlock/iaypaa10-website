@@ -17,6 +17,12 @@ export const CONFERENCE = {
   social: {
     instagram: "https://www.instagram.com/iaypaa",
   },
+  // Seventh-Tradition donations (self-supporting through our own
+  // contributions). Surfaced on the home page donate section + footer.
+  cashApp: {
+    handle: "$IAYPAAX",
+    url: "https://cash.app/$IAYPAAX",
+  },
   // Canonical production URL for this site (used for SEO: metadataBase,
   // sitemap, robots, OG). Keep this in sync with the deployed domain.
   siteUrl: "https://2026.iaypaa.org",

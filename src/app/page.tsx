@@ -4,6 +4,7 @@ import CountdownTimer from "@/components/ui/CountdownTimer";
 import SlimeDivider from "@/components/ui/SlimeDivider";
 import QuickInfoCards from "@/components/sections/QuickInfoCards";
 import ThemeTeaser from "@/components/sections/ThemeTeaser";
+import SeventhTradition from "@/components/sections/SeventhTradition";
 import EmailSignup from "@/components/sections/EmailSignup";
 import JsonLd from "@/components/seo/JsonLd";
 import { eventJsonLd } from "@/lib/seo";
@@ -81,7 +82,12 @@ export default function Home() {
 
       <SlimeDivider />
 
-      {/* 6. Email Signup */}
+      {/* 6. Seventh Tradition — how to donate */}
+      <SeventhTradition />
+
+      <SlimeDivider />
+
+      {/* 7. Email Signup */}
       <EmailSignup />
     </>
   );
