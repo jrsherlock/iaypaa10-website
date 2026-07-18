@@ -36,7 +36,11 @@ export default function Navbar() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="relative px-3 py-2 text-sm text-bone-white/80 transition-colors duration-200 hover:text-gold group"
+                      className={`relative px-3 py-2 text-sm transition-colors duration-200 hover:text-gold group ${
+                        item.href === "/ooza-palooza"
+                          ? "text-ooze-green nav-live-glow"
+                          : "text-bone-white/80"
+                      }`}
                     >
                       {item.label}
                       {/* Underline on hover */}

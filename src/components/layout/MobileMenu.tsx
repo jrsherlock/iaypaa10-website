@@ -121,10 +121,20 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     ref={index === 0 ? firstLinkRef : undefined}
                     href={link.href}
                     onClick={onClose}
-                    className="group flex items-center gap-3 rounded-lg px-4 py-3 text-lg text-bone-white/80 transition-all duration-200 hover:bg-toxic-green/30 hover:text-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green"
+                    className={`group flex items-center gap-3 rounded-lg px-4 py-3 text-lg transition-all duration-200 hover:bg-toxic-green/30 hover:text-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green ${
+                      link.href === "/ooza-palooza"
+                        ? "text-ooze-green nav-live-glow"
+                        : "text-bone-white/80"
+                    }`}
                   >
                     {/* Small ooze dot indicator */}
-                    <span className="h-1.5 w-1.5 rounded-full bg-ooze-green/40 transition-all duration-200 group-hover:bg-gold group-hover:shadow-[0_0_6px_#F2C14E]" />
+                    <span
+                      className={`h-1.5 w-1.5 rounded-full transition-all duration-200 group-hover:bg-gold group-hover:shadow-[0_0_6px_#F2C14E] ${
+                        link.href === "/ooza-palooza"
+                          ? "bg-ooze-green shadow-[0_0_6px_#5FAD56]"
+                          : "bg-ooze-green/40"
+                      }`}
+                    />
                     {link.label}
                   </Link>
                 </li>

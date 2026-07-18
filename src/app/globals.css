@@ -408,3 +408,26 @@ body {
     animation: none;
   }
 }
+
+/* Ooza-Palooza nav link — the live fundraiser breathes with slow
+   luminescence (not a neon pulse; see design-philosophy.md §3 "Light"). */
+@keyframes nav-breathe {
+  0%,
+  100% {
+    text-shadow: 0 0 6px rgba(95, 173, 86, 0.25);
+  }
+  50% {
+    text-shadow: 0 0 16px rgba(95, 173, 86, 0.7);
+  }
+}
+
+.nav-live-glow {
+  animation: nav-breathe 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-live-glow {
+    animation: none;
+    text-shadow: 0 0 10px rgba(95, 173, 86, 0.35);
+  }
+}
