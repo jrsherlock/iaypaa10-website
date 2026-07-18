@@ -223,12 +223,20 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         lead: "Jennifer G. · East Moline, IL",
       },
       {
-        time: "1:30 PM",
+        time: "1:00 PM",
         until: "3:30 PM",
         title: "Cake decorating",
         room: "Benson Room",
         kind: "social",
         desc: "Decorate one for the cake social tonight.",
+      },
+      {
+        time: "1:00 PM",
+        until: "3:30 PM",
+        title: "Bag toss",
+        room: "Courtyard",
+        kind: "social",
+        desc: "Open boards all afternoon.",
       },
       {
         time: "2:00 PM",
@@ -245,14 +253,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
           "Shawn G. · Texas",
           "Mo M.",
         ],
-      },
-      {
-        time: "2:00 PM",
-        until: "5:45 PM",
-        title: "Bag toss",
-        room: "Courtyard",
-        kind: "social",
-        desc: "Open boards all afternoon.",
       },
       {
         time: "4:00 PM",
