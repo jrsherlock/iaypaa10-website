@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Hero from "@/components/sections/Hero";
+import ChallengeTeaser from "@/components/sections/ChallengeTeaser";
 import CountdownTimer from "@/components/ui/CountdownTimer";
 import SlimeDivider from "@/components/ui/SlimeDivider";
 import QuickInfoCards from "@/components/sections/QuickInfoCards";
@@ -17,6 +18,11 @@ export default function Home() {
 
       {/* 1. Hero */}
       <Hero />
+
+      {/* 1b. Challenge-Palooza — the live fundraiser, right up front. */}
+      <ChallengeTeaser />
+
+      <SlimeDivider />
 
       {/* 2. Countdown — a quiet moment, plain heading. */}
       <section className="relative py-20 sm:py-24 px-4 sm:px-6">

@@ -9,6 +9,7 @@ import {
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import Navbar from "@/components/layout/Navbar";
+import ChallengeBanner from "@/components/layout/ChallengeBanner";
 import Footer from "@/components/layout/Footer";
 import { CONFERENCE } from "@/lib/constants";
 
@@ -98,6 +99,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${anton.variable} ${specialElite.variable} ${newsreader.variable}`}
     >
       <body className="min-h-screen bg-void-black text-bone-white font-[family-name:var(--font-space)] antialiased">
+        <ChallengeBanner />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

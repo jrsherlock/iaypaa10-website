@@ -362,3 +362,49 @@ body {
 .font-news {
   font-family: var(--font-news), "Iowan Old Style", "Georgia", serif;
 }
+
+/* --- Challenge-Palooza thermometer motion (rising, never dripping) --- */
+@keyframes goo-bubble {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.6;
+  }
+  88% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(var(--bubble-rise, -300px));
+    opacity: 0;
+  }
+}
+
+.goo-bubble {
+  animation: goo-bubble 8s ease-in infinite;
+}
+
+@keyframes goo-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.goo-glow {
+  animation: goo-glow 4.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .goo-bubble {
+    animation: none;
+    opacity: 0;
+  }
+  .goo-glow {
+    animation: none;
+  }
+}
