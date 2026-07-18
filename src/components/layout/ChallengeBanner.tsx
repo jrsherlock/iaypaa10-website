@@ -7,7 +7,7 @@ import { CHALLENGE } from "@/lib/constants";
 import { formatUSD, nextTier } from "@/lib/challenge";
 
 /**
- * Slim site-wide Challenge-Palooza banner, above the navbar. Dismissible;
+ * Slim site-wide Ooza-Palooza banner, above the navbar. Dismissible;
  * the dismissal is keyed to the current raised total (sessionStorage), so
  * it stays gone for the visit but resurfaces when the number changes —
  * progress is news, repetition is nagging. Hidden on the challenge page
@@ -23,15 +23,15 @@ export default function ChallengeBanner() {
     if (sessionStorage.getItem(storageKey)) setDismissed(true);
   }, [storageKey]);
 
-  if (dismissed || pathname === "/challenge-palooza") return null;
+  if (dismissed || pathname === "/ooza-palooza") return null;
 
   return (
     <div className="relative bg-toxic-green/60 border-b border-ooze-green/30">
       <Link
-        href="/challenge-palooza"
+        href="/ooza-palooza"
         className="block pr-12 pl-4 sm:px-12 py-2 text-center font-typewriter text-[0.65rem] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase text-bone-white/85 transition-colors hover:text-bone-white"
       >
-        <span className="text-gold">Challenge-Palooza · {formatUSD(CHALLENGE.raised)} raised</span>
+        <span className="text-gold">Ooza-Palooza · {formatUSD(CHALLENGE.raised)} raised</span>
         {next ? (
           <span className="text-bone-white/75">
             {" "}
@@ -46,7 +46,7 @@ export default function ChallengeBanner() {
       </Link>
       <button
         type="button"
-        aria-label="Dismiss the Challenge-Palooza banner"
+        aria-label="Dismiss the Ooza-Palooza banner"
         onClick={() => {
           sessionStorage.setItem(storageKey, "1");
           setDismissed(true);

@@ -38,7 +38,7 @@ export const CONFERENCE = {
 export const PROGRAM_PUBLIC: boolean = true;
 
 // ---------------------------------------------------------------------------
-// Challenge-Palooza fundraiser. ONE pot: when the running total crosses a
+// Ooza-Palooza fundraiser. ONE pot: when the running total crosses a
 // tier, that challenge is locked in. To post a new total, change `raised`
 // below and redeploy — the thermometer, unlocked tiers, banner, and home
 // teaser all recompute from this single number.
@@ -78,7 +78,7 @@ export const CHALLENGE = {
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Challenge-Palooza", href: "/challenge-palooza" },
+  { label: "Ooza-Palooza", href: "/ooza-palooza" },
   { label: "Schedule", href: "/schedule" },
   { label: "Speakers", href: "/speakers" },
   { label: "Hotel & Venue", href: "/hotel" },
@@ -118,7 +118,7 @@ export const NAV_GROUPS: readonly NavGroupItem[] = [
       { label: "Outreach", href: "/outreach" },
     ],
   },
-  { label: "Challenge-Palooza", href: "/challenge-palooza" },
+  { label: "Ooza-Palooza", href: "/ooza-palooza" },
   { label: "Pre-Conference Events", href: "/pre-conference" },
   { label: "Merch", href: "/merch" },
   { label: "Stay In the Loop", href: "/#mailing-list" },

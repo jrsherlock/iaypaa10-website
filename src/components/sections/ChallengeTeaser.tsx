@@ -3,7 +3,7 @@ import { CHALLENGE } from "@/lib/constants";
 import { formatUSD, nextTier, scaleFraction } from "@/lib/challenge";
 
 /**
- * Home-page Challenge-Palooza teaser — right after the hero. A horizontal
+ * Home-page Ooza-Palooza teaser — right after the hero. A horizontal
  * goo bar (same even-tier scale as the thermometer) with the current
  * total, the next dare on the line, and a pointer to the full page.
  */
@@ -21,7 +21,7 @@ export default function ChallengeTeaser() {
           </p>
 
           <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-[0.95] mb-4">
-            Challenge-<span className="text-ooze-green">Palooza</span>
+            Ooza-<span className="text-ooze-green">Palooza</span>
           </h2>
 
           <p className="font-news text-bone-white/85 text-base sm:text-lg leading-[1.7] max-w-prose mb-6">
@@ -73,7 +73,7 @@ export default function ChallengeTeaser() {
           </div>
 
           <Link
-            href="/challenge-palooza"
+            href="/ooza-palooza"
             className="group inline-flex items-center gap-3 bg-gold text-void-black font-anton uppercase tracking-[0.15em] text-base sm:text-lg px-7 py-3.5 border-2 border-gold transition-all hover:bg-ember hover:border-ember hover:shadow-[0_0_24px_rgba(247,129,84,0.45)]"
           >
             See the dares &amp; donate

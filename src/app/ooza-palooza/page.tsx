@@ -6,18 +6,18 @@ import { CHALLENGE, CONFERENCE } from "@/lib/constants";
 import { formatUSD, nextTier } from "@/lib/challenge";
 
 export const metadata: Metadata = {
-  title: "Challenge-Palooza",
-  description: `The IAYPAA X Challenge-Palooza fundraiser: past and present Host & Advisory members take on escalating dares as the total climbs. ${formatUSD(CHALLENGE.raised)} raised so far — every dollar funds the conference and its scholarships.`,
-  alternates: { canonical: "/challenge-palooza" },
+  title: "Ooza-Palooza",
+  description: `The IAYPAA X Ooza-Palooza fundraiser: past and present Host & Advisory members take on escalating dares as the total climbs. ${formatUSD(CHALLENGE.raised)} raised so far — every dollar funds the conference and its scholarships.`,
+  alternates: { canonical: "/ooza-palooza" },
 };
 
 /**
- * Challenge-Palooza — the fundraiser page. One pot: as the running total
+ * Ooza-Palooza — the fundraiser page. One pot: as the running total
  * crosses each tier, that dare is locked in. Everything on this page
  * derives from CHALLENGE in constants.ts; to post a new total, edit
  * `raised` there and redeploy.
  */
-export default function ChallengePaloozaPage() {
+export default function OozaPaloozaPage() {
   const { raised, goal, updated, tiers } = CHALLENGE;
   const next = nextTier();
 
@@ -41,7 +41,7 @@ export default function ChallengePaloozaPage() {
               The fundraiser
             </span>
             <h1 className="font-anton text-4xl sm:text-6xl uppercase tracking-wide text-bone-white leading-none">
-              Challenge-<span className="text-ooze-green">Palooza</span>
+              Ooza-<span className="text-ooze-green">Palooza</span>
             </h1>
           </div>
 
@@ -195,7 +195,7 @@ export default function ChallengePaloozaPage() {
           <div className="border border-ooze-green/25 bg-void-black/40 paper-grit p-3 sm:p-4">
             <Image
               src="/flyers/challenge-palooza.jpg"
-              alt="IAYPAA X Challenge-Palooza flyer listing all ten challenges: $50 Prank/Rejection Challenge, $100 Blind-Folded Drawing, $150 Lip Sync Battle, $300 Pie-in-Face, $500 Ghost Peppers & Onions, $750 Full Clown Makeup in Public, $1000 WWE IAYPAA Smackdown, $1500 Shave Eyebrows Off, $2000 IAYPAA-Themed Tattoo, and $2500 Fear Factor Snackboard."
+              alt="IAYPAA X Ooza-Palooza challenge flyer listing all ten challenges: $50 Prank/Rejection Challenge, $100 Blind-Folded Drawing, $150 Lip Sync Battle, $300 Pie-in-Face, $500 Ghost Peppers & Onions, $750 Full Clown Makeup in Public, $1000 WWE IAYPAA Smackdown, $1500 Shave Eyebrows Off, $2000 IAYPAA-Themed Tattoo, and $2500 Fear Factor Snackboard."
               width={1400}
               height={1174}
               className="w-full h-auto"
