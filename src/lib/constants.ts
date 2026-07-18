@@ -192,8 +192,8 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
   {
     id: "virtual-aa-panel",
     title: "Virtual AA Panel",
-    date: "2026-07-17",
-    time: "7:00–8:30 PM",
+    date: "2026-07-29",
+    time: "7:00–8:00 PM",
     location: "On Zoom",
     description:
       "A virtual AA panel for anyone who can't make it in person. Join from anywhere.",
