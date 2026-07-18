@@ -18,7 +18,7 @@ export const metadata: Metadata = {
  * `raised` there and redeploy.
  */
 export default function OozaPaloozaPage() {
-  const { raised, goal, updated, tiers } = CHALLENGE;
+  const { raised, tiers } = CHALLENGE;
   const next = nextTier();
 
   return (
@@ -64,22 +64,9 @@ export default function OozaPaloozaPage() {
       {/* ---------- Thermometer + tiers ---------- */}
       <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
         <div className="max-w-4xl mx-auto">
-          {/* Total banner */}
-          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-8 sm:mb-10">
-            <span
-              className="font-anton text-5xl sm:text-7xl leading-none text-gold"
-              style={{ textShadow: "0 0 18px rgba(242,193,78,0.35)" }}
-            >
-              {formatUSD(raised)}
-            </span>
-            <span className="font-typewriter text-sm sm:text-base tracking-[0.2em] uppercase text-bone-white/60">
-              raised of {formatUSD(goal)} · as of {updated}
-            </span>
-          </div>
-
-          <div className="grid sm:grid-cols-[15rem_1fr] gap-8 sm:gap-10 items-start">
-            {/* The tube */}
-            <div className="max-w-[15rem] mx-auto w-full sm:sticky sm:top-24">
+          <div className="grid sm:grid-cols-[20rem_1fr] gap-8 sm:gap-10 items-start">
+            {/* The balance widget */}
+            <div className="max-w-[22rem] mx-auto w-full sm:sticky sm:top-24">
               <OozeThermometer />
             </div>
 
