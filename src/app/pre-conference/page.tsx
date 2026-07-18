@@ -76,7 +76,7 @@ export default function PreConferencePage() {
         <div className="relative max-w-xl mx-auto">
           <div className="border border-ooze-green/25 bg-void-black/40 paper-grit p-3 sm:p-4">
             <Image
-              src="/images/pre-conference-events-v2.jpg"
+              src="/images/pre-conference-events-v3.jpg"
               alt="Pre-Conference Event Showcase poster for Summer 2026 lead-up events for IAYPAA X, listing the Speakers & Sweets Bake-Off, AA Pride Event, Picnic in the Park, Yoga & Meditation in the Park, the July 29 Virtual AA Panel, Kick-Off Spaghetti Dinner, and the August 14–16 Iowa City IAYPAA Conference."
               width={1200}
               height={1470}
@@ -86,7 +86,7 @@ export default function PreConferencePage() {
           </div>
           <p className="mt-4 text-center">
             <a
-              href="/images/pre-conference-events-v2.jpg"
+              href="/images/pre-conference-events-v3.jpg"
               download
               className="group inline-flex items-center gap-2 font-typewriter text-xs uppercase tracking-[0.25em] text-gold border-b border-gold/40 pb-0.5 transition-colors hover:text-bone-white hover:border-bone-white"
             >
