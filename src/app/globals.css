@@ -408,20 +408,3 @@ body {
     animation: none;
   }
 }
-
-/* Liquid fills up from empty on load — the rise, not the drip. */
-@keyframes goo-fill {
-  from {
-    height: 0;
-  }
-}
-
-.goo-fill {
-  animation: goo-fill 1.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .goo-fill {
-    animation: none;
-  }
-}

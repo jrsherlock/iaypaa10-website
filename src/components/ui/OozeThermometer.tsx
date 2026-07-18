@@ -2,151 +2,202 @@ import { CHALLENGE } from "@/lib/constants";
 import { formatUSD, scaleFraction } from "@/lib/challenge";
 
 /**
- * The Ooza-Palooza balance widget: festival-lineup thermometer. A CSS
- * glass column of ooze rises past the milestone lineup on the right; a
- * floating live badge marks the current total on the left. The liquid
- * fills on load (goo-fill) and bubbles drift up through it (goo-bubble)
- * — rising and settling, per the design philosophy. All data derives
- * from CHALLENGE in constants.ts.
+ * The Challenge-Palooza thermometer: a glass test tube of rising ooze.
+ * Pure SVG, server-rendered; the only motion is CSS (bubbles drifting up
+ * through the goo, a slow breathing glow at the surface) — rising and
+ * settling, per the design philosophy. Tier ticks sit at even steps up
+ * the tube (see scaleFraction); unlocked ticks turn gold.
  */
 
-const TUBE_H = 420; // px — glass column height
-const BULB_GAP = 44; // px — bulb region below the column (48px bulb, -4 overlap)
+// Tube geometry in viewBox units.
+const VIEW_W = 220;
+const VIEW_H = 660;
+const TUBE_X = 62;
+const TUBE_W = 48;
+const TUBE_TOP = 46; // y of the $2500 mark (tube lip is a bit above)
+const TUBE_BOTTOM = 540; // y of the $0 mark
+const BULB_CY = 578;
+const BULB_R = 42;
 
 export default function OozeThermometer() {
-  const { raised, goal, updated, tiers } = CHALLENGE;
-  const frac = scaleFraction(raised);
-  const fillPct = frac * 100;
-  const bubbleRise = Math.max(frac * TUBE_H - 12, 0);
+  const { raised, tiers } = CHALLENGE;
+  const fillY =
+    TUBE_BOTTOM - scaleFraction(raised) * (TUBE_BOTTOM - TUBE_TOP);
+  const step = (TUBE_BOTTOM - TUBE_TOP) / tiers.length;
 
   return (
-    <div className="border border-ooze-green/25 bg-void-black/60 paper-grit p-6 sm:p-7">
-      {/* ---- balance header ---- */}
-      <div className="text-center mb-9">
-        <p className="font-typewriter text-[0.65rem] tracking-[0.3em] uppercase text-bone-white/55">
-          Ooza-Palooza balance
-        </p>
-        <p
-          className="font-anton text-5xl leading-none text-gold mt-2"
-          style={{ textShadow: "0 0 18px rgba(242,193,78,0.5)" }}
-        >
-          {formatUSD(raised)}
-        </p>
-        <p className="font-typewriter text-[0.65rem] tracking-[0.2em] uppercase text-bone-white/50 mt-2.5">
-          goal {formatUSD(goal)} · as of {updated}
-        </p>
-      </div>
+    <svg
+      viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+      role="img"
+      aria-label={`Fundraising thermometer: ${formatUSD(raised)} raised of ${formatUSD(CHALLENGE.goal)}.`}
+      className="w-full h-auto"
+    >
+      <defs>
+        {/* goo: cold deep at the bottom resolving to living green up top */}
+        <linearGradient id="goo" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stopColor="#1B3B30" />
+          <stop offset="55%" stopColor="#4D9078" />
+          <stop offset="100%" stopColor="#5FAD56" />
+        </linearGradient>
+        <radialGradient id="bulb-glow" cx="50%" cy="40%" r="65%">
+          <stop offset="0%" stopColor="#5FAD56" stopOpacity="0.55" />
+          <stop offset="100%" stopColor="#5FAD56" stopOpacity="0" />
+        </radialGradient>
+        <filter id="soft-blur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="5" />
+        </filter>
+        {/* everything gooey clips to tube + bulb */}
+        <clipPath id="vessel">
+          <rect
+            x={TUBE_X}
+            y={TUBE_TOP - 26}
+            width={TUBE_W}
+            height={BULB_CY - TUBE_TOP + 26}
+            rx={TUBE_W / 2}
+          />
+          <circle cx={TUBE_X + TUBE_W / 2} cy={BULB_CY} r={BULB_R} />
+        </clipPath>
+      </defs>
 
-      {/* ---- gauge row: [live-badge gutter][glass column][milestones] ---- */}
-      <div className="flex justify-center">
-        {/* live badge gutter — aligned to the tube's vertical span */}
-        <div className="relative w-16 shrink-0" style={{ height: TUBE_H }}>
-          <span
-            className="absolute right-1 translate-y-1/2 flex items-center gap-1 font-[family-name:var(--font-mono)] text-sm tracking-wider text-ember whitespace-nowrap"
-            style={{
-              bottom: `${fillPct}%`,
-              textShadow: "0 0 10px rgba(247,129,84,0.55)",
-            }}
-          >
-            {formatUSD(raised)}
-            <span aria-hidden="true">—</span>
-          </span>
-        </div>
-
-        {/* the tube + bulb */}
-        <div
-          className="flex flex-col items-center shrink-0"
-          role="img"
-          aria-label={`Fundraising thermometer: ${formatUSD(raised)} raised of ${formatUSD(goal)}.`}
-        >
-          <div
-            className="relative w-[18px] overflow-hidden rounded-t-full border-2 border-b-0 border-bone-white/15 bg-bone-white/[0.03]"
-            style={{ height: TUBE_H }}
-          >
-            {/* the ooze */}
-            <div
-              className="goo-fill absolute bottom-0 inset-x-0"
+      {/* ---- tier ticks (behind the tube so lines tuck under glass) ---- */}
+      {tiers.map((tier, i) => {
+        const y = TUBE_BOTTOM - (i + 1) * step;
+        const unlocked = tier.amount <= raised;
+        return (
+          <g key={tier.amount}>
+            <line
+              x1={TUBE_X + TUBE_W}
+              y1={y}
+              x2={TUBE_X + TUBE_W + 14}
+              y2={y}
+              stroke={unlocked ? "#F2C14E" : "#E8E6E1"}
+              strokeOpacity={unlocked ? 0.9 : 0.28}
+              strokeWidth="2"
+            />
+            <text
+              x={TUBE_X + TUBE_W + 20}
+              y={y + 4}
+              fill={unlocked ? "#F2C14E" : "#E8E6E1"}
+              fillOpacity={unlocked ? 0.95 : 0.45}
               style={{
-                height: `${fillPct}%`,
-                background:
-                  "linear-gradient(to top, #0A1A12, #4D9078 55%, #5FAD56)",
-                boxShadow: "0 0 26px rgba(95,173,86,0.55)",
+                font: "12px var(--font-mono), monospace",
+                letterSpacing: "0.05em",
               }}
             >
-              {/* hot cap at the surface */}
-              <div
-                className="absolute top-0 inset-x-0 h-[4px] bg-bone-white goo-glow"
-                style={{
-                  boxShadow: "0 0 8px #E8E6E1, 0 0 18px #5FAD56",
-                }}
-              />
-              {/* bubbles rising through the goo */}
-              {[
-                { left: 2, size: 5, dur: "7s", delay: "0s" },
-                { left: 9, size: 3, dur: "9s", delay: "2.6s" },
-                { left: 6, size: 4, dur: "8s", delay: "5s" },
-              ].map((b, i) => (
-                <span
-                  key={i}
-                  aria-hidden="true"
-                  className="goo-bubble absolute bottom-1 rounded-full bg-bone-white/35"
-                  style={{
-                    left: b.left,
-                    width: b.size,
-                    height: b.size,
-                    animationDuration: b.dur,
-                    animationDelay: b.delay,
-                    ["--bubble-rise" as string]: `-${bubbleRise}px`,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
+              {unlocked ? "✓ " : ""}
+              {formatUSD(tier.amount)}
+            </text>
+          </g>
+        );
+      })}
 
-          {/* base bulb */}
-          <div className="relative -mt-1 flex h-12 w-12 items-center justify-center rounded-full border-2 border-bone-white/15 bg-bone-white/[0.03]">
-            <div
-              className="h-8 w-8 rounded-full goo-glow"
-              style={{
-                background: "radial-gradient(circle at 40% 35%, #4D9078, #0A1A12)",
-                boxShadow: "0 0 24px rgba(95,173,86,0.5)",
-              }}
-            />
-          </div>
-        </div>
+      {/* ---- glow bed under the bulb ---- */}
+      <circle
+        cx={TUBE_X + TUBE_W / 2}
+        cy={BULB_CY}
+        r={BULB_R + 26}
+        fill="url(#bulb-glow)"
+        className="goo-glow"
+      />
 
-        {/* milestone lineup — same height as the tube so % line up */}
-        <div className="relative flex-1 ml-5" style={{ height: TUBE_H }}>
-          {tiers.map((tier, i) => {
-            const unlocked = tier.amount <= raised;
-            const bottom = ((i + 1) / tiers.length) * 100;
-            return (
-              <span
-                key={tier.amount}
-                className={`absolute left-0 translate-y-1/2 flex items-center gap-2 whitespace-nowrap font-[family-name:var(--font-mono)] text-xs tracking-wider ${
-                  unlocked ? "text-bone-white" : "text-bone-white/40"
-                }`}
-                style={{ bottom: `${bottom}%` }}
-              >
-                <span
-                  aria-hidden="true"
-                  className={unlocked ? "text-gold" : "text-bone-white/25"}
-                  style={
-                    unlocked
-                      ? { textShadow: "0 0 8px rgba(242,193,78,0.8)" }
-                      : undefined
-                  }
-                >
-                  {unlocked ? "✓" : "—"}
-                </span>
-                {formatUSD(tier.amount)}
-              </span>
-            );
-          })}
-        </div>
-      </div>
-      {/* spacer keeps the bulb clear of the card edge on short screens */}
-      <div style={{ height: BULB_GAP - 36 }} aria-hidden="true" />
-    </div>
+      {/* ---- the goo ---- */}
+      <g clipPath="url(#vessel)">
+        <rect
+          x={TUBE_X - 2}
+          y={fillY}
+          width={TUBE_W + 4}
+          height={BULB_CY + BULB_R - fillY + 4}
+          fill="url(#goo)"
+        />
+        {/* meniscus highlight */}
+        <ellipse
+          cx={TUBE_X + TUBE_W / 2}
+          cy={fillY}
+          rx={TUBE_W / 2}
+          ry={5}
+          fill="#5FAD56"
+          filter="url(#soft-blur)"
+          className="goo-glow"
+        />
+        {/* bubbles rising through the goo (CSS-driven) */}
+        {[
+          { cx: TUBE_X + 14, r: 4, dur: "7s", delay: "0s" },
+          { cx: TUBE_X + 30, r: 2.5, dur: "9s", delay: "2.4s" },
+          { cx: TUBE_X + 22, r: 3, dur: "8s", delay: "4.8s" },
+          { cx: TUBE_X + 37, r: 2, dur: "10s", delay: "1.2s" },
+        ].map((b, i) => (
+          <circle
+            key={i}
+            cx={b.cx}
+            cy={BULB_CY}
+            r={b.r}
+            fill="#E8E6E1"
+            fillOpacity="0.35"
+            className="goo-bubble"
+            style={{
+              animationDuration: b.dur,
+              animationDelay: b.delay,
+              // bubbles die at the surface, wherever it currently sits
+              ["--bubble-rise" as string]: `${fillY - BULB_CY}px`,
+            }}
+          />
+        ))}
+      </g>
+
+      {/* ---- the glass ---- */}
+      <rect
+        x={TUBE_X}
+        y={TUBE_TOP - 26}
+        width={TUBE_W}
+        height={BULB_CY - TUBE_TOP + 26}
+        rx={TUBE_W / 2}
+        fill="none"
+        stroke="#E8E6E1"
+        strokeOpacity="0.35"
+        strokeWidth="2.5"
+      />
+      <circle
+        cx={TUBE_X + TUBE_W / 2}
+        cy={BULB_CY}
+        r={BULB_R}
+        fill="none"
+        stroke="#E8E6E1"
+        strokeOpacity="0.35"
+        strokeWidth="2.5"
+      />
+      {/* glass shine */}
+      <line
+        x1={TUBE_X + 10}
+        y1={TUBE_TOP - 8}
+        x2={TUBE_X + 10}
+        y2={TUBE_BOTTOM - 30}
+        stroke="#E8E6E1"
+        strokeOpacity="0.12"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+
+      {/* ---- current-total marker line ---- */}
+      <line
+        x1={TUBE_X - 16}
+        y1={fillY}
+        x2={TUBE_X - 4}
+        y2={fillY}
+        stroke="#F2C14E"
+        strokeWidth="2.5"
+      />
+      <text
+        x={TUBE_X - 20}
+        y={fillY + 4}
+        textAnchor="end"
+        fill="#F2C14E"
+        style={{
+          font: "13px var(--font-mono), monospace",
+          letterSpacing: "0.04em",
+        }}
+      >
+        {formatUSD(raised)}
+      </text>
+    </svg>
   );
 }
