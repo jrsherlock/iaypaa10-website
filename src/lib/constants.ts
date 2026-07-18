@@ -35,7 +35,7 @@ export const CONFERENCE = {
 // speakers, workshop list). Flip to `true` once the AA Advisory committee has
 // approved the program — surfaces the schedule on /schedule and the
 // "See the program" pointer on /speakers.
-export const PROGRAM_PUBLIC: boolean = false;
+export const PROGRAM_PUBLIC: boolean = true;
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },
