@@ -69,11 +69,11 @@ export default function SpeakersPage() {
           </div>
 
           <p className="font-news text-bone-white/85 text-lg sm:text-xl leading-[1.75] mb-8">
-            The main speakers and step-panel leaders that are locked in appear
-            on the weekend program as their slots are confirmed, first
-            name and last initial only, in keeping with the Eleventh Tradition.
-            The full keynote lineup is still being finalized; get on the list
-            above and you&rsquo;ll hear it the day it drops.
+            The weekend program is live: every panel, workshop, and main
+            meeting with its day, time, and room. Speaker and panelist names
+            are announced closer to the conference, first name and last
+            initial only, in keeping with the Eleventh Tradition. Get on the
+            list above and you&rsquo;ll hear the lineup the day it drops.
           </p>
 
           <Link

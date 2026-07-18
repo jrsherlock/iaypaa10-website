@@ -39,11 +39,6 @@ export type ScheduleDay = {
   footnote?: string;
 };
 
-export const FEATURED_SPEAKERS: readonly { name: string; from: string }[] = [
-  { name: "Dan K.", from: "Twin Cities" },
-  { name: "Sammy F.", from: "Cedar Rapids, IA" },
-];
-
 /** Threads that run continuously, all weekend long. */
 export const ALL_WEEKEND: readonly {
   title: string;
@@ -94,13 +89,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         room: "Benson Room",
         kind: "panel",
         desc: "Five voices, fifteen minutes each.",
-        panelists: [
-          "Mario O. · Oshkosh, WI",
-          "Damon A.",
-          "Nikki T. · Iowa City, IA",
-          "Amrei B.",
-          "Ryan S.",
-        ],
       },
       {
         time: "6:30 PM",
@@ -130,7 +118,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         room: "Hoak Room",
         kind: "meeting",
         desc: "The Big Book's nightly inventory, taken together.",
-        lead: "Bill S.",
       },
       {
         time: "10:00 PM",
@@ -172,13 +159,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         room: "Benson Room",
         kind: "panel",
         desc: "Five panelists, twelve minutes each.",
-        panelists: [
-          "Kyle T. · Cedar Rapids, IA",
-          "Toni M. · Indiana",
-          "Meg Q. · Iowa City, IA",
-          "Shane J. · Cedar Rapids, IA",
-          "Beth H. · ISCYPAA",
-        ],
       },
       {
         time: "11:30 AM",
@@ -186,7 +166,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         title: "Al-Anon meeting",
         room: "Main Ballroom",
         kind: "meeting",
-        panelists: ["Theresa G. · Des Moines, IA", "Darla W."],
       },
       {
         time: "11:30 AM",
@@ -195,11 +174,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         subtitle: "Steps 6 & 7 panel",
         room: "Benson Room",
         kind: "panel",
-        panelists: [
-          "Samantha A. · Chicago",
-          "Jennifer R. · Chicago",
-          "Justin W. · Quad Cities",
-        ],
       },
       {
         time: "11:30 AM",
@@ -208,11 +182,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         subtitle: "Step 3 panel",
         room: "Hoak Room",
         kind: "panel",
-        panelists: [
-          "Kody D. · Quad Cities",
-          "JT W. · Quincy, MO",
-          "Chris B. · Milwaukee, WI",
-        ],
       },
       {
         time: "12:45 PM",
@@ -220,7 +189,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         title: "Traditions workshop",
         room: "Hoak Room",
         kind: "panel",
-        lead: "Jennifer G. · East Moline, IL",
       },
       {
         time: "1:00 PM",
@@ -245,14 +213,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         room: "Main Ballroom",
         kind: "social",
         desc: "The questions get harder as the wings get hotter.",
-        lead: "Tom H.",
-        panelists: [
-          "Evan E. · Chicago",
-          "Charlie M. · MNYPAA",
-          "Jesse G. · Chicago",
-          "Shawn G. · Texas",
-          "Mo M.",
-        ],
       },
       {
         time: "4:00 PM",
@@ -261,12 +221,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         subtitle: "Steps 1 & 2 panel",
         room: "Benson Room",
         kind: "panel",
-        panelists: [
-          "Tyler V. · Quad Cities",
-          "Katrina N. · Cedar Rapids, IA",
-          "Max H. · Iowa City, IA",
-          "Jeremy M. · Cedar Rapids, IA",
-        ],
       },
       {
         time: "4:00 PM",
@@ -275,12 +229,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         subtitle: "Steps 4 & 5 panel",
         room: "Hoak Room",
         kind: "panel",
-        panelists: [
-          "Grant N. · Wisconsin",
-          "Isabella R. · Kansas City, MO",
-          "Emily L. · Kansas City, MO",
-          "Tracey S.",
-        ],
       },
       {
         time: "5:15 PM",
@@ -289,7 +237,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         subtitle: "Steps 8 & 9 panel",
         room: "Benson Room",
         kind: "panel",
-        panelists: ["Kurt A.", "James D. · Des Moines, IA"],
       },
       {
         time: "6:30 PM",
@@ -309,7 +256,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         title: "Saturday night main speaker",
         room: "Main Ballroom",
         kind: "main",
-        lead: "Dan K. · Twin Cities",
         desc: "The emotional peak of the weekend.",
       },
       {

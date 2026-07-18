@@ -6,7 +6,6 @@ import ComingSoon from "@/components/ui/ComingSoon";
 import { PROGRAM_PUBLIC } from "@/lib/constants";
 import {
   ALL_WEEKEND,
-  FEATURED_SPEAKERS,
   KIND_LABELS,
   SCHEDULE_DAYS,
   type ScheduleEvent,
@@ -174,22 +173,6 @@ export default function SchedulePage() {
             Three nights · Aug 14—16, 2026 · Graduate by Hilton, Iowa City
           </p>
 
-          {PROGRAM_PUBLIC && (
-            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-ooze-green/15 pt-4">
-              <span className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/50">
-                Featured speakers
-              </span>
-              {FEATURED_SPEAKERS.map((s) => (
-                <span
-                  key={s.name}
-                  className="font-typewriter text-sm text-bone-white/85"
-                >
-                  <span className="text-ooze-green">{s.name}</span>
-                  <span className="text-bone-white/45"> · {s.from}</span>
-                </span>
-              ))}
-            </div>
-          )}
         </div>
       </section>
 
