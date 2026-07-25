@@ -32,10 +32,11 @@ export const CONFERENCE = {
 } as const;
 
 // Gate the published weekend program (day-by-day times, panel leads, featured
-// speakers, workshop list). Flip to `true` once the AA Advisory committee has
-// approved the program — surfaces the schedule on /schedule and the
-// "See the program" pointer on /speakers.
-export const PROGRAM_PUBLIC: boolean = true;
+// speakers, workshop list, and the "Running all weekend" block). Flip to
+// `true` to reveal it — surfaces the schedule on /schedule and the
+// "See the program" pointer on /speakers. While `false`, /schedule shows only
+// the "soon to be released" notice and the mailing-list CTA.
+export const PROGRAM_PUBLIC: boolean = false;
 
 // ---------------------------------------------------------------------------
 // Ooza-Palooza fundraiser. ONE pot: when the running total crosses a

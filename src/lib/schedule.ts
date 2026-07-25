@@ -39,12 +39,14 @@ export type ScheduleDay = {
   footnote?: string;
 };
 
-/** Threads that run continuously, all weekend long. */
-export const ALL_WEEKEND: readonly {
+export type AllWeekendItem = {
   title: string;
   detail: string;
   link?: { href: string; label: string };
-}[] = [
+};
+
+/** Threads that run continuously, all weekend long. */
+export const ALL_WEEKEND: readonly AllWeekendItem[] = [
   {
     title: "Marathon meeting room",
     detail:
