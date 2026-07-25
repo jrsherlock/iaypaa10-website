@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
   KIND_LABELS,
-  type AllWeekendItem,
   type ScheduleDay,
   type ScheduleEvent,
   type SessionKind,
@@ -12,8 +11,9 @@ import {
 /**
  * The published weekend program: a sticky FRI/SAT/SUN switcher under the
  * navbar, each day a chronological rail (grouped by start time, so
- * simultaneous rooms sit side by side) with category-coded session cards,
- * then the "running all weekend" threads.
+ * simultaneous rooms sit side by side) with category-coded session cards.
+ * The "running all weekend" threads are not here — they show whether or
+ * not the program is public, so they live in the page itself.
  *
  * Program data arrives as props from the server (`src/app/schedule/page.tsx`)
  * rather than being imported here. That is deliberate: while `PROGRAM_PUBLIC`
@@ -132,10 +132,8 @@ function SessionCard({ event }: { event: ScheduleEvent }) {
 
 export default function ScheduleProgram({
   days,
-  allWeekend,
 }: {
   days: readonly ScheduleDay[];
-  allWeekend: readonly AllWeekendItem[];
 }) {
   const [activeDay, setActiveDay] = useState(0);
   const day = days[activeDay];
@@ -297,45 +295,6 @@ export default function ScheduleProgram({
       <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/40 text-center px-4 pb-14 sm:pb-16">
         Working program · times may shift before August
       </p>
-
-      {/* ---------- Running all weekend ---------- */}
-      <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
-        <div className="relative max-w-3xl mx-auto">
-          <div className="mb-8 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4">
-            <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
-              Always on
-            </span>
-            <h2 className="font-anton text-2xl sm:text-4xl uppercase tracking-wide text-bone-white leading-none">
-              Running <span className="text-ooze-green">all weekend</span>
-            </h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-4">
-            {allWeekend.map((item) => (
-              <div
-                key={item.title}
-                className="border border-ooze-green/20 bg-void-black/40 p-4 sm:p-5"
-              >
-                <h3 className="font-anton text-base sm:text-lg uppercase tracking-wide text-ooze-green leading-tight">
-                  {item.title}
-                </h3>
-                <p className="font-news text-bone-white/80 text-sm sm:text-base leading-relaxed mt-1.5">
-                  {item.detail}
-                </p>
-                {item.link ? (
-                  <a
-                    href={item.link.href}
-                    className="inline-flex items-center gap-1.5 font-typewriter text-xs tracking-[0.2em] uppercase text-gold hover:text-bone-white transition-colors mt-3"
-                  >
-                    {item.link.label}
-                    <span aria-hidden="true">&rarr;</span>
-                  </a>
-                ) : null}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

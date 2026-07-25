@@ -47,7 +47,7 @@ export default function SchedulePage() {
 
       {/* ---------- Program notice (while the program is held back) ---------- */}
       {!PROGRAM_PUBLIC && (
-        <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
+        <section className="relative px-4 sm:px-6 pb-12 sm:pb-16">
           <ComingSoon
             title="Weekend Program"
             subtitle="Soon to be released. Stay tuned!"
@@ -56,10 +56,49 @@ export default function SchedulePage() {
         </section>
       )}
 
-      {/* ---------- Day-by-day program + all-weekend threads ---------- */}
-      {PROGRAM_PUBLIC && (
-        <ScheduleProgram days={SCHEDULE_DAYS} allWeekend={ALL_WEEKEND} />
-      )}
+      {/* ---------- Day-by-day program ---------- */}
+      {PROGRAM_PUBLIC && <ScheduleProgram days={SCHEDULE_DAYS} />}
+
+      {/* ---------- Running all weekend ---------- */}
+      {/* Shows in both states: no times, nothing unreleased, and it keeps a
+          reason to visit /schedule while the program is held back. */}
+      <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
+        <div className="relative max-w-3xl mx-auto">
+          <div className="mb-8 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4">
+            <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
+              Always on
+            </span>
+            <h2 className="font-anton text-2xl sm:text-4xl uppercase tracking-wide text-bone-white leading-none">
+              Running <span className="text-ooze-green">all weekend</span>
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4">
+            {ALL_WEEKEND.map((item) => (
+              <div
+                key={item.title}
+                className="border border-ooze-green/20 bg-void-black/40 p-4 sm:p-5"
+              >
+                <h3 className="font-anton text-base sm:text-lg uppercase tracking-wide text-ooze-green leading-tight">
+                  {item.title}
+                </h3>
+                <p className="font-news text-bone-white/80 text-sm sm:text-base leading-relaxed mt-1.5">
+                  {item.detail}
+                </p>
+                {item.link ? (
+                  <a
+                    href={item.link.href}
+                    className="inline-flex items-center gap-1.5 font-typewriter text-xs tracking-[0.2em] uppercase text-gold hover:text-bone-white transition-colors mt-3"
+                  >
+                    {item.link.label}
+                    <span aria-hidden="true">&rarr;</span>
+                  </a>
+                ) : null}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
