@@ -61,10 +61,9 @@ export async function POST(req: Request) {
     );
   }
 
-  // Upsert the contact. Intentionally omit `subscribed` so this never
-  // flips a mailing-list subscriber's opt-in. `source` tags the contact
-  // so it's filterable in the Loops dashboard alongside mailing-list
-  // signups (which use source: "website").
+  // Upsert the contact. Intentionally omit `subscribed`: writing to the
+  // contact form is not an opt-in to anything. `source` tags the contact so
+  // it's filterable in the Loops dashboard.
   const contactPayload: Record<string, unknown> = {
     email,
     firstName,

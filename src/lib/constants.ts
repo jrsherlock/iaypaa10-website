@@ -34,9 +34,8 @@ export const CONFERENCE = {
 // Gate the published weekend program (day-by-day times, panel leads, featured
 // speakers, workshop list). Flip to `true` to reveal it — surfaces the
 // schedule on /schedule and the "See the program" pointer on /speakers.
-// While `false`, /schedule shows the "soon to be released" notice and the
-// mailing-list CTA. The "Running all weekend" block is not gated; it shows
-// either way.
+// While `false`, /schedule shows the "soon to be released" notice. The
+// "Running all weekend" block is not gated; it shows either way.
 export const PROGRAM_PUBLIC: boolean = false;
 
 // ---------------------------------------------------------------------------
@@ -92,7 +91,6 @@ export const NAV_LINKS = [
   { label: "Registration", href: "/registration" },
   { label: "Pre-Conference Events", href: "/pre-conference" },
   { label: "Merch", href: "/merch" },
-  { label: "Stay In the Loop", href: "/#mailing-list" },
 ] as const;
 
 // Grouped nav used by the desktop Navbar. The flat NAV_LINKS above is still
@@ -123,7 +121,6 @@ export const NAV_GROUPS: readonly NavGroupItem[] = [
   { label: "Ooza-Palooza", href: "/ooza-palooza" },
   { label: "Pre-Conference Events", href: "/pre-conference" },
   { label: "Merch", href: "/merch" },
-  { label: "Stay In the Loop", href: "/#mailing-list" },
 ] as const;
 
 // Sources of truth: locations/years from the IAYPAA bid brochure ("Where

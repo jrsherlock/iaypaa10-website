@@ -1,25 +1,17 @@
-import Link from "next/link";
-
 interface ComingSoonProps {
   /** What's TBA — e.g. "Schedule", "Speaker Lineup", "Group Rate". */
   title: string;
   /** A one-line description shown under the title in serif. */
   subtitle?: string;
-  /** When true, shows a CTA pointing at the homepage mailing-list signup. */
-  showEmailSignup?: boolean;
 }
 
 /**
  * "Still forming" panel — for sections of the site that are coming
  * together. Emergence, not a stamped "TBA" placard: a quiet label, the
- * subject in Anton, a "Still forming" mark, a plain serif line, and an
- * optional CTA to the mailing list. See docs/design-philosophy.md.
+ * subject in Anton, a "Still forming" mark, and a plain serif line.
+ * See docs/design-philosophy.md.
  */
-export default function ComingSoon({
-  title,
-  subtitle,
-  showEmailSignup = false,
-}: ComingSoonProps) {
+export default function ComingSoon({ title, subtitle }: ComingSoonProps) {
   return (
     <div className="relative max-w-xl mx-auto">
       <div className="relative bg-toxic-green/30 border border-ooze-green/30 paper-grit p-8 sm:p-10">
@@ -48,24 +40,9 @@ export default function ComingSoon({
         </p>
 
         {subtitle && (
-          <p className="font-news text-bone-white/85 text-base sm:text-lg leading-relaxed mb-6 max-w-prose">
+          <p className="font-news text-bone-white/85 text-base sm:text-lg leading-relaxed max-w-prose">
             {subtitle}
           </p>
-        )}
-
-        {showEmailSignup && (
-          <Link
-            href="/#mailing-list"
-            className="group inline-flex items-center gap-2 font-typewriter text-xs sm:text-sm uppercase tracking-[0.25em] text-gold border-b border-gold/40 pb-0.5 transition-colors hover:text-bone-white hover:border-bone-white"
-          >
-            Get on the IAYPAA X mailing list
-            <span
-              aria-hidden="true"
-              className="transition-transform group-hover:translate-x-1"
-            >
-              →
-            </span>
-          </Link>
         )}
       </div>
     </div>

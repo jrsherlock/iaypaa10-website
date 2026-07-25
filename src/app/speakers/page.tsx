@@ -45,8 +45,7 @@ export default function SpeakersPage() {
       <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
         <ComingSoon
           title="Speaker Lineup"
-          subtitle="The host committee is finalizing the lineup: keynote speakers, panelists, and workshop leaders. Get on the list to hear it the day it drops."
-          showEmailSignup
+          subtitle="The host committee is finalizing the lineup: keynote speakers, panelists, and workshop leaders. It gets posted here the day it drops."
         />
       </section>
 
@@ -72,8 +71,8 @@ export default function SpeakersPage() {
             The weekend program is live: every panel, workshop, and main
             meeting with its day, time, and room. Speaker and panelist names
             are announced closer to the conference, first name and last
-            initial only, in keeping with the Eleventh Tradition. Get on the
-            list above and you&rsquo;ll hear the lineup the day it drops.
+            initial only, in keeping with the Eleventh Tradition. The lineup
+            lands on this page the day it drops.
           </p>
 
           <Link

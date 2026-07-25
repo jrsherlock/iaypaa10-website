@@ -364,14 +364,8 @@ export default function PreConferenceEvents({
             </div>
           ) : (
             <p className="font-news text-bone-white/70 text-base leading-relaxed">
-              Nothing on the calendar right now.{" "}
-              <Link
-                href="/#mailing-list"
-                className="text-gold border-b border-gold/40 hover:text-bone-white hover:border-bone-white transition-colors"
-              >
-                Stay in the loop
-              </Link>{" "}
-              and we&apos;ll let you know when the next one is set.
+              Nothing on the calendar right now. Check back &mdash; the next
+              one gets posted here as soon as it&apos;s set.
             </p>
           )}
         </div>

@@ -79,11 +79,16 @@ See **`DEPLOYMENT.md`**. Short version:
   dual push to two branches breaks the production deploy (documented in
   `DEPLOYMENT.md`).
 
-## Email / mailing list
+## Email
 
-`/api/subscribe` → **Loops**. `LOOPS_API_KEY` is set in Vercel (Production +
-Preview) and in local `.env.local` (gitignored, not in the repo). Without it,
-signup returns 503. See `docs/mailing-list.md` and `docs/welcome-email.md`.
+**There is no mailing list.** The signup form, `/api/subscribe`, and every
+"Stay In the Loop" link were removed on 2026-07-25 — don't reintroduce a
+newsletter CTA when writing "still forming" copy. `docs/mailing-list.md` and
+`docs/welcome-email.*` describe the retired setup and are kept as history only.
+
+The one live email path is the **contact form on `/faq`** → `/api/contact` →
+**Loops**. `LOOPS_API_KEY` is set in Vercel (Production + Preview) and in local
+`.env.local` (gitignored, not in the repo). Without it, the form returns 503.
 
 ## Gotchas
 

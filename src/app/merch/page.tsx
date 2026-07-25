@@ -6,7 +6,7 @@ import ComingSoon from "@/components/ui/ComingSoon";
 export const metadata: Metadata = {
   title: "Merch",
   description:
-    "IAYPAA X merch is still forming. Hoodies, tees, and stickers are on the way, so get on the mailing list to hear when the catalogue opens.",
+    "IAYPAA X merch is still forming. Hoodies, tees, and stickers are on the way, and the catalogue opens on this page.",
 };
 
 // Merch is hidden for now — the product catalogue (FeaturedSpecimen +
@@ -38,8 +38,7 @@ export default function MerchPage() {
         {/* Still forming — catalogue temporarily hidden */}
         <ComingSoon
           title="Merch"
-          subtitle="Hoodies, tees, and stickers for the weekend are still forming. Get on the mailing list and we’ll let you know the moment the catalogue opens."
-          showEmailSignup
+          subtitle="Hoodies, tees, and stickers for the weekend are still forming. The catalogue opens right here the moment it’s ready."
         />
       </div>
     </div>

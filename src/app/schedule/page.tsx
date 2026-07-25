@@ -51,7 +51,6 @@ export default function SchedulePage() {
           <ComingSoon
             title="Weekend Program"
             subtitle="Soon to be released. Stay tuned!"
-            showEmailSignup
           />
         </section>
       )}
