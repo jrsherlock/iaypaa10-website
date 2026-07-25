@@ -231,6 +231,18 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
     flyerThumb: "/flyers/yoga-meditation-in-the-park.jpg",
   },
   {
+    id: "summer-party",
+    title: "Summer Party",
+    date: "2026-07-25",
+    time: "Starts at 3:30 PM",
+    location: "511 Melrose",
+    city: "Iowa City, IA",
+    description:
+      "Chill with us. Slushie machine, hot dogs and hamburgers, and yard games. Cornhole, spikeball, and fellowship. Bring a side to share.",
+    flyer: "/flyers/summer-party.pdf",
+    flyerThumb: "/flyers/summer-party.jpg",
+  },
+  {
     id: "virtual-aa-panel",
     title: "Virtual AA Panel",
     date: "2026-07-29",
