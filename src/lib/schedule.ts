@@ -206,7 +206,7 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         title: "Bag toss",
         room: "Courtyard",
         kind: "social",
-        desc: "Open boards all afternoon.",
+        desc: "Open boards from 1:00–3:30 PM.",
       },
       {
         time: "2:00 PM",
