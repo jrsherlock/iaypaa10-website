@@ -76,7 +76,7 @@ export const MAIN_SPEAKERS: readonly MainSpeaker[] = [
     revealed: true,
     name: "Sammy F.",
     hometown: "Cedar Rapids, Iowa",
-    bio: "Carried the message at IAYPAA IX and the Cedar River Roundup. The kind of person who is already stacking chairs before anyone asks.",
+    bio: "We met Sammy at IAYPAA IX in Cedar Rapids, where he was being of service. Then again at the Cedar River Roundup, where he was being of service. He is probably out there being of service right now. Big smile, permanent game face, and a hospitality game people are still talking about.",
     portrait: "/images/speakers/sunday-sammy-f.webp",
   },
 ];
