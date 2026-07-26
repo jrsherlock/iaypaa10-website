@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import RisingMotes from "@/components/effects/RisingMotes";
-import ComingSoon from "@/components/ui/ComingSoon";
-import SlimeDivider from "@/components/ui/SlimeDivider";
+import MainSpeakers from "@/components/sections/MainSpeakers";
 import { CONFERENCE, PROGRAM_PUBLIC } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Speakers",
-  description: `Speakers, panelists, and workshop leaders for ${CONFERENCE.name}, Primordial Ooze. Confirmed voices are listed on the program; the full keynote lineup is still being announced.`,
+  description: `The three main speakers for ${CONFERENCE.name}, Primordial Ooze, August 14–16 2026 in Iowa City. One night at a time, revealed as each is confirmed.`,
 };
 
 export default function SpeakersPage() {
@@ -36,18 +35,13 @@ export default function SpeakersPage() {
           </div>
 
           <p className="font-typewriter text-sm sm:text-base tracking-[0.15em] uppercase text-bone-white/70 leading-relaxed">
-            Speakers · panelists · workshop leaders &nbsp;·&nbsp; in alphabetical order of confirmation
+            Three nights · three voices &nbsp;·&nbsp; revealed one at a time
           </p>
         </div>
       </section>
 
-      {/* ---------- TBA notice ---------- */}
-      <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
-        <ComingSoon
-          title="Speaker Lineup"
-          subtitle="The host committee is finalizing the lineup: keynote speakers, panelists, and workshop leaders. It gets posted here the day it drops."
-        />
-      </section>
+      {/* ---------- The three main speakers ---------- */}
+      <MainSpeakers />
 
       {/* ---------- Confirmed so far — point to the live program ---------- */}
       {PROGRAM_PUBLIC && (
@@ -95,65 +89,6 @@ export default function SpeakersPage() {
         </div>
       </section>
       )}
-
-      <SlimeDivider />
-
-      {/* ---------- Call for nominations ---------- */}
-      <section className="relative px-4 sm:px-6 py-20 sm:py-24">
-        <div className="relative max-w-2xl mx-auto">
-          <div className="relative bg-toxic-green/35 border border-gold/35 paper-grit p-8 sm:p-10">
-            <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-gold mb-4">
-              Nominations open
-            </p>
-
-            <h2
-              className="font-anton text-gold leading-[0.95] mb-4"
-              style={{
-                fontSize: "clamp(2.2rem, 7vw, 4rem)",
-                textShadow:
-                  "0 0 14px rgba(242,193,78,0.55), 0 0 36px rgba(247,129,84,0.35)",
-              }}
-            >
-              Know someone
-              <br />
-              who carries it well?
-            </h2>
-
-            <div className="marquee-rule w-28 sm:w-36 mb-6" aria-hidden="true" />
-
-            <div className="font-news text-bone-white/85 text-base sm:text-lg leading-[1.7] space-y-4 mb-7 max-w-prose">
-              <p>
-                We&rsquo;re looking for speakers, panelists, and workshop leaders
-                whose story carries the message: strong sobriety, a
-                compelling voice, and the willingness to pass it on to the
-                young people in the room.
-              </p>
-              <p>
-                Nominate yourself or someone you know. The committee reviews
-                every name and follows up directly. Identities stay confidential
-                outside the fellowship in keeping with the Eleventh Tradition.
-              </p>
-            </div>
-
-            <a
-              href={`mailto:${CONFERENCE.email}?subject=IAYPAA X Speaker Nomination`}
-              className="group inline-flex items-center gap-3 bg-gold text-void-black font-anton uppercase tracking-[0.15em] text-base sm:text-lg px-7 py-3.5 border-2 border-gold transition-all hover:bg-ember hover:border-ember hover:shadow-[0_0_24px_rgba(247,129,84,0.45)]"
-            >
-              Send a nomination
-              <span
-                aria-hidden="true"
-                className="transition-transform group-hover:translate-x-1"
-              >
-                →
-              </span>
-            </a>
-
-            <p className="font-typewriter text-xs tracking-[0.2em] uppercase text-bone-white/55 mt-4">
-              opens your email · {CONFERENCE.email}
-            </p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
