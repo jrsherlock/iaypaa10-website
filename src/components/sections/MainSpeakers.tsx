@@ -1,4 +1,4 @@
-import CulturedPortrait from "@/components/effects/CulturedPortrait";
+import Image from "next/image";
 import Organism from "@/components/effects/Organism";
 import { MAIN_SPEAKERS, type MainSpeaker } from "@/lib/constants";
 
@@ -70,16 +70,33 @@ function PendingCard({ speaker }: { speaker: MainSpeaker }) {
 
 function RevealedCard({ speaker }: { speaker: MainSpeaker }) {
   return (
-    <li className="organism-field">
+    <li>
       {speaker.portrait ? (
-        /* No frame: the artwork's ground is the same void-black as the page,
-           so the figure rises out of the surface with no visible box. */
-        <CulturedPortrait
-          src={speaker.portrait}
-          alt={`Stencil portrait of ${speaker.name}, the ${speaker.day} main speaker, rendered in ooze green with the face unreadable`}
-          seed={SEEDS[speaker.id]}
-          pixels={1000}
-        />
+        /* Once a speaker is disclosed the card is just the portrait: no
+           membrane over it, nothing moving. The organisms belong to the
+           speakers who have not been cultured yet.
+
+           No frame either — the artwork's ground is the same void-black as
+           the page, so the figure rises out of the surface with no box. */
+        <div className="relative">
+          <Image
+            src={speaker.portrait}
+            alt={`Stencil portrait of ${speaker.name}, the ${speaker.day} main speaker, rendered in ooze green with the face unreadable`}
+            width={1000}
+            height={1000}
+            className="w-full h-auto"
+            sizes="(min-width: 640px) 36rem, 100vw"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-[72%] h-6 pointer-events-none"
+            style={{
+              borderRadius: "50%",
+              background:
+                "radial-gradient(ellipse, rgba(95,173,86,0.28), transparent 70%)",
+            }}
+          />
+        </div>
       ) : (
         <CoheredSilhouette />
       )}

@@ -10,14 +10,8 @@ export const TIMING = {
   /** One full swell of the idle breath. */
   idlePulseMin: 8_000,
   idlePulseMax: 15_000,
-  /** The whole notice → reach → liquefy → retract sequence. */
-  reveal: 1_100,
-  /** Membrane answering the pointer. */
-  hover: 250,
   /** A ripple crossing the surface. */
   ripple: 400,
-  /** A droplet separating and dissolving. */
-  droplet: 600,
   /** Idle twitches fire somewhere in this window, per organism. */
   microEventMin: 10_000,
   microEventMax: 20_000,
@@ -45,43 +39,17 @@ export const SHAPE = {
   leanDistance: 6,
 } as const;
 
-/** Spring stiffness per driven property. Higher reaches its target sooner. */
+/**
+ * Spring stiffness per driven property. Higher reaches its target sooner.
+ *
+ * The pointer reaction is spring-driven rather than given a fixed duration:
+ * a membrane that answers on a timer arrives at the same moment however far
+ * it has to travel, which reads as mechanical. These settle in roughly the
+ * quarter-second the brief asks for.
+ */
 export const SPRING = {
-  /** Body scale — slow, so swelling reads as breath. */
-  scale: 18,
   /** Lean toward the pointer — quick enough to feel attentive. */
   lean: 34,
   /** Rousing and settling. */
   rouse: 12,
-  /** Tendril extension. */
-  tendril: 22,
 } as const;
-
-/**
- * The covering sheet, in viewBox units. It starts large enough to hide the
- * whole portrait — a radius of 78 clears the 70.7 half-diagonal even at full
- * negative wobble — and ends as the organism parked in the lower-right corner.
- */
-export const REVEAL = {
-  coveredRadius: 92,
-  /**
-   * What is left once the sheet has retracted. Small and pushed hard into the
-   * corner: this is residue clinging to the edge of the frame, not an object
-   * sitting on the portrait.
-   */
-  cornerRadius: 9,
-  cornerX: 88,
-  cornerY: 86,
-  /** Opacity the sheet settles to, letting the portrait read through it. */
-  settledOpacity: 0.5,
-  /** Peak displacement while the sheet liquefies. Zero at both ends. */
-  displacement: 11,
-  /** Turbulence scale of the liquid edge. Lower is coarser, more viscous. */
-  turbulence: 0.021,
-  /** Where in the sequence tendrils reach hardest. */
-  tendrilPeak: 0.26,
-  /** Where droplets separate from the retreating edge. */
-  dropletRelease: 0.55,
-} as const;
-
-export const DROPLETS = 4;

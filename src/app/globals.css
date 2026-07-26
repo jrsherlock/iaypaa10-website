@@ -332,15 +332,6 @@ body {
   --organism-accent: #a8ffb2;
 }
 
-/* The covering sheet is server-rendered so the portrait never flashes into
-   view before the reveal runs. Nothing retracts it without motion, so hide it
-   here — CSS applies before first paint, where a JS check would not. */
-@media (prefers-reduced-motion: reduce) {
-  [data-ooze-sheet] {
-    display: none;
-  }
-}
-
 @keyframes poster-rise {
   from {
     opacity: 0;
