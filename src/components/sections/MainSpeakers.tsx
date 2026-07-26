@@ -138,10 +138,6 @@ export default function MainSpeakers() {
           ),
         )}
       </ul>
-
-      <p className="relative max-w-xl mx-auto font-typewriter text-[0.65rem] sm:text-xs tracking-[0.22em] uppercase text-bone-white/40 mt-8 leading-relaxed">
-        First name and last initial only, in keeping with the Eleventh Tradition
-      </p>
     </section>
   );
 }
