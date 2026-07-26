@@ -1,5 +1,13 @@
-import Image from "next/image";
+import CulturedPortrait from "@/components/effects/CulturedPortrait";
+import Organism from "@/components/effects/Organism";
 import { MAIN_SPEAKERS, type MainSpeaker } from "@/lib/constants";
+
+/** Stable per-card seed, so an organism keeps its character across renders. */
+const SEEDS: Record<MainSpeaker["id"], number> = {
+  friday: 17,
+  saturday: 43,
+  sunday: 71,
+};
 
 /**
  * The three main speakers, unveiled one night at a time.
@@ -13,23 +21,6 @@ import { MAIN_SPEAKERS, type MainSpeaker } from "@/lib/constants";
  * Content lives in `MAIN_SPEAKERS` in src/lib/constants.ts; revealing a
  * speaker is a data change there, not a change here.
  */
-
-/** Ooze that hasn't taken shape. Decorative — the card's text carries it. */
-function FormingMass() {
-  return (
-    <div className="w-[62px] h-[66px] shrink-0 grid place-items-center">
-      <div
-        aria-hidden="true"
-        className="w-[54px] h-[58px] border border-ooze-green/30 animate-blob-morph motion-reduce:animate-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 35%, rgba(95,173,86,0.55), rgba(95,173,86,0.14) 62%, transparent 74%)",
-          borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%",
-        }}
-      />
-    </div>
-  );
-}
 
 /**
  * Fallback figure for a revealed speaker with no commissioned portrait: a
@@ -61,8 +52,10 @@ function CoheredSilhouette() {
 
 function PendingCard({ speaker }: { speaker: MainSpeaker }) {
   return (
-    <li className="border border-ooze-green/20 bg-toxic-green/30 p-4 flex items-center gap-4">
-      <FormingMass />
+    <li className="organism-field border border-ooze-green/20 bg-toxic-green/30 p-4 flex items-center gap-4">
+      <div className="shrink-0">
+        <Organism seed={SEEDS[speaker.id]} size={66} />
+      </div>
       <div className="min-w-0">
         <p className="font-typewriter text-[0.6rem] sm:text-[0.65rem] tracking-[0.26em] uppercase text-bone-white/50">
           {speaker.day} · {speaker.date}
@@ -77,29 +70,16 @@ function PendingCard({ speaker }: { speaker: MainSpeaker }) {
 
 function RevealedCard({ speaker }: { speaker: MainSpeaker }) {
   return (
-    <li>
+    <li className="organism-field">
       {speaker.portrait ? (
         /* No frame: the artwork's ground is the same void-black as the page,
            so the figure rises out of the surface with no visible box. */
-        <div className="relative">
-          <Image
-            src={speaker.portrait}
-            alt={`Stencil portrait of ${speaker.name}, the ${speaker.day} main speaker, rendered in ooze green with the face unreadable`}
-            width={1000}
-            height={1000}
-            className="w-full h-auto"
-            sizes="(min-width: 640px) 36rem, 100vw"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-[72%] h-6 pointer-events-none"
-            style={{
-              borderRadius: "50%",
-              background:
-                "radial-gradient(ellipse, rgba(95,173,86,0.28), transparent 70%)",
-            }}
-          />
-        </div>
+        <CulturedPortrait
+          src={speaker.portrait}
+          alt={`Stencil portrait of ${speaker.name}, the ${speaker.day} main speaker, rendered in ooze green with the face unreadable`}
+          seed={SEEDS[speaker.id]}
+          pixels={1000}
+        />
       ) : (
         <CoheredSilhouette />
       )}
