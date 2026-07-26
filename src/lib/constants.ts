@@ -39,6 +39,49 @@ export const CONFERENCE = {
 export const PROGRAM_PUBLIC: boolean = false;
 
 // ---------------------------------------------------------------------------
+// The three main speakers, unveiled one night at a time to keep some suspense
+// in the run-up. An unrevealed speaker shows as ooze that hasn't taken shape;
+// a revealed one has cohered into a person. See /speakers.
+//
+// To reveal one: set `revealed: true` and fill in `name`, `hometown`, and
+// `bio`. Names are first name + last initial only (Eleventh Tradition) — never
+// add a surname here. `portrait` is optional: with it the card leads with the
+// artwork, without it the card falls back to a plain cohered silhouette.
+// ---------------------------------------------------------------------------
+export type MainSpeaker = {
+  /** Stable key, and the night this speaker leads. */
+  id: "friday" | "saturday" | "sunday";
+  day: string;
+  /** Short date, e.g. "Aug 14". */
+  date: string;
+  revealed: boolean;
+  /** First name + last initial ONLY. Present once revealed. */
+  name?: string;
+  hometown?: string;
+  bio?: string;
+  /**
+   * Optional treated portrait in `public/images/speakers/`. Authored on a
+   * void-black ground so it sits frameless on the page. Square.
+   */
+  portrait?: string;
+};
+
+export const MAIN_SPEAKERS: readonly MainSpeaker[] = [
+  { id: "friday", day: "Friday", date: "Aug 14", revealed: false },
+  { id: "saturday", day: "Saturday", date: "Aug 15", revealed: false },
+  {
+    id: "sunday",
+    day: "Sunday",
+    date: "Aug 16",
+    revealed: true,
+    name: "Sammy F.",
+    hometown: "Cedar Rapids, Iowa",
+    bio: "Carried the message at IAYPAA IX and the Cedar River Roundup. The kind of person who is already stacking chairs before anyone asks.",
+    portrait: "/images/speakers/sunday-sammy-f.webp",
+  },
+];
+
+// ---------------------------------------------------------------------------
 // Ooza-Palooza fundraiser. ONE pot: when the running total crosses a
 // tier, that challenge is locked in. To post a new total, change `raised`
 // below and redeploy — the thermometer, unlocked tiers, banner, and home
