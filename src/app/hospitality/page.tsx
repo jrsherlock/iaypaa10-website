@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import GlowText from "@/components/ui/GlowText";
 import RisingMotes from "@/components/effects/RisingMotes";
 import {
@@ -38,14 +39,42 @@ export default async function HospitalityPage() {
         </div>
         <RisingMotes count={10} />
 
+        {/* Suite flyer */}
+        <div className="max-w-sm mx-auto mb-10">
+          <div className="border border-ooze-green/25 bg-void-black/40 p-2 sm:p-3">
+            <Image
+              src="/images/hospitality-suite-flyer.png"
+              alt="IAYPAA X Primordial Ooze Hospitality Suite flyer — Come as you are. You belong here. Let's connect."
+              width={325}
+              height={260}
+              className="w-full h-auto"
+              sizes="(min-width: 640px) 24rem, 100vw"
+            />
+          </div>
+        </div>
+
         <section className="mb-8">
-          <p className="text-bone-white/70 text-center mb-10 max-w-2xl mx-auto">
-            The hospitality suite at the Graduate is where the fellowship
-            gathers between sessions for coffee, snacks, and conversation that
-            runs late. Each slot below is a meal or snack shift one group hosts
-            together: bring the food, serve the fellowship, and keep the room
-            warm. Claim your group&apos;s slot on SignUpGenius.
+          <p className="text-bone-white/70 text-center mb-6 max-w-2xl mx-auto">
+            Welcome to IAYPAA X — and we need hosts. The hospitality suite at
+            the Graduate is where the fellowship gathers between sessions for
+            coffee, snacks, and conversation that runs late. Each slot below is
+            a meal or snack shift one group hosts together: bring the food,
+            serve the fellowship, and keep the room warm. Review the open slots
+            and claim your group&apos;s on SignUpGenius. Thank you.
           </p>
+
+          {/* Hotel policy hosts need before they plan a menu */}
+          <div className="max-w-2xl mx-auto mb-10 border-l-2 border-gold/60 bg-gold/5 pl-4 pr-4 py-3">
+            <p className="font-typewriter text-[0.65rem] tracking-[0.25em] uppercase text-gold/90 mb-1">
+              Please note
+            </p>
+            <p className="font-news text-sm text-bone-white/80 leading-relaxed">
+              The Graduate does not allow crockpots or other food-warming
+              appliances in the hotel. Please plan your meal or snack
+              accordingly — think cold spreads, room-temperature dishes, or
+              food brought in hot and served right away.
+            </p>
+          </div>
           <div className="max-w-4xl mx-auto rounded-xl border border-ooze-green/30 bg-void-black/60 p-6 sm:p-8">
             <div className="grid md:grid-cols-3 gap-x-8 gap-y-8">
               {HOSPITALITY_SLOTS.map((day) => (
