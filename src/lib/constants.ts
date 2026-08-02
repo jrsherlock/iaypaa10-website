@@ -296,12 +296,14 @@ export const PRE_CONFERENCE_EVENTS: readonly PreConferenceEvent[] = [
   {
     id: "kick-off-spaghetti-dinner",
     title: "Kick-Off Event (Spaghetti Dinner)",
-    date: "2026-08-01",
-    time: "5:00–8:00 PM",
+    date: "2026-08-09",
+    time: "4:30–6:30 PM",
     location: "Zion Lutheran Church",
     city: "310 N Johnson St, Iowa City, IA",
     description:
-      "The kick-off spaghetti dinner, the last big gathering before the doors open for IAYPAA X. Eat well, then we go.",
+      "The kick-off spaghetti dinner, the last big gathering before the doors open for IAYPAA X. Speaker at 5:30: Christina G. from Three Legacies, Bettendorf. Basket raffles and a 50/50 raffle. $5 suggested donation. Eat well, then we go.",
+    flyer: "/flyers/kick-off-spaghetti-dinner.pdf",
+    flyerThumb: "/flyers/kick-off-spaghetti-dinner.jpg",
   },
 ];
 
