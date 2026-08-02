@@ -154,12 +154,25 @@ export default function OozaPaloozaPage() {
               Feed the <span className="text-gold">ooze</span>
             </h2>
 
-            <p className="font-news text-bone-white/85 text-base sm:text-lg leading-[1.75] max-w-xl mx-auto mb-8">
+            <p className="font-news text-bone-white/85 text-base sm:text-lg leading-[1.75] max-w-xl mx-auto mb-4">
               Every dollar counts toward the next dare — and all of it goes
               straight back into the weekend: keeping registration low and
               funding the scholarships that make sure no one is turned away
               for lack of funds.
             </p>
+
+            {next ? (
+              <p className="font-news text-bone-white text-base sm:text-lg leading-[1.75] max-w-xl mx-auto mb-8">
+                Help us get to{" "}
+                <span className="text-gold">{formatUSD(next.amount)}</span> —
+                we&rsquo;re only {formatUSD(next.amount - raised)} away from{" "}
+                <em>{next.short}</em>.
+              </p>
+            ) : (
+              <p className="font-news text-bone-white text-base sm:text-lg leading-[1.75] max-w-xl mx-auto mb-8">
+                Every dare is unlocked — thank you for feeding the ooze.
+              </p>
+            )}
 
             <a
               href={CONFERENCE.cashApp.url}

@@ -97,10 +97,10 @@ export type ChallengeTier = {
 };
 
 export const CHALLENGE = {
-  raised: 505, // <- update this as donations come in
+  raised: 1015, // <- update this as donations come in
   goal: 2500,
   /** Shown as "as of" so a stale number is honest about its age. */
-  updated: "July 18",
+  updated: "August 2",
   tiers: [
     { amount: 50, title: "Prank / Rejection Challenge", short: "the prank challenge", who: "Ted K." },
     { amount: 100, title: "Blind-Folded Drawing Challenge", short: "blind-folded drawing", who: "Megan H." },
@@ -109,7 +109,7 @@ export const CHALLENGE = {
     { amount: 500, title: "Eat Ghost Peppers & Onions", short: "ghost peppers & onions", who: "Joe L. & Bryanne L." },
     { amount: 750, title: "Full Clown Makeup in Public", short: "full clown makeup in public", who: "Kate C." },
     { amount: 1000, title: "WWE IAYPAA Smackdown", short: "the WWE IAYPAA Smackdown", who: "Joe I., Abbey F., Esti & Regan" },
-    { amount: 1500, title: "Shave Eyebrows Off", short: "eyebrows shaved off", who: "Elise G." },
+    { amount: 1500, title: "Shave Eyebrows Off", short: "Elise shaving her eyebrows off", who: "Elise G." },
     { amount: 2000, title: "IAYPAA-Themed Tattoo", short: "IAYPAA-themed tattoos", who: "Joe, Kate, Carson & Rosie" },
     { amount: 2500, title: "Fear Factor Snackboard — Gross Eating Challenge", short: "the Fear Factor snackboard", who: "Jessica Z. & Kyle T." },
   ],
