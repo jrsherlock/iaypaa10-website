@@ -97,7 +97,7 @@ export type ChallengeTier = {
 };
 
 export const CHALLENGE = {
-  raised: 1135, // <- update this as donations come in
+  raised: 1500, // <- update this as donations come in
   goal: 2500,
   /** Shown as "as of" so a stale number is honest about its age. */
   updated: "August 6",
