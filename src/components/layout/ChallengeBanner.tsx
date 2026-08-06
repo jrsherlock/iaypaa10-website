@@ -26,7 +26,7 @@ export default function ChallengeBanner() {
   if (dismissed || pathname === "/ooza-palooza") return null;
 
   return (
-    <div className="relative bg-toxic-green/60 border-b border-ooze-green/30">
+    <div className="relative bg-toxic-green/60 border-b border-ooze-green/30 animate-banner-breathe">
       <Link
         href="/ooza-palooza"
         className="block pr-12 pl-4 sm:px-12 py-2 text-center font-typewriter text-[0.65rem] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase text-bone-white/85 transition-colors hover:text-bone-white"

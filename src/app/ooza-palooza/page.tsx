@@ -20,6 +20,8 @@ export const metadata: Metadata = {
 export default function OozaPaloozaPage() {
   const { raised, goal, updated, tiers } = CHALLENGE;
   const next = nextTier();
+  // The newest locked-in dare pulses; older conquests sit still.
+  const latestLocked = tiers.filter((t) => t.amount <= raised).at(-1);
 
   return (
     <div className="relative">
@@ -120,7 +122,11 @@ export default function OozaPaloozaPage() {
                         </p>
                       </div>
                       {unlocked ? (
-                        <span className="font-typewriter text-[0.65rem] tracking-[0.2em] uppercase text-void-black bg-gold px-2 py-1 shrink-0 mt-0.5">
+                        <span
+                          className={`font-typewriter text-[0.65rem] tracking-[0.2em] uppercase text-void-black bg-gold px-2 py-1 shrink-0 mt-0.5${
+                            tier.amount === latestLocked?.amount ? " animate-locked-pulse" : ""
+                          }`}
+                        >
                           ✓ Locked in
                         </span>
                       ) : isNext ? (
