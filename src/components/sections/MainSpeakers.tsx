@@ -7,10 +7,17 @@ const SEEDS: Record<MainSpeaker["id"], number> = {
   friday: 17,
   saturday: 43,
   sunday: 71,
+  alanon: 29,
 };
 
+/** Eyebrow line: "Friday · Aug 14", or just the slot label when the
+ *  speaker isn't tied to one night (the Al-Anon speaker). */
+function slotLabel(speaker: MainSpeaker): string {
+  return speaker.date ? `${speaker.day} · ${speaker.date}` : speaker.day;
+}
+
 /**
- * The three main speakers, unveiled one night at a time.
+ * The main speakers — one per night, plus the Al-Anon speaker.
  *
  * The two states are the same thing at different stages of formation: an
  * unrevealed speaker is ooze that hasn't taken shape (a mass that morphs and
@@ -58,7 +65,7 @@ function PendingCard({ speaker }: { speaker: MainSpeaker }) {
       </div>
       <div className="min-w-0">
         <p className="font-typewriter text-[0.6rem] sm:text-[0.65rem] tracking-[0.26em] uppercase text-bone-white/50">
-          {speaker.day} · {speaker.date}
+          {slotLabel(speaker)}
         </p>
         <p className="font-anton text-lg sm:text-xl uppercase tracking-[0.06em] text-bone-white/40 leading-none mt-1.5">
           Still forming
@@ -81,7 +88,7 @@ function RevealedCard({ speaker }: { speaker: MainSpeaker }) {
         <div className="relative">
           <Image
             src={speaker.portrait}
-            alt={`Stencil portrait of ${speaker.name}, the ${speaker.day} main speaker, rendered in ooze green with the face unreadable`}
+            alt={`Stencil portrait of ${speaker.name}, the ${speaker.day} speaker, rendered in ooze green with the face unreadable`}
             width={1000}
             height={1000}
             className="w-full h-auto"
@@ -103,7 +110,7 @@ function RevealedCard({ speaker }: { speaker: MainSpeaker }) {
 
       <div className="border-t border-gold/45 pt-3.5 mt-2.5">
         <p className="font-typewriter text-[0.6rem] sm:text-[0.65rem] tracking-[0.26em] uppercase text-gold">
-          {speaker.day} · {speaker.date}
+          {slotLabel(speaker)}
         </p>
         <p className="font-anton text-3xl sm:text-4xl uppercase tracking-wide text-bone-white leading-none mt-1.5">
           {speaker.name}

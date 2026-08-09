@@ -39,9 +39,10 @@ export const CONFERENCE = {
 export const PROGRAM_PUBLIC: boolean = false;
 
 // ---------------------------------------------------------------------------
-// The three main speakers, unveiled one night at a time to keep some suspense
-// in the run-up. An unrevealed speaker shows as ooze that hasn't taken shape;
-// a revealed one has cohered into a person. See /speakers.
+// The main speakers — one per night, plus the Al-Anon speaker — unveiled a
+// name at a time to keep some suspense in the run-up. An unrevealed speaker
+// shows as ooze that hasn't taken shape; a revealed one has cohered into a
+// person. See /speakers.
 //
 // To reveal one: set `revealed: true` and fill in `name`, `hometown`, and
 // `bio`. Names are first name + last initial only (Eleventh Tradition) — never
@@ -50,10 +51,12 @@ export const PROGRAM_PUBLIC: boolean = false;
 // ---------------------------------------------------------------------------
 export type MainSpeaker = {
   /** Stable key, and the night this speaker leads. */
-  id: "friday" | "saturday" | "sunday";
+  id: "friday" | "saturday" | "sunday" | "alanon";
+  /** The slot label on the card — a night ("Friday"), or a role for a
+   *  speaker who isn't tied to one ("Al-Anon Speaker"). */
   day: string;
-  /** Short date, e.g. "Aug 14". */
-  date: string;
+  /** Short date, e.g. "Aug 14". Omitted when the slot has no fixed night. */
+  date?: string;
   revealed: boolean;
   /** First name + last initial ONLY. Present once revealed. */
   name?: string;
@@ -67,8 +70,20 @@ export type MainSpeaker = {
 };
 
 export const MAIN_SPEAKERS: readonly MainSpeaker[] = [
-  { id: "friday", day: "Friday", date: "Aug 14", revealed: false },
-  { id: "saturday", day: "Saturday", date: "Aug 15", revealed: false },
+  {
+    id: "friday",
+    day: "Friday",
+    date: "Aug 14",
+    revealed: true,
+    name: "Tonya M.",
+  },
+  {
+    id: "saturday",
+    day: "Saturday",
+    date: "Aug 15",
+    revealed: true,
+    name: "Dan K.",
+  },
   {
     id: "sunday",
     day: "Sunday",
@@ -79,6 +94,7 @@ export const MAIN_SPEAKERS: readonly MainSpeaker[] = [
     bio: "We met Sammy at IAYPAA IX in Cedar Rapids, where he was being of service. Then again at the Cedar River Roundup, where he was being of service. He is probably out there being of service right now. Big smile, permanent game face, and a hospitality game people are still talking about.",
     portrait: "/images/speakers/sunday-sammy-f.webp",
   },
+  { id: "alanon", day: "Al-Anon Speaker", revealed: true, name: "Theresa G." },
 ];
 
 // ---------------------------------------------------------------------------

@@ -6,7 +6,7 @@ import { CONFERENCE, PROGRAM_PUBLIC } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Speakers",
-  description: `The three main speakers for ${CONFERENCE.name}, Primordial Ooze, August 14–16 2026 in Iowa City. One night at a time, revealed as each is confirmed.`,
+  description: `The main speakers for ${CONFERENCE.name}, Primordial Ooze, August 14–16 2026 in Iowa City — one for each night, plus our Al-Anon speaker.`,
 };
 
 export default function SpeakersPage() {
@@ -35,7 +35,7 @@ export default function SpeakersPage() {
           </div>
 
           <p className="font-typewriter text-sm sm:text-base tracking-[0.15em] uppercase text-bone-white/70 leading-relaxed">
-            Three nights · three voices &nbsp;·&nbsp; revealed one at a time
+            Three nights · three voices &nbsp;·&nbsp; and our Al-Anon speaker
           </p>
         </div>
       </section>
