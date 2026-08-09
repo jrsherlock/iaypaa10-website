@@ -75,9 +75,16 @@ function PendingCard({ speaker }: { speaker: MainSpeaker }) {
   );
 }
 
+/**
+ * A revealed speaker. The gold rule rides the TOP of the card, not between
+ * the portrait and the name — it marks where a speaker begins, so a portrait
+ * always reads as belonging to the name under it rather than to the name
+ * above it. Everything inside a card sits tighter than the gap between
+ * cards; that spacing relationship is what does the grouping.
+ */
 function RevealedCard({ speaker }: { speaker: MainSpeaker }) {
   return (
-    <li>
+    <li className="border-t border-gold/45 pt-6">
       {speaker.portrait ? (
         /* Once a speaker is disclosed the card is just the portrait: no
            membrane over it, nothing moving. The organisms belong to the
@@ -108,7 +115,7 @@ function RevealedCard({ speaker }: { speaker: MainSpeaker }) {
         <CoheredSilhouette />
       )}
 
-      <div className="border-t border-gold/45 pt-3.5 mt-2.5">
+      <div className="mt-3">
         <p className="font-typewriter text-[0.6rem] sm:text-[0.65rem] tracking-[0.26em] uppercase text-gold">
           {slotLabel(speaker)}
         </p>
@@ -133,7 +140,10 @@ function RevealedCard({ speaker }: { speaker: MainSpeaker }) {
 export default function MainSpeakers() {
   return (
     <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
-      <ul className="relative max-w-xl mx-auto flex flex-col gap-4 sm:gap-5 list-none">
+      {/* The gap between speakers has to beat the gaps inside one (mt-3,
+          pt-6) by a clear margin, or a portrait reads as belonging to the
+          name above it instead of the name below. */}
+      <ul className="relative max-w-xl mx-auto flex flex-col gap-12 sm:gap-14 list-none">
         {MAIN_SPEAKERS.map((speaker) =>
           speaker.revealed ? (
             <RevealedCard key={speaker.id} speaker={speaker} />
