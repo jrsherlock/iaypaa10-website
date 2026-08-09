@@ -9,6 +9,9 @@ import SeventhTradition from "@/components/sections/SeventhTradition";
 import JsonLd from "@/components/seo/JsonLd";
 import { eventJsonLd } from "@/lib/seo";
 
+// Re-render hourly so the fundraiser teaser's "as of" date stays today's.
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <>

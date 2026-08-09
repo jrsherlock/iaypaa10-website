@@ -43,3 +43,17 @@ export function scaleFraction(amount: number): number {
 export function formatUSD(amount: number): string {
   return `$${amount.toLocaleString("en-US")}`;
 }
+
+/**
+ * The "as of" date on the total — always today, in conference time, so the
+ * stamp never goes stale on its own. (The dollar figure is still hand-posted
+ * in CHALLENGE.raised; this only promises the reader when they're looking.)
+ * Pages that show it set `revalidate` so ISR re-renders them past midnight.
+ */
+export function asOfLabel(): string {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    timeZone: "America/Chicago",
+  }).format(new Date());
+}

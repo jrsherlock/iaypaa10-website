@@ -3,13 +3,16 @@ import Image from "next/image";
 import RisingMotes from "@/components/effects/RisingMotes";
 import OozeThermometer from "@/components/ui/OozeThermometer";
 import { CHALLENGE, CONFERENCE } from "@/lib/constants";
-import { formatUSD, nextTier } from "@/lib/challenge";
+import { asOfLabel, formatUSD, nextTier } from "@/lib/challenge";
 
 export const metadata: Metadata = {
   title: "Ooza-Palooza",
   description: `The IAYPAA X Ooza-Palooza fundraiser: past and present Host & Advisory members take on escalating dares as the total climbs. ${formatUSD(CHALLENGE.raised)} raised so far — every dollar funds the conference and its scholarships.`,
   alternates: { canonical: "/ooza-palooza" },
 };
+
+// Re-render hourly so the "as of" date rolls over on its own overnight.
+export const revalidate = 3600;
 
 /**
  * Ooza-Palooza — the fundraiser page. One pot: as the running total
@@ -18,7 +21,8 @@ export const metadata: Metadata = {
  * `raised` there and redeploy.
  */
 export default function OozaPaloozaPage() {
-  const { raised, goal, updated, tiers } = CHALLENGE;
+  const { raised, goal, tiers } = CHALLENGE;
+  const updated = asOfLabel();
   const next = nextTier();
   // The newest locked-in dare pulses; older conquests sit still.
   const latestLocked = tiers.filter((t) => t.amount <= raised).at(-1);

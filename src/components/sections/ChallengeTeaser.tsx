@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CHALLENGE } from "@/lib/constants";
-import { formatUSD, nextTier, scaleFraction } from "@/lib/challenge";
+import { asOfLabel, formatUSD, nextTier, scaleFraction } from "@/lib/challenge";
 
 /**
  * Home-page Ooza-Palooza teaser — right after the hero. A horizontal
@@ -68,7 +68,7 @@ export default function ChallengeTeaser() {
               {formatUSD(raised)} raised
             </span>
             <span className="font-typewriter text-[0.65rem] sm:text-xs tracking-[0.2em] uppercase text-bone-white/50">
-              of {formatUSD(goal)} · as of {CHALLENGE.updated}
+              of {formatUSD(goal)} · as of {asOfLabel()}
             </span>
           </div>
 

@@ -99,8 +99,6 @@ export type ChallengeTier = {
 export const CHALLENGE = {
   raised: 1500, // <- update this as donations come in
   goal: 2500,
-  /** Shown as "as of" so a stale number is honest about its age. */
-  updated: "August 6",
   tiers: [
     { amount: 50, title: "Prank / Rejection Challenge", short: "the prank challenge", who: "Ted K." },
     { amount: 100, title: "Blind-Folded Drawing Challenge", short: "blind-folded drawing", who: "Megan H." },
@@ -116,7 +114,6 @@ export const CHALLENGE = {
 } as const satisfies {
   raised: number;
   goal: number;
-  updated: string;
   tiers: readonly ChallengeTier[];
 };
 
