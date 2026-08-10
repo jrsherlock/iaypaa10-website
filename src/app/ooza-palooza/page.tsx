@@ -71,16 +71,23 @@ export default function OozaPaloozaPage() {
       <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
         <div className="max-w-4xl mx-auto">
           {/* Total banner */}
-          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-8 sm:mb-10">
-            <span
-              className="font-anton text-5xl sm:text-7xl leading-none text-gold"
-              style={{ textShadow: "0 0 18px rgba(242,193,78,0.35)" }}
-            >
-              {formatUSD(raised)}
-            </span>
-            <span className="font-typewriter text-sm sm:text-base tracking-[0.2em] uppercase text-bone-white/60">
-              raised of {formatUSD(goal)} · as of {updated}
-            </span>
+          <div className="mb-8 sm:mb-10">
+            <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+              <span
+                className="font-anton text-5xl sm:text-7xl leading-none text-gold"
+                style={{ textShadow: "0 0 18px rgba(242,193,78,0.35)" }}
+              >
+                {formatUSD(raised)}
+              </span>
+              <span className="font-typewriter text-sm sm:text-base tracking-[0.2em] uppercase text-bone-white/60">
+                raised of {formatUSD(goal)} · as of {updated}
+              </span>
+            </div>
+            {!next ? (
+              <p className="font-news text-bone-white/85 text-base sm:text-lg leading-[1.75] max-w-prose mt-4">
+                That&rsquo;s the whole ladder. All ten dares are claimed.
+              </p>
+            ) : null}
           </div>
 
           <div className="grid sm:grid-cols-[15rem_1fr] gap-8 sm:gap-10 items-start">
@@ -165,7 +172,9 @@ export default function OozaPaloozaPage() {
             </h2>
 
             <p className="font-news text-bone-white/85 text-base sm:text-lg leading-[1.75] max-w-xl mx-auto mb-4">
-              Every dollar counts toward the next dare — and all of it goes
+              {next
+                ? "Every dollar counts toward the next dare — and all of it goes"
+                : "The dares are all spoken for, and every dollar still goes"}{" "}
               straight back into the weekend: keeping registration low and
               funding the scholarships that make sure no one is turned away
               for lack of funds.
@@ -204,9 +213,19 @@ export default function OozaPaloozaPage() {
             </p>
 
             <p className="font-news text-sm text-bone-white/60 leading-relaxed mt-6 max-w-md mx-auto">
-              Pre-registrations and scholarship purchases count toward the
-              total too — so if you were going to register anyway, now it
-              also gets somebody pied.
+              {next ? (
+                <>
+                  Pre-registrations and scholarship purchases count toward the
+                  total too — so if you were going to register anyway, now it
+                  also gets somebody pied.
+                </>
+              ) : (
+                <>
+                  Pre-registrations and scholarship purchases count toward the
+                  total too. The dares are settled; what&rsquo;s left to build
+                  is the weekend itself.
+                </>
+              )}
             </p>
           </div>
         </div>

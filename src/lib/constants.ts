@@ -113,7 +113,7 @@ export type ChallengeTier = {
 };
 
 export const CHALLENGE = {
-  raised: 1500, // <- update this as donations come in
+  raised: 2500, // <- update this as donations come in
   goal: 2500,
   tiers: [
     { amount: 50, title: "Prank / Rejection Challenge", short: "the prank challenge", who: "Ted K." },
