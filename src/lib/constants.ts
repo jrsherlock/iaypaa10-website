@@ -36,7 +36,7 @@ export const CONFERENCE = {
 // schedule on /schedule and the "See the program" pointer on /speakers.
 // While `false`, /schedule shows the "soon to be released" notice. The
 // "Running all weekend" block is not gated; it shows either way.
-export const PROGRAM_PUBLIC: boolean = false;
+export const PROGRAM_PUBLIC: boolean = true;
 
 // ---------------------------------------------------------------------------
 // The main speakers — one per night, plus the Al-Anon speaker — unveiled a

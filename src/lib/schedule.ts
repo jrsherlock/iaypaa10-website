@@ -1,7 +1,8 @@
-// The weekend program, transcribed from the host committee's working
-// timeline ("No Gram Like the Program" master sheet). Names follow the
-// Eleventh Tradition: first name + last initial only, no contact details.
-// Times are the committee's working grid and may shift before August.
+// The weekend program, transcribed from the committee's final Friday /
+// Saturday / Sunday grams. Names follow the Eleventh Tradition: first name +
+// last initial only, no contact details. The grams publish start times and
+// rooms; end times are only given where the gram states one, so most sessions
+// carry a start time alone.
 
 /** Session category — drives the color coding + legend on /schedule. */
 export type SessionKind = "main" | "panel" | "meeting" | "social";
@@ -24,6 +25,11 @@ export type ScheduleEvent = {
   room: string;
   kind: SessionKind;
   desc?: string;
+  /**
+   * A marquee name — the person the session is built around. Rendered large,
+   * in gold, as the headline of the card. First name + last initial only.
+   */
+  speaker?: string;
   /** Single lead/chair, "First L. · Place". */
   lead?: string;
   /** Panel roster, "First L. · Place" each. */
@@ -75,10 +81,10 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
     date: "Aug 14",
     name: "Opening night",
     blurb:
-      "Doors open, hugs out front, registration in the lobby. The marathon room warms up, the first panel lands late afternoon, and the night builds through the state roll call to the Friday speaker — then pajamas.",
+      "Doors open at three, hugs out front, registration in the lobby. The marathon room warms up, the first panel lands late afternoon, and the night builds through the state roll call to Tonya M. — then pajamas.",
     events: [
       {
-        time: "12:00 PM",
+        time: "3:00 PM",
         title: "Doors & registration open",
         room: "Lobby",
         kind: "main",
@@ -86,7 +92,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
       },
       {
         time: "4:30 PM",
-        until: "6:00 PM",
         title: "LGBTQIA+ panel",
         room: "Benson Room",
         kind: "panel",
@@ -111,15 +116,7 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         title: "Friday night main speaker",
         room: "Main Ballroom",
         kind: "main",
-      },
-      {
-        time: "9:15 PM",
-        until: "10:15 PM",
-        title: "“When We Retire at Night”",
-        subtitle: "Shadow conference · page 86",
-        room: "Hoak Room",
-        kind: "meeting",
-        desc: "The Big Book's nightly inventory, taken together.",
+        speaker: "Tonya M.",
       },
       {
         time: "10:00 PM",
@@ -128,6 +125,14 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         kind: "social",
         desc: "Pajamas on, DJ's choice, into the small hours.",
       },
+      {
+        time: "11:00 PM",
+        title: "“When We Retire at Night”",
+        subtitle: "Shadow conference · page 86",
+        room: "Benson Room",
+        kind: "meeting",
+        desc: "The Big Book's nightly inventory, taken together.",
+      },
     ],
   },
   {
@@ -135,19 +140,25 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
     date: "Aug 15",
     name: "The core day",
     blurb:
-      "The fullest day: meditation at eight, bid skits, step panels running across three rooms, hot wings and cake in between — then the sobriety countdown, the Saturday speaker, and a glow dance to burn off whatever's left.",
+      "The fullest day: a sound bath at eight, bid skits, step panels running across three rooms, hot wings and cake in between — then the sobriety countdown, Dan K., and a glow dance to burn off whatever's left.",
     events: [
       {
         time: "8:00 AM",
-        until: "9:00 AM",
-        title: "Mindful movement & guided meditation",
+        title: "Sound bath",
         room: "Main Ballroom",
         kind: "meeting",
         desc: "Start the biggest day slow.",
+        lead: "Tony",
       },
       {
-        time: "9:15 AM",
-        until: "11:15 AM",
+        time: "9:30 AM",
+        title: "“Who's Will?”",
+        subtitle: "Step 3 panel",
+        room: "Hoak Room",
+        kind: "panel",
+      },
+      {
+        time: "9:45 AM",
         title: "Bid skits",
         room: "Main Ballroom",
         kind: "main",
@@ -155,7 +166,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
       },
       {
         time: "10:00 AM",
-        until: "11:15 AM",
         title: "“A Daily Reprieve”",
         subtitle: "Steps 10 & 11 panel",
         room: "Benson Room",
@@ -164,53 +174,46 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
       },
       {
         time: "11:30 AM",
-        until: "12:30 PM",
-        title: "Al-Anon meeting",
-        room: "Main Ballroom",
-        kind: "meeting",
+        title: "Step 12 panel",
+        room: "Hoak Room",
+        kind: "panel",
       },
       {
         time: "11:30 AM",
-        until: "12:30 PM",
         title: "“Character Defects Turn Me On!”",
         subtitle: "Steps 6 & 7 panel",
         room: "Benson Room",
         kind: "panel",
       },
       {
-        time: "11:30 AM",
-        until: "12:30 PM",
-        title: "“Who's Will?”",
-        subtitle: "Step 3 panel",
-        room: "Hoak Room",
-        kind: "panel",
+        time: "12:00 PM",
+        title: "Al-Anon meeting",
+        room: "Main Ballroom",
+        kind: "meeting",
+        speaker: "Theresa G.",
       },
       {
         time: "12:45 PM",
-        until: "1:45 PM",
         title: "Traditions workshop",
         room: "Hoak Room",
         kind: "panel",
       },
       {
-        time: "1:00 PM",
-        until: "3:30 PM",
+        time: "1:30 PM",
+        title: "Bag toss",
+        room: "Patio",
+        kind: "social",
+        desc: "Boards out on the patio.",
+      },
+      {
+        time: "1:30 PM",
         title: "Cake decorating",
         room: "Benson Room",
         kind: "social",
         desc: "Decorate one for the cake social tonight.",
       },
       {
-        time: "1:00 PM",
-        until: "3:30 PM",
-        title: "Bag toss",
-        room: "Courtyard",
-        kind: "social",
-        desc: "Open boards from 1:00–3:30 PM.",
-      },
-      {
         time: "2:00 PM",
-        until: "4:00 PM",
         title: "Hot wing panel",
         room: "Main Ballroom",
         kind: "social",
@@ -218,15 +221,13 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
       },
       {
         time: "4:00 PM",
-        until: "5:00 PM",
         title: "“I'm Screwed — Is There Hope?”",
         subtitle: "Steps 1 & 2 panel",
         room: "Benson Room",
         kind: "panel",
       },
       {
-        time: "4:00 PM",
-        until: "5:00 PM",
+        time: "4:30 PM",
         title: "“The Exact Nature of My Wrongs”",
         subtitle: "Steps 4 & 5 panel",
         room: "Hoak Room",
@@ -234,7 +235,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
       },
       {
         time: "5:15 PM",
-        until: "6:15 PM",
         title: "“Cleaning Up the Dumpster Fire”",
         subtitle: "Steps 8 & 9 panel",
         room: "Benson Room",
@@ -255,13 +255,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
       },
       {
         time: "8:00 PM",
-        title: "Saturday night main speaker",
-        room: "Main Ballroom",
-        kind: "main",
-        desc: "The emotional peak of the weekend.",
-      },
-      {
-        time: "9:00 PM",
         title: "Where's it going?",
         subtitle: "Advisory bid decision & passing of the torch",
         room: "Main Ballroom",
@@ -269,8 +262,15 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         desc: "Next year's host city is announced and the banner changes hands.",
       },
       {
-        time: "9:15 PM",
-        until: "10:15 PM",
+        time: "8:15 PM",
+        title: "Saturday night main speaker",
+        room: "Main Ballroom",
+        kind: "main",
+        speaker: "Dan K.",
+        desc: "The emotional peak of the weekend.",
+      },
+      {
+        time: "9:45 PM",
         title: "Cake social",
         room: "Hospitality Suite",
         kind: "social",
@@ -284,6 +284,13 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         desc: "Glow sticks, EDM, trap, and the filthiest house the DJ can offer.",
       },
       {
+        time: "10:00 PM",
+        title: "Karaoke",
+        room: "Hoak Room",
+        kind: "social",
+        desc: "For everyone whose night needs a microphone.",
+      },
+      {
         time: "11:00 PM",
         title: "“When We Retire at Night”",
         subtitle: "Shadow conference · page 86, with a fun twist",
@@ -291,15 +298,13 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         kind: "meeting",
       },
     ],
-    footnote:
-      "A Step 12 panel and a few room assignments are still being placed on the grid.",
   },
   {
     code: "SUN",
     date: "Aug 16",
     name: "Closing morning",
     blurb:
-      "A softer landing: yoga at eight, the Sunday formalities and closing speaker at ten, then the goodbyes you keep in your pocket for the year.",
+      "A softer landing: yoga at eight, the Sunday formalities and Sammy F. at ten, then the goodbyes you keep in your pocket for the year.",
     events: [
       {
         time: "8:00 AM",
@@ -311,10 +316,10 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
       },
       {
         time: "10:00 AM",
-        until: "12:00 PM",
-        title: "Sunday formalities & closing speaker",
+        title: "Formalities & closing speaker",
         room: "Main Ballroom",
         kind: "main",
+        speaker: "Sammy F.",
         desc: "A final, reflective meeting to ground the weekend.",
       },
       {
@@ -325,5 +330,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         desc: "See you next year.",
       },
     ],
+    footnote: "Thank you all so much for coming.",
   },
 ];

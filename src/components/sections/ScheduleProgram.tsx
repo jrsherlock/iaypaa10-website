@@ -26,20 +26,33 @@ import {
 // Literal class strings per category so Tailwind can see them at build time.
 const KIND_STYLES: Record<
   SessionKind,
-  { border: string; dot: string; text: string }
+  { border: string; dot: string; text: string; wash: string }
 > = {
-  main: { border: "border-l-gold", dot: "bg-gold", text: "text-gold" },
+  main: {
+    border: "border-l-gold",
+    dot: "bg-gold",
+    text: "text-gold",
+    // The spine of the day reads warmest — amber light surfacing out of the dark.
+    wash: "bg-gradient-to-r from-gold/[0.07] to-transparent",
+  },
   panel: {
     border: "border-l-ooze-green",
     dot: "bg-ooze-green",
     text: "text-ooze-green",
+    wash: "bg-gradient-to-r from-ooze-green/[0.05] to-transparent",
   },
   meeting: {
     border: "border-l-swamp-teal",
     dot: "bg-swamp-teal",
     text: "text-swamp-teal",
+    wash: "bg-gradient-to-r from-swamp-teal/[0.05] to-transparent",
   },
-  social: { border: "border-l-ember", dot: "bg-ember", text: "text-ember" },
+  social: {
+    border: "border-l-ember",
+    dot: "bg-ember",
+    text: "text-ember",
+    wash: "bg-gradient-to-r from-ember/[0.05] to-transparent",
+  },
 };
 
 const KIND_ORDER: readonly SessionKind[] = [
@@ -69,63 +82,83 @@ function SessionCard({ event }: { event: ScheduleEvent }) {
   const styles = KIND_STYLES[event.kind];
   return (
     <article
-      className={`border border-bone-white/10 border-l-2 ${styles.border} bg-void-black/50 p-4 sm:p-5`}
+      className={`relative overflow-hidden border border-bone-white/10 border-l-2 ${styles.border} bg-void-black/50 p-4 sm:p-5`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <h4 className="font-anton text-lg sm:text-xl uppercase tracking-wide text-bone-white leading-tight text-balance">
-            {event.title}
-          </h4>
-          {event.subtitle ? (
-            <p
-              className={`font-typewriter text-[0.7rem] sm:text-xs tracking-[0.15em] uppercase ${styles.text} mt-1`}
-            >
-              {event.subtitle}
-            </p>
-          ) : null}
-        </div>
-        <span className="font-typewriter text-[0.65rem] sm:text-xs tracking-[0.15em] uppercase text-bone-white/60 border border-bone-white/20 px-1.5 py-0.5 shrink-0 mt-0.5">
-          {event.room}
-        </span>
-      </div>
+      {/* Category wash — a faint light bleeding in from the spine edge. */}
+      <span
+        aria-hidden="true"
+        className={`absolute inset-0 pointer-events-none ${styles.wash}`}
+      />
 
-      {event.until ? (
-        <p className="font-[family-name:var(--font-mono)] text-[0.65rem] tracking-wider text-bone-white/45 mt-1.5">
-          til {event.until}
-        </p>
-      ) : null}
-
-      {event.desc ? (
-        <p className="font-news text-sm sm:text-base text-bone-white/75 leading-relaxed mt-2">
-          {event.desc}
-        </p>
-      ) : null}
-
-      {event.lead ? (
-        <p className="font-typewriter text-xs text-bone-white/70 mt-2.5">
-          <span className="text-bone-white/40 uppercase tracking-[0.15em] text-[0.65rem]">
-            Led by{" "}
+      <div className="relative">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h4 className="font-anton text-lg sm:text-xl uppercase tracking-wide text-bone-white leading-tight text-balance">
+              {event.title}
+            </h4>
+            {event.subtitle ? (
+              <p
+                className={`font-typewriter text-[0.7rem] sm:text-xs tracking-[0.15em] uppercase ${styles.text} mt-1`}
+              >
+                {event.subtitle}
+              </p>
+            ) : null}
+          </div>
+          <span className="font-typewriter text-[0.65rem] sm:text-xs tracking-[0.15em] uppercase text-bone-white/60 border border-bone-white/20 px-1.5 py-0.5 shrink-0 mt-0.5">
+            {event.room}
           </span>
-          <span className={styles.text}>{event.lead}</span>
-        </p>
-      ) : null}
+        </div>
 
-      {event.panelists ? (
-        <ul className="mt-2.5 grid grid-cols-1 min-[420px]:grid-cols-2 gap-x-4 gap-y-1">
-          {event.panelists.map((p) => (
-            <li
-              key={p}
-              className="font-typewriter text-xs text-bone-white/70 flex items-baseline gap-1.5"
-            >
-              <span
-                aria-hidden="true"
-                className={`inline-block h-1 w-1 rounded-full ${styles.dot} shrink-0 translate-y-[-2px]`}
-              />
-              <span className="min-w-0">{p}</span>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+        {/* The marquee name — the person the session is built around. */}
+        {event.speaker ? (
+          <div className="mt-3">
+            <span className="font-typewriter text-[0.6rem] sm:text-[0.65rem] tracking-[0.25em] uppercase text-bone-white/45">
+              Speaker
+            </span>
+            <p className="font-anton text-2xl sm:text-3xl uppercase tracking-wide text-gold glow-text-gold leading-none mt-1">
+              {event.speaker}
+            </p>
+          </div>
+        ) : null}
+
+        {event.until ? (
+          <p className="font-[family-name:var(--font-mono)] text-[0.65rem] tracking-wider text-bone-white/45 mt-1.5">
+            til {event.until}
+          </p>
+        ) : null}
+
+        {event.desc ? (
+          <p className="font-news text-sm sm:text-base text-bone-white/75 leading-relaxed mt-2">
+            {event.desc}
+          </p>
+        ) : null}
+
+        {event.lead ? (
+          <p className="font-typewriter text-xs text-bone-white/70 mt-2.5">
+            <span className="text-bone-white/40 uppercase tracking-[0.15em] text-[0.65rem]">
+              Led by{" "}
+            </span>
+            <span className={styles.text}>{event.lead}</span>
+          </p>
+        ) : null}
+
+        {event.panelists ? (
+          <ul className="mt-2.5 grid grid-cols-1 min-[420px]:grid-cols-2 gap-x-4 gap-y-1">
+            {event.panelists.map((p) => (
+              <li
+                key={p}
+                className="font-typewriter text-xs text-bone-white/70 flex items-baseline gap-1.5"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`inline-block h-1 w-1 rounded-full ${styles.dot} shrink-0 translate-y-[-2px]`}
+                />
+                <span className="min-w-0">{p}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
     </article>
   );
 }
@@ -248,7 +281,10 @@ export default function ScheduleProgram({
               className="absolute left-[5px] top-1 bottom-0 w-px bg-gradient-to-b from-ooze-green/50 via-ooze-green/20 to-transparent"
             />
 
-            {groups.map((group, index) => (
+            {groups.map((group, index) => {
+              // Main-event slots are the spine of the day: warm node, warm time.
+              const isMain = group.events.some((e) => e.kind === "main");
+              return (
               <li
                 key={group.time}
                 className="poster-rise relative pl-7 sm:pl-9"
@@ -257,11 +293,19 @@ export default function ScheduleProgram({
                 {/* node dot on the rail */}
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 top-[3px] h-[11px] w-[11px] rounded-full border border-ooze-green bg-void-black shadow-[0_0_8px_rgba(95,173,86,0.5)]"
+                  className={`absolute left-0 top-[3px] h-[11px] w-[11px] rounded-full bg-void-black ${
+                    isMain
+                      ? "border border-gold shadow-[0_0_10px_rgba(242,193,78,0.6)]"
+                      : "border border-ooze-green shadow-[0_0_8px_rgba(95,173,86,0.5)]"
+                  }`}
                 />
 
                 <div className="flex items-baseline gap-3 mb-2.5">
-                  <time className="font-[family-name:var(--font-mono)] text-sm sm:text-base tracking-wider text-bone-white">
+                  <time
+                    className={`font-[family-name:var(--font-mono)] text-sm sm:text-base tracking-wider ${
+                      isMain ? "text-gold" : "text-bone-white"
+                    }`}
+                  >
                     {group.time}
                   </time>
                   {group.events.length > 1 ? (
@@ -281,7 +325,8 @@ export default function ScheduleProgram({
                   ))}
                 </div>
               </li>
-            ))}
+              );
+            })}
           </ol>
 
           {day.footnote ? (
@@ -293,7 +338,7 @@ export default function ScheduleProgram({
       </section>
 
       <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/40 text-center px-4 pb-14 sm:pb-16">
-        Working program · times may shift before August
+        Times & rooms as printed in the weekend gram
       </p>
     </>
   );
