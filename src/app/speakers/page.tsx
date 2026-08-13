@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import RisingMotes from "@/components/effects/RisingMotes";
 import MainSpeakers from "@/components/sections/MainSpeakers";
@@ -40,6 +41,27 @@ export default function SpeakersPage() {
         </div>
       </section>
 
+      {/* ---------- The lineup poster ---------- */}
+      {/* The committee's own artwork, shown whole rather than cropped into a
+          thumbnail — it is the announcement, and it says the lineup faster
+          than the cards below it do. */}
+      <section className="relative px-4 sm:px-6 pb-14 sm:pb-16">
+        <figure className="relative max-w-md mx-auto">
+          <Image
+            src="/flyers/iaypaax-speakers.jpg"
+            alt="IAYPAA X speakers poster: Friday, Tonya M. Saturday, Dan K. Sunday, Sammy F. Al-Anon, Theresa G."
+            width={1023}
+            height={1537}
+            priority
+            className="w-full h-auto border border-ooze-green/30 shadow-[0_18px_50px_rgba(0,0,0,0.65)]"
+            sizes="(min-width: 640px) 28rem, 100vw"
+          />
+          <figcaption className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.2em] uppercase text-bone-white/45 text-center mt-4">
+            The lineup, all four
+          </figcaption>
+        </figure>
+      </section>
+
       {/* ---------- The three main speakers ---------- */}
       <MainSpeakers />
 
@@ -54,7 +76,7 @@ export default function SpeakersPage() {
         <div className="relative max-w-2xl mx-auto">
           <div className="mb-10 sm:mb-12 flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4">
             <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
-              Confirmed so far
+              When they speak
             </span>
             <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none">
               It&rsquo;s on the <span className="text-ooze-green">program</span>
@@ -63,10 +85,9 @@ export default function SpeakersPage() {
 
           <p className="font-news text-bone-white/85 text-lg sm:text-xl leading-[1.75] mb-8">
             The weekend program is live: every panel, workshop, and main
-            meeting with its day, time, and room. Speaker and panelist names
-            are announced closer to the conference, first name and last
-            initial only, in keeping with the Eleventh Tradition. The lineup
-            lands on this page the day it drops.
+            meeting with its day, time, and room — including the hour each of
+            these four takes the podium. Names are first name and last initial
+            only, in keeping with the Eleventh Tradition.
           </p>
 
           <Link

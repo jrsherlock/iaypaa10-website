@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import {
   KIND_LABELS,
@@ -157,6 +158,36 @@ function SessionCard({ event }: { event: ScheduleEvent }) {
               </li>
             ))}
           </ul>
+        ) : null}
+
+        {/* The committee's poster for the night, pinned to the card and
+            straightening on hover. Opens the full artwork in a new tab. */}
+        {event.poster ? (
+          <a
+            href={event.poster.src}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/poster mt-4 flex items-end gap-3 w-fit"
+          >
+            <span className="relative block w-24 sm:w-28 shrink-0 overflow-hidden border border-bone-white/25 rotate-[-2deg] shadow-[0_6px_18px_rgba(0,0,0,0.6)] transition-transform duration-300 group-hover/poster:rotate-0 group-hover/poster:scale-[1.03]">
+              <Image
+                src={event.poster.src}
+                alt={`Poster for ${event.title}`}
+                width={event.poster.width}
+                height={event.poster.height}
+                className="w-full h-auto"
+                sizes="112px"
+              />
+            </span>
+            <span
+              className={`font-typewriter text-[0.65rem] tracking-[0.2em] uppercase ${styles.text} group-hover/poster:text-bone-white transition-colors pb-1`}
+            >
+              See the poster{" "}
+              <span aria-hidden="true" className="inline-block">
+                &rarr;
+              </span>
+            </span>
+          </a>
         ) : null}
       </div>
     </article>

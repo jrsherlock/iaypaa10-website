@@ -14,6 +14,17 @@ export const KIND_LABELS: Record<SessionKind, string> = {
   social: "Socials & games",
 };
 
+/**
+ * An event poster in `public/flyers/`. Intrinsic dimensions travel with the
+ * path because the posters aren't a uniform aspect ratio — they're rendered
+ * uncropped, so nothing on the artwork gets cut off.
+ */
+export type EventPoster = {
+  src: string;
+  width: number;
+  height: number;
+};
+
 export type ScheduleEvent = {
   /** Start time, e.g. "4:00 PM". Events sharing a start time group together. */
   time: string;
@@ -34,6 +45,8 @@ export type ScheduleEvent = {
   lead?: string;
   /** Panel roster, "First L. · Place" each. */
   panelists?: readonly string[];
+  /** The committee's poster for this event, pinned to the card. */
+  poster?: EventPoster;
 };
 
 export type ScheduleDay = {
@@ -123,7 +136,12 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         title: "Pajama Palooza",
         room: "Main Ballroom",
         kind: "social",
-        desc: "Pajamas on, DJ's choice, into the small hours.",
+        desc: "Pajamas on, DJ's choice, into the small hours. Good vibes only.",
+        poster: {
+          src: "/flyers/pajama-party.jpg",
+          width: 1024,
+          height: 1536,
+        },
       },
       {
         time: "11:00 PM",
@@ -282,6 +300,11 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
         room: "Main Ballroom",
         kind: "social",
         desc: "Glow sticks, EDM, trap, and the filthiest house the DJ can offer.",
+        poster: {
+          src: "/flyers/shake-your-ooze-thing.jpg",
+          width: 1086,
+          height: 1448,
+        },
       },
       {
         time: "10:00 PM",
