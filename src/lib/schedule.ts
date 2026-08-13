@@ -53,7 +53,6 @@ export type ScheduleDay = {
   code: "FRI" | "SAT" | "SUN";
   date: string; // "Aug 14"
   name: string;
-  blurb: string;
   events: readonly ScheduleEvent[];
   footnote?: string;
 };
@@ -93,8 +92,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
     code: "FRI",
     date: "Aug 14",
     name: "Opening night",
-    blurb:
-      "Doors open at three, hugs out front, registration in the lobby. The marathon room warms up, the first panel lands late afternoon, and the night builds through the state roll call to Tonya M. — then pajamas.",
     events: [
       {
         time: "3:00 PM",
@@ -157,8 +154,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
     code: "SAT",
     date: "Aug 15",
     name: "The core day",
-    blurb:
-      "The fullest day: a sound bath at eight, bid skits, step panels running across three rooms, hot wings and cake in between — then the sobriety countdown, Dan K., and a glow dance to burn off whatever's left.",
     events: [
       {
         time: "8:00 AM",
@@ -326,8 +321,6 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
     code: "SUN",
     date: "Aug 16",
     name: "Closing morning",
-    blurb:
-      "A softer landing: yoga at eight, the Sunday formalities and Sammy F. at ten, then the goodbyes you keep in your pocket for the year.",
     events: [
       {
         time: "8:00 AM",

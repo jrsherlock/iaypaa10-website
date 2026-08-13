@@ -283,9 +283,6 @@ export default function ScheduleProgram({
                 {day.code} · {day.date}
               </span>
             </div>
-            <p className="font-news text-bone-white/80 text-base sm:text-lg leading-relaxed mt-3 max-w-prose">
-              {day.blurb}
-            </p>
 
             {/* Category legend */}
             <ul className="flex flex-wrap gap-x-4 gap-y-1.5 mt-4">
