@@ -41,10 +41,10 @@ export default function SpeakersPage() {
       </section>
 
       {/* ---------- The lineup poster ---------- */}
-      {/* The committee's own artwork carries the lineup on its own — the
-          per-speaker cards that used to sit under it were removed once this
-          landed. `MainSpeakers` and `MAIN_SPEAKERS` in constants.ts are kept
-          but no longer rendered anywhere. */}
+      {/* The committee's own artwork is the lineup — it replaced the four
+          per-speaker cards that used to sit under it. Where each of them
+          actually speaks lives on the program; see the `speaker` field in
+          src/lib/schedule.ts. */}
       <section className="relative px-4 sm:px-6 pb-14 sm:pb-16">
         <figure className="relative max-w-lg mx-auto">
           <Image

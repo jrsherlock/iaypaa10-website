@@ -321,17 +321,6 @@ body {
 }
 
 /* Staggered hero entrance. Each layer with --i: <number> reveals on a stagger. */
-/* ---- Primordial organisms (speaker cards) ----
-   Scoped rather than global: these greens run brighter than the site's
-   ooze-green so the membranes read as bioluminescent against the page,
-   and nothing outside a speaker card should inherit them. */
-.organism-field {
-  --organism-body: #2b7f42;
-  --organism-glow: #5ee46f;
-  --organism-highlight: #8eff95;
-  --organism-accent: #a8ffb2;
-}
-
 @keyframes poster-rise {
   from {
     opacity: 0;

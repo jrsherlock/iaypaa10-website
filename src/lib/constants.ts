@@ -38,64 +38,10 @@ export const CONFERENCE = {
 // "Running all weekend" block is not gated; it shows either way.
 export const PROGRAM_PUBLIC: boolean = true;
 
-// ---------------------------------------------------------------------------
-// The main speakers — one per night, plus the Al-Anon speaker — unveiled a
-// name at a time to keep some suspense in the run-up. An unrevealed speaker
-// shows as ooze that hasn't taken shape; a revealed one has cohered into a
-// person. See /speakers.
-//
-// To reveal one: set `revealed: true` and fill in `name`, `hometown`, and
-// `bio`. Names are first name + last initial only (Eleventh Tradition) — never
-// add a surname here. `portrait` is optional: with it the card leads with the
-// artwork, without it the card falls back to a plain cohered silhouette.
-// ---------------------------------------------------------------------------
-export type MainSpeaker = {
-  /** Stable key, and the night this speaker leads. */
-  id: "friday" | "saturday" | "sunday" | "alanon";
-  /** The slot label on the card — a night ("Friday"), or a role for a
-   *  speaker who isn't tied to one ("Al-Anon Speaker"). */
-  day: string;
-  /** Short date, e.g. "Aug 14". Omitted when the slot has no fixed night. */
-  date?: string;
-  revealed: boolean;
-  /** First name + last initial ONLY. Present once revealed. */
-  name?: string;
-  hometown?: string;
-  bio?: string;
-  /**
-   * Optional treated portrait in `public/images/speakers/`. Authored on a
-   * void-black ground so it sits frameless on the page. Square.
-   */
-  portrait?: string;
-};
-
-export const MAIN_SPEAKERS: readonly MainSpeaker[] = [
-  {
-    id: "friday",
-    day: "Friday",
-    date: "Aug 14",
-    revealed: true,
-    name: "Tonya M.",
-  },
-  {
-    id: "saturday",
-    day: "Saturday",
-    date: "Aug 15",
-    revealed: true,
-    name: "Dan K.",
-  },
-  {
-    id: "sunday",
-    day: "Sunday",
-    date: "Aug 16",
-    revealed: true,
-    name: "Sammy F.",
-    hometown: "Cedar Rapids, Iowa",
-    bio: "We met Sammy at IAYPAA IX in Cedar Rapids, where he was being of service. Then again at the Cedar River Roundup, where he was being of service. He is probably out there being of service right now. Big smile, permanent game face, and a hospitality game people are still talking about.",
-    portrait: "/images/speakers/sunday-sammy-f.webp",
-  },
-  { id: "alanon", day: "Al-Anon Speaker", revealed: true, name: "Theresa G." },
-];
+// The main speakers are no longer modelled here. /speakers carries the
+// committee's lineup poster instead of per-speaker cards, and the names
+// themselves live on the sessions they speak at — see the `speaker` field in
+// src/lib/schedule.ts.
 
 // ---------------------------------------------------------------------------
 // Ooza-Palooza fundraiser. ONE pot: when the running total crosses a
