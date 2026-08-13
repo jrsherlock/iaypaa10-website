@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import RisingMotes from "@/components/effects/RisingMotes";
-import MainSpeakers from "@/components/sections/MainSpeakers";
 import { CONFERENCE, PROGRAM_PUBLIC } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -42,11 +41,12 @@ export default function SpeakersPage() {
       </section>
 
       {/* ---------- The lineup poster ---------- */}
-      {/* The committee's own artwork, shown whole rather than cropped into a
-          thumbnail — it is the announcement, and it says the lineup faster
-          than the cards below it do. */}
+      {/* The committee's own artwork carries the lineup on its own — the
+          per-speaker cards that used to sit under it were removed once this
+          landed. `MainSpeakers` and `MAIN_SPEAKERS` in constants.ts are kept
+          but no longer rendered anywhere. */}
       <section className="relative px-4 sm:px-6 pb-14 sm:pb-16">
-        <figure className="relative max-w-md mx-auto">
+        <figure className="relative max-w-lg mx-auto">
           <Image
             src="/flyers/iaypaax-speakers.jpg"
             alt="IAYPAA X speakers poster: Friday, Tonya M. Saturday, Dan K. Sunday, Sammy F. Al-Anon, Theresa G."
@@ -54,16 +54,13 @@ export default function SpeakersPage() {
             height={1537}
             priority
             className="w-full h-auto border border-ooze-green/30 shadow-[0_18px_50px_rgba(0,0,0,0.65)]"
-            sizes="(min-width: 640px) 28rem, 100vw"
+            sizes="(min-width: 640px) 32rem, 100vw"
           />
           <figcaption className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.2em] uppercase text-bone-white/45 text-center mt-4">
             The lineup, all four
           </figcaption>
         </figure>
       </section>
-
-      {/* ---------- The three main speakers ---------- */}
-      <MainSpeakers />
 
       {/* ---------- Confirmed so far — point to the live program ---------- */}
       {PROGRAM_PUBLIC && (
