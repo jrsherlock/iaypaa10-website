@@ -37,9 +37,9 @@ export function eventJsonLd(): Record<string, unknown> {
     },
     offers: {
       "@type": "Offer",
-      name: "Early Bird",
-      category: "Early Bird",
-      price: "25",
+      name: "Registration",
+      category: "Registration",
+      price: "30",
       priceCurrency: "USD",
       url: url("/registration"),
       availability: "https://schema.org/InStock",

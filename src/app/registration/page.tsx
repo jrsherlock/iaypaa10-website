@@ -5,7 +5,7 @@ import SlimeDivider from "@/components/ui/SlimeDivider";
 
 export const metadata: Metadata = {
   title: "Registration",
-  description: `Reserve your seat at ${CONFERENCE.name}. Early-bird $25, at-the-door TBA, scholarships available. ${CONFERENCE.date} in ${CONFERENCE.location}.`,
+  description: `Reserve your seat at ${CONFERENCE.name}. Registration is $30 for the full weekend, scholarships available. ${CONFERENCE.date} in ${CONFERENCE.location}.`,
 };
 
 const REGISTRATION_URL =
@@ -21,12 +21,14 @@ type Tier = {
   stamp?: string;
 };
 
+// One price now that the doors are open — the early-bird window closed and
+// "at the door" is simply what registration is.
 const TIERS: readonly Tier[] = [
   {
     num: "01",
-    name: "Early Bird",
-    price: "$25",
-    note: "Limited-time price. Going up, so get in before it does.",
+    name: "Registration",
+    price: "$30",
+    note: "The full weekend, start to finish. Register at the table in the lobby, or online before you head up.",
     includes: [
       "Full weekend access",
       "All speaker sessions",
@@ -34,20 +36,7 @@ const TIERS: readonly Tier[] = [
       "Fellowship events",
     ],
     highlighted: true,
-    stamp: "Best deal",
-  },
-  {
-    num: "02",
-    name: "At the Door",
-    price: "TBA",
-    note: "Walk-in registration, subject to availability.",
-    includes: [
-      "Full weekend access",
-      "All speaker sessions",
-      "Workshops & panels",
-      "Fellowship events",
-    ],
-    highlighted: false,
+    stamp: "All three days",
   },
 ];
 
@@ -116,7 +105,8 @@ export default function RegistrationPage() {
             <p className="font-news text-bone-white/85 text-base sm:text-lg leading-relaxed mb-8 max-w-prose">
               Tickets are processed off-site through Cheddar Up, the same
               7th-tradition friendly payment service the host committee has
-              used for years. You&rsquo;ll pick your tier on the next screen.
+              used for years. You can also just come to the registration table
+              in the lobby.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -154,22 +144,18 @@ export default function RegistrationPage() {
         <div className="relative max-w-4xl mx-auto">
           <div className="flex items-baseline gap-4 sm:gap-6 border-b border-ooze-green/25 pb-4 mb-12 sm:mb-14">
             <span className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 shrink-0">
-              Tiers
+              The pass
             </span>
             <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none">
-              Two ways <span className="text-ooze-green">in</span>
+              What it <span className="text-ooze-green">costs</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+          <div className="max-w-md mx-auto">
             {TIERS.map((tier, i) => (
               <TicketStub key={tier.num} tier={tier} index={i} />
             ))}
           </div>
-
-          <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/40 text-center mt-12 sm:mt-14">
-            Prices reviewed quarterly by the host committee
-          </p>
         </div>
       </section>
 
@@ -268,22 +254,16 @@ function TicketStub({ tier, index }: { tier: Tier; index: number }) {
 
           <div className="flex items-baseline gap-3 mb-5">
             <span
-              className={`font-[family-name:var(--font-mono)] text-5xl sm:text-6xl font-bold leading-none ${
-                tier.price === "TBA" ? "text-bone-white/45" : "text-gold"
-              }`}
-              style={
-                tier.price === "TBA"
-                  ? undefined
-                  : {
-                      textShadow:
-                        "0 0 14px rgba(242,193,78,0.35), 0 2px 0 rgba(0,0,0,0.4)",
-                    }
-              }
+              className="font-[family-name:var(--font-mono)] text-5xl sm:text-6xl font-bold leading-none text-gold"
+              style={{
+                textShadow:
+                  "0 0 14px rgba(242,193,78,0.35), 0 2px 0 rgba(0,0,0,0.4)",
+              }}
             >
               {tier.price}
             </span>
             <span className="font-typewriter text-xs tracking-[0.25em] uppercase text-bone-white/45">
-              {tier.price === "TBA" ? "to be announced" : "weekend pass"}
+              weekend pass
             </span>
           </div>
 

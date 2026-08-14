@@ -60,7 +60,7 @@ export default function OozaPaloozaPage() {
               that dare is locked in. No backing out.
             </p>
             <p>
-              Join in by donating, pre-registering, or purchasing a
+              Join in by donating, registering, or purchasing a
               scholarship — it all feeds the ooze.
             </p>
           </div>
@@ -215,13 +215,13 @@ export default function OozaPaloozaPage() {
             <p className="font-news text-sm text-bone-white/60 leading-relaxed mt-6 max-w-md mx-auto">
               {next ? (
                 <>
-                  Pre-registrations and scholarship purchases count toward the
+                  Registrations and scholarship purchases count toward the
                   total too — so if you were going to register anyway, now it
                   also gets somebody pied.
                 </>
               ) : (
                 <>
-                  Pre-registrations and scholarship purchases count toward the
+                  Registrations and scholarship purchases count toward the
                   total too. The dares are settled; what&rsquo;s left to build
                   is the weekend itself.
                 </>
