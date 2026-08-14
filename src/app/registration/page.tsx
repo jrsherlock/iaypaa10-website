@@ -28,7 +28,7 @@ const TIERS: readonly Tier[] = [
     num: "01",
     name: "Registration",
     price: "$30",
-    note: "The full weekend, start to finish. Register at the table in the lobby, or online before you head up.",
+    note: "The full weekend, start to finish. Register at the table in the lobby of the conference, or online before you head up.",
     includes: [
       "Full weekend access",
       "All speaker sessions",
@@ -106,7 +106,7 @@ export default function RegistrationPage() {
               Tickets are processed off-site through Cheddar Up, the same
               7th-tradition friendly payment service the host committee has
               used for years. You can also just come to the registration table
-              in the lobby.
+              in the lobby of the conference.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">

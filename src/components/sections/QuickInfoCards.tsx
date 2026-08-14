@@ -22,7 +22,7 @@ const ACTS: readonly Act[] = [
     num: "I",
     label: "Reserve your seat",
     body:
-      "Registration is $30 for the full weekend, online or at the table in the lobby. Scholarships available, no one turned away.",
+      "Registration is $30 for the full weekend, online or at the table in the lobby of the conference. Scholarships available, no one turned away.",
     href: "/registration",
     cta: "Registration",
   },

@@ -96,9 +96,9 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
       {
         time: "3:00 PM",
         title: "Doors & registration open",
-        room: "Lobby",
+        room: "Conference Lobby",
         kind: "main",
-        desc: "Lanyards in the lobby. The marathon meeting room and hospitality suite open as the building fills up.",
+        desc: "Lanyards in the lobby of the conference, not the hotel's own. The marathon meeting room and hospitality suite open as the building fills up.",
       },
       {
         time: "4:30 PM",
@@ -341,7 +341,7 @@ export const SCHEDULE_DAYS: readonly ScheduleDay[] = [
       {
         time: "12:00 PM",
         title: "Farewell — safe travels home",
-        room: "Lobby",
+        room: "Conference Lobby",
         kind: "main",
         desc: "See you next year.",
       },
