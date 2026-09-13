@@ -60,7 +60,7 @@ export default function OutreachPage() {
               aria-label="Download the IAYPAA X flyer (PDF)"
               className="group block w-44 mx-auto mb-6"
             >
-              <span className="relative block aspect-[1179/1771] overflow-hidden border border-ooze-green/35 paper-grit rotate-[-1deg] shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:rotate-0 group-hover:scale-[1.03]">
+              <span className="relative block aspect-[1179/1771] overflow-hidden border border-ooze-green/35 sediment rotate-[-1deg] shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:rotate-0 group-hover:scale-[1.03]">
                 <Image
                   src={FLYER_THUMB}
                   alt="IAYPAA X \u2014 Primordial Ooze conference flyer"
@@ -70,7 +70,7 @@ export default function OutreachPage() {
                 />
                 <span
                   aria-hidden="true"
-                  className="absolute top-2 left-2 stamp text-gold/90 !text-[0.55rem] !tracking-[0.25em] !py-0.5 !px-1.5 bg-void-black/60"
+                  className="absolute top-2 left-2 edge-label text-gold/90 !text-[0.55rem] !tracking-[0.25em] !py-0.5 !px-1.5 bg-void-black/60"
                 >
                   The Flyer
                 </span>

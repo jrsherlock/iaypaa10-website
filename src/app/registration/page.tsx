@@ -18,7 +18,7 @@ type Tier = {
   note: string;
   includes: readonly string[];
   highlighted: boolean;
-  stamp?: string;
+  ribbon?: string;
 };
 
 // One price now that the doors are open — the early-bird window closed and
@@ -36,7 +36,7 @@ const TIERS: readonly Tier[] = [
       "Fellowship events",
     ],
     highlighted: true,
-    stamp: "All three days",
+    ribbon: "All three days",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function RegistrationPage() {
       {/* ---------- Primary CTA ---------- */}
       <section className="relative px-4 sm:px-6 pb-16 sm:pb-20">
         <div className="relative max-w-2xl mx-auto">
-          <div className="relative bg-toxic-green/35 border border-ooze-green/30 paper-grit p-8 sm:p-12">
+          <div className="relative bg-toxic-green/35 border border-ooze-green/30 sediment p-8 sm:p-12">
             <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-gold mb-4">
               Registration open
             </p>
@@ -98,7 +98,7 @@ export default function RegistrationPage() {
             </h2>
 
             <div
-              className="marquee-rule w-32 sm:w-40 mb-6"
+              className="first-light-rule w-32 sm:w-40 mb-6"
               aria-hidden="true"
             />
 
@@ -201,9 +201,9 @@ export default function RegistrationPage() {
 
 /* ============================================================
    TicketStub — perforated two-pane "ADMIT ONE" stub.
-   Left: the big stamp with tier label + price.
+   Left: the tier label + price.
    Right: the matrix of what's included.
-   Featured tier is tilted slightly and carries a stamp.
+   Featured tier is tilted slightly and carries a ribbon.
    ============================================================ */
 function TicketStub({ tier, index }: { tier: Tier; index: number }) {
   const tilt = index === 0 ? "rotate-[-1deg]" : "rotate-[1deg]";
@@ -218,12 +218,12 @@ function TicketStub({ tier, index }: { tier: Tier; index: number }) {
           tier.highlighted
             ? "border-gold/60 shadow-[0_0_28px_rgba(242,193,78,0.18)]"
             : "border-ooze-green/30"
-        } paper-grit`}
+        } sediment`}
       >
-        {/* stamp ribbon for highlighted tier */}
-        {tier.highlighted && tier.stamp && (
-          <span className="absolute -top-3 right-4 z-10 stamp text-gold !text-[0.65rem] sm:!text-xs !tracking-[0.28em]">
-            {tier.stamp}
+        {/* ribbon for the highlighted tier */}
+        {tier.highlighted && tier.ribbon && (
+          <span className="absolute -top-3 right-4 z-10 edge-label text-gold !text-[0.65rem] sm:!text-xs !tracking-[0.28em]">
+            {tier.ribbon}
           </span>
         )}
 

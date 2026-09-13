@@ -22,7 +22,7 @@ export default function SeventhTradition() {
           <span className="h-px flex-1 bg-bone-white/15" aria-hidden="true" />
         </div>
 
-        <div className="relative bg-void-black border border-gold/40 paper-grit p-8 sm:p-10 text-center">
+        <div className="relative bg-void-black border border-gold/40 sediment p-8 sm:p-10 text-center">
           <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wide text-bone-white leading-none mb-5">
             Support the <span className="text-gold">conference</span>
           </h2>

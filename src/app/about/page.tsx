@@ -255,7 +255,7 @@ export default function AboutPage() {
                   href={doc.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block h-full rounded-lg border border-ooze-green/25 bg-void-black/55 paper-grit p-5 sm:p-6 transition-colors hover:border-gold/55 hover:bg-toxic-green/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green"
+                  className="group block h-full rounded-lg border border-ooze-green/25 bg-void-black/55 sediment p-5 sm:p-6 transition-colors hover:border-gold/55 hover:bg-toxic-green/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green"
                 >
                   <p className="font-typewriter text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase text-bone-white/45 mb-2">
                     {doc.source}

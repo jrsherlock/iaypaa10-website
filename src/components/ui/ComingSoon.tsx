@@ -14,7 +14,7 @@ interface ComingSoonProps {
 export default function ComingSoon({ title, subtitle }: ComingSoonProps) {
   return (
     <div className="relative max-w-xl mx-auto">
-      <div className="relative bg-toxic-green/30 border border-ooze-green/30 paper-grit p-8 sm:p-10">
+      <div className="relative bg-toxic-green/30 border border-ooze-green/30 sediment p-8 sm:p-10">
         {/* Quiet label */}
         <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-bone-white/55 mb-3">
           In progress

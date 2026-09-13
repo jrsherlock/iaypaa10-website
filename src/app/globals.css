@@ -240,20 +240,22 @@ body {
    Formation / depth utilities
    The ooze itself: sediment, strata, first light. Not a flyer.
    See docs/design-philosophy.md §3 (Texture / Light).
-   Class names are kept where components already reference them so
-   the whole site shifts at once; the .tape-strip spans were removed
-   from the components and the class deleted.
+
+   The handmade-flyer kit is fully retired, names included. The old
+   classes (.paper-grit, .stamp, .marquee-rule, .bg-halftone*,
+   .tape-strip, .ink-misreg) no longer exist anywhere in the site —
+   don't reintroduce them, and don't name a new utility after the
+   xerox/poster idiom.
    ============================================================ */
 
 /* Fine sediment grain — the texture of matter, near-invisible, static
-   (no animation). Replaces the xerox halftone; same class names so
-   existing overlays become grain instead of dots. */
-.bg-halftone {
+   (no animation). Matter, not a printing artifact. */
+.bg-sediment {
   background-image: radial-gradient(rgba(232, 230, 225, 0.05) 0.5px, transparent 0.6px);
   background-size: 3px 3px;
 }
 
-.bg-halftone-lg {
+.bg-sediment-lg {
   background-image: radial-gradient(rgba(232, 230, 225, 0.045) 0.6px, transparent 0.8px);
   background-size: 5px 5px;
 }
@@ -281,9 +283,9 @@ body {
   );
 }
 
-/* Edge label — a clean, quiet caption frame. Replaces the rotated
-   rubber "stamp"; no tilt, no ink-noise, just a hairline and tracking. */
-.stamp {
+/* Edge label — the humble field-caption voice: times, rooms, small
+   labels. No tilt, no ink-noise, just a hairline and tracking. */
+.edge-label {
   font-family: var(--font-typewriter), monospace;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -295,10 +297,10 @@ body {
 
 /* Sediment grit — a single, very faint static grain on a panel body.
    The texture of matter, not aged newsprint. */
-.paper-grit {
+.sediment {
   position: relative;
 }
-.paper-grit::after {
+.sediment::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -309,8 +311,8 @@ body {
 }
 
 /* First-light rule — a thin emergent line, warmth surfacing out of the
-   dark. Replaces the chunky theater-marquee bar (same class name). */
-.marquee-rule {
+   dark. A divider that rises, not a theater marquee. */
+.first-light-rule {
   height: 1px;
   background: linear-gradient(
     90deg,

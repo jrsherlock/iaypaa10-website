@@ -143,7 +143,7 @@ Verdicts: **KEEP** (on-philosophy) · **REDIRECT** (right bones, wrong skin) ·
 | `sections/Hero` | **REDIRECT** | Layered depth, parallax, vignette = great (primordial depth). Creepster title, Scanlines, "Rated YP," "One Weekend Only," tape strip = costume. | Keep the photo-depth stack; Anton title; remove Scanlines/stamp/marquee; reframe copy. |
 | `ui/ComingSoon` | **REDIRECT** | Useful pattern; "TBA placard / // status / Coming soon" framing is camp. | Reframe as _"still forming"_ (emergence), Anton not Creepster, drop tape/stamp. |
 | `app/schedule` page | **REDIRECT** | Content is solid; "Showtimes / Reel 03 / // working program" is cinema. | Rename to plain program language; drop reel/film framing. |
-| Poster kit: `.tape-strip` `.stamp` `.bg-halftone*` `.ink-misreg` `.marquee-rule` `.paper-grit` | **RETIRE** | The handmade-xerox-flyer kit = the wrapper. | Remove usages; replace with strata / depth-gradient / fine-grain utilities. |
+| Poster kit: `.tape-strip` `.stamp` `.bg-halftone*` `.ink-misreg` `.marquee-rule` `.paper-grit` | **RETIRE** ✅ | The handmade-xerox-flyer kit = the wrapper. | **Done.** Replaced by the formation utilities `.sediment`, `.bg-sediment(-lg)`, `.bg-strata`, `.first-light-rule`, `.edge-label`. None of the old names exist in the codebase. |
 | `--color-film-grain` token | **RETIRE** | Exists only to serve the grain artifact. | Delete token. |
 | `toxic-green` token | **REDIRECT** | Value is fine; the _name_ encodes the wrong intent. | Keep value, treat/comment as "deep strata." |
 | Anton / Newsreader fonts | **KEEP** | Structure-from-formlessness + plain recovery voice. Exactly right. | No change. |
@@ -165,3 +165,35 @@ Verdicts: **KEEP** (on-philosophy) · **REDIRECT** (right bones, wrong skin) ·
 5. **Replace the texture kit.** Swap flyer utilities for strata/depth-grain.
 
 Each step is independently shippable and leaves the site coherent.
+
+---
+
+## 6. Status — the migration is complete
+
+**All five steps have shipped.** Nothing in this document is outstanding work.
+
+Step 5 landed in two halves, and the gap between them caused real confusion, so
+it's worth recording. The *implementations* were swapped first — the halftone
+dots became sediment grain, the rubber stamp became a quiet hairline label, the
+marquee bar became a first-light rule — but the **class names were deliberately
+left alone** so the whole site could shift in one commit. That shortcut left the
+codebase saying `paper-grit` and `stamp` while this document said those were
+retired, and `AGENTS.md` went on recommending them by name. Two files, opposite
+advice, and whichever one you read first decided how you styled your next
+component.
+
+The names were finished on **September 13, 2026**, with no change to a single CSS
+declaration:
+
+| Retired | Now |
+|---|---|
+| `.paper-grit` | `.sediment` |
+| `.bg-halftone` / `.bg-halftone-lg` | `.bg-sediment` / `.bg-sediment-lg` |
+| `.marquee-rule` | `.first-light-rule` |
+| `.stamp` | `.edge-label` |
+| `.tape-strip`, `.ink-misreg` | deleted earlier, no replacement |
+
+`.bg-rule-lines`, `.bg-strata` and `.poster-rise` were never part of the flyer kit
+and are unchanged. The lesson worth keeping: **a utility's name is part of its
+design.** Leaving the old name on the new behaviour costs more than the rename
+it postpones.

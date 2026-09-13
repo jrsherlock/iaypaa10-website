@@ -46,7 +46,7 @@ function EventCard({
       type="button"
       onClick={() => onOpen(event)}
       aria-haspopup="dialog"
-      className={`group relative w-full text-left border paper-grit p-6 sm:p-7 transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green ${
+      className={`group relative w-full text-left border sediment p-6 sm:p-7 transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ooze-green ${
         past
           ? "border-bone-white/10 bg-void-black/30 opacity-60 hover:opacity-80"
           : "border-ooze-green/30 bg-void-black/45 hover:border-ooze-green/55"
@@ -81,7 +81,7 @@ function EventCard({
               {whenLine(event)}
             </p>
             <span
-              className={`stamp shrink-0 !text-[0.6rem] !tracking-[0.25em] ${
+              className={`edge-label shrink-0 !text-[0.6rem] !tracking-[0.25em] ${
                 past ? "text-bone-white/35" : "text-ooze-green/90"
               }`}
             >
@@ -191,13 +191,13 @@ function EventModal({
           Wider when the event has a flyer so the artwork is legible. */}
       <div
         ref={panelRef}
-        className={`relative w-full max-h-[88vh] overflow-y-auto border border-ooze-green/30 bg-dark-ooze paper-grit p-6 sm:p-8 rounded-t-2xl sm:rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.6)] ${
+        className={`relative w-full max-h-[88vh] overflow-y-auto border border-ooze-green/30 bg-dark-ooze sediment p-6 sm:p-8 rounded-t-2xl sm:rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.6)] ${
           event.flyerThumb ? "sm:max-w-2xl" : "sm:max-w-lg"
         }`}
       >
         <div className="flex items-start justify-between gap-4 mb-4 border-b border-ooze-green/20 pb-4">
           <span
-            className={`stamp !text-[0.6rem] !tracking-[0.25em] ${
+            className={`edge-label !text-[0.6rem] !tracking-[0.25em] ${
               past ? "text-bone-white/40" : "text-ooze-green/90"
             }`}
           >
@@ -239,7 +239,7 @@ function EventModal({
                 />
                 <span
                   aria-hidden="true"
-                  className="absolute bottom-2 right-2 stamp text-gold/95 !text-[0.6rem] !tracking-[0.25em] !py-1 !px-2 bg-void-black/75"
+                  className="absolute bottom-2 right-2 edge-label text-gold/95 !text-[0.6rem] !tracking-[0.25em] !py-1 !px-2 bg-void-black/75"
                 >
                   Tap to enlarge
                 </span>

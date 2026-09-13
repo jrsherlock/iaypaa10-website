@@ -140,7 +140,7 @@ export default function HotelPage() {
               {venue.name}
             </h2>
             <div
-              className="marquee-rule w-44 sm:w-56 mt-5 mb-5"
+              className="first-light-rule w-44 sm:w-56 mt-5 mb-5"
               aria-hidden="true"
             />
             <p className="font-typewriter text-sm sm:text-base tracking-[0.12em] uppercase text-bone-white/75">
@@ -149,7 +149,7 @@ export default function HotelPage() {
           </div>
 
           {/* Hero photo — kept rectangular and bordered like a contact-sheet frame */}
-          <div className="relative aspect-[21/9] w-full overflow-hidden border border-ooze-green/30 paper-grit">
+          <div className="relative aspect-[21/9] w-full overflow-hidden border border-ooze-green/30 sediment">
             <Image
               src={VENUE_IMAGES[0].src}
               alt={VENUE_IMAGES[0].alt}
@@ -160,7 +160,7 @@ export default function HotelPage() {
             />
             <span
               aria-hidden="true"
-              className="absolute top-3 left-3 stamp text-gold/90 !text-[0.6rem] !tracking-[0.3em] !py-0.5 !px-1.5 bg-void-black/60"
+              className="absolute top-3 left-3 edge-label text-gold/90 !text-[0.6rem] !tracking-[0.3em] !py-0.5 !px-1.5 bg-void-black/60"
             >
               Exhibit A
             </span>
@@ -169,7 +169,7 @@ export default function HotelPage() {
           {/* Primary action — reserve a room in the conference block.
               This is the first, loudest CTA on the page: it goes straight
               to our Passkey booking page, not the general hotel site. */}
-          <div className="mt-8 relative max-w-xl bg-void-black border border-gold/40 paper-grit p-6 sm:p-8">
+          <div className="mt-8 relative max-w-xl bg-void-black border border-gold/40 sediment p-6 sm:p-8">
             {/* perforation line down the left — ticket-stub styling */}
             <span
               aria-hidden="true"
@@ -363,7 +363,7 @@ export default function HotelPage() {
             {VENUE_IMAGES.map((img, i) => (
               <figure
                 key={`${img.alt}-${i}`}
-                className={`relative aspect-[4/3] overflow-hidden border border-ooze-green/25 paper-grit ${
+                className={`relative aspect-[4/3] overflow-hidden border border-ooze-green/25 sediment ${
                   i % 2 === 0 ? "rotate-[-0.6deg]" : "rotate-[0.5deg]"
                 }`}
               >
@@ -374,7 +374,7 @@ export default function HotelPage() {
                   className="object-cover"
                   sizes="(max-width: 640px) 100vw, 450px"
                 />
-                {/* contact-sheet number stamp */}
+                {/* contact-sheet frame number */}
                 <figcaption className="absolute bottom-2 left-2 font-typewriter text-[0.65rem] tracking-[0.25em] uppercase text-bone-white bg-void-black/70 border border-bone-white/20 px-1.5 py-0.5">
                   {String(i + 1).padStart(2, "0")} · {img.caption}
                 </figcaption>
@@ -416,7 +416,7 @@ export default function HotelPage() {
               </p>
             </div>
 
-            <ul className="border border-ooze-green/25 paper-grit p-5 sm:p-6">
+            <ul className="border border-ooze-green/25 sediment p-5 sm:p-6">
               <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 mb-3 border-b border-ooze-green/20 pb-2">
                 Within a short walk
               </p>
@@ -457,7 +457,7 @@ export default function HotelPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {/* By air */}
-            <div className="border border-ooze-green/25 paper-grit p-6 sm:p-7">
+            <div className="border border-ooze-green/25 sediment p-6 sm:p-7">
               <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 mb-2">
                 By air
               </p>
@@ -488,7 +488,7 @@ export default function HotelPage() {
             </div>
 
             {/* By car */}
-            <div className="border border-ooze-green/25 paper-grit p-6 sm:p-7">
+            <div className="border border-ooze-green/25 sediment p-6 sm:p-7">
               <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase text-bone-white/55 mb-2">
                 By car
               </p>

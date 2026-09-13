@@ -17,7 +17,7 @@ const plate = (n: number) => `NO. ${String(n).padStart(2, "0")}`;
 export default function ProductCard({ product, index }: ProductCardProps) {
   const inner = (
     <div
-      className={`group relative flex h-full flex-col border bg-void-black/40 paper-grit transition-all duration-500 ${
+      className={`group relative flex h-full flex-col border bg-void-black/40 sediment transition-all duration-500 ${
         product.soldOut
           ? "border-bone-white/10 opacity-55"
           : "border-ooze-green/15 hover:border-ooze-green/40 hover:bg-toxic-green/10 hover:shadow-[0_0_28px_-6px_rgba(95,173,86,0.28)]"
@@ -39,7 +39,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
           aria-hidden="true"
         />
         <div
-          className="absolute inset-0 bg-halftone-lg opacity-40 mix-blend-soft-light"
+          className="absolute inset-0 bg-sediment-lg opacity-40 mix-blend-soft-light"
           aria-hidden="true"
         />
         <div
@@ -77,7 +77,7 @@ export default function ProductCard({ product, index }: ProductCardProps) {
       </div>
 
       {/* First-light rule between the specimen and its label */}
-      <div className="marquee-rule" aria-hidden="true" />
+      <div className="first-light-rule" aria-hidden="true" />
 
       {/* The label */}
       <div className="flex flex-1 flex-col p-5">

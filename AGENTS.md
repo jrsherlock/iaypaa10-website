@@ -39,10 +39,16 @@ when the component needs interactivity/state. Prefer server components.
 ## Custom Tailwind utilities
 
 Defined in `src/app/globals.css`, reused across pages — prefer these over
-ad-hoc styles for cohesion: `paper-grit`, `stamp`, `marquee-rule`,
-`bg-rule-lines`, `bg-halftone-lg`, `poster-rise`, `animate-*`. Brand colors
-are CSS vars: `void-black`, `bone-white`, `ooze-green`, `swamp-teal`, `gold`,
-`ember`, `berry`, `toxic-green`.
+ad-hoc styles for cohesion: `sediment`, `bg-sediment` / `bg-sediment-lg`,
+`bg-strata`, `bg-rule-lines`, `first-light-rule`, `edge-label`, `poster-rise`,
+`animate-*`. Brand colors are CSS vars: `void-black`, `bone-white`,
+`ooze-green`, `swamp-teal`, `gold`, `ember`, `berry`, `toxic-green`.
+
+These are the **formation** utilities — sediment, strata, first light. The
+handmade-flyer kit they replaced (`paper-grit`, `stamp`, `marquee-rule`,
+`bg-halftone*`, `tape-strip`, `ink-misreg`) is retired, names and all; don't
+reintroduce it or name a new utility after the xerox/poster idiom. See
+`docs/design-philosophy.md` §3 and §5.
 
 ## Content & tone (important)
 

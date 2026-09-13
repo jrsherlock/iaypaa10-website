@@ -15,7 +15,7 @@ export default function FeaturedSpecimen({ product }: { product: Product }) {
       rel="noopener noreferrer"
       className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-void-black"
     >
-      <article className="relative grid grid-cols-1 overflow-hidden border border-ooze-green/20 bg-strata paper-grit transition-all duration-500 group-hover:border-gold/40 group-hover:shadow-[0_0_44px_-10px_rgba(242,193,78,0.3)] lg:grid-cols-[1.05fr_1fr]">
+      <article className="relative grid grid-cols-1 overflow-hidden border border-ooze-green/20 bg-strata sediment transition-all duration-500 group-hover:border-gold/40 group-hover:shadow-[0_0_44px_-10px_rgba(242,193,78,0.3)] lg:grid-cols-[1.05fr_1fr]">
         {/* Image side */}
         <div className="relative aspect-[4/5] overflow-hidden bg-dark-ooze sm:aspect-[16/10] lg:aspect-auto lg:min-h-[30rem]">
           <Image
@@ -32,7 +32,7 @@ export default function FeaturedSpecimen({ product }: { product: Product }) {
             aria-hidden="true"
           />
           <div
-            className="absolute inset-0 bg-halftone-lg opacity-40 mix-blend-soft-light"
+            className="absolute inset-0 bg-sediment-lg opacity-40 mix-blend-soft-light"
             aria-hidden="true"
           />
           <div
@@ -70,7 +70,7 @@ export default function FeaturedSpecimen({ product }: { product: Product }) {
             coffee on. Nothing here is sold for profit.
           </p>
 
-          <div className="marquee-rule w-40" aria-hidden="true" />
+          <div className="first-light-rule w-40" aria-hidden="true" />
 
           <div className="flex flex-wrap items-end justify-between gap-4">
             <span className="font-typewriter text-[0.66rem] uppercase tracking-[0.18em] text-bone-white/45">

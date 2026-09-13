@@ -15,7 +15,7 @@ export default function ChallengeTeaser() {
   return (
     <section className="relative px-4 sm:px-6 py-16 sm:py-20">
       <div className="max-w-3xl mx-auto">
-        <div className="relative border border-ooze-green/30 bg-toxic-green/25 paper-grit p-6 sm:p-9">
+        <div className="relative border border-ooze-green/30 bg-toxic-green/25 sediment p-6 sm:p-9">
           <p className="font-typewriter text-[0.7rem] sm:text-xs tracking-[0.35em] uppercase text-ooze-green mb-3">
             Fundraiser · one pot, ten dares
           </p>

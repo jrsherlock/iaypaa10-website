@@ -21,12 +21,12 @@ export default function ThemeTeaser() {
 
       {/* fine sediment grain — barely-there matter texture */}
       <div
-        className="absolute inset-0 z-[1] bg-halftone opacity-40 pointer-events-none"
+        className="absolute inset-0 z-[1] bg-sediment opacity-40 pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="relative z-10 max-w-3xl mx-auto">
-        {/* top mini-stamp */}
+        {/* top edge label */}
         <p className="font-typewriter text-xs sm:text-sm tracking-[0.3em] uppercase text-bone-white/55 text-center mb-8">
           The theme
         </p>

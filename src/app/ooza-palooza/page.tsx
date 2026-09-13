@@ -166,7 +166,7 @@ export default function OozaPaloozaPage() {
         className="relative px-4 sm:px-6 pb-16 sm:pb-20 scroll-mt-20"
       >
         <div className="max-w-2xl mx-auto">
-          <div className="relative bg-void-black border border-gold/40 paper-grit p-8 sm:p-10 text-center">
+          <div className="relative bg-void-black border border-gold/40 sediment p-8 sm:p-10 text-center">
             <h2 className="font-anton text-3xl sm:text-4xl uppercase tracking-wide text-bone-white leading-none mb-5">
               Feed the <span className="text-gold">ooze</span>
             </h2>
@@ -234,7 +234,7 @@ export default function OozaPaloozaPage() {
       {/* ---------- The flyer ---------- */}
       <section className="relative px-4 sm:px-6 pb-20 sm:pb-24">
         <div className="relative max-w-2xl mx-auto">
-          <div className="border border-ooze-green/25 bg-void-black/40 paper-grit p-3 sm:p-4">
+          <div className="border border-ooze-green/25 bg-void-black/40 sediment p-3 sm:p-4">
             <Image
               src="/flyers/challenge-palooza.jpg"
               alt="IAYPAA X Ooza-Palooza challenge flyer listing all ten challenges: $50 Prank/Rejection Challenge, $100 Blind-Folded Drawing, $150 Lip Sync Battle, $300 Pie-in-Face, $500 Ghost Peppers & Onions, $750 Full Clown Makeup in Public, $1000 WWE IAYPAA Smackdown, $1500 Shave Eyebrows Off, $2000 IAYPAA-Themed Tattoo, and $2500 Fear Factor Snackboard."

@@ -79,7 +79,7 @@ export default function Hero() {
       />
       {/* Fine sediment grain — the texture of matter, barely there */}
       <div
-        className="absolute inset-0 z-[2] bg-halftone-lg opacity-50 mix-blend-soft-light"
+        className="absolute inset-0 z-[2] bg-sediment-lg opacity-50 mix-blend-soft-light"
         aria-hidden="true"
       />
       {/* Dark vignette — text legibility, not "gradient hero overlay" */}
@@ -145,7 +145,7 @@ export default function Hero() {
 
         {/* First-light rule */}
         <div
-          className="poster-rise w-44 sm:w-56 marquee-rule mt-4 sm:mt-8 mb-4 sm:mb-7"
+          className="poster-rise w-44 sm:w-56 first-light-rule mt-4 sm:mt-8 mb-4 sm:mb-7"
           style={{ ["--i" as string]: 3 }}
           aria-hidden="true"
         />
@@ -180,7 +180,7 @@ export default function Hero() {
         className="absolute bottom-6 left-4 sm:bottom-10 sm:left-8 z-30 poster-rise flex flex-col items-start gap-1 max-w-[10rem] sm:max-w-[14rem]"
         style={{ ["--i" as string]: 6 }}
       >
-        <span className="stamp text-ooze-green/90 !text-[0.65rem] sm:!text-xs !tracking-[0.25em]">
+        <span className="edge-label text-ooze-green/90 !text-[0.65rem] sm:!text-xs !tracking-[0.25em]">
           All are welcome
         </span>
         <span className="font-typewriter text-[0.6rem] sm:text-[0.7rem] tracking-[0.18em] uppercase text-bone-white/55 leading-snug">
